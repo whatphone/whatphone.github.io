@@ -52,7 +52,7 @@ const Footer = (() => {
               <ul role="list">
                 <li><a href="/privacy">Privacy Policy</a></li>
                 <li><a href="/terms">Terms of Use</a></li>
-                <li><a href="/cookies">Cookie Policy</a></li>
+                <li><a href="/about">About</a></li>
                 <li><a href="/sitemap.xml">Sitemap</a></li>
               </ul>
             </div>
