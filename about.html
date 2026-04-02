@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>About WhatPhone — Instant Device Detection Tool</title>
+  <meta name="description" content="Learn about WhatPhone: the free, privacy-first device detection tool that identifies your phone model, specs, and capabilities entirely in your browser. No data collection, no app required." />
+  <meta name="keywords" content="about WhatPhone, device detector, phone identifier, privacy tool, browser detection, what phone do i have" />
+  <meta name="author" content="WhatPhone" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://whatphone.github.io/about.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About WhatPhone — Private, Instant Device Detection" />
+  <meta property="og:description" content="WhatPhone helps you identify your phone model, OS, specs, and 30+ capabilities instantly. 100% client-side, zero data collection, forever free." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://whatphone.github.io/about.html" />
+  <meta property="og:image" content="https://whatphone.github.io/assets/og-image.png" />
+  <meta property="og:site_name" content="WhatPhone" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About WhatPhone — Device Detection That Respects Privacy" />
+  <meta name="twitter:description" content="Learn why WhatPhone is the most private way to identify your phone model and hardware specs." />
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#080c14" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- Fonts + Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* About page specific enhancements */
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem 4rem;
+    }
+    .hero-about {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .hero-about h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff 0%, var(--accent2) 60%, var(--neon) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .hero-about .subhead {
+      font-size: 1.2rem;
+      color: var(--text2);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .mission-card {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 3rem;
+      margin-bottom: 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .mission-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--neon), var(--accent));
+    }
+    .mission-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .mission-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .mission-card p {
+      color: var(--text2);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .stats-showcase {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    .stat-block {
+      text-align: center;
+      padding: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      transition: transform var(--transition);
+    }
+    .stat-block:hover {
+      transform: translateY(-4px);
+      border-color: var(--border2);
+    }
+    .stat-number-large {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent2), var(--neon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label-large {
+      color: var(--text2);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      align-items: center;
+    }
+    .story-text h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .story-text p {
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .story-visual {
+      background: linear-gradient(145deg, var(--surface), var(--bg3));
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 2rem;
+      text-align: center;
+    }
+    .code-block {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent2);
+      text-align: left;
+      overflow-x: auto;
+      margin-top: 1rem;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+    .tech-badge {
+      padding: 0.5rem 1rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      color: var(--text2);
+      font-family: var(--font-mono);
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+    .value-card {
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      transition: all var(--transition);
+    }
+    .value-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .value-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .value-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .value-card p {
+      color: var(--text2);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .team-note {
+      text-align: center;
+      padding: 2rem;
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    @media (max-width: 768px) {
+      .stats-showcase { grid-template-columns: 1fr; gap: 1rem; }
+      .story-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .mission-card { padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-about">Skip to main content</a>
+  <header id="site-header" role="banner"></header>
+
+  <main id="main-about">
+    <div class="about-container">
+      <!-- Hero Section -->
+      <div class="hero-about" data-animate>
+        <h1>About WhatPhone</h1>
+        <p class="subhead">The most private, accurate, and effortless way to discover what phone you're holding — right in your browser, with zero data collection.</p>
+      </div>
+
+      <!-- Mission Statement -->
+      <div class="mission-card" data-animate>
+        <div class="mission-icon">🔍</div>
+        <h2>Our Mission</h2>
+        <p>To empower every smartphone user with instant, accurate device information while respecting their privacy completely. No apps, no accounts, no tracking — just the information you need, when you need it.</p>
+      </div>
+
+      <!-- Statistics Showcase -->
+      <div class="stats-showcase" data-stagger>
+        <div class="stat-block" data-animate>
+          <div class="stat-number-large">5000+</div>
+          <div class="stat-label-large">Device Models Detected</div>
+        </div>
+        <div class="stat-block" data-animate>
+          <div class="stat-number-large">30+</div>
+          <div class="stat-label-large">Hardware Capabilities</div>
+        </div>
+        <div class="stat-block" data-animate>
+          <div class="stat-number-large">100%</div>
+          <div class="stat-label-large">Privacy-First</div>
+        </div>
+      </div>
+
+      <!-- Story / How It Started -->
+      <div class="story-grid" data-animate>
+        <div class="story-text">
+          <h2>The Story Behind WhatPhone</h2>
+          <p>WhatPhone was born from a simple frustration: trying to help friends and family identify their phone models for tech support, warranty claims, or selling devices. Existing solutions either required downloading suspicious apps, sharing personal data, or provided incomplete information.</p>
+          <p>We asked ourselves: <strong>why can't device detection be instant, private, and free?</strong> So we built it. WhatPhone uses only browser APIs — everything runs locally on your device. Your data never touches our servers because we don't have any servers collecting data.</p>
+          <p>Today, WhatPhone helps thousands of users daily identify their devices, check specifications, and debug technical issues — all while maintaining complete privacy.</p>
+        </div>
+        <div class="story-visual">
+          <div style="font-size: 3rem; margin-bottom: 0.5rem;">⚡</div>
+          <p style="color: var(--accent2); font-family: var(--font-mono); font-size: 0.9rem;">Zero data transmitted</p>
+          <div class="code-block">
+            // All detection runs locally
+            const device = {
+              model: navigator.userAgent,
+              screen: `${screen.width}x${screen.height}`,
+              cores: navigator.hardwareConcurrency,
+              // ... no data sent anywhere
+            };
+          </div>
+          <div class="tech-stack">
+            <span class="tech-badge">Client-side JS</span>
+            <span class="tech-badge">No backend</span>
+            <span class="tech-badge">No cookies</span>
+            <span class="tech-badge">No tracking</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core Values -->
+      <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;" data-animate>Our Core Principles</h2>
+      <div class="values-grid" data-stagger>
+        <div class="value-card" data-animate>
+          <div class="value-icon">🔒</div>
+          <h3>Absolute Privacy</h3>
+          <p>We don't collect, store, or share any data. No analytics, no logs, no cookies. What happens in your browser stays in your browser.</p>
+        </div>
+        <div class="value-card" data-animate>
+          <div class="value-icon">⚡</div>
+          <h3>Instant Results</h3>
+          <p>Detection happens in milliseconds. Click the button and your full device report appears immediately — no waiting, no loading screens.</p>
+        </div>
+        <div class="value-card" data-animate>
+          <div class="value-icon">🌐</div>
+          <h3>Universal Access</h3>
+          <p>Works on every modern browser and device: iPhone, Android, tablet, desktop. No app store, no installation, no permissions required.</p>
+        </div>
+        <div class="value-card" data-animate>
+          <div class="value-icon">🎯</div>
+          <h3>Unmatched Accuracy</h3>
+          <p>Combining User Agent parsing, Client Hints, screen resolution fingerprinting, and hardware APIs to deliver the most accurate detection possible.</p>
+        </div>
+        <div class="value-card" data-animate>
+          <div class="value-icon">💸</div>
+          <h3>Forever Free</h3>
+          <p>WhatPhone will always be free. No premium tiers, no paywalls, no subscription. Device information should be accessible to everyone.</p>
+        </div>
+        <div class="value-card" data-animate>
+          <div class="value-icon">🛠️</div>
+          <h3>Developer Friendly</h3>
+          <p>Export full JSON reports, copy UA strings, test WebGL/WebGPU support — built for developers debugging across devices.</p>
+        </div>
+      </div>
+
+      <!-- How We Compare -->
+      <div class="mission-card" style="margin-top: 2rem;" data-animate>
+        <div class="mission-icon">🏆</div>
+        <h2>Why WhatPhone Stands Out</h2>
+        <p>Unlike other "device detector" tools that secretly sell your data or require invasive app installations, WhatPhone was built with a radical privacy-first philosophy. We don't need your email, your location, or your permission to access anything beyond what your browser already shares. Every detection is processed locally, and the results disappear when you close the tab.</p>
+        <div class="tech-stack" style="justify-content: center; margin-top: 1.5rem;">
+          <span class="tech-badge">✓ No registration</span>
+          <span class="tech-badge">✓ No data mining</span>
+          <span class="tech-badge">✓ No hidden costs</span>
+          <span class="tech-badge">✓ Open source spirit</span>
+        </div>
+      </div>
+
+      <!-- Technical Excellence -->
+      <div class="story-grid" style="margin-top: 2rem;" data-animate>
+        <div class="story-visual" style="order: 2;">
+          <div style="font-size: 3rem; margin-bottom: 0.5rem;">📊</div>
+          <p style="color: var(--accent2); font-family: var(--font-mono); font-size: 0.9rem;">30+ detection points</p>
+          <div class="tech-stack" style="flex-direction: column; align-items: flex-start;">
+            <span class="tech-badge" style="display: block;">→ Device brand & model</span>
+            <span class="tech-badge" style="display: block;">→ OS version & build</span>
+            <span class="tech-badge" style="display: block;">→ Screen specs & DPR</span>
+            <span class="tech-badge" style="display: block;">→ CPU cores & RAM</span>
+            <span class="tech-badge" style="display: block;">→ Battery & network</span>
+            <span class="tech-badge" style="display: block;">→ 25+ browser APIs</span>
+          </div>
+        </div>
+        <div class="story-text" style="order: 1;">
+          <h2>Built on Modern Web Standards</h2>
+          <p>WhatPhone leverages cutting-edge browser technologies including the Navigator API, Screen API, Battery Status API, Network Information API, and Device Memory API. On supported browsers, we also use User-Agent Client Hints for more precise model identification.</p>
+          <p>Our detection engine continuously updates to support new devices from Apple, Samsung, Google, OnePlus, Xiaomi, and 50+ other manufacturers. We combine multiple signals — user agent patterns, screen resolutions, GPU renderers — to infer the exact model even when browsers obscure identifiers for privacy.</p>
+          <p><strong>100% transparent.</strong> You can inspect our code, see exactly how detection works, and verify that no data leaves your browser.</p>
+        </div>
+      </div>
+
+      <!-- Community & Open Source -->
+      <div class="team-note" data-animate>
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">❤️</div>
+        <h3 style="font-family: var(--font-display); color: #fff; margin-bottom: 0.5rem;">Made with privacy, for everyone</h3>
+        <p style="color: var(--text2); max-width: 600px; margin: 0 auto;">WhatPhone is an independent project driven by a passion for user privacy and technical excellence. We believe that essential tools like device detection should never come at the cost of your personal data.</p>
+        <div class="tech-stack" style="justify-content: center; margin-top: 1.5rem;">
+          <span class="tech-badge">📧 support@whatphone.dev</span>
+          <span class="tech-badge">🐙 GitHub (open source)</span>
+        </div>
+      </div>
+
+      <!-- Back to home link -->
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="index.html" class="btn-primary" style="display: inline-flex;">← Back to Device Detector</a>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer" role="contentinfo"></footer>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script>
+    // Animation triggers for staggered elements
+    const animateElements = document.querySelectorAll('[data-animate]');
+    const staggerElements = document.querySelectorAll('[data-stagger]');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          if (entry.target.hasAttribute('data-stagger')) {
+            const children = entry.target.children;
+            Array.from(children).forEach((child, idx) => {
+              setTimeout(() => {
+                child.classList.add('in-view');
+              }, idx * 100);
+            });
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    animateElements.forEach(el => observer.observe(el));
+    staggerElements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
