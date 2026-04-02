@@ -32,27 +32,27 @@ const Footer = (() => {
             <div class="footer-col">
               <h3 class="footer-col-title">Detection</h3>
               <ul role="list">
-                <li><a href="#detect">Detect My Phone</a></li>
-                <li><a href="#specs">View Full Specs</a></li>
-                <li><a href="#compare">Compare Devices</a></li>
-                <li><a href="#advanced">Advanced Info</a></li>
+                <li><a href="/#detect">Detect My Phone</a></li>
+                <li><a href="/#specs">View Full Specs</a></li>
+                <li><a href="/#compare">Compare Devices</a></li>
+                <li><a href="/#advanced">Advanced Info</a></li>
               </ul>
             </div>
             <div class="footer-col">
               <h3 class="footer-col-title">Information</h3>
               <ul role="list">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#compatibility">Compatibility</a></li>
+                <li><a href="/#features">Features</a></li>
+                <li><a href="/#how-it-works">How It Works</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+                <li><a href="/#compatibility">Compatibility</a></li>
               </ul>
             </div>
             <div class="footer-col">
               <h3 class="footer-col-title">Legal</h3>
               <ul role="list">
-                <li><a href="/privacy.html">Privacy Policy</a></li>
-                <li><a href="/terms.html">Terms of Use</a></li>
-                <li><a href="/cookies.html">Cookie Policy</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms of Use</a></li>
+                <li><a href="/cookies">Cookie Policy</a></li>
                 <li><a href="/sitemap.xml">Sitemap</a></li>
               </ul>
             </div>
