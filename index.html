@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ── Primary Meta ─────────────────────────────────── -->
+  <title>What Phone Do I Have? — Instant Mobile Device Detector | WhatPhone</title>
+  <meta name="description" content="Find out exactly what phone you have in seconds. WhatPhone detects your device model, OS version, screen specs, hardware, browser, network, and 30+ capabilities instantly — no app needed." />
+  <meta name="keywords" content="what phone do I have, phone detector, device identifier, mobile phone detection, identify my phone, check phone model, phone specs checker, device info, browser device detection, iOS detector, Android detector, phone model checker" />
+  <meta name="author" content="WhatPhone" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://whatphone.github.io/" />
+
+  <!-- ── Open Graph ────────────────────────────────────── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://whatphone.github.io/" />
+  <meta property="og:title" content="What Phone Do I Have? — Instant Device Detector" />
+  <meta property="og:description" content="Detect your phone model, OS, specs, and 30+ hardware capabilities instantly. Free, private, no app required." />
+  <meta property="og:image" content="https://whatphone.github.io/assets/og-image.png" />
+  <meta property="og:site_name" content="WhatPhone" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ── Twitter Card ──────────────────────────────────── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@whatphone" />
+  <meta name="twitter:title" content="What Phone Do I Have? — Instant Device Detector" />
+  <meta name="twitter:description" content="Detect your phone model, OS, screen specs & 30+ capabilities instantly. Free & private." />
+  <meta name="twitter:image" content="https://whatphone.github.io/assets/og-image.png" />
+
+  <!-- ── Favicon ───────────────────────────────────────── -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='7' y='2' width='18' height='28' rx='4' fill='%233b82f6'/><rect x='10' y='6' width='12' height='16' rx='2' fill='%23080c14'/><circle cx='16' cy='26' r='2' fill='%2360a5fa'/></svg>" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23080c14'/><rect x='7' y='2' width='18' height='28' rx='4' fill='%233b82f6'/></svg>" />
+
+  <!-- ── Theme Color ───────────────────────────────────── -->
+  <meta name="theme-color" content="#080c14" />
+  <meta name="msapplication-TileColor" content="#080c14" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- ── Preconnect ───────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- ── Stylesheet ───────────────────────────────────── -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- ── Schema Markup ────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://whatphone.github.io/#website",
+        "url": "https://whatphone.github.io/",
+        "name": "WhatPhone",
+        "description": "Instant mobile phone and device detection tool",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://whatphone.github.io/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://whatphone.github.io/#app",
+        "name": "What Phone Do I Have?",
+        "url": "https://whatphone.github.io/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires a modern web browser",
+        "description": "Instantly detect your mobile phone model, operating system, screen specifications, hardware capabilities, browser details, and network information — all from your browser, with no app download required.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Detect phone brand and model",
+          "Identify operating system and version",
+          "Screen resolution and pixel density detection",
+          "CPU cores and RAM detection",
+          "Battery level and charging status",
+          "Network type and speed detection",
+          "Browser capabilities checker",
+          "30+ hardware feature detection",
+          "Export detection report as JSON"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://whatphone.github.io/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does WhatPhone detect my device?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "WhatPhone uses browser APIs including the User Agent string, Navigator API, Screen API, and optional high-entropy Client Hints to identify your device model, OS, browser, and hardware specifications — all processed locally in your browser."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my data stored or shared?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All detection runs entirely in your browser using client-side JavaScript. No data is sent to any server, stored, or shared with third parties."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does WhatPhone work on iPhone and Android?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. WhatPhone works on all modern browsers including Safari on iOS, Chrome on Android, Firefox, Edge, Samsung Internet, and more."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why might the model name show as generic?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "iOS devices limit the model identifier exposed to browsers for privacy. Some Android manufacturers also obscure model numbers. WhatPhone uses screen resolution fingerprinting and UA Client Hints to improve accuracy."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Skip Navigation -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ── Header (rendered by JS) ─────────────────────── -->
+  <header id="site-header" role="banner"></header>
+
+  <!-- ── Detect Loader ────────────────────────────────── -->
+  <div id="detectLoader" role="status" aria-live="polite" aria-label="Detecting your device">
+    <div class="loader-inner">
+      <div class="loader-spinner" aria-hidden="true"></div>
+      <p class="loader-text">Scanning device…</p>
+    </div>
+  </div>
+
+  <!-- ── Main Content ─────────────────────────────────── -->
+  <main id="main-content">
+
+    <!-- ══════════════════════════════════════════════════
+         § 1 — HERO
+    ══════════════════════════════════════════════════════ -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-eyebrow" aria-label="Free device detection tool">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            Free · Instant · Private
+          </div>
+          <h1 class="hero-title" id="hero-heading">
+            What Phone<br/>
+            <span class="highlight">Do I Have?</span>
+          </h1>
+          <p class="hero-subtitle">
+            Detect your exact phone model, OS version, screen specs, RAM, battery, network type, and 30+ hardware capabilities — instantly, right in your browser.
+          </p>
+          <div class="hero-quick-info" id="heroQuickInfo" aria-live="polite" aria-label="Quick device preview"></div>
+          <div class="hero-actions">
+            <button id="detectBtn" class="btn-primary" aria-label="Start phone detection">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="9" cy="9" r="3" fill="currentColor"/>
+                <path d="M9 2v1M9 15v1M2 9h1M15 9h1M4 4l.7.7M13.3 13.3l.7.7M4 14l.7-.7M13.3 4.7l.7-.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="btn-text">Detect My Phone</span>
+            </button>
+            <a href="#features" class="btn-secondary" aria-label="Learn about our features">
+              How It Works
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Phone Mockup -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orbit-container">
+            <div class="orbit-ring"></div>
+            <div class="orbit-dot"></div>
+            <div class="orbit-dot"></div>
+            <div class="orbit-dot"></div>
+          </div>
+          <div class="phone-mockup">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="phone-scan-line"></div>
+                <div class="phone-screen-line"></div>
+                <div class="phone-screen-line"></div>
+                <div class="phone-screen-line"></div>
+                <div class="phone-screen-line"></div>
+                <div class="phone-screen-line"></div>
+              </div>
+              <div class="phone-home-btn"></div>
+            </div>
+            <div class="info-tags">
+              <div class="info-tag">CPU: 8 cores</div>
+              <div class="info-tag">RAM: 8 GB</div>
+              <div class="info-tag">4G / LTE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         § 2 — STATS
+    ══════════════════════════════════════════════════════ -->
+    <section class="stats-section" aria-label="Platform statistics">
+      <div class="container">
+        <div class="stats-grid" data-stagger>
+          <div class="stat-item">
+            <div class="stat-number"><span data-count="5000">0</span><span class="stat-suffix">+</span></div>
+            <div class="stat-label">Device Models Detected</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span data-count="30">0</span><span class="stat-suffix">+</span></div>
+            <div class="stat-label">Hardware Capabilities Checked</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span data-count="100">0</span><span class="stat-suffix">%</span></div>
+            <div class="stat-label">Free Forever</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span data-count="0">0</span><span class="stat-suffix"></span></div>
+            <div class="stat-label">Data Stored or Shared</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         § 3 — DETECT
+    ══════════════════════════════════════════════════════ -->
+    <section class="detect-section" id="detect" aria-labelledby="detect-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">Live Detection</span>
+          <h2 class="section-title" id="detect-heading">Your Device Report</h2>
+          <p class="section-subtitle">Click the button above or press below to scan your device. Results appear instantly.</p>
+        </div>
+
+        <!-- Result Section -->
+        <div id="resultSection" aria-live="polite" aria-label="Device detection results">
+          <div id="deviceCard" aria-label="Device identification card"></div>
+          <div class="result-grid" style="margin-top:1.5rem">
+            <div>
+              <!-- Specs Tabs -->
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem;margin-bottom:1.5rem" aria-label="Technical specifications">
+                <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:#fff;margin-bottom:1rem">Technical Specs</h3>
+                <div id="specsTabs"></div>
+              </div>
+            </div>
+            <div>
+              <!-- Capabilities -->
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem;margin-bottom:1.5rem" aria-label="Browser and hardware capabilities">
+                <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:#fff;margin-bottom:1rem">Capabilities</h3>
+                <div id="capabilitiesGrid" class="cap-grid" role="list"></div>
+              </div>
+              <!-- Advanced -->
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem">
+                <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:#fff;margin-bottom:1rem">Advanced Info</h3>
+                <div id="advancedInfo"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         § 4 — FEATURES
+    ══════════════════════════════════════════════════════ -->
+    <section class="features-section" id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">What We Detect</span>
+          <h2 class="section-title" id="features-heading">Everything About Your Device</h2>
+          <p class="section-subtitle">From your phone's model name to its network speed — we surface it all.</p>
+        </div>
+        <div class="features-grid" data-stagger>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📱</div>
+            <h3 class="feature-title">Device Identity</h3>
+            <p class="feature-desc">Detect your exact device brand, model name, and generation. Supports Apple, Samsung, Google Pixel, OnePlus, Xiaomi, Motorola, and 50+ manufacturers.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">⚙️</div>
+            <h3 class="feature-title">Hardware Specs</h3>
+            <p class="feature-desc">CPU core count, RAM capacity, architecture, and touch points. See what's actually powering your device under the hood.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🖥️</div>
+            <h3 class="feature-title">Screen Analysis</h3>
+            <p class="feature-desc">Physical and logical resolution, pixel density ratio, color gamut (sRGB / P3 / Rec2020), HDR support, and display orientation.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🔋</div>
+            <h3 class="feature-title">Battery Status</h3>
+            <p class="feature-desc">Live battery percentage, charging status, estimated time to full charge, and remaining discharge time.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📡</div>
+            <h3 class="feature-title">Network Info</h3>
+            <p class="feature-desc">Connection type (WiFi, 4G, 5G), effective bandwidth, round-trip latency, and data saver mode status.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🌐</div>
+            <h3 class="feature-title">Browser Capabilities</h3>
+            <p class="feature-desc">WebGL renderer, WebGPU, WebRTC, Service Workers, Push API, Payment API, Web Share, and 20+ other browser features.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📍</div>
+            <h3 class="feature-title">Sensor Detection</h3>
+            <p class="feature-desc">Detect gyroscope, accelerometer, magnetometer, geolocation, camera API, NFC, Bluetooth, and USB availability.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📤</div>
+            <h3 class="feature-title">Export & Share</h3>
+            <p class="feature-desc">Copy your device report, share via native share sheet, or download as a full JSON report for developers and support tickets.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🔒</div>
+            <h3 class="feature-title">100% Private</h3>
+            <p class="feature-desc">All detection happens locally in your browser using JavaScript APIs. Zero data is transmitted, stored, or shared. No account required.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         § 5 — HOW IT WORKS
+    ══════════════════════════════════════════════════════ -->
+    <section class="how-section" id="how-it-works" aria-labelledby="how-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">The Process</span>
+          <h2 class="section-title" id="how-heading">How Detection Works</h2>
+          <p class="section-subtitle">Four steps. Zero data collection. Instant results.</p>
+        </div>
+        <div class="steps-grid" data-stagger>
+          <div class="step-item">
+            <div class="step-num" aria-hidden="true">1</div>
+            <h3 class="step-title">You Visit</h3>
+            <p class="step-desc">Open WhatPhone in any modern browser on any device — phone, tablet, or desktop.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num" aria-hidden="true">2</div>
+            <h3 class="step-title">We Scan</h3>
+            <p class="step-desc">Our JS engine queries the Navigator API, Screen API, User Agent string, and Client Hints simultaneously.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num" aria-hidden="true">3</div>
+            <h3 class="step-title">We Identify</h3>
+            <p class="step-desc">Results are cross-referenced against our device database and resolution fingerprint library.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num" aria-hidden="true">4</div>
+            <h3 class="step-title">You Know</h3>
+            <p class="step-desc">Your full device report is displayed in under a second. Copy, share, or download it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         § 6 — SPECS PREVIEW
+    ══════════════════════════════════════════════════════ -->
+    <section class="specs-preview-section" id="specs" aria-labelledby="specs-heading">
+      <div class="container">
+        <div class="specs-preview-inner">
+          <div class="specs-visual" data-animate>
+            <div class="spec-line"><span class="spec-line-key">Display Resolution</span><div class="spec-line-bar-wrap"><div class="spec-line-bar" style="width:85%"></div></div><span class="spec-line-val">2400×1080</span></div>
+            <div class="spec-line"><span class="spec-line-key">RAM</span><div class="spec-line-bar-wrap"><div class="spec-line-bar" style="width:75%"></div></div><span class="spec-line-val">8 GB</span></div>
+            <div class="spec-line"><span class="spec-line-key">CPU Cores</span><div class="spec-line-bar-wrap"><div class="spec-line-bar" style="width:100%"></div></div><span class="spec-line-val">8 cores</span></div>
+            <div class="spec-line"><span class="spec-line-key">Network</span><div class="spec-line-bar-wrap"><div class="spec-line-bar" style="width:90%"></div></div><span class="spec-line-val">5G / LTE</span></div>
+            <div class="spec-line"><span class="spec-line-key">Battery</span><div class="spec-line-bar-wrap"><div class="spec-line-bar" style="width:68%"></div></div><span class="spec-line-val">68%</span></div>
+            <div class="spec-line"><span class="spec-line-key">Color Gamut</span><div class="spec-line-bar-wrap"><div class="spec-line-bar" style="width:95%"></div></div><span class="spec-line-val">DCI-P3</span></div>
+            <div class="spec-line"><span class="spec-line-key">Pixel Ratio</span><div class="spec-line-bar-wrap"><div class="spec-line-bar" style="width:80%"></div></div><span class="spec-line-val">3×</span></div>
+          </div>
+          <div class="specs-text" data-animate>
+            <span class="section-eyebrow">Deep Specs</span>
+            <h2 id="specs-heading">30+ Data Points, One Report</h2>
+            <p>WhatPhone doesn't just tell you the name — it gives you the full technical picture developers, support teams, and tech-savvy users need.</p>
+            <div class="specs-bullets">
+              <div class="spec-bullet"><div class="bullet-dot" aria-hidden="true"></div><span>Physical and logical screen resolution with DPR</span></div>
+              <div class="spec-bullet"><div class="bullet-dot" aria-hidden="true"></div><span>Color gamut: sRGB, DCI-P3, or Rec. 2020</span></div>
+              <div class="spec-bullet"><div class="bullet-dot" aria-hidden="true"></div><span>WebGL GPU renderer identification</span></div>
+              <div class="spec-bullet"><div class="bullet-dot" aria-hidden="true"></div><span>Live battery level + charging state</span></div>
+              <div class="spec-bullet"><div class="bullet-dot" aria-hidden="true"></div><span>Network type, downlink speed, and RTT</span></div>
+              <div class="spec-bullet"><div class="bullet-dot" aria-hidden="true"></div><span>User preference: dark mode, reduced motion</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         § 7 — COMPARE / USE CASES
+    ══════════════════════════════════════════════════════ -->
+    <section class="compare-section" id="compare" aria-labelledby="compare-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">Use Cases</span>
+          <h2 class="section-title" id="compare-heading">Who Uses WhatPhone?</h2>
+          <p class="section-subtitle">From curious users to developers — everyone needs device info at some point.</p>
+        </div>
+        <div class="compare-grid" data-stagger>
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">👤</div>
+            <h3 class="compare-card-title">Everyday Users</h3>
+            <p class="compare-card-sub">Curious about your own device</p>
+            <ul class="compare-list" aria-label="Use cases for everyday users">
+              <li class="compare-item">Check your exact phone model</li>
+              <li class="compare-item">See battery and network status</li>
+              <li class="compare-item">Verify your OS version</li>
+              <li class="compare-item">Share specs with support teams</li>
+            </ul>
+          </article>
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">🛠️</div>
+            <h3 class="compare-card-title">Developers</h3>
+            <p class="compare-card-sub">Debug and test across devices</p>
+            <ul class="compare-list" aria-label="Use cases for developers">
+              <li class="compare-item">Test WebGL / WebGPU support</li>
+              <li class="compare-item">Verify browser capabilities</li>
+              <li class="compare-item">Check UA strings and Client Hints</li>
+              <li class="compare-item">Export full JSON device report</li>
+            </ul>
+          </article>
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">🎧</div>
+            <h3 class="compare-card-title">Support Teams</h3>
+            <p class="compare-card-sub">Diagnose customer issues faster</p>
+            <ul class="compare-list" aria-label="Use cases for support teams">
+              <li class="compare-item">Get exact device info instantly</li>
+              <li class="compare-item">Identify OS and browser version</li>
+              <li class="compare-item">Check network conditions</li>
+              <li class="compare-item">Shareable detection link</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         § 8 — COMPATIBILITY
+    ══════════════════════════════════════════════════════ -->
+    <section class="compat-section" id="compatibility" aria-labelledby="compat-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">Works Everywhere</span>
+          <h2 class="section-title" id="compat-heading">Universal Browser Support</h2>
+          <p class="section-subtitle">No app download. Works natively in every modern browser on every platform.</p>
+        </div>
+        <div class="compat-grid" data-stagger>
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">🌐</div>
+            <h3 class="compat-name">Chrome</h3>
+            <p class="compat-desc">Android & Desktop</p>
+            <span class="compat-status">Full Support</span>
+          </article>
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">🧭</div>
+            <h3 class="compat-name">Safari</h3>
+            <p class="compat-desc">iPhone, iPad & Mac</p>
+            <span class="compat-status">Full Support</span>
+          </article>
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">🦊</div>
+            <h3 class="compat-name">Firefox</h3>
+            <p class="compat-desc">Android & Desktop</p>
+            <span class="compat-status">Full Support</span>
+          </article>
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">🔷</div>
+            <h3 class="compat-name">Edge</h3>
+            <p class="compat-desc">Windows & Android</p>
+            <span class="compat-status">Full Support</span>
+          </article>
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">📱</div>
+            <h3 class="compat-name">Samsung Internet</h3>
+            <p class="compat-desc">Galaxy Devices</p>
+            <span class="compat-status">Full Support</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         § 9 — FAQ
+    ══════════════════════════════════════════════════════ -->
+    <section class="faq-section" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">FAQ</span>
+          <h2 class="section-title" id="faq-heading">Common Questions</h2>
+          <p class="section-subtitle">Everything you need to know about WhatPhone.</p>
+        </div>
+        <div class="faq-list" role="list" data-animate>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a1" onclick="toggleFaq(this)">
+              How does WhatPhone detect my phone model?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="faq-a1" role="region">
+              WhatPhone uses the browser's User Agent string, the Navigator API (including high-entropy UA Client Hints on Chromium browsers), and screen resolution fingerprinting to identify your exact device brand, model, and generation. All processing happens locally in your browser — nothing is sent to a server.
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a2" onclick="toggleFaq(this)">
+              Is my personal data stored or shared?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="faq-a2" role="region">
+              Absolutely not. WhatPhone is a fully client-side application. Every detection runs in your browser using JavaScript APIs. No data is transmitted, logged, or stored on any server. We don't use cookies for tracking or analytics. Your privacy is completely protected.
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a3" onclick="toggleFaq(this)">
+              Why does my iPhone show a generic model instead of "iPhone 15 Pro"?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="faq-a3" role="region">
+              Apple restricts the exact model identifier exposed to browsers through the User Agent string for privacy reasons. WhatPhone compensates by using screen resolution fingerprinting (the physical pixel dimensions are unique per model) to infer the most likely iPhone model. Modern iOS 16+ devices may also provide better model data via UA Client Hints.
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a4" onclick="toggleFaq(this)">
+              Does WhatPhone require an app download or account?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="faq-a4" role="region">
+              No app, no account, no sign-up. WhatPhone is a pure web application that works entirely in your browser. Just visit the site and tap "Detect My Phone" — results appear in under a second.
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a5" onclick="toggleFaq(this)">
+              What information does the detection report include?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="faq-a5" role="region">
+              The report includes: device brand &amp; model, OS name &amp; version, browser name &amp; version, logical and physical screen resolution, device pixel ratio, color gamut, CPU core count, RAM, battery level &amp; charging state, network type &amp; speed, and 30+ hardware and browser capability flags (WebGL, Bluetooth, NFC, geolocation, notifications, and more).
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a6" onclick="toggleFaq(this)">
+              Can I use WhatPhone to check someone else's device?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="faq-a6" role="region">
+              Yes — simply share the WhatPhone URL (whatphone.github.io) with another person and ask them to visit it on their device. The tool will detect their specific device automatically, and they can share or copy the results to you.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         § 10 — CTA
+    ══════════════════════════════════════════════════════ -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+      <div class="container">
+        <div data-animate>
+          <h2 class="cta-title" id="cta-heading">
+            Ready to Identify<br/>Your Device?
+          </h2>
+          <p class="cta-sub">Tap the button and get your full phone report in under a second. Free, always.</p>
+          <a href="#detect" class="btn-primary" style="display:inline-flex" aria-label="Start device detection now">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="9" cy="9" r="3" fill="currentColor"/>
+            </svg>
+            <span>Detect My Phone Now</span>
+          </a>
+          <div class="cta-badge">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M7 1l1.5 3 3.5.5-2.5 2.5.5 3.5L7 9l-3 1.5.5-3.5L2 4.5 5.5 4z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+            No account · No app · No data stored
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer (rendered by JS) ──────────────────────── -->
+  <footer id="site-footer" role="contentinfo"></footer>
+
+  <!-- ── Scripts ──────────────────────────────────────── -->
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script>
+    // FAQ toggle
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+  </script>
+</body>
+</html>
