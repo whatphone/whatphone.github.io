@@ -25,13 +25,13 @@ const Header = (() => {
           </button>
 
           <ul class="nav-links" id="navMenu" role="list">
-            <li><a href="#detect" class="nav-link" data-section="detect">Detect</a></li>
-            <li><a href="#features" class="nav-link" data-section="features">Features</a></li>
-            <li><a href="#specs" class="nav-link" data-section="specs">Specs</a></li>
-            <li><a href="#compare" class="nav-link" data-section="compare">Compare</a></li>
-            <li><a href="#faq" class="nav-link" data-section="faq">FAQ</a></li>
+            <li><a href="/#detect" class="nav-link" data-section="detect">Detect</a></li>
+            <li><a href="/#features" class="nav-link" data-section="features">Features</a></li>
+            <li><a href="/#specs" class="nav-link" data-section="specs">Specs</a></li>
+            <li><a href="/#compare" class="nav-link" data-section="compare">Compare</a></li>
+            <li><a href="/#faq" class="nav-link" data-section="faq">FAQ</a></li>
             <li>
-              <a href="#detect" class="nav-cta" aria-label="Detect my phone now">
+              <a href="/#detect" class="nav-cta" aria-label="Detect my phone now">
                 <span>Detect My Phone</span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
