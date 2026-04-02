@@ -25,11 +25,12 @@ const Header = (() => {
           </button>
 
           <ul class="nav-links" id="navMenu" role="list">
-            <li><a href="/#detect" class="nav-link" data-section="detect">Detect</a></li>
+            <li><a href="/" class="nav-link" data-section="detect">Home</a></li>
             <li><a href="/#features" class="nav-link" data-section="features">Features</a></li>
             <li><a href="/#specs" class="nav-link" data-section="specs">Specs</a></li>
             <li><a href="/#compare" class="nav-link" data-section="compare">Compare</a></li>
             <li><a href="/#faq" class="nav-link" data-section="faq">FAQ</a></li>
+            <li><a href="/about" class="nav-link" data-section="faq">About</a></li>
             <li>
               <a href="/#detect" class="nav-cta" aria-label="Detect my phone now">
                 <span>Detect My Phone</span>
