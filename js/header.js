@@ -30,8 +30,8 @@ const Header = (() => {
             <li><a href="/#specs" class="nav-link" data-section="specs">Specs</a></li>
             <li><a href="/#compare" class="nav-link" data-section="compare">Compare</a></li>
             <li><a href="/#faq" class="nav-link" data-section="faq">FAQ</a></li>
-            <li><a href="/guides">Guides</a></li>
-            <li><a href="/about">About</a></li>
+            <li><a href="/guides" class="nav-link" data-section="">Guides</a></li>
+            <li><a href="/about" class="nav-link" data-section="">About</a></li>            
             <li>
               <a href="/#detect" class="nav-cta" aria-label="Detect my phone now">
                 <span>Detect My Phone</span>
