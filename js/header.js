@@ -17,7 +17,7 @@ const Header = (() => {
                 <path d="M9 16h4M9 18h6" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
               </svg>
             </span>
-            <span class="logo-text">What<span class="accent">Phone</span></span>
+            <span class="logo-text">What<span class="accent">Mobile</span></span>
           </a>
 
           <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
