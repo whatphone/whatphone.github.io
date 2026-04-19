@@ -18,7 +18,7 @@ const Footer = (() => {
                 <line x1="10" y1="4" x2="18" y2="4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                 <rect x="9" y="7" width="10" height="7" rx="1" fill="currentColor" opacity="0.3"/>
               </svg>
-              <span>What<strong>Phone</strong></span>
+              <span>What<strong>Mobile</strong></span>
             </a>
             <p class="footer-tagline">Instant mobile device identification. Know your phone, know your specs.</p>
             <div class="footer-badges">
