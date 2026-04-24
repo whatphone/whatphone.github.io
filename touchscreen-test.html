@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
+     crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MD16J6JVZ2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MD16J6JVZ2');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Touchscreen Test — Test Phone Touch Screen Online Free | WhatPhone</title>
+  <meta name="description" content="Free online touchscreen test for phones and tablets. Draw on a canvas to detect dead zones, multi-touch points, touch accuracy, ghost touches, and swipe response. No app needed." />
+  <meta name="keywords" content="touchscreen test online, phone touch screen test, dead zone test phone, multi touch test, ghost touch detector, digitizer test, touch accuracy test browser" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://whatphone.github.io/tools/touchscreen-test" />
+  <meta property="og:title" content="Touchscreen Test — Test Your Phone Screen Online | WhatPhone" />
+  <meta property="og:description" content="Detect dead zones, multi-touch issues, and ghost touches on your phone's touchscreen — free, in your browser." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#080c14" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='7' y='2' width='18' height='28' rx='4' fill='%233b82f6'/><rect x='10' y='6' width='12' height='16' rx='2' fill='%23080c14'/><circle cx='16' cy='26' r='2' fill='%2360a5fa'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Touchscreen Test","url":"https://whatphone.github.io/tools/touchscreen-test","description":"Test your phone touchscreen for dead zones, multi-touch, and ghost touches in the browser","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <style>
+    body { overflow: hidden; }
+    .tool-page { padding-top: 72px; height: 100vh; display: flex; flex-direction: column; }
+    .tool-hero { padding: 1.5rem 0; border-bottom: 1px solid var(--border); background: var(--bg2); flex-shrink: 0; }
+    .breadcrumb ol { display: flex; align-items: center; gap: .5rem; list-style: none; font-size: .78rem; color: var(--text3); margin-bottom: .75rem; }
+    .breadcrumb li+li::before { content: '/'; opacity: .4; }
+    .breadcrumb a { color: var(--text2); }
+    .tool-hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .tool-hero-left h1 { font-family: var(--font-display); font-size: clamp(1.3rem,3vw,1.8rem); font-weight: 800; color: #fff; }
+    .tool-hero-left p { color: var(--text2); font-size: .85rem; }
+    .hero-controls { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+    .ctrl-btn { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem .9rem; border-radius: 8px; font-size: .8rem; font-weight: 600; border: 1px solid var(--border); background: var(--surface); color: var(--text2); transition: all var(--transition); cursor: pointer; }
+    .ctrl-btn:hover { border-color: var(--accent2); color: var(--text); }
+    .ctrl-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .color-swatch { width: 20px; height: 20px; border-radius: 50%; border: 2px solid rgba(255,255,255,.2); cursor: pointer; transition: transform var(--transition); flex-shrink: 0; }
+    .color-swatch:hover, .color-swatch.active { transform: scale(1.25); border-color: #fff; }
+    .size-btn { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); cursor: pointer; transition: all var(--transition); }
+    .size-btn:hover { border-color: var(--accent); }
+    .size-dot { border-radius: 50%; background: var(--text); }
+
+    /* Canvas area */
+    .canvas-wrap { flex: 1; position: relative; overflow: hidden; }
+    #touchCanvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; background: #0a0f1a; }
+    
+    /* Mode overlay */
+    #modeOverlay { position: absolute; inset: 0; background: rgba(8,12,20,.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; z-index: 20; }
+    .mode-cards { display: flex; gap: 1.25rem; flex-wrap: wrap; justify-content: center; }
+    .mode-card { width: 150px; padding: 1.5rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); text-align: center; cursor: pointer; transition: all var(--transition); }
+    .mode-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .mode-card h3 { font-family: var(--font-display); font-size: .95rem; font-weight: 700; color: #fff; margin: .6rem 0 .3rem; }
+    .mode-card p { font-size: .72rem; color: var(--text2); line-height: 1.5; }
+    #modeOverlay h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: #fff; }
+    #modeOverlay > p { color: var(--text2); font-size: .9rem; }
+
+    /* Stats bar */
+    .stats-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(8,12,20,.85); backdrop-filter: blur(8px); padding: .6rem 1rem; display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; pointer-events: none; }
+    .stat-chip { display: flex; align-items: center; gap: .4rem; font-size: .75rem; font-family: var(--font-mono); color: var(--text2); }
+    .stat-chip strong { color: var(--accent2); }
+
+    /* Touch point circles */
+    .touch-point { position: absolute; border-radius: 50%; pointer-events: none; transform: translate(-50%,-50%); border: 2px solid rgba(255,255,255,.6); display: flex; align-items: center; justify-content: center; font-size: .6rem; font-weight: 700; color: #fff; animation: touch-pop .15s ease; }
+    @keyframes touch-pop { from { transform: translate(-50%,-50%) scale(.4); opacity: .5; } to { transform: translate(-50%,-50%) scale(1); opacity: 1; } }
+    
+    /* Grid test overlay */
+    #gridOverlay { position: absolute; inset: 0; display: none; pointer-events: none; }
+    .grid-cell { position: absolute; border: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; font-size: .6rem; color: rgba(255,255,255,.2); transition: background .3s; cursor: pointer; pointer-events: all; }
+    .grid-cell.touched { background: rgba(34,197,94,.25); border-color: rgba(34,197,94,.4); color: #4ade80; }
+
+    /* Toast */
+    .toast { position: fixed; bottom: 3.5rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface2); border: 1px solid var(--border2); padding: .6rem 1.3rem; border-radius: 100px; font-size: .85rem; color: var(--text); z-index: 9999; opacity: 0; transition: all .3s; pointer-events: none; white-space: nowrap; }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media(max-width:600px) { .hero-controls { gap: .4rem; } .ctrl-btn span { display: none; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header id="site-header" role="banner"></header>
+
+  <div class="tool-page" id="main-content">
+    <!-- Tool Hero -->
+    <div class="tool-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="../tools">Tools</a></li><li aria-current="page">Touchscreen Test</li></ol></nav>
+        <div class="tool-hero-inner">
+          <div class="tool-hero-left">
+            <h1>👆 Touchscreen Test</h1>
+            <p>Draw · Multi-touch · Dead zones · Grid test · Swipe check</p>
+          </div>
+          <div class="hero-controls" role="toolbar" aria-label="Canvas controls">
+            <!-- Colour swatches -->
+            <div style="display:flex;gap:.4rem;align-items:center" aria-label="Brush colour">
+              <div class="color-swatch active" data-color="#22d3ee" style="background:#22d3ee" title="Cyan" aria-label="Cyan colour"></div>
+              <div class="color-swatch" data-color="#3b82f6" style="background:#3b82f6" title="Blue" aria-label="Blue colour"></div>
+              <div class="color-swatch" data-color="#22c55e" style="background:#22c55e" title="Green" aria-label="Green colour"></div>
+              <div class="color-swatch" data-color="#f59e0b" style="background:#f59e0b" title="Amber" aria-label="Amber colour"></div>
+              <div class="color-swatch" data-color="#ef4444" style="background:#ef4444" title="Red" aria-label="Red colour"></div>
+              <div class="color-swatch" data-color="#a78bfa" style="background:#a78bfa" title="Purple" aria-label="Purple colour"></div>
+            </div>
+            <!-- Brush size -->
+            <div style="display:flex;gap:.4rem;align-items:center" aria-label="Brush size">
+              <button class="size-btn" data-size="3" title="Small brush" aria-label="Small brush"><div class="size-dot" style="width:6px;height:6px"></div></button>
+              <button class="size-btn active" data-size="8" title="Medium brush" aria-label="Medium brush"><div class="size-dot" style="width:10px;height:10px"></div></button>
+              <button class="size-btn" data-size="18" title="Large brush" aria-label="Large brush"><div class="size-dot" style="width:16px;height:16px"></div></button>
+            </div>
+            <button class="ctrl-btn" id="gridBtn" aria-label="Toggle grid test mode" aria-pressed="false">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="1" y="1" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="8" y="1" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="8" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="8" y="8" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/></svg>
+              <span>Grid</span>
+            </button>
+            <button class="ctrl-btn" id="clearBtn" aria-label="Clear canvas">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span>Clear</span>
+            </button>
+            <a href="../tools" class="ctrl-btn" aria-label="Back to all tools">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Tools</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Canvas Area -->
+    <div class="canvas-wrap">
+      <!-- Mode select overlay -->
+      <div id="modeOverlay">
+        <h2>Choose Test Mode</h2>
+        <p>Select what you'd like to test on your touchscreen</p>
+        <div class="mode-cards">
+          <div class="mode-card" data-mode="draw" role="button" tabindex="0" aria-label="Draw mode - free draw to test touch">
+            <div style="font-size:2rem" aria-hidden="true">✏️</div>
+            <h3>Draw</h3>
+            <p>Free draw to detect dead zones and accuracy</p>
+          </div>
+          <div class="mode-card" data-mode="multitouch" role="button" tabindex="0" aria-label="Multi-touch mode - test multiple simultaneous touches">
+            <div style="font-size:2rem" aria-hidden="true">🖐</div>
+            <h3>Multi-Touch</h3>
+            <p>Place multiple fingers to test simultaneous touch</p>
+          </div>
+          <div class="mode-card" data-mode="grid" role="button" tabindex="0" aria-label="Grid mode - tap cells to find dead zones">
+            <div style="font-size:2rem" aria-hidden="true">🔲</div>
+            <h3>Grid Test</h3>
+            <p>Tap every grid cell to find dead zones</p>
+          </div>
+          <div class="mode-card" data-mode="swipe" role="button" tabindex="0" aria-label="Swipe test - test swipe accuracy">
+            <div style="font-size:2rem" aria-hidden="true">👈</div>
+            <h3>Swipe Test</h3>
+            <p>Swipe in all directions to test responsiveness</p>
+          </div>
+        </div>
+      </div>
+
+      <canvas id="touchCanvas" aria-label="Touch test canvas — draw or tap to test your screen"></canvas>
+      <div id="gridOverlay" aria-hidden="true"></div>
+
+      <!-- Stats bar -->
+      <div class="stats-bar" aria-live="polite" aria-label="Touch statistics">
+        <div class="stat-chip">Mode: <strong id="statMode">—</strong></div>
+        <div class="stat-chip">Touch Points: <strong id="statPoints">0</strong></div>
+        <div class="stat-chip">Max Simultaneous: <strong id="statMax">0</strong></div>
+        <div class="stat-chip">Touches Detected: <strong id="statTotal">0</strong></div>
+        <div class="stat-chip" id="statGridChip" style="display:none">Grid Coverage: <strong id="statGrid">0%</strong></div>
+        <div class="stat-chip" id="swipeResult" style="display:none">Swipe: <strong id="swipeDir">—</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="../js/header.js" defer></script>
+  <script src="../js/footer.js" defer></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof Header !== 'undefined') Header.render();
+  });
+
+  // ── Config ──────────────────────────────────────────────────────
+  let mode = null, brushColor = '#22d3ee', brushSize = 8;
+  let maxSimultaneous = 0, totalTouches = 0, currentPoints = 0;
+  let activeTouches = {}, isDrawing = false;
+  let swipeStart = null;
+
+  // ── Canvas ──────────────────────────────────────────────────────
+  const canvas = document.getElementById('touchCanvas');
+  const ctx = canvas.getContext('2d');
+  const wrap = canvas.parentElement;
+
+  function resizeCanvas() {
+    const rect = wrap.getBoundingClientRect();
+    canvas.width = rect.width; canvas.height = rect.height;
+    ctx.fillStyle = '#0a0f1a'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (mode === 'grid') buildGrid();
+    if (mode === 'swipe') drawSwipeGuide();
+  }
+  window.addEventListener('resize', resizeCanvas);
+
+  // ── Mode selection ──────────────────────────────────────────────
+  document.querySelectorAll('.mode-card').forEach(card => {
+    card.addEventListener('click', () => startMode(card.dataset.mode));
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') startMode(card.dataset.mode); });
+  });
+
+  function startMode(m) {
+    mode = m;
+    document.getElementById('modeOverlay').style.display = 'none';
+    document.getElementById('statMode').textContent = m.charAt(0).toUpperCase() + m.slice(1);
+    resizeCanvas();
+    document.getElementById('statGridChip').style.display = m === 'grid' ? 'flex' : 'none';
+    document.getElementById('swipeResult').style.display = m === 'swipe' ? 'flex' : 'none';
+    showToast(m === 'draw' ? '✏️ Draw anywhere to test' : m === 'multitouch' ? '🖐 Touch with multiple fingers' : m === 'grid' ? '🔲 Tap every cell' : '👈 Swipe in any direction');
+    if (m === 'grid') { document.getElementById('gridOverlay').style.display = 'block'; buildGrid(); }
+    else document.getElementById('gridOverlay').style.display = 'none';
+    if (m === 'swipe') drawSwipeGuide();
+  }
+
+  // ── Grid ────────────────────────────────────────────────────────
+  let gridCells = [], gridTouched = 0;
+  function buildGrid() {
+    const overlay = document.getElementById('gridOverlay');
+    overlay.innerHTML = '';
+    gridCells = []; gridTouched = 0;
+    const cols = window.innerWidth < 480 ? 5 : 8;
+    const rows = Math.floor((canvas.height / canvas.width) * cols * 1.2);
+    const cw = 100 / cols, ch = 100 / rows;
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const cell = document.createElement('div');
+        cell.className = 'grid-cell';
+        cell.style.cssText = `left:${c*cw}%;top:${r*ch}%;width:${cw}%;height:${ch}%`;
+        cell.dataset.id = `${r}-${c}`;
+        cell.textContent = `${r}-${c}`;
+        cell.addEventListener('pointerdown', () => {
+          if (!cell.classList.contains('touched')) { cell.classList.add('touched'); gridTouched++; updateGridStats(rows * cols); }
+        });
+        overlay.appendChild(cell);
+        gridCells.push(cell);
+      }
+    }
+    updateGridStats(rows * cols);
+  }
+  function updateGridStats(total) {
+    const pct = Math.round(gridTouched / total * 100);
+    document.getElementById('statGrid').textContent = pct + '%';
+    if (pct === 100) showToast('🎉 All cells touched! No dead zones found.');
+  }
+
+  // ── Swipe guide ─────────────────────────────────────────────────
+  function drawSwipeGuide() {
+    if (!canvas.width) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#0a0f1a'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = 'rgba(59,130,246,.15)'; ctx.lineWidth = 1; ctx.setLineDash([6, 6]);
+    const cx = canvas.width/2, cy = canvas.height/2, r = Math.min(cx, cy) * .5;
+    const dirs = [ [0,-r,'↑ Swipe Up'], [0,r,'↓ Swipe Down'], [-r,0,'← Swipe Left'], [r,0,'→ Swipe Right'] ];
+    dirs.forEach(([dx, dy, label]) => {
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx+dx, cy+dy); ctx.stroke();
+      ctx.fillStyle = 'rgba(148,163,184,.4)'; ctx.font = '13px DM Sans, sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(label, cx+dx*1.3, cy+dy*1.3+5);
+    });
+    ctx.setLineDash([]);
+    ctx.beginPath(); ctx.arc(cx, cy, 28, 0, Math.PI*2); ctx.strokeStyle = 'rgba(59,130,246,.3)'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = 'rgba(148,163,184,.5)'; ctx.font = '11px Space Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText('SWIPE', cx, cy+4);
+  }
+
+  // ── Touch events ────────────────────────────────────────────────
+  canvas.addEventListener('pointerdown', onDown);
+  canvas.addEventListener('pointermove', onMove);
+  canvas.addEventListener('pointerup', onUp);
+  canvas.addEventListener('pointercancel', onUp);
+  canvas.setPointerCapture;
+
+  function onDown(e) {
+    e.preventDefault();
+    if (!mode) return;
+    totalTouches++;
+    currentPoints++;
+    if (currentPoints > maxSimultaneous) maxSimultaneous = currentPoints;
+    document.getElementById('statPoints').textContent = currentPoints;
+    document.getElementById('statMax').textContent = maxSimultaneous;
+    document.getElementById('statTotal').textContent = totalTouches;
+
+    activeTouches[e.pointerId] = { x: e.clientX, y: e.clientY, startX: e.clientX, startY: e.clientY };
+    canvas.setPointerCapture(e.pointerId);
+
+    if (mode === 'draw') {
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX, e.offsetY);
+    }
+    if (mode === 'multitouch') showTouchPoint(e);
+    if (mode === 'swipe') swipeStart = { x: e.clientX, y: e.clientY };
+  }
+
+  function onMove(e) {
+    e.preventDefault();
+    if (!activeTouches[e.pointerId] || !mode) return;
+    if (mode === 'draw') {
+      ctx.lineWidth = brushSize; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.strokeStyle = brushColor; ctx.globalAlpha = .85;
+      ctx.lineTo(e.offsetX, e.offsetY); ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+    if (mode === 'multitouch') moveTouchPoint(e);
+    activeTouches[e.pointerId].x = e.clientX;
+    activeTouches[e.pointerId].y = e.clientY;
+  }
+
+  function onUp(e) {
+    e.preventDefault();
+    if (!activeTouches[e.pointerId]) return;
+    const touch = activeTouches[e.pointerId];
+
+    if (mode === 'swipe' && swipeStart) {
+      const dx = e.clientX - swipeStart.x, dy = e.clientY - swipeStart.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist > 40) {
+        const dir = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? '→ Right' : '← Left') : (dy > 0 ? '↓ Down' : '↑ Up');
+        document.getElementById('swipeDir').textContent = dir;
+        animateSwipe(swipeStart, {x: e.clientX, y: e.clientY}, dir);
+      }
+      swipeStart = null;
+    }
+
+    removeTouchPoint(e.pointerId);
+    delete activeTouches[e.pointerId];
+    currentPoints = Math.max(0, currentPoints - 1);
+    document.getElementById('statPoints').textContent = currentPoints;
+  }
+
+  // ── Multi-touch point circles ───────────────────────────────────
+  const touchDots = {};
+  const TOUCH_COLORS = ['#22d3ee','#3b82f6','#22c55e','#f59e0b','#ef4444','#a78bfa','#ec4899','#f97316','#06b6d4','#84cc16'];
+
+  function showTouchPoint(e) {
+    const wrap = document.querySelector('.canvas-wrap');
+    const dot = document.createElement('div');
+    dot.className = 'touch-point';
+    const idx = Object.keys(touchDots).length % TOUCH_COLORS.length;
+    const color = TOUCH_COLORS[idx];
+    const size = 44 + idx * 4;
+    dot.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX}px;top:${e.clientY}px;background:${color}33;border-color:${color};font-size:.65rem`;
+    dot.textContent = Object.keys(activeTouches).length;
+    wrap.appendChild(dot);
+    touchDots[e.pointerId] = dot;
+  }
+  function moveTouchPoint(e) {
+    if (touchDots[e.pointerId]) {
+      touchDots[e.pointerId].style.left = e.clientX + 'px';
+      touchDots[e.pointerId].style.top = e.clientY + 'px';
+    }
+  }
+  function removeTouchPoint(id) {
+    if (touchDots[id]) { touchDots[id].remove(); delete touchDots[id]; }
+  }
+
+  // ── Swipe animation ─────────────────────────────────────────────
+  function animateSwipe(from, to, dir) {
+    const rect = canvas.getBoundingClientRect();
+    const fx = from.x - rect.left, fy = from.y - rect.top;
+    const tx = to.x - rect.left, ty = to.y - rect.top;
+    ctx.beginPath(); ctx.moveTo(fx, fy); ctx.lineTo(tx, ty);
+    ctx.strokeStyle = '#22d3ee'; ctx.lineWidth = 3; ctx.setLineDash([6,4]);
+    ctx.stroke(); ctx.setLineDash([]);
+    ctx.beginPath(); ctx.arc(tx, ty, 10, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(34,211,238,.3)'; ctx.fill();
+    ctx.strokeStyle = '#22d3ee'; ctx.lineWidth = 2; ctx.stroke();
+    showToast('👆 Swipe detected: ' + dir);
+    setTimeout(() => {
+      drawSwipeGuide();
+    }, 1500);
+  }
+
+  // ── Grid button ─────────────────────────────────────────────────
+  document.getElementById('gridBtn').addEventListener('click', () => {
+    startMode('grid');
+    document.getElementById('gridBtn').classList.toggle('active');
+  });
+
+  // ── Clear ────────────────────────────────────────────────────────
+  document.getElementById('clearBtn').addEventListener('click', () => {
+    ctx.fillStyle = '#0a0f1a'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    Object.keys(touchDots).forEach(id => { touchDots[id].remove(); delete touchDots[id]; });
+    if (mode === 'swipe') drawSwipeGuide();
+    if (mode === 'grid') { buildGrid(); document.getElementById('gridOverlay').style.display = 'block'; }
+    showToast('Canvas cleared');
+  });
+
+  // ── Colour swatches ──────────────────────────────────────────────
+  document.querySelectorAll('.color-swatch').forEach(sw => {
+    sw.addEventListener('click', () => {
+      brushColor = sw.dataset.color;
+      document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+      sw.classList.add('active');
+    });
+  });
+
+  // ── Size buttons ─────────────────────────────────────────────────
+  document.querySelectorAll('.size-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      brushSize = parseInt(btn.dataset.size);
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // ── Toast ────────────────────────────────────────────────────────
+  function showToast(msg) {
+    const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+    clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  // Trigger resize after header loads
+  setTimeout(resizeCanvas, 300);
+  </script>
+</body>
+</html>
