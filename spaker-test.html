@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
+     crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MD16J6JVZ2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MD16J6JVZ2');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Speaker Test — Test Your Phone Speakers Online | WhatPhone</title>
+  <meta name="description" content="Free online speaker test for phones. Check left-right balance, frequency sweep, test tones, and playback diagnostics. Instantly find speaker issues." />
+  <meta name="keywords" content="speaker test online, phone speaker test, test left right speakers, speaker balance test, frequency sweep, sound test online" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://whatphone.github.io/tools/speaker-test" />
+  <meta property="og:title" content="Speaker Test — Full Audio Diagnostic Tool | WhatPhone" />
+  <meta property="og:description" content="Check channel balance, play test tones, sweep frequencies and verify speaker performance." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#080c14" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --bg: #080c14;
+      --bg2: #0d1220;
+      --bg3: #111827;
+      --surface: #141b2d;
+      --surface2: #1c2540;
+      --border: #1e2d4a;
+      --border2: #253356;
+      --accent: #3b82f6;
+      --accent2: #60a5fa;
+      --accent3: #93c5fd;
+      --neon: #22d3ee;
+      --green: #22c55e;
+      --red: #ef4444;
+      --amber: #f59e0b;
+      --text: #e2e8f0;
+      --text2: #94a3b8;
+      --text3: #64748b;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+      --r: 12px;
+      --r-lg: 20px;
+      --shadow: 0 4px 32px rgba(0,0,0,0.4);
+      --shadow-accent: 0 0 40px rgba(59,130,246,0.15);
+      --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    section {
+      padding: 4rem 0;
+    }
+    /* skip link */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--accent); color: #fff; padding: 0.5rem 1rem;
+      border-radius: var(--r); font-weight: 600; z-index: 9999;
+      transition: top var(--transition);
+    }
+    .skip-link:focus { top: 1rem; }
+    /* header & footer minimal simulation */
+    .site-header-placeholder, .site-footer-placeholder {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .navbar-simple {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      font-family: var(--font-display); font-weight: 700; font-size: 1.2rem;
+      color: var(--text);
+    }
+    .logo span { color: var(--accent2); }
+    .footer-place {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text3);
+      font-size: 0.8rem;
+    }
+    /* tool hero */
+    .tool-page { padding-top: 72px; }
+    .tool-hero {
+      padding: 2rem 0 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
+    .breadcrumb ol {
+      display: flex; align-items: center; gap: 0.5rem;
+      list-style: none; font-size: 0.82rem; color: var(--text3);
+      margin-bottom: 1rem;
+    }
+    .breadcrumb li+li::before { content: '/'; opacity: 0.4; margin-right: 0.5rem; }
+    .breadcrumb a { color: var(--text2); transition: color var(--transition); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent2); }
+    .tool-hero-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap;
+    }
+    .tool-hero-left h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800; color: #fff; margin-bottom: 0.4rem;
+    }
+    .tool-hero-left p { color: var(--text2); font-size: 0.95rem; }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.45rem 1rem; border-radius: 100px;
+      background: var(--surface); border: 1px solid var(--border);
+      font-size: 0.82rem; font-weight: 600;
+    }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text3); }
+    .status-dot.active { background: var(--green); box-shadow: 0 0 8px var(--green); animation: pulse-s 1.2s infinite; }
+    @keyframes pulse-s { 0%,100%{opacity:1}50%{opacity:.4} }
+
+    /* main grid */
+    .speaker-main {
+      max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 5rem;
+      display: grid; grid-template-columns: 1fr 300px; gap: 2rem;
+    }
+    @media (max-width: 1024px) { .speaker-main { grid-template-columns: 1fr; } }
+
+    /* cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .card-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-display);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      color: var(--text3);
+    }
+    .card-body { padding: 1.5rem; }
+
+    /* channel balance */
+    .balance-sliders {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .channel {
+      flex: 1; min-width: 140px;
+      text-align: center;
+      background: var(--bg3);
+      border-radius: var(--r);
+      padding: 1rem;
+    }
+    .channel-icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+    .channel-label { font-weight: 700; color: #fff; margin: 0.5rem 0; }
+    .balance-slider {
+      width: 100%; accent-color: var(--accent);
+      margin: 0.75rem 0;
+    }
+    .channel-db { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent2); }
+    .channel-test-btn {
+      background: var(--surface2); border: 1px solid var(--border);
+      padding: 0.4rem 0.8rem; border-radius: 8px;
+      font-size: 0.7rem; font-weight: 600; color: var(--text2);
+      cursor: pointer; transition: all var(--transition);
+      margin-top: 0.5rem;
+    }
+    .channel-test-btn:hover { border-color: var(--accent); color: var(--text); }
+
+    /* tone grid + sweep */
+    .tone-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+      gap: 0.6rem; margin-bottom: 1.25rem;
+    }
+    .tone-btn {
+      background: var(--bg3); border: 1px solid var(--border);
+      padding: 0.55rem 0; border-radius: 8px;
+      font-family: var(--font-mono); font-size: 0.8rem;
+      font-weight: 600; color: var(--text2);
+      transition: all var(--transition); cursor: pointer;
+    }
+    .tone-btn:hover { border-color: var(--accent); color: var(--text); background: var(--surface2); }
+    .sweep-area {
+      margin-top: 1rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.5rem; background: var(--accent);
+      color: #fff; font-weight: 700; font-family: var(--font-display);
+      padding: 0.7rem 1.4rem; border-radius: var(--r);
+      transition: all var(--transition); cursor: pointer;
+      border: none; font-size: 0.85rem;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+    .btn-secondary {
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text2); padding: 0.5rem 1rem; border-radius: 8px;
+      cursor: pointer; transition: all var(--transition); font-weight: 500;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--text); }
+    .stop-all {
+      background: var(--red); color: white;
+      margin-top: 0.5rem;
+    }
+    .stop-all:hover { background: #b91c1c; }
+    .progress-info {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      color: var(--text3); text-align: center;
+    }
+
+    /* How-to & FAQ styles */
+    .howto-grid, .faq-list {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .howto-step {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--bg3); padding: 1rem; border-radius: var(--r);
+      border-left: 3px solid var(--accent);
+    }
+    .step-num {
+      width: 32px; height: 32px; background: var(--accent);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-weight: 800; color: #fff;
+      flex-shrink: 0;
+    }
+    .step-content h4 { color: #fff; margin-bottom: 0.25rem; font-weight: 700; }
+    .step-content p { color: var(--text2); font-size: 0.85rem; line-height: 1.5; }
+
+    .faq-item {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; text-align: left; padding: 1rem 1.25rem;
+      background: none; border: none; color: #fff;
+      font-weight: 600; display: flex; justify-content: space-between;
+      cursor: pointer; transition: background var(--transition);
+      font-family: var(--font-body);
+    }
+    .faq-question:hover { background: var(--surface2); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height 0.35s ease;
+      padding: 0 1.25rem; color: var(--text2); font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 240px; padding: 0 1.25rem 1rem 1.25rem;
+    }
+    .faq-icon { font-size: 1.2rem; transition: transform 0.2s; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* sidebar */
+    .sidebar-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .sidebar-title {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text3);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .tip-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .tip-list li {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text2);
+    }
+    .tool-link {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem; background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      font-size: 0.82rem;
+      color: var(--text2);
+      transition: border-color var(--transition);
+      text-decoration: none;
+    }
+    .tool-link:hover { border-color: var(--accent); }
+
+    .toast {
+      position: fixed; bottom: 2rem; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--surface2); border: 1px solid var(--border2);
+      padding: 0.65rem 1.4rem; border-radius: 100px;
+      font-size: 0.875rem; color: var(--text);
+      z-index: 9999; opacity: 0; transition: all 0.3s;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    button:focus-visible, a:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: 3px;
+      border-radius: 4px;
+    }
+    hr { border-color: var(--border); margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  
+<!-- ── Header (rendered by JS) ─────────────────────── -->
+  <header id="site-header" role="banner"></header>
+
+<div class="tool-page" id="main-content">
+  <div class="tool-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol><li><a href="/">Home</a></li><li><a href="../tools">Tools</a></li><li aria-current="page">Speaker Test</li></ol>
+      </nav>
+      <div class="tool-hero-inner">
+        <div class="tool-hero-left">
+          <h1>🔊 Speaker Test</h1>
+          <p>Check left/right balance, test tones, frequency sweep — diagnose your speakers in seconds</p>
+        </div>
+        <div class="status-badge"><span class="status-dot" id="globalStatusDot"></span><span id="globalStatusText">Ready</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="speaker-main">
+    <!-- left column: core tests -->
+    <div>
+      <!-- Channel balance card -->
+      <div class="card">
+        <div class="card-header">🎧 Channel balance test</div>
+        <div class="card-body">
+          <div class="balance-sliders">
+            <div class="channel">
+              <div class="channel-icon">⬅️</div>
+              <div class="channel-label">Left Channel</div>
+              <input type="range" id="leftGain" class="balance-slider" min="0" max="100" value="100">
+              <div class="channel-db">Gain: <span id="leftVal">100</span>%</div>
+              <button class="channel-test-btn" data-side="left">🔊 Test Left</button>
+            </div>
+            <div class="channel">
+              <div class="channel-icon">➡️</div>
+              <div class="channel-label">Right Channel</div>
+              <input type="range" id="rightGain" class="balance-slider" min="0" max="100" value="100">
+              <div class="channel-db">Gain: <span id="rightVal">100</span>%</div>
+              <button class="channel-test-btn" data-side="right">🔊 Test Right</button>
+            </div>
+          </div>
+          <div style="margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: center;">
+            <button id="testBothBtn" class="btn-secondary">🎵 Test Both (Stereo)</button>
+            <button id="stopAudioBtn" class="btn-secondary stop-all">⏹️ Stop All Sounds</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Test tones card -->
+      <div class="card">
+        <div class="card-header">🎵 Frequency test tones</div>
+        <div class="card-body">
+          <div class="tone-grid" id="toneGrid">
+            <!-- generated with js for consistency -->
+          </div>
+          <div class="sweep-area">
+            <button id="sweepBtn" class="btn-primary">📈 Run Frequency Sweep (20Hz → 20kHz)</button>
+            <button id="stopSweepBtn" class="btn-secondary" style="background: var(--bg3);">⏸️ Stop Sweep</button>
+            <div id="sweepProgress" class="progress-info">Ready</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How to use -->
+      <div class="card">
+        <div class="card-header">📖 How to test speakers</div>
+        <div class="card-body">
+          <div class="howto-grid">
+            <div class="howto-step"><div class="step-num">1</div><div class="step-content"><h4>Adjust volume</h4><p>Set your phone/media volume to a comfortable listening level (around 70%).</p></div></div>
+            <div class="howto-step"><div class="step-num">2</div><div class="step-content"><h4>Check channel balance</h4><p>Click "Test Left" / "Test Right" – you should hear sound from each speaker individually. Adjust sliders if needed.</p></div></div>
+            <div class="howto-step"><div class="step-num">3</div><div class="step-content"><h4>Test frequency tones</h4><p>Tap any tone button (e.g., 440 Hz) – listen for distortions, rattling or volume drops.</p></div></div>
+            <div class="howto-step"><div class="step-num">4</div><div class="step-content"><h4>Run frequency sweep</h4><p>Click "Run Frequency Sweep" to detect buzzing or dead frequency ranges.</p></div></div>
+            <div class="howto-step"><div class="step-num">5</div><div class="step-content"><h4>Compare both channels</h4><p>Use "Test Both (Stereo)" to verify left/right separation and phase issues.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="card">
+        <div class="card-header">❓ Frequently Asked Questions</div>
+        <div class="card-body" id="faqContainer">
+          <div class="faq-list">
+            <div class="faq-item"><button class="faq-question">Why can't I hear anything? <span class="faq-icon">+</span></button><div class="faq-answer"><p>Check that your phone volume is not muted, bluetooth devices are disconnected, and the page has permission to play audio. Most browsers require user interaction first — click any test button to enable audio.</p></div></div>
+            <div class="faq-item"><button class="faq-question">What should a healthy speaker sound like? <span class="faq-icon">+</span></button><div class="faq-answer"><p>Clear tones without crackling, consistent volume across frequencies, and balanced left/right channel separation. Distortion or buzzing at certain frequencies suggests speaker damage.</p></div></div>
+            <div class="faq-item"><button class="faq-question">What if one speaker is quieter? <span class="faq-icon">+</span></button><div class="faq-answer"><p>Use the balance sliders to test relative gain. If hardware imbalance is severe, consider cleaning speaker grills or service. This test helps confirm if it’s a software setting or hardware.</p></div></div>
+            <div class="faq-item"><button class="faq-question">Is the frequency sweep safe for my speakers?<span class="faq-icon">+</span></button><div class="faq-answer"><p>Yes, the sweep covers a wide range but volume stays within safe limits. Keep volume moderate. Sweep helps identify resonance issues and dead spots.</p></div></div>
+            <div class="faq-item"><button class="faq-question">Does this work on Bluetooth speakers?<span class="faq-icon">+</span></button><div class="faq-answer"><p>Absolutely. The test plays through your default audio output. For accurate channel test, make sure your Bluetooth device supports stereo separation.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- right sidebar: info & other tools -->
+    <aside>
+      <div class="sidebar-card">
+        <div class="sidebar-title">📊 Diagnostic tips</div>
+        <ul class="tip-list">
+          <li>✔️ <span>Clean speaker grills gently</span></li>
+          <li>✔️ <span>Remove phone case for better acoustics</span></li>
+          <li>✔️ <span>Test in quiet environment</span></li>
+          <li>✔️ <span>Compare both left/right orientation</span></li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">🔗 Other tests</div>
+        <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+          <a href="mic-test" class="tool-link">🎙️ Microphone Test</a>
+          <a href="camera-test" class="tool-link">📷 Camera Test</a>
+          <a href="touchscreen-test" class="tool-link">👆 Touchscreen Test</a>
+          <a href="../#detect" class="tool-link">📱 Detect My Phone</a>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">💡 Pro tip</div>
+        <p style="font-size: 0.85rem; color: var(--text2);">Use stereo test to verify both speakers work. If you hear sound only from one side, check your audio settings or try headphones to isolate the issue.</p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ── Footer (rendered by JS) ──────────────────────── -->
+  <footer id="site-footer" role="contentinfo"></footer>
+
+  <!-- ── Scripts ──────────────────────────────────────── -->
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/app.js" defer></script>
+
+<script>
+  (function() {
+    // ---------- Audio Context & gains ----------
+    let audioCtx = null;
+    let gainLeft = null, gainRight = null;
+    let currentSource = null;
+    let sweepOsc = null, sweepGain = null, sweepActive = false, sweepInterval = null;
+    let currentToneSource = null;
+
+    function initAudio() {
+      if (audioCtx) return;
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      gainLeft = audioCtx.createGain();
+      gainRight = audioCtx.createGain();
+      gainLeft.gain.value = 1;
+      gainRight.gain.value = 1;
+      gainLeft.connect(audioCtx.destination);
+      gainRight.connect(audioCtx.destination);
+    }
+
+    function resumeAudio() {
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function stopAllSounds() {
+      if (currentSource) {
+        try { currentSource.stop(); } catch(e) {}
+        currentSource = null;
+      }
+      if (currentToneSource) {
+        try { currentToneSource.stop(); } catch(e) {}
+        currentToneSource = null;
+      }
+      if (sweepOsc) {
+        try { sweepOsc.stop(); } catch(e) {}
+        sweepOsc = null;
+      }
+      if (sweepInterval) clearInterval(sweepInterval);
+      sweepActive = false;
+      document.getElementById('sweepProgress').innerText = 'Sweep stopped';
+      updateGlobalStatus('idle', 'Ready');
+    }
+
+    function updateGlobalStatus(type, text) {
+      const dot = document.getElementById('globalStatusDot');
+      const txt = document.getElementById('globalStatusText');
+      txt.innerText = text;
+      dot.className = 'status-dot' + (type === 'active' ? ' active' : '');
+    }
+
+    // play pure tone on specific channel(s) : "left", "right", "both"
+    function playTone(freq, duration = 1.2, channel = 'both') {
+      stopAllSounds();
+      initAudio();
+      resumeAudio();
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gainNode.gain.setValueAtTime(0.2, now);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+      
+      if (channel === 'left') {
+        gainNode.connect(gainLeft);
+      } else if (channel === 'right') {
+        gainNode.connect(gainRight);
+      } else {
+        gainNode.connect(gainLeft);
+        gainNode.connect(gainRight);
+      }
+      osc.connect(gainNode);
+      osc.start();
+      osc.stop(now + duration);
+      currentSource = osc;
+      return osc;
+    }
+
+    // update gain sliders UI
+    const leftSlider = document.getElementById('leftGain');
+    const rightSlider = document.getElementById('rightGain');
+    const leftValSpan = document.getElementById('leftVal');
+    const rightValSpan = document.getElementById('rightVal');
+    function updateGains() {
+      if (!gainLeft || !gainRight) return;
+      const lv = leftSlider.value / 100;
+      const rv = rightSlider.value / 100;
+      gainLeft.gain.value = lv;
+      gainRight.gain.value = rv;
+      leftValSpan.innerText = leftSlider.value;
+      rightValSpan.innerText = rightSlider.value;
+    }
+    leftSlider.addEventListener('input', updateGains);
+    rightSlider.addEventListener('input', updateGains);
+
+    // channel test buttons
+    document.querySelectorAll('.channel-test-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const side = btn.getAttribute('data-side');
+        updateGlobalStatus('active', `Testing ${side} channel`);
+        playTone(880, 0.9, side);
+        showToast(`🔊 Playing ${side} channel test tone`);
+      });
+    });
+    document.getElementById('testBothBtn').addEventListener('click', () => {
+      playTone(660, 1.2, 'both');
+      showToast('🎶 Stereo test (both channels)');
+    });
+    document.getElementById('stopAudioBtn').addEventListener('click', () => {
+      stopAllSounds();
+      showToast('⏹️ All sounds stopped');
+    });
+
+    // tone grid generation
+    const toneFreqs = [60, 120, 250, 440, 880, 2000, 4000, 8000, 12000, 16000];
+    const toneGrid = document.getElementById('toneGrid');
+    toneFreqs.forEach(freq => {
+      const btn = document.createElement('button');
+      btn.className = 'tone-btn';
+      btn.textContent = `${freq} Hz`;
+      btn.addEventListener('click', () => {
+        stopAllSounds();
+        playTone(freq, 1.3, 'both');
+        showToast(`🔊 Playing ${freq} Hz test tone`);
+        updateGlobalStatus('active', `Tone: ${freq} Hz`);
+      });
+      toneGrid.appendChild(btn);
+    });
+
+    // Frequency sweep
+    const sweepBtn = document.getElementById('sweepBtn');
+    const stopSweepBtn = document.getElementById('stopSweepBtn');
+    const progressSpan = document.getElementById('sweepProgress');
+
+    async function runSweep() {
+      stopAllSounds();
+      initAudio();
+      await resumeAudio();
+      if (sweepActive) return;
+      sweepActive = true;
+      const duration = 6; // seconds
+      const startFreq = 20;
+      const endFreq = 20000;
+      const now = audioCtx.currentTime;
+      sweepOsc = audioCtx.createOscillator();
+      sweepGain = audioCtx.createGain();
+      sweepOsc.type = 'sine';
+      sweepOsc.frequency.setValueAtTime(startFreq, now);
+      sweepOsc.frequency.exponentialRampToValueAtTime(endFreq, now + duration);
+      sweepGain.gain.setValueAtTime(0.18, now);
+      sweepGain.gain.exponentialRampToValueAtTime(0.0001, now + duration + 0.2);
+      sweepOsc.connect(sweepGain);
+      sweepGain.connect(gainLeft);
+      sweepGain.connect(gainRight);
+      sweepOsc.start();
+      sweepOsc.stop(now + duration + 0.3);
+      currentToneSource = sweepOsc;
+
+      let startTime = Date.now();
+      if (sweepInterval) clearInterval(sweepInterval);
+      sweepInterval = setInterval(() => {
+        if (!sweepActive) {
+          clearInterval(sweepInterval);
+          return;
+        }
+        const elapsed = (Date.now() - startTime) / 1000;
+        const percent = Math.min(100, Math.floor((elapsed / duration) * 100));
+        progressSpan.innerText = `Sweeping: ${percent}%  (${Math.round(20 * Math.pow(endFreq/startFreq, percent/100))} Hz)`;
+        if (percent >= 100) {
+          clearInterval(sweepInterval);
+          progressSpan.innerText = 'Sweep finished ✅';
+          sweepActive = false;
+          updateGlobalStatus('idle', 'Ready');
+        }
+      }, 60);
+      updateGlobalStatus('active', 'Sweep in progress');
+      showToast('📈 Frequency sweep started (20Hz → 20kHz)');
+    }
+
+    sweepBtn.addEventListener('click', runSweep);
+    stopSweepBtn.addEventListener('click', () => {
+      if (sweepActive) {
+        if (sweepOsc) sweepOsc.stop();
+        if (sweepInterval) clearInterval(sweepInterval);
+        sweepActive = false;
+        progressSpan.innerText = 'Sweep cancelled';
+        updateGlobalStatus('idle', 'Ready');
+        showToast('⏸️ Sweep stopped');
+      }
+    });
+
+    // FAQ accordion logic
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const btn = item.querySelector('.faq-question');
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        faqItems.forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // helper toast
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    // initial gains set
+    if (leftSlider && rightSlider) updateGains();
+    // preload audio context on first user click
+    document.body.addEventListener('click', () => {
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+        showToast('🎧 Audio ready');
+      }
+    }, { once: true });
+    updateGlobalStatus('idle', 'Click any test to start');
+  })();
+</script>
+</body>
+</html>
