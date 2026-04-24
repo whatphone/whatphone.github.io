@@ -28,9 +28,9 @@ const Header = (() => {
             <li><a href="/" class="nav-link" data-section="detect">Home</a></li>
             <li><a href="/camera-test" class="nav-link" data-section="features">Camera Test</a></li>
             <li><a href="/mic-test" class="nav-link" data-section="specs">Mic Test</a></li>
-            <li><a href="/touchscreen-test" class="nav-link" data-section="compare">Touchscreen Test</a></li>            
-            <li><a href="/guides" class="nav-link" data-section="">Guides</a></li>
-            <li><a href="/about" class="nav-link" data-section="">About</a></li>            
+            <li><a href="/touchscreen-test" class="nav-link" data-section="compare">Touchscreen Test</a></li>   
+            <li><a href="/speaker-test" class="nav-link" data-section="">Speaker Test</a></li> 
+            <li><a href="/guides" class="nav-link" data-section="">Guides</a></li>                        
             <li>
               <a href="/#detect" class="nav-cta" aria-label="Detect my phone now">
                 <span>Detect My Phone</span>
