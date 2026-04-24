@@ -26,10 +26,9 @@ const Header = (() => {
 
           <ul class="nav-links" id="navMenu" role="list">
             <li><a href="/" class="nav-link" data-section="detect">Home</a></li>
-            <li><a href="/#features" class="nav-link" data-section="features">Features</a></li>
-            <li><a href="/#specs" class="nav-link" data-section="specs">Specs</a></li>
-            <li><a href="/#compare" class="nav-link" data-section="compare">Compare</a></li>
-            <li><a href="/#faq" class="nav-link" data-section="faq">FAQ</a></li>
+            <li><a href="/camera-test" class="nav-link" data-section="features">Camera Test</a></li>
+            <li><a href="/mic-test" class="nav-link" data-section="specs">Mic Test</a></li>
+            <li><a href="/touchscreen-test" class="nav-link" data-section="compare">Touchscreen Test</a></li>            
             <li><a href="/guides" class="nav-link" data-section="">Guides</a></li>
             <li><a href="/about" class="nav-link" data-section="">About</a></li>            
             <li>
