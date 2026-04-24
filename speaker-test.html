@@ -401,7 +401,7 @@
 </head>
 <body>
   
-<!-- ── Header (rendered by JS) ─────────────────────── -->
+<!-- Header will be injected here by header.js -->
   <header id="site-header" role="banner"></header>
 
 <div class="tool-page" id="main-content">
@@ -522,13 +522,13 @@
   </div>
 </div>
 
-<!-- ── Footer (rendered by JS) ──────────────────────── -->
+<!-- Footer will be injected here by footer.js -->
   <footer id="site-footer" role="contentinfo"></footer>
 
-  <!-- ── Scripts ──────────────────────────────────────── -->
-  <script src="js/header.js" defer></script>
-  <script src="js/footer.js" defer></script>
-  <script src="js/app.js" defer></script>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="../js/header.js" defer></script>
+  <script src="../js/footer.js" defer></script>
 
 <script>
   (function() {
