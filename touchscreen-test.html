@@ -175,7 +175,7 @@
       </div>
     </div>
   </div>  
-
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
   
   <footer id="site-footer" role="contentinfo"></footer>
   <script src="js/header.js" defer></script>
@@ -191,9 +191,6 @@
     });
   </script>
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof Header !== 'undefined') Header.render();
-  });
 
   // ── Config ──────────────────────────────────────────────────────
   let mode = null, brushColor = '#22d3ee', brushSize = 8;
