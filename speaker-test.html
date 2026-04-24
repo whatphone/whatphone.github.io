@@ -27,6 +27,90 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- ── Schema Markup ────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Speaker Test — Test Your Phone Speakers Online",
+  "alternateName": "WhatPhone Speaker Test",
+  "url": "https://whatphone.github.io/tools/speaker-test",
+  "description": "Free online speaker test for phones and computers. Check left-right balance, play frequency test tones, and run a full frequency sweep (20Hz to 20kHz) to diagnose speaker issues.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "WhatPhone"
+  },
+  "featureList": [
+    "Channel balance test (Left/Right)",
+    "Pure tone frequency generator",
+    "Exponential frequency sweep (20Hz - 20kHz)",
+    "Stereo separation diagnostic",
+    "Gain adjustment sliders"
+  ],
+  "browserRequirements": "Requires Web Audio API support",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://whatphone.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://whatphone.github.io/tools"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Speaker Test"
+        }
+      ]
+    }
+  },
+  "faqPage": {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why can't I hear anything?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Check that your phone volume is not muted, bluetooth devices are disconnected, and the page has permission to play audio. Most browsers require user interaction first — click any test button to enable audio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should a healthy speaker sound like?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Clear tones without crackling, consistent volume across frequencies, and balanced left/right channel separation. Distortion or buzzing at certain frequencies suggests speaker damage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if one speaker is quieter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the balance sliders to test relative gain. If hardware imbalance is severe, consider cleaning speaker grills or service. This test helps confirm if it’s a software setting or hardware."
+        }
+      }
+    ]
+  }
+}
+    </script>
   <style>
     * {
       margin: 0;
