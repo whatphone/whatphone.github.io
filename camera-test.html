@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Camera Test — Test Your Phone Camera Online Free | WhatPhone</title>
+  <meta name="description" content="Free online camera test for phones. Test front and rear cameras, check focus, resolution, exposure, capture photos, and record video — all in your browser. No app needed." />
+  <meta name="keywords" content="camera test online, phone camera test, test phone camera browser, front camera test, rear camera test, camera not working fix, phone camera checker" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://whatphone.github.io/tools/camera-test" />
+  <meta property="og:title" content="Camera Test — Test Your Phone Camera Online | WhatPhone" />
+  <meta property="og:description" content="Test your phone's front and rear cameras in the browser. Check focus, resolution, and video recording instantly." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#080c14" />
+<!-- ── Favicon ───────────────────────────────────────── -->
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Camera Test","url":"https://whatphone.github.io/tools/camera-test","description":"Test your smartphone camera online — front and rear, focus, resolution, and video recording","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <style>
+    .tool-page { padding-top: 72px; min-height: 100vh; }
+    .tool-hero { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); background: var(--bg2); }
+    .breadcrumb ol { display: flex; align-items: center; gap: .5rem; list-style: none; font-size: .82rem; color: var(--text3); margin-bottom: 1.25rem; }
+    .breadcrumb li+li::before { content: '/'; opacity: .4; }
+    .breadcrumb a { color: var(--text2); transition: color var(--transition); }
+    .breadcrumb a:hover { color: var(--accent2); }
+    .tool-hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .tool-hero-left h1 { font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.5rem); font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: .5rem; }
+    .tool-hero-left p { color: var(--text2); font-size: 1rem; max-width: 500px; }
+    .tool-status-badge { display: inline-flex; align-items: center; gap: .5rem; padding: .45rem 1rem; border-radius: 100px; font-size: .82rem; font-weight: 600; background: var(--surface); border: 1px solid var(--border); }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text3); flex-shrink: 0; }
+    .status-dot.ready { background: var(--green); box-shadow: 0 0 8px rgba(34,197,94,.6); animation: pulse-dot 2s infinite; }
+    .status-dot.error { background: var(--red); }
+    .status-dot.active { background: var(--accent); box-shadow: 0 0 8px rgba(59,130,246,.6); animation: pulse-dot 1s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1}50%{opacity:.4} }
+
+    /* Main layout */
+    .tool-main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 5rem; display: grid; grid-template-columns: 1fr 320px; gap: 1.75rem; align-items: start; }
+    
+    /* Camera viewport */
+    .camera-viewport { background: #000; border-radius: var(--r-lg); overflow: hidden; position: relative; aspect-ratio: 4/3; border: 2px solid var(--border); }
+    #cameraFeed { width: 100%; height: 100%; object-fit: cover; display: block; }
+    #cameraPlaceholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: var(--text2); background: var(--bg3); }
+    #cameraPlaceholder svg { opacity: .3; }
+    #cameraPlaceholder p { font-size: .9rem; text-align: center; max-width: 200px; }
+    .camera-overlay { position: absolute; inset: 0; pointer-events: none; }
+    .camera-corner { position: absolute; width: 24px; height: 24px; border-color: rgba(59,130,246,.6); border-style: solid; border-width: 0; }
+    .camera-corner.tl { top: 12px; left: 12px; border-top-width: 2px; border-left-width: 2px; }
+    .camera-corner.tr { top: 12px; right: 12px; border-top-width: 2px; border-right-width: 2px; }
+    .camera-corner.bl { bottom: 12px; left: 12px; border-bottom-width: 2px; border-left-width: 2px; }
+    .camera-corner.br { bottom: 12px; right: 12px; border-bottom-width: 2px; border-right-width: 2px; }
+    .camera-crosshair { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 32px; height: 32px; }
+    .camera-crosshair::before,.camera-crosshair::after { content:''; position:absolute; background:rgba(59,130,246,.4); }
+    .camera-crosshair::before { width:1px; height:100%; left:50%; top:0; }
+    .camera-crosshair::after { height:1px; width:100%; top:50%; left:0; }
+    .rec-indicator { position: absolute; top: 12px; right: 12px; display: none; align-items: center; gap: .4rem; background: rgba(239,68,68,.85); padding: .3rem .7rem; border-radius: 100px; font-size: .75rem; font-weight: 700; color: #fff; }
+    .rec-indicator.active { display: flex; }
+    .rec-dot { width: 8px; height: 8px; border-radius: 50%; background: #fff; animation: pulse-dot 1s infinite; }
+    .camera-info-bar { position: absolute; bottom: 0; left: 0; right: 0; padding: .5rem .75rem; background: linear-gradient(transparent,rgba(0,0,0,.7)); display: flex; justify-content: space-between; font-size: .72rem; font-family: var(--font-mono); color: rgba(255,255,255,.7); }
+    
+    /* Controls */
+    .camera-controls { display: grid; grid-template-columns: repeat(4,1fr); gap: .6rem; margin-top: 1rem; }
+    .cam-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; padding: .75rem .5rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); font-size: .72rem; font-weight: 600; color: var(--text2); transition: all var(--transition); }
+    .cam-btn:hover { border-color: var(--accent); color: var(--text); background: var(--surface2); }
+    .cam-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .cam-btn.danger.active { background: var(--red); border-color: var(--red); }
+    .cam-btn svg { flex-shrink: 0; }
+
+    /* Sidebar */
+    .camera-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+    .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 1.25rem; }
+    .sidebar-card-title { font-family: var(--font-display); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin-bottom: 1rem; }
+    .info-row { display: flex; justify-content: space-between; align-items: center; padding: .45rem 0; border-bottom: 1px solid var(--border); font-size: .82rem; }
+    .info-row:last-child { border-bottom: none; }
+    .info-row-key { color: var(--text2); }
+    .info-row-val { font-family: var(--font-mono); color: var(--text); font-weight: 700; font-size: .78rem; }
+    .check-list { display: flex; flex-direction: column; gap: .5rem; }
+    .check-item { display: flex; align-items: center; gap: .65rem; font-size: .85rem; }
+    .check-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: .65rem; }
+    .check-icon.pass { background: rgba(34,197,94,.15); color: var(--green); border: 1px solid rgba(34,197,94,.3); }
+    .check-icon.fail { background: rgba(239,68,68,.15); color: var(--red); border: 1px solid rgba(239,68,68,.3); }
+    .check-icon.pending { background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
+    .check-icon.testing { background: rgba(59,130,246,.15); color: var(--accent2); border: 1px solid rgba(59,130,246,.3); animation: pulse-dot 1s infinite; }
+
+    /* Snapshot gallery */
+    .snapshot-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: .5rem; }
+    .snapshot-thumb { aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; background: var(--bg3); border: 1px solid var(--border); cursor: pointer; transition: all var(--transition); }
+    .snapshot-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .snapshot-thumb:hover { border-color: var(--accent); transform: scale(1.03); }
+    .snapshot-empty { aspect-ratio: 4/3; border-radius: 8px; background: var(--bg3); border: 1px dashed var(--border); display: flex; align-items: center; justify-content: center; color: var(--text3); font-size: .65rem; }
+    
+    /* Start overlay */
+    #startOverlay { position: absolute; inset: 0; background: var(--bg3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.25rem; z-index: 10; border-radius: var(--r-lg); }
+    #startOverlay h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: #fff; }
+    #startOverlay p { color: var(--text2); font-size: .875rem; text-align: center; max-width: 260px; }
+    .start-btn { display: inline-flex; align-items: center; gap: .6rem; padding: .85rem 2rem; border-radius: var(--r); background: var(--accent); color: #fff; font-size: 1rem; font-weight: 700; font-family: var(--font-display); cursor: pointer; border: none; box-shadow: 0 0 30px rgba(59,130,246,.35); transition: all var(--transition); }
+    .start-btn:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    /* Permission denied */
+    #permDenied { display: none; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; text-align: center; padding: 2rem; }
+    #permDenied h3 { font-family: var(--font-display); font-weight: 700; color: var(--red); }
+    #permDenied p { font-size: .875rem; color: var(--text2); max-width: 280px; }
+    
+    /* Toast */
+    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface2); border: 1px solid var(--border2); padding: .65rem 1.4rem; border-radius: 100px; font-size: .875rem; color: var(--text); z-index: 9999; opacity: 0; transition: all .3s; pointer-events: none; }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Hidden canvas */
+    #snapshotCanvas { display: none; }
+
+    @media(max-width:1024px) { .tool-main { grid-template-columns: 1fr; } }
+    @media(max-width:480px) { .camera-controls { grid-template-columns: repeat(2,1fr); } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header id="site-header" role="banner"></header>
+
+  <div class="tool-page" id="main-content">
+    <!-- Tool Hero -->
+    <div class="tool-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="../tools">Tools</a></li><li aria-current="page">Camera Test</li></ol></nav>
+        <div class="tool-hero-inner">
+          <div class="tool-hero-left">
+            <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
+              <span style="font-size:1.6rem" aria-hidden="true">📷</span>
+              <h1>Camera Test</h1>
+            </div>
+            <p>Test your front and rear cameras live in the browser. Check resolution, focus, exposure, capture snapshots, and record video — no app needed.</p>
+          </div>
+          <div id="statusBadge" class="tool-status-badge" aria-live="polite">
+            <span class="status-dot" id="statusDot"></span>
+            <span id="statusText">Ready to start</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main App -->
+    <div class="tool-main">
+      <!-- Left: Camera feed -->
+      <div>
+        <div class="camera-viewport" id="cameraViewport">
+          <!-- Start overlay -->
+          <div id="startOverlay">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style="color:var(--accent)" aria-hidden="true"><rect x="6" y="16" width="44" height="30" rx="5" stroke="currentColor" stroke-width="2.2"/><circle cx="28" cy="31" r="9" stroke="currentColor" stroke-width="2.2"/><circle cx="28" cy="31" r="4" fill="currentColor"/><path d="M20 16v-4a3 3 0 013-3h10a3 3 0 013 3v4" stroke="currentColor" stroke-width="2.2"/></svg>
+            <h3>Camera Test</h3>
+            <p>Click below to allow camera access and start testing</p>
+            <button class="start-btn" id="startCameraBtn" aria-label="Start camera test">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="9" r="3" fill="currentColor"/></svg>
+              Start Camera Test
+            </button>
+          </div>
+          <!-- Permission denied overlay -->
+          <div id="permDenied">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="color:var(--red)" aria-hidden="true"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2.5"/><path d="M16 16l16 16M32 16L16 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <h3>Camera Access Denied</h3>
+            <p>Please allow camera permission in your browser settings and reload the page.</p>
+          </div>
+          <!-- Live feed -->
+          <video id="cameraFeed" autoplay playsinline muted aria-label="Camera live feed"></video>
+          <div class="camera-overlay" aria-hidden="true">
+            <div class="camera-corner tl"></div><div class="camera-corner tr"></div>
+            <div class="camera-corner bl"></div><div class="camera-corner br"></div>
+            <div class="camera-crosshair"></div>
+          </div>
+          <div class="rec-indicator" id="recIndicator" aria-live="polite" aria-label="Recording in progress">
+            <span class="rec-dot" aria-hidden="true"></span> REC
+          </div>
+          <div class="camera-info-bar" id="cameraInfoBar" aria-live="polite">
+            <span id="camResLabel">-- × --</span>
+            <span id="camFpsLabel">-- fps</span>
+            <span id="camFacingLabel">--</span>
+          </div>
+        </div>
+        <canvas id="snapshotCanvas" aria-hidden="true"></canvas>
+
+        <!-- Controls -->
+        <div class="camera-controls" role="toolbar" aria-label="Camera controls">
+          <button class="cam-btn" id="switchCamBtn" title="Switch camera" aria-label="Switch between front and rear camera">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2 10a8 8 0 0114.93-4H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M18 10a8 8 0 01-14.93 4H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14 6l2.93 0 0 2.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 14l-2.93 0 0-2.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Switch
+          </button>
+          <button class="cam-btn" id="snapBtn" title="Take snapshot" aria-label="Take a photo snapshot">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="6" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M7 6V5a2 2 0 012-2h2a2 2 0 012 2v1" stroke="currentColor" stroke-width="1.5"/></svg>
+            Snapshot
+          </button>
+          <button class="cam-btn" id="recordBtn" title="Record video" aria-label="Start or stop video recording">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="5" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M14 8l4-2v8l-4-2V8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            Record
+          </button>
+          <button class="cam-btn" id="flashBtn" title="Toggle torch" aria-label="Toggle flashlight/torch">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M11 2L5 11h6l-2 7 8-9h-6l2-7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            Flash
+          </button>
+        </div>
+
+        <!-- Snapshot gallery -->
+        <div style="margin-top:1.25rem">
+          <div style="font-family:var(--font-display);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:.75rem">Snapshots</div>
+          <div class="snapshot-grid" id="snapshotGrid">
+            <div class="snapshot-empty">Empty</div><div class="snapshot-empty">Empty</div><div class="snapshot-empty">Empty</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Sidebar -->
+      <aside class="camera-sidebar">
+        <!-- Camera Info -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Camera Info</div>
+          <div class="info-row"><span class="info-row-key">Resolution</span><span class="info-row-val" id="infoRes">—</span></div>
+          <div class="info-row"><span class="info-row-key">Aspect Ratio</span><span class="info-row-val" id="infoAspect">—</span></div>
+          <div class="info-row"><span class="info-row-key">Facing</span><span class="info-row-val" id="infoFacing">—</span></div>
+          <div class="info-row"><span class="info-row-key">Frame Rate</span><span class="info-row-val" id="infoFps">—</span></div>
+          <div class="info-row"><span class="info-row-key">Cameras Found</span><span class="info-row-val" id="infoCamCount">—</span></div>
+          <div class="info-row"><span class="info-row-key">Auto Focus</span><span class="info-row-val" id="infoAF">—</span></div>
+          <div class="info-row"><span class="info-row-key">Torch</span><span class="info-row-val" id="infoTorch">—</span></div>
+        </div>
+
+        <!-- Test Results -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Diagnostic Results</div>
+          <div class="check-list" id="checkList">
+            <div class="check-item"><div class="check-icon pending" id="chk-access">?</div><span>Camera access granted</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-video">?</div><span>Live video streaming</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-res">?</div><span>Resolution ≥ 720p</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-front">?</div><span>Front camera works</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-rear">?</div><span>Rear camera works</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-snap">?</div><span>Snapshot capture</span></div>
+          </div>
+        </div>
+
+        <!-- Related tools -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Other Tests</div>
+          <div style="display:flex;flex-direction:column;gap:.5rem">
+            <a href="touchscreen-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:1rem" aria-hidden="true">👆</span> Touchscreen Test
+            </a>
+            <a href="mic-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:1rem" aria-hidden="true">🎙️</span> Microphone Test
+            </a>
+            <a href="speaker-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:1rem" aria-hidden="true">🔊</span> Speaker Test
+            </a>
+            <a href="../index#detect" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:1rem" aria-hidden="true">📱</span> Detect My Phone
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <footer id="site-footer" role="contentinfo"></footer>
+  <script src="../js/header.js" defer></script>
+  <script src="../js/footer.js" defer></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof Header !== 'undefined') Header.render();
+    if (typeof Footer !== 'undefined') Footer.render();
+  });
+
+  // ── State ───────────────────────────────────────────────────────
+  let stream = null, mediaRecorder = null, recordedChunks = [], facingMode = 'environment';
+  let isRecording = false, torchOn = false, hasFront = false, hasRear = false;
+  let snapshots = [], frameTimer = null, lastFrameTime = 0, fpsValue = 0;
+
+  // ── DOM refs ────────────────────────────────────────────────────
+  const video = document.getElementById('cameraFeed');
+  const startOverlay = document.getElementById('startOverlay');
+  const permDenied = document.getElementById('permDenied');
+  const recIndicator = document.getElementById('recIndicator');
+  const statusDot = document.getElementById('statusDot');
+  const statusText = document.getElementById('statusText');
+
+  // ── Start ───────────────────────────────────────────────────────
+  document.getElementById('startCameraBtn').addEventListener('click', startCamera);
+
+  async function startCamera() {
+    setStatus('testing', 'Requesting access…');
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const cams = devices.filter(d => d.kind === 'videoinput');
+      document.getElementById('infoCamCount').textContent = cams.length;
+      hasFront = cams.some(d => d.label.toLowerCase().includes('front') || d.label.toLowerCase().includes('user'));
+      hasRear = cams.some(d => d.label.toLowerCase().includes('back') || d.label.toLowerCase().includes('rear') || d.label.toLowerCase().includes('environment'));
+      if (cams.length <= 1) { hasFront = true; hasRear = true; }
+
+      stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: { ideal: facingMode }, width: { ideal: 1920 }, height: { ideal: 1080 } },
+        audio: false
+      });
+      video.srcObject = stream;
+      video.play();
+      video.onloadedmetadata = () => {
+        startOverlay.style.display = 'none';
+        setStatus('ready', 'Camera active');
+        statusDot.className = 'status-dot ready';
+        setCheck('chk-access', 'pass');
+        setCheck('chk-video', 'pass');
+        updateCameraInfo();
+        startFpsCounter();
+      };
+      if (facingMode === 'environment') setCheck('chk-rear', 'pass');
+      else setCheck('chk-front', 'pass');
+    } catch (err) {
+      startOverlay.style.display = 'none';
+      permDenied.style.display = 'flex';
+      setStatus('error', 'Access denied');
+      statusDot.className = 'status-dot error';
+      setCheck('chk-access', 'fail');
+      setCheck('chk-video', 'fail');
+    }
+  }
+
+  function updateCameraInfo() {
+    if (!stream) return;
+    const track = stream.getVideoTracks()[0];
+    if (!track) return;
+    const settings = track.getSettings();
+    const w = settings.width || video.videoWidth;
+    const h = settings.height || video.videoHeight;
+    document.getElementById('infoRes').textContent = w && h ? `${w}×${h}` : '—';
+    document.getElementById('infoAspect').textContent = w && h ? calcAspect(w, h) : '—';
+    document.getElementById('infoFacing').textContent = settings.facingMode || facingMode;
+    document.getElementById('infoAF').textContent = 'focusMode' in settings ? settings.focusMode || 'Auto' : 'Unknown';
+    document.getElementById('infoTorch').textContent = 'torch' in (track.getCapabilities?.() || {}) ? 'Supported' : 'N/A';
+    document.getElementById('camResLabel').textContent = w && h ? `${w}×${h}` : '';
+    document.getElementById('camFacingLabel').textContent = settings.facingMode === 'user' ? 'Front' : 'Rear';
+    if (w >= 1280) setCheck('chk-res', 'pass'); else if (w > 0) setCheck('chk-res', 'fail');
+  }
+
+  function calcAspect(w, h) {
+    const g = gcd(w, h);
+    return `${w/g}:${h/g}`;
+  }
+  function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
+
+  function startFpsCounter() {
+    let frames = 0, last = performance.now();
+    const count = () => {
+      frames++;
+      const now = performance.now();
+      if (now - last >= 1000) {
+        fpsValue = Math.round(frames * 1000 / (now - last));
+        document.getElementById('infoFps').textContent = fpsValue + ' fps';
+        document.getElementById('camFpsLabel').textContent = fpsValue + ' fps';
+        frames = 0; last = now;
+      }
+      if (stream) requestAnimationFrame(count);
+    };
+    requestAnimationFrame(count);
+  }
+
+  // ── Switch camera ───────────────────────────────────────────────
+  document.getElementById('switchCamBtn').addEventListener('click', async () => {
+    if (!stream) return;
+    facingMode = facingMode === 'environment' ? 'user' : 'environment';
+    stream.getTracks().forEach(t => t.stop());
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: facingMode }, width: { ideal: 1920 }, height: { ideal: 1080 } },
+      audio: false
+    }).catch(() => null);
+    if (!stream) { showToast('Could not switch camera'); return; }
+    video.srcObject = stream;
+    video.play();
+    video.onloadedmetadata = () => {
+      updateCameraInfo();
+      if (facingMode === 'user') setCheck('chk-front', 'pass');
+      else setCheck('chk-rear', 'pass');
+    };
+    showToast(facingMode === 'user' ? 'Front camera' : 'Rear camera');
+  });
+
+  // ── Snapshot ────────────────────────────────────────────────────
+  document.getElementById('snapBtn').addEventListener('click', takeSnapshot);
+  function takeSnapshot() {
+    if (!stream || !video.videoWidth) { showToast('Start the camera first'); return; }
+    const canvas = document.getElementById('snapshotCanvas');
+    canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0);
+    const dataUrl = canvas.toDataURL('image/jpeg', 0.9);
+    snapshots.unshift(dataUrl);
+    if (snapshots.length > 6) snapshots.pop();
+    renderSnapshots();
+    setCheck('chk-snap', 'pass');
+    // Flash effect
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:absolute;inset:0;background:#fff;opacity:.8;z-index:20;border-radius:var(--r-lg);pointer-events:none;transition:opacity .3s';
+    document.getElementById('cameraViewport').appendChild(overlay);
+    setTimeout(() => { overlay.style.opacity = '0'; setTimeout(() => overlay.remove(), 300); }, 50);
+    showToast('📸 Snapshot saved');
+  }
+
+  function renderSnapshots() {
+    const grid = document.getElementById('snapshotGrid');
+    grid.innerHTML = '';
+    for (let i = 0; i < 3; i++) {
+      if (snapshots[i]) {
+        const div = document.createElement('div'); div.className = 'snapshot-thumb';
+        const img = document.createElement('img'); img.src = snapshots[i]; img.alt = `Snapshot ${i+1}`;
+        div.appendChild(img);
+        div.addEventListener('click', () => {
+          const a = document.createElement('a'); a.href = snapshots[i]; a.download = `whatphone-camera-${Date.now()}.jpg`; a.click();
+        });
+        grid.appendChild(div);
+      } else {
+        const div = document.createElement('div'); div.className = 'snapshot-empty'; div.textContent = 'Empty';
+        grid.appendChild(div);
+      }
+    }
+  }
+
+  // ── Record ──────────────────────────────────────────────────────
+  document.getElementById('recordBtn').addEventListener('click', toggleRecord);
+  function toggleRecord() {
+    if (!stream) { showToast('Start the camera first'); return; }
+    if (!isRecording) {
+      recordedChunks = [];
+      const mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9') ? 'video/webm;codecs=vp9' : 'video/webm';
+      mediaRecorder = new MediaRecorder(stream, { mimeType: mime });
+      mediaRecorder.ondataavailable = e => { if (e.data.size > 0) recordedChunks.push(e.data); };
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(recordedChunks, { type: 'video/webm' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href = url; a.download = `whatphone-video-${Date.now()}.webm`; a.click();
+        showToast('📹 Video downloaded');
+      };
+      mediaRecorder.start(100);
+      isRecording = true;
+      recIndicator.classList.add('active');
+      document.getElementById('recordBtn').classList.add('danger', 'active');
+      document.getElementById('recordBtn').querySelector('span') && (document.getElementById('recordBtn').lastChild.textContent = 'Stop');
+      showToast('🔴 Recording started');
+    } else {
+      mediaRecorder.stop();
+      isRecording = false;
+      recIndicator.classList.remove('active');
+      document.getElementById('recordBtn').classList.remove('danger', 'active');
+    }
+  }
+
+  // ── Torch ───────────────────────────────────────────────────────
+  document.getElementById('flashBtn').addEventListener('click', async () => {
+    if (!stream) { showToast('Start the camera first'); return; }
+    const track = stream.getVideoTracks()[0];
+    const caps = track.getCapabilities?.() || {};
+    if (!caps.torch) { showToast('Torch not supported on this device'); return; }
+    torchOn = !torchOn;
+    await track.applyConstraints({ advanced: [{ torch: torchOn }] });
+    document.getElementById('flashBtn').classList.toggle('active', torchOn);
+    showToast(torchOn ? '🔦 Torch on' : '🔦 Torch off');
+  });
+
+  // ── Helpers ─────────────────────────────────────────────────────
+  function setStatus(type, text) {
+    statusText.textContent = text;
+    statusDot.className = 'status-dot ' + type;
+  }
+  function setCheck(id, state) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.className = 'check-icon ' + state;
+    el.textContent = state === 'pass' ? '✓' : state === 'fail' ? '✗' : state === 'testing' ? '…' : '?';
+  }
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => t.classList.remove('show'), 2600);
+  }
+  </script>
+</body>
+</html>
