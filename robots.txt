@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://whatphone.github.io/sitemap.xml
