@@ -180,15 +180,7 @@
   <footer id="site-footer" role="contentinfo"></footer>
   <script src="js/header.js" defer></script>
   <script src="js/footer.js" defer></script>  
-
-  <script>
-    document.addEventListener('DOMContentLoaded',()=>{
-      if(typeof Header!=='undefined')Header.render();
-      if(typeof Footer!=='undefined')Footer.render();
-      const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';obs.unobserve(e.target);}}),{threshold:.1});
-      document.querySelectorAll('[data-animate]').forEach(el=>obs.observe(el));
-    });
-  </script>
+  
   <script>
 
   // ── Config ──────────────────────────────────────────────────────
