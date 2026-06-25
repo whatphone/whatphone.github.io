@@ -14,99 +14,117 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>Microphone Test — Test Your Phone Mic Online Free | WhatPhone</title>
-  <meta name="description" content="Free online microphone test for phones. See real-time audio waveform, frequency spectrum, decibel levels, and record a clip to play back. Instantly diagnose mic issues in your browser." />
-  <meta name="keywords" content="microphone test online, phone mic test, test microphone browser, mic not working phone, decibel meter online, audio waveform test, microphone check free" />
+  <title>Microphone Test — Test Your Mic Online Free | WhatPhone</title>
+  <meta name="description" content="Free online microphone test for phones, laptops, and headsets. Check input levels, frequency response, background noise, and record a playback test — all in your browser. No app needed." />
+  <meta name="keywords" content="microphone test, mic test online, test my mic, microphone test online free, headset mic test, check microphone working, audio input test, mic not working fix" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://whatphone.github.io/tools/mic-test" />
-  <meta property="og:title" content="Microphone Test — Test Your Phone Mic Online | WhatPhone" />
-  <meta property="og:description" content="See real-time audio waveform, dB levels, and record playback. Diagnose your phone mic in seconds." />
+  <link rel="canonical" href="https://whatphone.github.io/mic-test" />
+  <meta property="og:title" content="Microphone Test — Test Your Mic Online | WhatPhone" />
+  <meta property="og:description" content="Test your microphone's input level, frequency response, and noise floor directly in your browser. No app needed." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#080c14" />
-  <!-- ── Favicon ───────────────────────────────────────── -->
- <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+<!-- ── Favicon ───────────────────────────────────────── -->
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="../css/style.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Microphone Test","url":"https://whatphone.github.io/tools/mic-test","description":"Test your smartphone microphone with live waveform, dB meter, spectrum analyser, and record/playback","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Microphone Test","url":"https://whatphone.github.io/mic-test","description":"Test your microphone online — input level, frequency response, background noise, and playback recording","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I test if my microphone is working?","acceptedAnswer":{"@type":"Answer","text":"Open this page, allow microphone access, and speak normally. The volume meter should move with your voice and the live waveform should react instantly. If nothing moves, the microphone is not being picked up by your browser."}},{"@type":"Question","name":"Why is my microphone volume too low or too high?","acceptedAnswer":{"@type":"Answer","text":"The level meter shows your input in real time, including a clipping warning if your voice is overdriving the input. Low levels often mean the wrong device is selected or input gain is turned down in your OS sound settings; constant clipping means the gain is too high."}},{"@type":"Question","name":"What does the frequency spectrum show in a mic test?","acceptedAnswer":{"@type":"Answer","text":"The spectrum analyzer breaks your voice into frequency bands from low bass to high treble. A healthy microphone shows energy moving naturally across bands as you speak; a flat or missing range can indicate a faulty capsule or a software filter cutting frequencies."}},{"@type":"Question","name":"How do I check background noise on my microphone?","acceptedAnswer":{"@type":"Answer","text":"Stay silent for a few seconds while the noise floor meter is running. A low, stable reading means a clean signal; a high or fluctuating reading while silent points to electrical interference, a faulty cable, or aggressive noise from a fan or AC unit near the mic."}},{"@type":"Question","name":"Can I record and play back my microphone to check the sound quality?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Record & Playback section lets you record a short clip directly in your browser and play it back immediately, so you can listen for distortion, hiss, echo, or muffled audio before a call or recording session."}},{"@type":"Question","name":"Does this microphone test work with Bluetooth and USB headsets?","acceptedAnswer":{"@type":"Answer","text":"Yes. Any microphone recognized by your operating system — built-in, USB, Bluetooth, or 3.5mm headset mics — can be selected from the device dropdown and tested the same way, as long as your browser has permission to access it."}}]}</script>
   <style>
-    .tool-page { padding-top: 72px; }
-    .tool-hero { padding: 2.5rem 0 2rem; border-bottom: 1px solid var(--border); background: var(--bg2); }
-    .breadcrumb ol { display: flex; align-items: center; gap: .5rem; list-style: none; font-size: .82rem; color: var(--text3); margin-bottom: 1rem; }
+    .tool-page { padding-top: 72px; min-height: 100vh; }
+    .tool-hero { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); background: var(--bg2); }
+    .breadcrumb ol { display: flex; align-items: center; gap: .5rem; list-style: none; font-size: .82rem; color: var(--text3); margin-bottom: 1.25rem; }
     .breadcrumb li+li::before { content: '/'; opacity: .4; }
     .breadcrumb a { color: var(--text2); transition: color var(--transition); }
     .breadcrumb a:hover { color: var(--accent2); }
     .tool-hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-    .tool-hero-left h1 { font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.5rem); font-weight: 800; color: #fff; margin-bottom: .4rem; }
-    .tool-hero-left p { color: var(--text2); font-size: .95rem; }
-    .status-badge { display: inline-flex; align-items: center; gap: .5rem; padding: .45rem 1rem; border-radius: 100px; font-size: .82rem; font-weight: 600; background: var(--surface); border: 1px solid var(--border); }
-    .sdot { width: 8px; height: 8px; border-radius: 50%; background: var(--text3); flex-shrink: 0; }
-    .sdot.active { background: var(--green); box-shadow: 0 0 10px rgba(34,197,94,.7); animation: pulse-s 1.2s infinite; }
-    .sdot.rec { background: var(--red); box-shadow: 0 0 10px rgba(239,68,68,.7); animation: pulse-s .8s infinite; }
-    .sdot.error { background: var(--red); }
-    @keyframes pulse-s { 0%,100%{opacity:1}50%{opacity:.3} }
+    .tool-hero-left h1 { font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.5rem); font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: .5rem; }
+    .tool-hero-left p { color: var(--text2); font-size: 1rem; max-width: 520px; }
+    .tool-status-badge { display: inline-flex; align-items: center; gap: .5rem; padding: .45rem 1rem; border-radius: 100px; font-size: .82rem; font-weight: 600; background: var(--surface); border: 1px solid var(--border); }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text3); flex-shrink: 0; }
+    .status-dot.ready { background: var(--green); box-shadow: 0 0 8px rgba(34,197,94,.6); animation: pulse-dot 2s infinite; }
+    .status-dot.error { background: var(--red); }
+    .status-dot.active { background: var(--accent); box-shadow: 0 0 8px rgba(59,130,246,.6); animation: pulse-dot 1s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1}50%{opacity:.4} }
 
     /* Main layout */
-    .mic-main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 5rem; display: grid; grid-template-columns: 1fr 300px; gap: 1.75rem; }
+    .tool-main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 5rem; display: grid; grid-template-columns: 1fr 320px; gap: 1.75rem; align-items: start; }
 
-    /* Start screen */
-    #startScreen { grid-column: 1/-1; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; gap: 1.5rem; }
-    #startScreen h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: #fff; }
-    #startScreen p { color: var(--text2); text-align: center; max-width: 360px; }
-    #micApp { display: none; grid-column: 1/-1; }
-    #micApp.visible { display: contents; }
+    /* Mic visualizer panel */
+    .mic-viewport { background: #000; border-radius: var(--r-lg); overflow: hidden; position: relative; border: 2px solid var(--border); padding: 1.5rem; }
+    .mic-canvas-wrap { position: relative; height: 180px; border-radius: var(--r); overflow: hidden; background: var(--bg3); }
+    #waveCanvas { width: 100%; height: 100%; display: block; }
+    #micPlaceholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .85rem; color: var(--text2); background: var(--bg3); z-index: 5; }
+    #micPlaceholder svg { opacity: .3; }
+    #micPlaceholder p { font-size: .85rem; text-align: center; max-width: 220px; }
 
-    /* Canvas panels */
-    .canvas-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; }
-    .canvas-panel-header { padding: .75rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-    .canvas-panel-title { font-family: var(--font-display); font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); }
-    canvas { display: block; width: 100%; }
-    
-    /* dB Meter */
-    .db-meter-wrap { padding: 1.25rem; }
-    .db-track { height: 20px; background: var(--bg3); border-radius: 10px; overflow: hidden; position: relative; margin-bottom: .5rem; }
-    .db-fill { height: 100%; width: 0%; border-radius: 10px; transition: width .08s ease; background: linear-gradient(90deg, #22c55e 0%, #22c55e 60%, #f59e0b 75%, #ef4444 100%); }
-    .db-labels { display: flex; justify-content: space-between; font-size: .68rem; font-family: var(--font-mono); color: var(--text3); }
-    .db-value { text-align: center; font-family: var(--font-mono); font-size: 2rem; font-weight: 700; color: var(--green); margin: .75rem 0 .25rem; transition: color .2s; }
-    .db-value.loud { color: var(--amber); }
-    .db-value.peak { color: var(--red); }
-    .db-label { text-align: center; font-size: .75rem; color: var(--text3); }
+    /* Level meter */
+    .level-meter-row { display: flex; align-items: center; gap: 1rem; margin-top: 1.25rem; }
+    .level-meter-track { flex: 1; height: 22px; border-radius: 100px; background: var(--bg3); overflow: hidden; position: relative; border: 1px solid var(--border); }
+    .level-meter-fill { height: 100%; width: 0%; border-radius: 100px; background: linear-gradient(90deg, var(--green) 0%, var(--green) 60%, var(--amber) 80%, var(--red) 100%); transition: width .06s linear; }
+    .level-meter-peak { position: absolute; top: 0; bottom: 0; width: 2px; background: #fff; opacity: .8; transition: left .06s linear; }
+    .level-meter-label { font-family: var(--font-mono); font-size: .78rem; color: var(--text2); width: 64px; text-align: right; flex-shrink: 0; }
+    .clip-badge { display: none; align-items: center; gap: .3rem; padding: .2rem .6rem; border-radius: 100px; background: rgba(239,68,68,.15); border: 1px solid rgba(239,68,68,.35); color: var(--red); font-size: .7rem; font-weight: 700; font-family: var(--font-mono); }
+    .clip-badge.show { display: inline-flex; animation: pulse-dot .4s infinite; }
+
+    /* Spectrum bars */
+    .spectrum-wrap { height: 110px; margin-top: 1.25rem; border-radius: var(--r); background: var(--bg3); display: flex; align-items: flex-end; gap: 2px; padding: 8px; overflow: hidden; }
+    .spectrum-bar { flex: 1; background: linear-gradient(180deg, var(--accent2), var(--accent)); border-radius: 2px 2px 0 0; min-height: 2px; transition: height .05s linear; }
 
     /* Controls */
-    .mic-controls { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
-    .mic-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .65rem 1.25rem; border-radius: var(--r); font-size: .875rem; font-weight: 700; font-family: var(--font-display); transition: all var(--transition); cursor: pointer; border: none; }
-    .mic-btn-primary { background: var(--green); color: #fff; box-shadow: 0 0 20px rgba(34,197,94,.25); }
-    .mic-btn-primary:hover { background: #16a34a; transform: translateY(-1px); }
-    .mic-btn-secondary { background: var(--surface2); border: 1px solid var(--border); color: var(--text2); }
-    .mic-btn-secondary:hover { border-color: var(--accent); color: var(--text); }
-    .mic-btn-rec { background: var(--red); color: #fff; }
-    .mic-btn-rec:hover { background: #b91c1c; }
-    .mic-btn-rec.recording { animation: pulse-s .8s infinite; }
+    .mic-controls { display: grid; grid-template-columns: repeat(3,1fr); gap: .6rem; margin-top: 1.25rem; }
+    .cam-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; padding: .75rem .5rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); font-size: .72rem; font-weight: 600; color: var(--text2); transition: all var(--transition); cursor: pointer; }
+    .cam-btn:hover { border-color: var(--accent); color: var(--text); background: var(--surface2); }
+    .cam-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .cam-btn.danger.active { background: var(--red); border-color: var(--red); }
+    .cam-btn svg { flex-shrink: 0; }
+
+    /* Device select */
+    .device-select-row { margin-top: 1.25rem; }
+    .device-select-row label { display: block; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text3); margin-bottom: .5rem; }
+    .device-select { width: 100%; padding: .65rem .85rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); color: var(--text); font-size: .85rem; font-family: var(--font-body); }
+    .device-select:focus { outline: none; border-color: var(--accent); }
+
+    /* Recordings list */
+    .recording-list { display: flex; flex-direction: column; gap: .6rem; }
+    .recording-item { display: flex; align-items: center; gap: .75rem; padding: .65rem .85rem; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r); }
+    .recording-item audio { flex: 1; height: 32px; }
+    .recording-item span { font-size: .72rem; color: var(--text3); font-family: var(--font-mono); flex-shrink: 0; }
+    .recording-empty { padding: 1rem; text-align: center; color: var(--text3); font-size: .82rem; background: var(--bg3); border: 1px dashed var(--border); border-radius: var(--r); }
+
+    /* Start overlay */
+    #startOverlay { position: absolute; inset: 0; background: var(--bg3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.25rem; z-index: 10; }
+    #startOverlay h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: #fff; }
+    #startOverlay p { color: var(--text2); font-size: .875rem; text-align: center; max-width: 260px; }
+    .start-btn { display: inline-flex; align-items: center; gap: .6rem; padding: .85rem 2rem; border-radius: var(--r); background: var(--accent); color: #fff; font-size: 1rem; font-weight: 700; font-family: var(--font-display); cursor: pointer; border: none; box-shadow: 0 0 30px rgba(59,130,246,.35); transition: all var(--transition); }
+    .start-btn:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    /* Permission denied */
+    #permDenied { display: none; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; text-align: center; padding: 2rem; position: absolute; inset: 0; background: var(--bg3); z-index: 10; }
+    #permDenied h3 { font-family: var(--font-display); font-weight: 700; color: var(--red); }
+    #permDenied p { font-size: .875rem; color: var(--text2); max-width: 280px; }
 
     /* Sidebar */
-    .mic-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+    .camera-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
     .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 1.25rem; }
-    .sidebar-card-title { font-family: var(--font-display); font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin-bottom: .9rem; }
-    .info-row { display: flex; justify-content: space-between; align-items: center; padding: .42rem 0; border-bottom: 1px solid var(--border); font-size: .82rem; }
+    .sidebar-card-title { font-family: var(--font-display); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin-bottom: 1rem; }
+    .info-row { display: flex; justify-content: space-between; align-items: center; padding: .45rem 0; border-bottom: 1px solid var(--border); font-size: .82rem; }
     .info-row:last-child { border-bottom: none; }
     .info-row-key { color: var(--text2); }
     .info-row-val { font-family: var(--font-mono); color: var(--text); font-weight: 700; font-size: .78rem; }
     .check-list { display: flex; flex-direction: column; gap: .5rem; }
-    .check-item { display: flex; align-items: center; gap: .6rem; font-size: .84rem; }
-    .chk { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: .65rem; }
-    .chk.pass { background: rgba(34,197,94,.12); color: var(--green); border: 1px solid rgba(34,197,94,.25); }
-    .chk.fail { background: rgba(239,68,68,.12); color: var(--red); border: 1px solid rgba(239,68,68,.25); }
-    .chk.pend { background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
+    .check-item { display: flex; align-items: center; gap: .65rem; font-size: .85rem; }
+    .check-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: .65rem; }
+    .check-icon.pass { background: rgba(34,197,94,.15); color: var(--green); border: 1px solid rgba(34,197,94,.3); }
+    .check-icon.fail { background: rgba(239,68,68,.15); color: var(--red); border: 1px solid rgba(239,68,68,.3); }
+    .check-icon.pending { background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
+    .check-icon.testing { background: rgba(59,130,246,.15); color: var(--accent2); border: 1px solid rgba(59,130,246,.3); animation: pulse-dot 1s infinite; }
 
-    /* Playback */
-    #playbackSection { display: none; margin-top: 1.25rem; }
-    #playbackSection.visible { display: block; }
-    .playback-bar { display: flex; align-items: center; gap: .75rem; padding: .9rem 1.25rem; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r); }
-    #audioPlayer { flex: 1; accent-color: var(--green); }
+    /* Toast */
     .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface2); border: 1px solid var(--border2); padding: .65rem 1.4rem; border-radius: 100px; font-size: .875rem; color: var(--text); z-index: 9999; opacity: 0; transition: all .3s; pointer-events: none; }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-    @media(max-width:1024px) { .mic-main { grid-template-columns: 1fr; } }
-    @media(max-width:480px) { .mic-controls { flex-direction: column; } }
+
+    @media(max-width:1024px) { .tool-main { grid-template-columns: 1fr; } }
+    @media(max-width:480px) { .mic-controls { grid-template-columns: repeat(3,1fr); } .level-meter-label { width: 48px; } }
   </style>
 </head>
 <body>
@@ -114,126 +132,391 @@
   <header id="site-header" role="banner"></header>
 
   <div class="tool-page" id="main-content">
+    <!-- Tool Hero -->
     <div class="tool-hero">
       <div class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="../tools">Tools</a></li><li aria-current="page">Mic Test</li></ol></nav>
+        <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="../tools">Tools</a></li><li aria-current="page">Microphone Test</li></ol></nav>
         <div class="tool-hero-inner">
           <div class="tool-hero-left">
-            <h1>🎙️ Microphone Test</h1>
-            <p>Real-time waveform · Frequency spectrum · dB meter · Record & playback</p>
+            <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
+              <span style="font-size:1.6rem" aria-hidden="true">🎙️</span>
+              <h1>Microphone Test</h1>
+            </div>
+            <p>Test your microphone live in the browser. Check input level, frequency response, background noise, and record a quick playback — no app needed.</p>
           </div>
-          <div class="status-badge" aria-live="polite"><span class="sdot" id="sdot"></span><span id="stext">Ready to test</span></div>
+          <div id="statusBadge" class="tool-status-badge" aria-live="polite">
+            <span class="status-dot" id="statusDot"></span>
+            <span id="statusText">Ready to start</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="mic-main">
-
-      <!-- Start Screen -->
-      <div id="startScreen">
-        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" style="color:var(--green)" aria-hidden="true"><rect x="26" y="8" width="20" height="36" rx="10" stroke="currentColor" stroke-width="2.5"/><path d="M14 38c0 12.15 9.85 22 22 22s22-9.85 22-22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="36" y1="60" x2="36" y2="68" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="26" y1="68" x2="46" y2="68" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
-        <h2>Microphone Test</h2>
-        <p>Click below to grant microphone access and start the live audio analysis.</p>
-        <button class="mic-btn mic-btn-primary" id="startMicBtn" aria-label="Start microphone test">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
-          Start Mic Test
-        </button>
-      </div>
-
-      <!-- App (hidden until started) -->
-      <div id="micApp">
-
-        <!-- Left column -->
-        <div>
-          <!-- dB Meter -->
-          <div class="canvas-panel" style="margin-bottom:1.25rem">
-            <div class="canvas-panel-header"><span class="canvas-panel-title">Volume Level</span><span id="dbPeak" style="font-family:var(--font-mono);font-size:.75rem;color:var(--text3)">Peak: —</span></div>
-            <div class="db-meter-wrap">
-              <div class="db-value" id="dbValue" aria-live="polite">—<span style="font-size:1rem;font-weight:400;color:var(--text3)"> dB</span></div>
-              <div class="db-label">Sound Pressure Level</div>
-              <div style="height:.75rem"></div>
-              <div class="db-track" role="meter" aria-valuemin="-90" aria-valuemax="0" aria-valuenow="-90" aria-label="Microphone volume level"><div class="db-fill" id="dbFill"></div></div>
-              <div class="db-labels"><span>-90 dB (Silence)</span><span>-30 dB (Normal)</span><span>0 dB (Max)</span></div>
-            </div>
+    <!-- Main App -->
+    <div class="tool-main">
+      <!-- Left: Mic visualizer -->
+      <div>
+        <div class="mic-viewport" id="micViewport">
+          <!-- Start overlay -->
+          <div id="startOverlay">
+            <svg width="52" height="52" viewBox="0 0 52 52" fill="none" style="color:var(--accent)" aria-hidden="true"><rect x="19" y="6" width="14" height="24" rx="7" stroke="currentColor" stroke-width="2.2"/><path d="M12 24a14 14 0 0028 0" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M26 38v8M19 46h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+            <h3>Microphone Test</h3>
+            <p>Click below to allow microphone access and start testing</p>
+            <button class="start-btn" id="startMicBtn" aria-label="Start microphone test">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="9" r="3" fill="currentColor"/></svg>
+              Start Microphone Test
+            </button>
+          </div>
+          <!-- Permission denied overlay -->
+          <div id="permDenied">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="color:var(--red)" aria-hidden="true"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2.5"/><path d="M16 16l16 16M32 16L16 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <h3>Microphone Access Denied</h3>
+            <p>Please allow microphone permission in your browser settings and reload the page.</p>
           </div>
 
-          <!-- Waveform -->
-          <div class="canvas-panel" style="margin-bottom:1.25rem">
-            <div class="canvas-panel-header"><span class="canvas-panel-title">Waveform</span><span id="waveStats" style="font-family:var(--font-mono);font-size:.72rem;color:var(--text3)">—</span></div>
-            <canvas id="waveCanvas" height="120" aria-label="Audio waveform visualisation"></canvas>
+          <!-- Live waveform -->
+          <div class="mic-canvas-wrap">
+            <canvas id="waveCanvas" aria-label="Live microphone waveform"></canvas>
+          </div>
+
+          <!-- Level meter -->
+          <div class="level-meter-row">
+            <div class="level-meter-track" role="meter" aria-label="Microphone input level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="levelMeterTrack">
+              <div class="level-meter-fill" id="levelMeterFill"></div>
+              <div class="level-meter-peak" id="levelMeterPeak" style="left:0%"></div>
+            </div>
+            <div class="level-meter-label" id="levelMeterLabel">-∞ dB</div>
+            <span class="clip-badge" id="clipBadge">CLIPPING</span>
           </div>
 
           <!-- Spectrum -->
-          <div class="canvas-panel" style="margin-bottom:1.25rem">
-            <div class="canvas-panel-header"><span class="canvas-panel-title">Frequency Spectrum</span><span id="domFreq" style="font-family:var(--font-mono);font-size:.72rem;color:var(--accent2)">Dominant: —</span></div>
-            <canvas id="specCanvas" height="140" aria-label="Audio frequency spectrum"></canvas>
-          </div>
+          <div class="spectrum-wrap" id="spectrumWrap" aria-label="Live frequency spectrum" role="img"></div>
 
-          <!-- Controls -->
-          <div class="mic-controls" role="toolbar" aria-label="Microphone controls">
-            <button class="mic-btn mic-btn-rec" id="recBtn" aria-label="Record audio clip">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="currentColor"/></svg>
-              Record Clip
-            </button>
-            <button class="mic-btn mic-btn-secondary" id="stopMicBtn" aria-label="Stop microphone">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="2" y="2" width="10" height="10" rx="2" fill="currentColor"/></svg>
-              Stop Mic
-            </button>
-            <button class="mic-btn mic-btn-secondary" id="restartBtn" aria-label="Restart test">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7a5 5 0 109.33-2.5H9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 1.5v3H12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Restart
-            </button>
-          </div>
-
-          <!-- Playback -->
-          <div id="playbackSection" role="region" aria-label="Recorded audio playback">
-            <div class="canvas-panel-title" style="margin:.9rem 0 .5rem">Recorded Clip</div>
-            <div class="playback-bar">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="color:var(--green);flex-shrink:0" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M8 7l6 3-6 3V7z" fill="currentColor"/></svg>
-              <audio id="audioPlayer" controls style="flex:1;min-width:0" aria-label="Recorded microphone audio playback"></audio>
-              <button class="mic-btn mic-btn-secondary" style="padding:.4rem .75rem;font-size:.75rem" id="downloadBtn" aria-label="Download recorded clip">⬇ Save</button>
-            </div>
+          <!-- Device select -->
+          <div class="device-select-row">
+            <label for="deviceSelect">Input Device</label>
+            <select class="device-select" id="deviceSelect" aria-label="Select microphone input device">
+              <option>Default microphone</option>
+            </select>
           </div>
         </div>
 
-        <!-- Right sidebar -->
-        <aside class="mic-sidebar">
-          <div class="sidebar-card">
-            <div class="sidebar-card-title">Mic Info</div>
-            <div class="info-row"><span class="info-row-key">Device</span><span class="info-row-val" id="iDevice">—</span></div>
-            <div class="info-row"><span class="info-row-key">Sample Rate</span><span class="info-row-val" id="iSampleRate">—</span></div>
-            <div class="info-row"><span class="info-row-key">Channels</span><span class="info-row-val" id="iChannels">—</span></div>
-            <div class="info-row"><span class="info-row-key">Noise Level</span><span class="info-row-val" id="iNoise">—</span></div>
-            <div class="info-row"><span class="info-row-key">Recording</span><span class="info-row-val" id="iRecLen">—</span></div>
+        <!-- Controls -->
+        <div class="mic-controls" role="toolbar" aria-label="Microphone test controls">
+          <button class="cam-btn" id="recordBtn" title="Record a clip" aria-label="Start or stop recording a test clip">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3" fill="currentColor"/></svg>
+            Record
+          </button>
+          <button class="cam-btn" id="noiseBtn" title="Measure background noise" aria-label="Measure background noise floor">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h2l2-5 3 10 2-7 2 4h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Noise Test
+          </button>
+          <button class="cam-btn" id="resetMicBtn" title="Reset all tests" aria-label="Reset all microphone tests">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10a7 7 0 0113-4.2M17 10a7 7 0 01-13 4.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M16 3v4h-4M4 17v-4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Reset
+          </button>
+        </div>
+
+        <!-- Recordings -->
+        <div style="margin-top:1.25rem">
+          <div style="font-family:var(--font-display);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:.75rem">Playback Recordings</div>
+          <div class="recording-list" id="recordingList">
+            <div class="recording-empty" id="recordingEmpty">No recordings yet — tap Record to capture a test clip</div>
           </div>
-          <div class="sidebar-card">
-            <div class="sidebar-card-title">Diagnostic</div>
-            <div class="check-list">
-              <div class="check-item"><div class="chk pend" id="c-access">?</div><span>Mic access granted</span></div>
-              <div class="check-item"><div class="chk pend" id="c-signal">?</div><span>Audio signal detected</span></div>
-              <div class="check-item"><div class="chk pend" id="c-level">?</div><span>Volume level adequate</span></div>
-              <div class="check-item"><div class="chk pend" id="c-noise">?</div><span>Low background noise</span></div>
-              <div class="check-item"><div class="chk pend" id="c-rec">?</div><span>Recording successful</span></div>
-            </div>
-          </div>
-          <div class="sidebar-card">
-            <div class="sidebar-card-title">Other Tests</div>
-            <div style="display:flex;flex-direction:column;gap:.5rem">
-              <a href="camera-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:border-color var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">📷 Camera Test</a>
-              <a href="touchscreen-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:border-color var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">👆 Touchscreen Test</a>
-              <a href="speaker-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:border-color var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">🔊 Speaker Test</a>
-              <a href="../#detect" style="display:flex;align-items:center;gap:.6rem;padding:.6rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:border-color var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">📱 Detect My Phone</a>
-            </div>
-          </div>
-        </aside>
+        </div>
       </div>
+
+      <!-- Right: Sidebar -->
+      <aside class="camera-sidebar">
+        <!-- Mic Info -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Mic Info</div>
+          <div class="info-row"><span class="info-row-key">Input Level</span><span class="info-row-val" id="infoLevel">—</span></div>
+          <div class="info-row"><span class="info-row-key">Peak Level</span><span class="info-row-val" id="infoPeak">—</span></div>
+          <div class="info-row"><span class="info-row-key">Noise Floor</span><span class="info-row-val" id="infoNoise">—</span></div>
+          <div class="info-row"><span class="info-row-key">Sample Rate</span><span class="info-row-val" id="infoSampleRate">—</span></div>
+          <div class="info-row"><span class="info-row-key">Channels</span><span class="info-row-val" id="infoChannels">—</span></div>
+          <div class="info-row"><span class="info-row-key">Devices Found</span><span class="info-row-val" id="infoDeviceCount">—</span></div>
+        </div>
+
+        <!-- Test Results -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Diagnostic Results</div>
+          <div class="check-list" id="checkList">
+            <div class="check-item"><div class="check-icon pending" id="chk-access">?</div><span>Microphone access granted</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-signal">?</div><span>Audio signal detected</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-level">?</div><span>Healthy input level</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-clip">?</div><span>No clipping/distortion</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-record">?</div><span>Record &amp; playback works</span></div>
+          </div>
+        </div>
+
+        <!-- Other tests -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Other Tests</div>
+          <div style="display:flex;flex-direction:column;gap:.5rem">
+            <a href="camera-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:1rem" aria-hidden="true">📷</span> Camera Test
+            </a>
+            <a href="touchscreen-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:1rem" aria-hidden="true">👆</span> Touchscreen Test
+            </a>
+            <a href="speaker-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:1rem" aria-hidden="true">🔊</span> Speaker Test
+            </a>
+            <a href="../index#detect" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:1rem" aria-hidden="true">📱</span> Detect My Phone
+            </a>
+          </div>
+        </div>
+      </aside>
     </div>
+
+    <!-- ══════════════════════════════════════════════════
+         § Why use this mic test
+    ══════════════════════════════════════════════════════ -->
+    <section class="features-section" id="why-mic-test" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">Why It Matters</span>
+          <h2 class="section-title" id="why-heading">A Microphone Test That Checks Everything</h2>
+          <p class="section-subtitle">One free tool to check input level, frequency response, background noise, and recording quality — built for phones, laptops, and headsets.</p>
+        </div>
+        <div class="features-grid" data-stagger>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📊</div>
+            <h3 class="feature-title">Live Level Meter</h3>
+            <p class="feature-desc">Watch your input level move in real time with a clipping warning, so you know instantly if your microphone is too quiet or overdriven.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🌊</div>
+            <h3 class="feature-title">Live Waveform Display</h3>
+            <p class="feature-desc">A real-time oscilloscope view of your voice shows whether the signal is clean, choppy, or dropping out as you speak.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🎚️</div>
+            <h3 class="feature-title">Frequency Spectrum Analyzer</h3>
+            <p class="feature-desc">See your microphone's frequency response across bass, mid, and treble bands to spot gaps or rolled-off ranges.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🤫</div>
+            <h3 class="feature-title">Background Noise Test</h3>
+            <p class="feature-desc">Measure your noise floor while staying silent to catch hiss, hum, or interference before a call or recording session.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">⏺️</div>
+            <h3 class="feature-title">Record &amp; Playback</h3>
+            <p class="feature-desc">Record a short test clip and play it back immediately to listen for distortion, muffling, or echo.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🔒</div>
+            <h3 class="feature-title">100% Private, Runs Locally</h3>
+            <p class="feature-desc">Your audio is processed entirely in your browser using the Web Audio API. Nothing is uploaded or stored on a server.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         § How the mic test works
+    ══════════════════════════════════════════════════════ -->
+    <section class="how-section" id="how-mic-test-works" aria-labelledby="how-mic-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">The Process</span>
+          <h2 class="section-title" id="how-mic-heading">How to Test Your Microphone Online</h2>
+          <p class="section-subtitle">Four steps and you'll know exactly how your microphone is performing.</p>
+        </div>
+        <div class="steps-grid" data-stagger>
+          <div class="step-item">
+            <div class="step-num" aria-hidden="true">1</div>
+            <h3 class="step-title">Allow Access</h3>
+            <p class="step-desc">Tap "Start Microphone Test" and allow microphone permission when your browser prompts you. No app or download required.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num" aria-hidden="true">2</div>
+            <h3 class="step-title">Speak Normally</h3>
+            <p class="step-desc">Talk at your normal volume and watch the live waveform, level meter, and spectrum react to your voice instantly.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num" aria-hidden="true">3</div>
+            <h3 class="step-title">Run the Checks</h3>
+            <p class="step-desc">Run the noise floor test in silence, then record a short clip and play it back to judge overall sound quality.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num" aria-hidden="true">4</div>
+            <h3 class="step-title">Review Results</h3>
+            <p class="step-desc">Check the diagnostic list to see at a glance which parts of your microphone passed — signal, level, clipping, and playback.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         § Who uses this tool
+    ══════════════════════════════════════════════════════ -->
+    <section class="compare-section" id="who-uses-mic-test" aria-labelledby="who-mic-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">Use Cases</span>
+          <h2 class="section-title" id="who-mic-heading">Who Needs a Microphone Test?</h2>
+          <p class="section-subtitle">From prepping for a call to buying a new headset, this microphone test covers every scenario.</p>
+        </div>
+        <div class="compare-grid" data-stagger>
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">🎥</div>
+            <h3 class="compare-card-title">Remote Workers</h3>
+            <p class="compare-card-sub">Check before meetings</p>
+            <div class="compare-item">Confirm the right input device is selected</div>
+            <div class="compare-item">Check level and clipping before a call</div>
+            <div class="compare-item">Record a test clip to hear how you sound</div>
+          </article>
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">🎧</div>
+            <h3 class="compare-card-title">Headset Buyers</h3>
+            <p class="compare-card-sub">Verify before you commit</p>
+            <div class="compare-item">Test a new headset mic right out of the box</div>
+            <div class="compare-item">Compare frequency response across devices</div>
+            <div class="compare-item">Check for background hiss or interference</div>
+          </article>
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">🛠️</div>
+            <h3 class="compare-card-title">Troubleshooters</h3>
+            <p class="compare-card-sub">Diagnose mic issues</p>
+            <div class="compare-item">Figure out if silence is a hardware or app issue</div>
+            <div class="compare-item">Test multiple input devices from one dropdown</div>
+            <div class="compare-item">Use the noise floor test after a driver update</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         § Troubleshooting
+    ══════════════════════════════════════════════════════ -->
+    <section class="features-section" id="mic-troubleshooting" aria-labelledby="trouble-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">Troubleshooting</span>
+          <h2 class="section-title" id="trouble-heading">Common Microphone Problems This Test Reveals</h2>
+          <p class="section-subtitle">If a check fails above, here's what it usually means.</p>
+        </div>
+        <div class="features-grid" data-stagger>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🚫</div>
+            <h3 class="feature-title">Microphone Access Denied</h3>
+            <p class="feature-desc">Usually a browser permission was blocked. Check your site settings and allow microphone access, then reload this mic test page.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🔇</div>
+            <h3 class="feature-title">No Signal Detected</h3>
+            <p class="feature-desc">The meter staying flat usually means the wrong input device is selected, the mic is muted at the OS level, or a cable is loose.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📉</div>
+            <h3 class="feature-title">Level Too Quiet</h3>
+            <p class="feature-desc">A consistently low meter reading often means input gain is turned down in your system sound settings, or you're too far from the mic.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📈</div>
+            <h3 class="feature-title">Constant Clipping</h3>
+            <p class="feature-desc">If the clipping badge keeps triggering, your input gain is too high — lower it in your OS audio settings to avoid distorted recordings.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">📡</div>
+            <h3 class="feature-title">High Background Noise</h3>
+            <p class="feature-desc">A high noise floor while silent can point to electrical interference, a faulty cable, or a fan or AC unit too close to the microphone.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🔁</div>
+            <h3 class="feature-title">Distorted or Muffled Playback</h3>
+            <p class="feature-desc">If your recorded clip sounds muffled or crackly on playback, check for a damaged mic capsule, a covered port, or a corrupted driver.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         § FAQ
+    ══════════════════════════════════════════════════════ -->
+    <section class="faq-section" id="mic-test-faq" aria-labelledby="faq-mic-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">FAQ</span>
+          <h2 class="section-title" id="faq-mic-heading">Microphone Test — Common Questions</h2>
+          <p class="section-subtitle">Everything you need to know before running a microphone test.</p>
+        </div>
+        <div class="faq-list" role="list" data-animate>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="mic-faq-a1" onclick="toggleFaq(this)">
+              How do I test if my microphone is working?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="mic-faq-a1" role="region">
+              Open this page, allow microphone access, and speak normally. The volume meter should move with your voice and the live waveform should react instantly. If nothing moves, the microphone is not being picked up by your browser.
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="mic-faq-a2" onclick="toggleFaq(this)">
+              Why is my microphone volume too low or too high?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="mic-faq-a2" role="region">
+              The level meter shows your input in real time, including a clipping warning if your voice is overdriving the input. Low levels often mean the wrong device is selected or input gain is turned down in your OS sound settings; constant clipping means the gain is too high.
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="mic-faq-a3" onclick="toggleFaq(this)">
+              What does the frequency spectrum show in a mic test?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="mic-faq-a3" role="region">
+              The spectrum analyzer breaks your voice into frequency bands from low bass to high treble. A healthy microphone shows energy moving naturally across bands as you speak; a flat or missing range can indicate a faulty capsule or a software filter cutting frequencies.
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="mic-faq-a4" onclick="toggleFaq(this)">
+              How do I check background noise on my microphone?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="mic-faq-a4" role="region">
+              Stay silent for a few seconds while the noise floor meter is running. A low, stable reading means a clean signal; a high or fluctuating reading while silent points to electrical interference, a faulty cable, or aggressive noise from a fan or AC unit near the mic.
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="mic-faq-a5" onclick="toggleFaq(this)">
+              Can I record and play back my microphone to check the sound quality?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="mic-faq-a5" role="region">
+              Yes. The Record &amp; Playback section lets you record a short clip directly in your browser and play it back immediately, so you can listen for distortion, hiss, echo, or muffled audio before a call or recording session.
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="mic-faq-a6" onclick="toggleFaq(this)">
+              Does this microphone test work with Bluetooth and USB headsets?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="mic-faq-a6" role="region">
+              Yes. Any microphone recognized by your operating system — built-in, USB, Bluetooth, or 3.5mm headset mics — can be selected from the device dropdown and tested the same way, as long as your browser has permission to access it.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <footer id="site-footer" role="contentinfo"></footer>
-  <script src="../js/header.js" defer></script>
-  <script src="../js/footer.js" defer></script>
+  <script src="/js/header.js" defer></script>
+  <script src="/js/footer.js" defer></script>
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     if (typeof Header !== 'undefined') Header.render();
@@ -241,215 +524,294 @@
   });
 
   // ── State ───────────────────────────────────────────────────────
-  let audioCtx = null, analyser = null, micStream = null, source = null;
-  let animFrame = null, isRecording = false, mediaRecorder = null, chunks = [];
-  let recStart = 0, recInterval = null, peakDb = -90, noiseFloor = -90;
-  let signalDetected = false, recBlob = null;
+  let stream = null, audioCtx = null, analyser = null, sourceNode = null;
+  let mediaRecorder = null, recordedChunks = [], isRecording = false;
+  let rafId = null, peakLevel = 0, peakHoldTimer = null;
+  let clipDetected = false, signalDetected = false;
+  let noiseMode = false, noiseSamples = [], noiseTimer = null;
+  let recordingCount = 0;
 
-  const BUFFER = 2048;
+  // ── DOM refs ────────────────────────────────────────────────────
+  const startOverlay = document.getElementById('startOverlay');
+  const permDenied = document.getElementById('permDenied');
+  const statusDot = document.getElementById('statusDot');
+  const statusText = document.getElementById('statusText');
   const waveCanvas = document.getElementById('waveCanvas');
-  const specCanvas = document.getElementById('specCanvas');
-  const wCtx = waveCanvas.getContext('2d');
-  const sCtx = specCanvas.getContext('2d');
+  const waveCtx = waveCanvas.getContext('2d');
+  const levelFill = document.getElementById('levelMeterFill');
+  const levelPeak = document.getElementById('levelMeterPeak');
+  const levelLabel = document.getElementById('levelMeterLabel');
+  const clipBadge = document.getElementById('clipBadge');
+  const spectrumWrap = document.getElementById('spectrumWrap');
+  const deviceSelect = document.getElementById('deviceSelect');
 
-  function resizeCanvases() {
-    [waveCanvas, specCanvas].forEach(c => { const rect = c.parentElement.getBoundingClientRect(); c.width = rect.width; });
+  // ── Build spectrum bars ──────────────────────────────────────────
+  const BAR_COUNT = 48;
+  const bars = [];
+  for (let i = 0; i < BAR_COUNT; i++) {
+    const bar = document.createElement('div');
+    bar.className = 'spectrum-bar';
+    spectrumWrap.appendChild(bar);
+    bars.push(bar);
   }
-  window.addEventListener('resize', resizeCanvases);
 
-  // ── Start ────────────────────────────────────────────────────────
+  function resizeCanvas() {
+    waveCanvas.width = waveCanvas.clientWidth * (window.devicePixelRatio || 1);
+    waveCanvas.height = waveCanvas.clientHeight * (window.devicePixelRatio || 1);
+  }
+  window.addEventListener('resize', resizeCanvas);
+
+  // ── Start ───────────────────────────────────────────────────────
   document.getElementById('startMicBtn').addEventListener('click', startMic);
 
   async function startMic() {
     setStatus('testing', 'Requesting access…');
     try {
-      micStream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, sampleRate: 44100 }, video: false });
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      startOverlay.style.display = 'none';
+      setStatus('ready', 'Microphone active');
+      setCheck('chk-access', 'pass');
+
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      sourceNode = audioCtx.createMediaStreamSource(stream);
       analyser = audioCtx.createAnalyser();
-      analyser.fftSize = BUFFER * 2;
+      analyser.fftSize = 2048;
       analyser.smoothingTimeConstant = 0.8;
-      source = audioCtx.createMediaStreamSource(micStream);
-      source.connect(analyser);
+      sourceNode.connect(analyser);
 
-      // Detect devices
-      const devices = await navigator.mediaDevices.enumerateDevices();
-      const mic = devices.find(d => d.kind === 'audioinput' && d.deviceId !== 'default');
-      document.getElementById('iDevice').textContent = mic?.label?.substring(0,18) || 'Default Mic';
-      document.getElementById('iSampleRate').textContent = audioCtx.sampleRate + ' Hz';
-      document.getElementById('iChannels').textContent = micStream.getAudioTracks()[0]?.getSettings()?.channelCount || '1';
+      document.getElementById('infoSampleRate').textContent = audioCtx.sampleRate + ' Hz';
+      const track = stream.getAudioTracks()[0];
+      const settings = track.getSettings ? track.getSettings() : {};
+      document.getElementById('infoChannels').textContent = settings.channelCount || '1';
 
-      document.getElementById('startScreen').style.display = 'none';
-      document.getElementById('micApp').classList.add('visible');
-      setStatus('active', 'Mic active');
-      setChk('c-access', 'pass');
-      resizeCanvases();
-      draw();
-      showToast('🎙️ Microphone active');
+      resizeCanvas();
+      await populateDevices();
+      requestAnimationFrame(renderLoop);
     } catch (err) {
+      startOverlay.style.display = 'none';
+      permDenied.style.display = 'flex';
       setStatus('error', 'Access denied');
-      document.getElementById('sdot').className = 'sdot error';
-      setChk('c-access', 'fail');
-      showToast('❌ Microphone permission denied');
+      setCheck('chk-access', 'fail');
     }
   }
 
-  // ── Draw loop ────────────────────────────────────────────────────
-  function draw() {
-    animFrame = requestAnimationFrame(draw);
-    const timeData = new Uint8Array(analyser.frequencyBinCount);
-    const freqData = new Uint8Array(analyser.frequencyBinCount);
+  async function populateDevices() {
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const mics = devices.filter(d => d.kind === 'audioinput');
+      document.getElementById('infoDeviceCount').textContent = mics.length || '—';
+      if (mics.length) {
+        deviceSelect.innerHTML = '';
+        mics.forEach((d, i) => {
+          const opt = document.createElement('option');
+          opt.value = d.deviceId;
+          opt.textContent = d.label || `Microphone ${i + 1}`;
+          deviceSelect.appendChild(opt);
+        });
+      }
+    } catch (e) { /* enumerateDevices may fail silently on some browsers */ }
+  }
+
+  deviceSelect.addEventListener('change', async () => {
+    if (!stream) return;
+    stream.getTracks().forEach(t => t.stop());
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ audio: { deviceId: { exact: deviceSelect.value } } });
+      sourceNode.disconnect();
+      sourceNode = audioCtx.createMediaStreamSource(stream);
+      sourceNode.connect(analyser);
+      showToast('🎙️ Switched input device');
+    } catch (e) { showToast('Could not switch device'); }
+  });
+
+  // ── Render loop: waveform + level + spectrum ─────────────────────
+  const timeData = new Uint8Array(2048);
+  const freqData = new Uint8Array(1024);
+
+  function renderLoop() {
+    if (!analyser) return;
     analyser.getByteTimeDomainData(timeData);
     analyser.getByteFrequencyData(freqData);
-
-    drawWave(timeData);
-    drawSpectrum(freqData);
-    updateDb(timeData, freqData);
+    drawWaveform();
+    updateLevel();
+    drawSpectrum();
+    rafId = requestAnimationFrame(renderLoop);
   }
 
-  function drawWave(data) {
+  function drawWaveform() {
     const w = waveCanvas.width, h = waveCanvas.height;
-    wCtx.fillStyle = '#0a0f1a'; wCtx.fillRect(0, 0, w, h);
-    // Grid
-    wCtx.strokeStyle = 'rgba(30,45,74,.5)'; wCtx.lineWidth = 1;
-    wCtx.beginPath(); wCtx.moveTo(0, h/2); wCtx.lineTo(w, h/2); wCtx.stroke();
-    // Wave
-    const grad = wCtx.createLinearGradient(0, 0, w, 0);
-    grad.addColorStop(0, 'rgba(34,197,94,.2)'); grad.addColorStop(.5, '#22c55e'); grad.addColorStop(1, 'rgba(34,197,94,.2)');
-    wCtx.strokeStyle = grad; wCtx.lineWidth = 2; wCtx.lineJoin = 'round';
-    wCtx.beginPath();
-    const sliceW = w / data.length;
+    waveCtx.clearRect(0, 0, w, h);
+    waveCtx.lineWidth = 2 * (window.devicePixelRatio || 1);
+    waveCtx.strokeStyle = '#60a5fa';
+    waveCtx.beginPath();
+    const sliceWidth = w / timeData.length;
     let x = 0;
-    for (let i = 0; i < data.length; i++) {
-      const v = data[i] / 128; const y = v * h / 2;
-      i === 0 ? wCtx.moveTo(x, y) : wCtx.lineTo(x, y);
-      x += sliceW;
+    for (let i = 0; i < timeData.length; i++) {
+      const v = timeData[i] / 128.0;
+      const y = (v * h) / 2;
+      if (i === 0) waveCtx.moveTo(x, y); else waveCtx.lineTo(x, y);
+      x += sliceWidth;
     }
-    wCtx.stroke();
-
-    // Check for signal
-    let max = 0; for (let d of data) max = Math.max(max, Math.abs(d - 128));
-    if (max > 10 && !signalDetected) { signalDetected = true; setChk('c-signal', 'pass'); }
-    document.getElementById('waveStats').textContent = `Amplitude: ${max}`;
+    waveCtx.stroke();
   }
 
-  function drawSpectrum(data) {
-    const w = specCanvas.width, h = specCanvas.height;
-    sCtx.fillStyle = '#0a0f1a'; sCtx.fillRect(0, 0, w, h);
-    const barW = Math.max(1, (w / data.length) * 2.5);
-    let domFreqIdx = 0, domVal = 0;
-    for (let i = 0; i < data.length / 2.5; i++) {
-      const val = data[i];
-      if (val > domVal) { domVal = val; domFreqIdx = i; }
-      const barH = (val / 255) * h;
-      const hue = (i / (data.length / 2.5)) * 120 + 160; // cyan to blue-green range
-      sCtx.fillStyle = `hsla(${hue}, 80%, 60%, ${.4 + val/255*.6})`;
-      sCtx.fillRect(i * barW, h - barH, barW - 1, barH);
+  function updateLevel() {
+    let sumSquares = 0;
+    for (let i = 0; i < timeData.length; i++) {
+      const norm = (timeData[i] - 128) / 128;
+      sumSquares += norm * norm;
     }
-    const domHz = Math.round(domFreqIdx * audioCtx.sampleRate / analyser.fftSize);
-    document.getElementById('domFreq').textContent = `Dominant: ${domHz} Hz`;
+    const rms = Math.sqrt(sumSquares / timeData.length);
+    const pct = Math.min(100, Math.round(rms * 280));
+    const db = rms > 0.0001 ? Math.round(20 * Math.log10(rms)) : -60;
+
+    levelFill.style.width = pct + '%';
+    levelLabel.textContent = (db <= -60 ? '-∞' : db) + ' dB';
+    document.getElementById('infoLevel').textContent = (db <= -60 ? '-∞' : db) + ' dB';
+    document.getElementById('levelMeterTrack').setAttribute('aria-valuenow', pct);
+
+    if (pct > peakLevel) {
+      peakLevel = pct;
+      levelPeak.style.left = peakLevel + '%';
+      document.getElementById('infoPeak').textContent = db + ' dB';
+      clearTimeout(peakHoldTimer);
+      peakHoldTimer = setTimeout(() => { peakLevel = 0; }, 1800);
+    }
+
+    if (pct > 3 && !signalDetected) {
+      signalDetected = true;
+      setCheck('chk-signal', 'pass');
+    }
+    if (pct > 8 && pct < 95 && !document.getElementById('chk-level').classList.contains('pass')) {
+      setCheck('chk-level', 'pass');
+    }
+
+    if (pct >= 97) {
+      clipBadge.classList.add('show');
+      clipDetected = true;
+      setCheck('chk-clip', 'fail');
+    } else {
+      clipBadge.classList.remove('show');
+      if (!clipDetected) setCheck('chk-clip', 'pass');
+    }
+
+    if (noiseMode) noiseSamples.push(rms);
   }
 
-  function updateDb(timeData, freqData) {
-    let rms = 0;
-    for (let d of timeData) rms += (d / 128 - 1) ** 2;
-    rms = Math.sqrt(rms / timeData.length);
-    const db = rms > 0 ? Math.max(-90, 20 * Math.log10(rms)) : -90;
-    if (db > peakDb) peakDb = db;
-
-    // Noise floor calibration
-    if (db > -90 && (noiseFloor === -90 || db < noiseFloor + 2)) noiseFloor = Math.min(noiseFloor, db);
-
-    const el = document.getElementById('dbValue'); el.textContent = db.toFixed(1);
-    el.className = 'db-value' + (db > -10 ? ' peak' : db > -30 ? ' loud' : '');
-    const pct = Math.max(0, Math.min(100, ((db + 90) / 90) * 100));
-    const fill = document.getElementById('dbFill');
-    fill.style.width = pct + '%';
-    const meter = document.querySelector('[role="meter"]');
-    if (meter) meter.setAttribute('aria-valuenow', Math.round(db));
-    document.getElementById('dbPeak').textContent = `Peak: ${peakDb.toFixed(1)} dB`;
-
-    if (db > -50) setChk('c-level', 'pass');
-    const noise = noiseFloor < -60 ? 'Low' : noiseFloor < -40 ? 'Moderate' : 'High';
-    document.getElementById('iNoise').textContent = `${noise} (${noiseFloor.toFixed(0)} dB)`;
-    if (noiseFloor < -55) setChk('c-noise', 'pass'); else if (noiseFloor > -40) setChk('c-noise', 'fail');
-
-    if (isRecording) {
-      const secs = ((Date.now() - recStart) / 1000).toFixed(1);
-      document.getElementById('iRecLen').textContent = secs + 's';
+  function drawSpectrum() {
+    const step = Math.floor(freqData.length / BAR_COUNT);
+    for (let i = 0; i < BAR_COUNT; i++) {
+      let sum = 0;
+      for (let j = 0; j < step; j++) sum += freqData[i * step + j];
+      const avg = sum / step;
+      bars[i].style.height = Math.max(2, (avg / 255) * 100) + '%';
     }
   }
 
-  // ── Record ───────────────────────────────────────────────────────
-  document.getElementById('recBtn').addEventListener('click', () => {
-    if (!micStream) return;
+  // ── Noise floor test ──────────────────────────────────────────────
+  document.getElementById('noiseBtn').addEventListener('click', () => {
+    if (!stream) { showToast('Start the microphone first'); return; }
+    if (noiseMode) return;
+    noiseMode = true;
+    noiseSamples = [];
+    document.getElementById('noiseBtn').classList.add('active');
+    showToast('🤫 Stay silent for 3 seconds…');
+    clearTimeout(noiseTimer);
+    noiseTimer = setTimeout(() => {
+      noiseMode = false;
+      document.getElementById('noiseBtn').classList.remove('active');
+      if (noiseSamples.length) {
+        const avgRms = noiseSamples.reduce((a, b) => a + b, 0) / noiseSamples.length;
+        const db = avgRms > 0.0001 ? Math.round(20 * Math.log10(avgRms)) : -60;
+        document.getElementById('infoNoise').textContent = (db <= -60 ? '-∞' : db) + ' dB';
+        showToast(`Noise floor: ${db <= -60 ? '-∞' : db} dB`);
+      }
+    }, 3000);
+  });
+
+  // ── Record & playback ────────────────────────────────────────────
+  document.getElementById('recordBtn').addEventListener('click', toggleRecord);
+  function toggleRecord() {
+    if (!stream) { showToast('Start the microphone first'); return; }
     if (!isRecording) {
-      chunks = [];
+      recordedChunks = [];
       const mime = MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? 'audio/webm;codecs=opus' : 'audio/webm';
-      mediaRecorder = new MediaRecorder(micStream, { mimeType: mime });
-      mediaRecorder.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+      mediaRecorder = new MediaRecorder(stream, { mimeType: mime });
+      mediaRecorder.ondataavailable = e => { if (e.data.size > 0) recordedChunks.push(e.data); };
       mediaRecorder.onstop = () => {
-        recBlob = new Blob(chunks, { type: 'audio/webm' });
-        const url = URL.createObjectURL(recBlob);
-        document.getElementById('audioPlayer').src = url;
-        document.getElementById('playbackSection').classList.add('visible');
-        setChk('c-rec', 'pass');
-        showToast('✅ Recording saved — press play!');
+        const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+        const url = URL.createObjectURL(blob);
+        addRecording(url);
+        setCheck('chk-record', 'pass');
+        showToast('🎧 Recording ready to play');
       };
-      mediaRecorder.start(100);
+      mediaRecorder.start();
       isRecording = true;
-      recStart = Date.now();
-      document.getElementById('recBtn').textContent = '⏹ Stop Recording';
-      document.getElementById('recBtn').classList.add('recording');
-      document.getElementById('sdot').className = 'sdot rec';
-      document.getElementById('stext').textContent = 'Recording…';
+      document.getElementById('recordBtn').classList.add('danger', 'active');
+      document.getElementById('recordBtn').lastChild.textContent = 'Stop';
       showToast('🔴 Recording started');
     } else {
-      mediaRecorder.stop(); isRecording = false;
-      document.getElementById('recBtn').textContent = '● Record Clip';
-      document.getElementById('recBtn').classList.remove('recording');
-      setStatus('active', 'Mic active');
+      mediaRecorder.stop();
+      isRecording = false;
+      document.getElementById('recordBtn').classList.remove('danger', 'active');
+      document.getElementById('recordBtn').lastChild.textContent = 'Record';
     }
-  });
-
-  document.getElementById('downloadBtn').addEventListener('click', () => {
-    if (!recBlob) return;
-    const a = document.createElement('a'); a.href = URL.createObjectURL(recBlob); a.download = `whatphone-mic-${Date.now()}.webm`; a.click();
-  });
-
-  document.getElementById('stopMicBtn').addEventListener('click', () => {
-    if (animFrame) cancelAnimationFrame(animFrame);
-    if (micStream) micStream.getTracks().forEach(t => t.stop());
-    if (audioCtx) audioCtx.close();
-    setStatus('', 'Mic stopped');
-    document.getElementById('sdot').className = 'sdot';
-    showToast('Microphone stopped');
-  });
-
-  document.getElementById('restartBtn').addEventListener('click', () => {
-    if (animFrame) cancelAnimationFrame(animFrame);
-    if (micStream) micStream.getTracks().forEach(t => t.stop());
-    if (audioCtx) audioCtx.close();
-    signalDetected = false; peakDb = -90; noiseFloor = -90;
-    ['c-access','c-signal','c-level','c-noise','c-rec'].forEach(id => setChk(id, 'pend'));
-    document.getElementById('micApp').classList.remove('visible');
-    document.getElementById('startScreen').style.display = '';
-    setStatus('', 'Ready to test');
-  });
-
-  // ── Helpers ──────────────────────────────────────────────────────
-  function setStatus(type, text) {
-    document.getElementById('stext').textContent = text;
-    const dot = document.getElementById('sdot');
-    dot.className = 'sdot' + (type ? ' '+type : '');
   }
-  function setChk(id, state) {
-    const el = document.getElementById(id); if (!el) return;
-    el.className = 'chk ' + state;
-    el.textContent = state === 'pass' ? '✓' : state === 'fail' ? '✗' : '?';
+
+  function addRecording(url) {
+    recordingCount++;
+    const empty = document.getElementById('recordingEmpty');
+    if (empty) empty.remove();
+    const item = document.createElement('div');
+    item.className = 'recording-item';
+    const audio = document.createElement('audio');
+    audio.controls = true; audio.src = url;
+    const label = document.createElement('span');
+    label.textContent = `Clip ${recordingCount}`;
+    item.appendChild(audio); item.appendChild(label);
+    document.getElementById('recordingList').prepend(item);
+  }
+
+  // ── Reset ───────────────────────────────────────────────────────
+  document.getElementById('resetMicBtn').addEventListener('click', () => {
+    peakLevel = 0; levelPeak.style.left = '0%';
+    signalDetected = false; clipDetected = false;
+    ['chk-signal','chk-level','chk-clip','chk-record'].forEach(id => setCheck(id, 'pending'));
+    document.getElementById('infoPeak').textContent = '—';
+    document.getElementById('infoNoise').textContent = '—';
+    showToast('↺ Tests reset');
+  });
+
+  // ── Helpers ─────────────────────────────────────────────────────
+  function setStatus(type, text) {
+    statusText.textContent = text;
+    statusDot.className = 'status-dot ' + type;
+  }
+  function setCheck(id, state) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.className = 'check-icon ' + state;
+    el.textContent = state === 'pass' ? '✓' : state === 'fail' ? '✗' : state === 'testing' ? '…' : '?';
   }
   function showToast(msg) {
-    const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
-    clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 2800);
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => t.classList.remove('show'), 2600);
+  }
+
+  // ── FAQ toggle ──────────────────────────────────────────────────
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
   }
   </script>
 </body>
