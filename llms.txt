@@ -1,0 +1,49 @@
+# What Phone Do I Have? — Instant Device Detector
+
+> A free, instant, and private device detection tool that identifies your exact phone model, OS version, screen specs, RAM, battery status, network type, and 30+ hardware capabilities — all in your browser. No app download, no sign‑up, no data shared. Works on phones, tablets, and desktops.
+
+## Quick Links
+- [Detector](https://whatphone.github.io/): Visit the site and tap "Detect My Phone" — results appear in under a second.
+- [Camera Test](https://whatphone.github.io/camera-test): Check front/rear camera functionality.
+- [Mic Test](https://whatphone.github.io/mic-test): Test microphone input.
+- [Touchscreen Test](https://whatphone.github.io/touchscreen-test): Multi‑touch accuracy test.
+- [Speaker Test](https://whatphone.github.io/speaker-test): Audio output and stereo test.
+
+## What It Detects
+- **Device Identity** — Exact device brand, model name, and generation. Supports Apple, Samsung, Google Pixel, OnePlus, Xiaomi, Motorola, and 50+ manufacturers.[reference:0]
+- **Hardware Specs** — CPU core count, RAM capacity, architecture, and touch points.[reference:1]
+- **Screen Analysis** — Physical and logical resolution, pixel density ratio, color gamut (sRGB / P3 / Rec2020), HDR support, and display orientation.[reference:2]
+- **Battery Status** — Live battery percentage, charging status, estimated time to full charge, and remaining discharge time.[reference:3]
+- **Network Info** — Connection type (WiFi, 4G, 5G), effective bandwidth, round‑trip latency, and data saver mode.[reference:4]
+- **Browser Capabilities** — WebGL renderer, WebGPU, WebRTC, Service Workers, Push API, Payment API, Web Share, and 20+ other browser features.[reference:5]
+- **Sensor Detection** — Gyroscope, accelerometer, magnetometer, geolocation, camera API, NFC, Bluetooth, and USB availability.[reference:6]
+- **Export & Share** — Copy your device report, share via native share sheet, or download as a full JSON report.[reference:7]
+
+## How It Works
+Four steps. Zero data collection. Instant results.[reference:8]
+
+1. **You Visit** — Open WhatPhone in any modern browser on any device — phone, tablet, or desktop.[reference:9]
+2. **We Scan** — Our JS engine queries the Navigator API, Screen API, User Agent string, and Client Hints simultaneously.[reference:10]
+3. **We Identify** — Results are cross‑referenced against our device database and resolution fingerprint library.[reference:11]
+4. **You Know** — Your full device report is displayed in under a second. Copy, share, or download it.[reference:12]
+
+## Key Features
+- **30+ Data Points** — One report covering everything from device identity to browser capabilities.[reference:13]
+- **100% Private** — All detection happens locally in your browser using JavaScript APIs. Zero data is transmitted, stored, or shared. No account required.[reference:14]
+- **No App Download** — Pure web application that works natively in every modern browser — Chrome, Safari, Firefox, Edge, Samsung Internet.[reference:15]
+- **Free Forever** — 100% free with no paywalls, no subscriptions.
+- **Hardware Test Tools** — Launch camera, mic, touchscreen, or speaker tests directly from the site.[reference:16]
+
+## Who Uses WhatPhone?
+- **Everyday Users** — Check your exact phone model, see battery and network status, verify your OS version, share specs with support teams.[reference:17]
+- **Developers** — Debug and test across devices, check WebGL/WebGPU support, verify browser capabilities, export full JSON device reports.[reference:18]
+- **Support Teams** — Diagnose customer issues faster with exact device info, OS and browser version, and network conditions.[reference:19]
+
+## FAQ
+- **Is it really free?** Yes — 100% free with no hidden charges, no premium tiers, and no subscription fees.
+- **Do I need to create an account?** No account required. Simply visit the site and tap "Detect My Phone" — results appear in under a second.[reference:20]
+- **Is my data private?** Absolutely. WhatPhone is a fully client‑side application. Every detection runs in your browser using JavaScript APIs. No data is transmitted, logged, or stored on any server. We don't use cookies for tracking or analytics.[reference:21]
+- **How does it identify my phone?** WhatPhone uses the browser's User Agent string, the Navigator API (including high‑entropy UA Client Hints on Chromium browsers), and screen resolution fingerprinting to identify your exact device brand, model, and generation.[reference:22]
+- **Does it work on iPhones?** Apple restricts the exact model identifier exposed to browsers for privacy reasons. WhatPhone compensates by using screen resolution fingerprinting — the physical pixel dimensions are unique per model — to infer the most likely iPhone model. Modern iOS 16+ devices may also provide better model data via UA Client Hints.[reference:23]
+- **What does the report include?** Device brand & model, OS name & version, browser name & version, logical and physical screen resolution, device pixel ratio, color gamut, CPU core count, RAM, battery level & charging state, network type & speed, and 30+ hardware and browser capability flags (WebGL, Bluetooth, NFC, geolocation, notifications, and more).[reference:24]
+- **Can I share my results?** Yes — simply share the WhatPhone URL with another person and ask them to visit it on their device. The tool will detect their specific device automatically, and they can share or copy the results to you.[reference:25]
