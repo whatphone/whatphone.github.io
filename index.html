@@ -426,40 +426,73 @@
          § 8 — Tools
     ══════════════════════════════════════════════════════ -->
     <section class="compat-section" id="compatibility" aria-labelledby="compat-heading">
-      <div class="container">
-        <div class="section-header" data-animate>
-          <span class="section-eyebrow">Web Applications</span>
-          <h2 class="section-title" id="compat-heading">Test Your Hardware</h2>
-          <p class="section-subtitle">Click any tool below to launch the test — camera, mic, touchscreen, or speaker.</p>
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="section-eyebrow">Web Applications</span>
+      <h2 class="section-title" id="compat-heading">Test Your Hardware</h2>
+      <p class="section-subtitle">Click any tool below to launch the test — camera, mic, touchscreen, or speaker.</p>
+    </div>
+    <div class="compat-grid" data-stagger>
+      
+      <!-- Camera Test -->
+      <article class="compat-card">
+        <div class="compat-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+            <circle cx="12" cy="13" r="4" />
+          </svg>
         </div>
-        <div class="compat-grid" data-stagger>
-          <article class="compat-card">
-            <div class="compat-logo" aria-hidden="true">📷</div>
-            <h3 class="compat-name">Camera Test</h3>
-            <p class="compat-desc">Check front/rear camera</p>
-            <a href="/camera-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
-          </article>
-          <article class="compat-card">
-            <div class="compat-logo" aria-hidden="true">🎙️</div>
-            <h3 class="compat-name">Mic Test</h3>
-            <p class="compat-desc">Test microphone input</p>
-            <a href="/mic-test" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
-          </article>
-          <article class="compat-card">
-            <div class="compat-logo" aria-hidden="true">👆</div>
-            <h3 class="compat-name">Touchscreen Test</h3>
-            <p class="compat-desc">Multi-touch & accuracy</p>
-            <a href="/touchscreen-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
-          </article>
-          <article class="compat-card">
-            <div class="compat-logo" aria-hidden="true">🔊</div>
-            <h3 class="compat-name">Speaker Test</h3>
-            <p class="compat-desc">Audio output & stereo</p>
-            <a href="/speaker-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
-          </article>
+        <h3 class="compat-name">Camera Test</h3>
+        <p class="compat-desc">Check front/rear camera</p>
+        <a href="/camera-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
+      </article>
+
+      <!-- Mic Test -->
+      <article class="compat-card">
+        <div class="compat-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+            <line x1="12" y1="19" x2="12" y2="23" />
+            <line x1="8" y1="23" x2="16" y2="23" />
+          </svg>
         </div>
-      </div>
-    </section>
+        <h3 class="compat-name">Mic Test</h3>
+        <p class="compat-desc">Test microphone input</p>
+        <a href="/mic-test" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
+      </article>
+
+      <!-- Touchscreen Test -->
+      <article class="compat-card">
+        <div class="compat-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 10.5V7a2 2 0 0 1 4 0v3.5" />
+            <path d="M11 8.5V5a2 2 0 0 1 4 0v3.5" />
+            <path d="M15 10.5V8a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6h-1.5A6.5 6.5 0 0 1 5 13.5V9a2 2 0 0 1 4 0v1.5" />
+          </svg>
+        </div>
+        <h3 class="compat-name">Touchscreen Test</h3>
+        <p class="compat-desc">Multi-touch & accuracy</p>
+        <a href="/touchscreen-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
+      </article>
+
+      <!-- Speaker Test -->
+      <article class="compat-card">
+        <div class="compat-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+          </svg>
+        </div>
+        <h3 class="compat-name">Speaker Test</h3>
+        <p class="compat-desc">Audio output & stereo</p>
+        <a href="/speaker-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
+      </article>
+
+    </div>
+  </div>
+</section>
 
     <!-- ══════════════════════════════════════════════════
          § 5 — HOW IT WORKS
@@ -532,50 +565,73 @@
          § 7 — COMPARE / USE CASES
     ══════════════════════════════════════════════════════ -->
     <section class="compare-section" id="compare" aria-labelledby="compare-heading">
-      <div class="container">
-        <div class="section-header" data-animate>
-          <span class="section-eyebrow">Use Cases</span>
-          <h2 class="section-title" id="compare-heading">Who Uses WhatPhone?</h2>
-          <p class="section-subtitle">From curious users to developers — everyone needs device info at some point.</p>
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="section-eyebrow">Use Cases</span>
+      <h2 class="section-title" id="compare-heading">Who Uses WhatPhone?</h2>
+      <p class="section-subtitle">From curious users to developers — everyone needs device info at some point.</p>
+    </div>
+    <div class="compare-grid" data-stagger>
+      
+      <!-- Everyday Users -->
+      <article class="compare-card">
+        <div class="compare-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
         </div>
-        <div class="compare-grid" data-stagger>
-          <article class="compare-card">
-            <div class="compare-card-icon" aria-hidden="true">👤</div>
-            <h3 class="compare-card-title">Everyday Users</h3>
-            <p class="compare-card-sub">Curious about your own device</p>
-            <ul class="compare-list" aria-label="Use cases for everyday users">
-              <li class="compare-item">Check your exact phone model</li>
-              <li class="compare-item">See battery and network status</li>
-              <li class="compare-item">Verify your OS version</li>
-              <li class="compare-item">Share specs with support teams</li>
-            </ul>
-          </article>
-          <article class="compare-card">
-            <div class="compare-card-icon" aria-hidden="true">🛠️</div>
-            <h3 class="compare-card-title">Developers</h3>
-            <p class="compare-card-sub">Debug and test across devices</p>
-            <ul class="compare-list" aria-label="Use cases for developers">
-              <li class="compare-item">Test WebGL / WebGPU support</li>
-              <li class="compare-item">Verify browser capabilities</li>
-              <li class="compare-item">Check UA strings and Client Hints</li>
-              <li class="compare-item">Export full JSON device report</li>
-            </ul>
-          </article>
-          <article class="compare-card">
-            <div class="compare-card-icon" aria-hidden="true">🎧</div>
-            <h3 class="compare-card-title">Support Teams</h3>
-            <p class="compare-card-sub">Diagnose customer issues faster</p>
-            <ul class="compare-list" aria-label="Use cases for support teams">
-              <li class="compare-item">Get exact device info instantly</li>
-              <li class="compare-item">Identify OS and browser version</li>
-              <li class="compare-item">Check network conditions</li>
-              <li class="compare-item">Shareable detection link</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
+        <h3 class="compare-card-title">Everyday Users</h3>
+        <p class="compare-card-sub">Curious about your own device</p>
+        <ul class="compare-list" aria-label="Use cases for everyday users">
+          <li class="compare-item">Check your exact phone model</li>
+          <li class="compare-item">See battery and network status</li>
+          <li class="compare-item">Verify your OS version</li>
+          <li class="compare-item">Share specs with support teams</li>
+        </ul>
+      </article>
 
+      <!-- Developers -->
+      <article class="compare-card">
+        <div class="compare-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+        </div>
+        <h3 class="compare-card-title">Developers</h3>
+        <p class="compare-card-sub">Debug and test across devices</p>
+        <ul class="compare-list" aria-label="Use cases for developers">
+          <li class="compare-item">Test WebGL / WebGPU support</li>
+          <li class="compare-item">Verify browser capabilities</li>
+          <li class="compare-item">Check UA strings and Client Hints</li>
+          <li class="compare-item">Export full JSON device report</li>
+        </ul>
+      </article>
+
+      <!-- Support Teams -->
+      <article class="compare-card">
+        <div class="compare-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            <path d="M8 10h.01" />
+            <path d="M12 10h.01" />
+            <path d="M16 10h.01" />
+          </svg>
+        </div>
+        <h3 class="compare-card-title">Support Teams</h3>
+        <p class="compare-card-sub">Diagnose customer issues faster</p>
+        <ul class="compare-list" aria-label="Use cases for support teams">
+          <li class="compare-item">Get exact device info instantly</li>
+          <li class="compare-item">Identify OS and browser version</li>
+          <li class="compare-item">Check network conditions</li>
+          <li class="compare-item">Shareable detection link</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
     <!-- ══════════════════════════════════════════════════
          § 8 — COMPATIBILITY
     ══════════════════════════════════════════════════════ -->
