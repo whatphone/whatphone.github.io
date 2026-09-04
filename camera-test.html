@@ -388,6 +388,103 @@
       .camera-controls { grid-template-columns: repeat(2,1fr); }
       .snapshot-grid { grid-template-columns: repeat(2,1fr); }
     }
+    /* ── FAQ Section ────────────────────────────────────────────────── */
+.faq-section {
+  padding: 4rem 0;
+  background: var(--bg);
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+
+.faq-item.open {
+  border-color: var(--accent);
+}
+
+.faq-q {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--heading);
+  font-size: 0.95rem;
+  transition: color var(--transition);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.faq-q:hover {
+  color: var(--accent2);
+}
+
+.faq-q span:first-child {
+  flex: 1;
+}
+
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--text3);
+  transition: all var(--transition);
+}
+
+.faq-item.open .faq-icon {
+  background: var(--accent);
+  color: #fff;
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.7;
+  padding: 0 1.25rem;
+}
+
+.faq-a p {
+  margin: 0;
+}
+
+.faq-item.open .faq-a {
+  max-height: 300px;
+  padding: 0 1.25rem 1.25rem 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 3rem 0;
+  }
+}
   </style>
 </head>
 <body>
@@ -728,82 +825,82 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════
-         § FAQ
-    ══════════════════════════════════════════════════════ -->
-    <section class="faq-section" id="camera-test-faq" aria-labelledby="faq-cam-heading">
-      <div class="container">
-        <div class="section-header" data-animate>
-          <span class="section-eyebrow">FAQ</span>
-          <h2 class="section-title" id="faq-cam-heading">Camera Test — Common Questions</h2>
-          <p class="section-subtitle">Everything you need to know before running a camera test, mobile camera tester check, or webcam test.</p>
-        </div>
-        <div class="faq-list" role="list" data-animate>
+   <!-- ══════════════════════════════════════════════════════
+     § FAQ
+══════════════════════════════════════════════════════════ -->
+<section class="faq-section" id="camera-test-faq" aria-labelledby="faq-cam-heading">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="section-eyebrow">FAQ</span>
+      <h2 class="section-title" id="faq-cam-heading">Camera Test — Common Questions</h2>
+      <p class="section-subtitle">Everything you need to know before running a camera test, mobile camera tester check, or webcam test.</p>
+    </div>
+    <div class="faq-list" role="list" data-animate>
 
-          <div class="faq-item" role="listitem">
-            <button class="faq-q" aria-expanded="false" aria-controls="cam-faq-a1" onclick="toggleFaq(this)">
-              How do I run a camera test on my phone?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a" id="cam-faq-a1" role="region">
-              Open this page on your phone's browser, tap "Start Camera Test," and allow camera access when prompted. The live feed appears immediately, and you can switch between front and rear cameras, take snapshots, or record a short clip — all without installing an app.
-            </div>
-          </div>
-
-          <div class="faq-item" role="listitem">
-            <button class="faq-q" aria-expanded="false" aria-controls="cam-faq-a2" onclick="toggleFaq(this)">
-              Can I use this as a webcam test on my laptop?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a" id="cam-faq-a2" role="region">
-              Yes. On a desktop or laptop, this same tool functions as a webcam test — it streams your built-in or USB webcam, reports resolution and frame rate, and lets you capture a snapshot to check image quality before a video call.
-            </div>
-          </div>
-
-          <div class="faq-item" role="listitem">
-            <button class="faq-q" aria-expanded="false" aria-controls="cam-faq-a3" onclick="toggleFaq(this)">
-              Is this mobile camera tester accurate for checking a used phone?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a" id="cam-faq-a3" role="region">
-              It's a great first check. As a mobile camera tester, it confirms both lenses are detected, focus correctly, hit their expected resolution, and produce a stable image without artifacts. For a deeper inspection, also test in low light and zoom in on captured snapshots to check for dust or scratches.
-            </div>
-          </div>
-
-          <div class="faq-item" role="listitem">
-            <button class="faq-q" aria-expanded="false" aria-controls="cam-faq-a4" onclick="toggleFaq(this)">
-              Does the camera test store or upload my photos and video?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a" id="cam-faq-a4" role="region">
-              No. The entire camera test runs locally in your browser. Snapshots and recordings stay on your device — nothing is uploaded to a server, and closing the tab clears everything from memory.
-            </div>
-          </div>
-
-          <div class="faq-item" role="listitem">
-            <button class="faq-q" aria-expanded="false" aria-controls="cam-faq-a5" onclick="toggleFaq(this)">
-              Why is my front or rear camera not showing up?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a" id="cam-faq-a5" role="region">
-              This usually means the browser was denied camera permission, another app is currently using the camera, or your device only exposes one camera to web apps. Check the "Cameras Found" count in the sidebar and try reloading the page after closing other camera apps.
-            </div>
-          </div>
-
-          <div class="faq-item" role="listitem">
-            <button class="faq-q" aria-expanded="false" aria-controls="cam-faq-a6" onclick="toggleFaq(this)">
-              Do I need to install an app to test my camera?
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a" id="cam-faq-a6" role="region">
-              No app or download is needed. This camera test, mobile camera tester, and webcam test all run directly in your browser using standard web camera APIs, supported on Chrome, Safari, Firefox, and Edge.
-            </div>
-          </div>
-
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" aria-controls="cam-faq-a1" onclick="toggleFaq(this)">
+          <span>How do I run a camera test on my phone?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="cam-faq-a1" role="region">
+          <p>Open this page on your phone's browser, tap "Start Camera Test," and allow camera access when prompted. The live feed appears immediately, and you can switch between front and rear cameras, take snapshots, or record a short clip — all without installing an app.</p>
         </div>
       </div>
-    </section>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" aria-controls="cam-faq-a2" onclick="toggleFaq(this)">
+          <span>Can I use this as a webcam test on my laptop?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="cam-faq-a2" role="region">
+          <p>Yes. On a desktop or laptop, this same tool functions as a webcam test — it streams your built-in or USB webcam, reports resolution and frame rate, and lets you capture a snapshot to check image quality before a video call.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" aria-controls="cam-faq-a3" onclick="toggleFaq(this)">
+          <span>Is this mobile camera tester accurate for checking a used phone?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="cam-faq-a3" role="region">
+          <p>It's a great first check. As a mobile camera tester, it confirms both lenses are detected, focus correctly, hit their expected resolution, and produce a stable image without artifacts. For a deeper inspection, also test in low light and zoom in on captured snapshots to check for dust or scratches.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" aria-controls="cam-faq-a4" onclick="toggleFaq(this)">
+          <span>Does the camera test store or upload my photos and video?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="cam-faq-a4" role="region">
+          <p>No. The entire camera test runs locally in your browser. Snapshots and recordings stay on your device — nothing is uploaded to a server, and closing the tab clears everything from memory.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" aria-controls="cam-faq-a5" onclick="toggleFaq(this)">
+          <span>Why is my front or rear camera not showing up?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="cam-faq-a5" role="region">
+          <p>This usually means the browser was denied camera permission, another app is currently using the camera, or your device only exposes one camera to web apps. Check the "Cameras Found" count in the sidebar and try reloading the page after closing other camera apps.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false" aria-controls="cam-faq-a6" onclick="toggleFaq(this)">
+          <span>Do I need to install an app to test my camera?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-a" id="cam-faq-a6" role="region">
+          <p>No app or download is needed. This camera test, mobile camera tester, and webcam test all run directly in your browser using standard web camera APIs, supported on Chrome, Safari, Firefox, and Edge.</p>
+        </div>
+      </div>
+
+    </div>
   </div>
+</section>
+  
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <footer id="site-footer" role="contentinfo"></footer>
