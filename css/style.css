@@ -1115,3 +1115,111 @@ code { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent2); 
 .faq-item.open .faq-icon {
   transform: rotate(45deg);
 }
+/* ── Dropdown Menu ─────────────────────────────────────────── */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+
+.dropdown-arrow {
+  transition: transform 0.25s ease;
+}
+
+.dropdown-toggle[aria-expanded="true"] .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 200px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 0.5rem;
+  box-shadow: 0 12px 48px rgba(15, 23, 42, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 1001;
+}
+
+.dropdown-menu.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-link {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: var(--text2);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.dropdown-link:hover {
+  background: var(--bg3);
+  color: var(--text);
+}
+
+.dropdown-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* ── Mobile responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav-dropdown {
+    width: 100%;
+  }
+
+  .dropdown-toggle {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: var(--bg3);
+    border-radius: var(--r);
+    padding: 0.25rem;
+    margin-top: 0.25rem;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 0.25rem;
+  }
+
+  .dropdown-menu.open {
+    max-height: 300px;
+    padding: 0.25rem;
+  }
+
+  .dropdown-link {
+    padding: 0.5rem 0.75rem;
+    color: var(--text2);
+  }
+
+  .dropdown-link:hover {
+    background: var(--surface);
+  }
+}
