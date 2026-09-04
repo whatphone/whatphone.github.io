@@ -26,10 +26,20 @@ const Header = (() => {
 
           <ul class="nav-links" id="navMenu" role="list">
             <li><a href="/" class="nav-link" data-section="detect">Home</a></li>
-            <li><a href="/camera-test" class="nav-link" data-section="features">Camera Test</a></li>
-            <li><a href="/mic-test" class="nav-link" data-section="specs">Mic Test</a></li>
-            <li><a href="/touchscreen-test" class="nav-link" data-section="compare">Touchscreen Test</a></li>   
-            <li><a href="/speaker-test" class="nav-link" data-section="">Speaker Test</a></li> 
+            <li class="nav-dropdown">
+              <button class="nav-link dropdown-toggle" id="dropdownToggle" aria-expanded="false" aria-haspopup="true">
+                All Tools
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="dropdown-arrow">
+                  <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <ul class="dropdown-menu" id="dropdownMenu" role="menu">
+                <li><a href="/camera-test" class="dropdown-link" role="menuitem">Camera Test</a></li>
+                <li><a href="/mic-test" class="dropdown-link" role="menuitem">Mic Test</a></li>
+                <li><a href="/touchscreen-test" class="dropdown-link" role="menuitem">Touchscreen Test</a></li>
+                <li><a href="/speaker-test" class="dropdown-link" role="menuitem">Speaker Test</a></li>
+              </ul>
+            </li>
             <li><a href="/guides" class="nav-link" data-section="">Guides</a></li>                        
             <li>
               <a href="/#detect" class="nav-cta" aria-label="Detect my phone now">
@@ -51,6 +61,8 @@ const Header = (() => {
     const toggle = document.getElementById('navToggle');
     const menu = document.getElementById('navMenu');
     const header = document.getElementById('site-header');
+    const dropdownToggle = document.getElementById('dropdownToggle');
+    const dropdownMenu = document.getElementById('dropdownMenu');
 
     // Mobile toggle
     toggle?.addEventListener('click', () => {
@@ -58,6 +70,30 @@ const Header = (() => {
       toggle.setAttribute('aria-expanded', String(!expanded));
       menu?.classList.toggle('open');
       toggle.classList.toggle('active');
+    });
+
+    // Dropdown toggle
+    dropdownToggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const expanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+      dropdownToggle.setAttribute('aria-expanded', String(!expanded));
+      dropdownMenu?.classList.toggle('open');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-dropdown')) {
+        dropdownMenu?.classList.remove('open');
+        dropdownToggle?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close dropdown on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        dropdownMenu?.classList.remove('open');
+        dropdownToggle?.setAttribute('aria-expanded', 'false');
+      }
     });
 
     // Scroll effect
@@ -79,7 +115,7 @@ const Header = (() => {
 
     // Active section highlight
     const sections = document.querySelectorAll('section[id]');
-    const links = document.querySelectorAll('.nav-link');
+    const links = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -93,11 +129,13 @@ const Header = (() => {
     sections.forEach(s => observer.observe(s));
 
     // Close menu on link click
-    menu?.querySelectorAll('a').forEach(a => {
+    menu?.querySelectorAll('a:not(.nav-cta)').forEach(a => {
       a.addEventListener('click', () => {
         menu.classList.remove('open');
         toggle?.classList.remove('active');
         toggle?.setAttribute('aria-expanded', 'false');
+        dropdownMenu?.classList.remove('open');
+        dropdownToggle?.setAttribute('aria-expanded', 'false');
       });
     });
   };
