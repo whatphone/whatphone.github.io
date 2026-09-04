@@ -1,0 +1,62 @@
+# ─────────────────────────────────────────────────────────────
+# Static assets - 1 year cache (immutable)
+# ─────────────────────────────────────────────────────────────
+
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.ico
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# ─────────────────────────────────────────────────────────────
+# HTML files - 1 hour cache (to pick up updates)
+# ─────────────────────────────────────────────────────────────
+
+/*.html
+  Cache-Control: public, max-age=3600
+
+/
+  Cache-Control: public, max-age=3600
+
+/guides
+  Cache-Control: public, max-age=3600
+
+# ─────────────────────────────────────────────────────────────
+# 3rd party assets (cannot control, but these are static paths)
+# ─────────────────────────────────────────────────────────────
+
+/favicon.png
+  Cache-Control: public, max-age=31536000, immutable
