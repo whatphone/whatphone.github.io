@@ -9,7 +9,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-MD16J6JVZ2');
 </script>
   <meta charset="UTF-8" />
@@ -23,8 +22,8 @@
   <meta property="og:description" content="Test your microphone's input level, frequency response, and noise floor directly in your browser. No app needed." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#080c14" />
-<!-- ── Favicon ───────────────────────────────────────── -->
- <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="/css/style.css" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Microphone Test","url":"https://whatphone.github.io/mic-test","description":"Test your microphone online — input level, frequency response, background noise, and playback recording","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
@@ -32,32 +31,30 @@
   <style>
     .tool-page { padding-top: 72px; min-height: 100vh; }
     .tool-hero { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); background: var(--bg2); }
-    .breadcrumb ol { display: flex; align-items: center; gap: .5rem; list-style: none; font-size: .82rem; color: var(--text3); margin-bottom: 1.25rem; }
-    .breadcrumb li+li::before { content: '/'; opacity: .4; }
+    .breadcrumb ol { display: flex; align-items: center; gap: .5rem; list-style: none; font-size: .82rem; color: var(--text3); margin-bottom: 1.25rem; padding: 0; }
+    .breadcrumb li+li::before { content: '/'; opacity: .4; margin-right: .5rem; }
     .breadcrumb a { color: var(--text2); transition: color var(--transition); }
     .breadcrumb a:hover { color: var(--accent2); }
+    .breadcrumb [aria-current] { color: var(--accent2); }
     .tool-hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-    .tool-hero-left h1 { font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.5rem); font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: .5rem; }
-    .tool-hero-left p { color: var(--text2); font-size: 1rem; max-width: 520px; }
-    .tool-status-badge { display: inline-flex; align-items: center; gap: .5rem; padding: .45rem 1rem; border-radius: 100px; font-size: .82rem; font-weight: 600; background: var(--surface); border: 1px solid var(--border); }
+    .tool-hero-left h1 { font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.5rem); font-weight: 800; color: var(--heading); line-height: 1.15; margin-bottom: .5rem; }
+    .tool-hero-left p { color: var(--text2); font-size: 1rem; max-width: 520px; line-height: 1.6; }
+    .tool-status-badge { display: inline-flex; align-items: center; gap: .5rem; padding: .45rem 1rem; border-radius: 100px; font-size: .82rem; font-weight: 600; background: var(--surface); border: 1px solid var(--border); color: var(--text2); white-space: nowrap; }
     .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text3); flex-shrink: 0; }
     .status-dot.ready { background: var(--green); box-shadow: 0 0 8px rgba(34,197,94,.6); animation: pulse-dot 2s infinite; }
     .status-dot.error { background: var(--red); }
     .status-dot.active { background: var(--accent); box-shadow: 0 0 8px rgba(59,130,246,.6); animation: pulse-dot 1s infinite; }
     @keyframes pulse-dot { 0%,100%{opacity:1}50%{opacity:.4} }
 
-    /* Main layout */
     .tool-main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 5rem; display: grid; grid-template-columns: 1fr 320px; gap: 1.75rem; align-items: start; }
 
-    /* Mic visualizer panel */
-    .mic-viewport { background: #000; border-radius: var(--r-lg); overflow: hidden; position: relative; border: 2px solid var(--border); padding: 1.5rem; }
+    .mic-viewport { background: var(--bg); border-radius: var(--r-lg); overflow: hidden; position: relative; border: 2px solid var(--border); padding: 1.5rem; }
     .mic-canvas-wrap { position: relative; height: 180px; border-radius: var(--r); overflow: hidden; background: var(--bg3); }
     #waveCanvas { width: 100%; height: 100%; display: block; }
     #micPlaceholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .85rem; color: var(--text2); background: var(--bg3); z-index: 5; }
     #micPlaceholder svg { opacity: .3; }
     #micPlaceholder p { font-size: .85rem; text-align: center; max-width: 220px; }
 
-    /* Level meter */
     .level-meter-row { display: flex; align-items: center; gap: 1rem; margin-top: 1.25rem; }
     .level-meter-track { flex: 1; height: 22px; border-radius: 100px; background: var(--bg3); overflow: hidden; position: relative; border: 1px solid var(--border); }
     .level-meter-fill { height: 100%; width: 0%; border-radius: 100px; background: linear-gradient(90deg, var(--green) 0%, var(--green) 60%, var(--amber) 80%, var(--red) 100%); transition: width .06s linear; }
@@ -66,44 +63,37 @@
     .clip-badge { display: none; align-items: center; gap: .3rem; padding: .2rem .6rem; border-radius: 100px; background: rgba(239,68,68,.15); border: 1px solid rgba(239,68,68,.35); color: var(--red); font-size: .7rem; font-weight: 700; font-family: var(--font-mono); }
     .clip-badge.show { display: inline-flex; animation: pulse-dot .4s infinite; }
 
-    /* Spectrum bars */
     .spectrum-wrap { height: 110px; margin-top: 1.25rem; border-radius: var(--r); background: var(--bg3); display: flex; align-items: flex-end; gap: 2px; padding: 8px; overflow: hidden; }
     .spectrum-bar { flex: 1; background: linear-gradient(180deg, var(--accent2), var(--accent)); border-radius: 2px 2px 0 0; min-height: 2px; transition: height .05s linear; }
 
-    /* Controls */
     .mic-controls { display: grid; grid-template-columns: repeat(3,1fr); gap: .6rem; margin-top: 1.25rem; }
     .cam-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; padding: .75rem .5rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); font-size: .72rem; font-weight: 600; color: var(--text2); transition: all var(--transition); cursor: pointer; }
     .cam-btn:hover { border-color: var(--accent); color: var(--text); background: var(--surface2); }
     .cam-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .cam-btn.danger.active { background: var(--red); border-color: var(--red); }
+    .cam-btn.danger.active { background: var(--red); border-color: var(--red); color: #fff; }
     .cam-btn svg { flex-shrink: 0; }
 
-    /* Device select */
     .device-select-row { margin-top: 1.25rem; }
     .device-select-row label { display: block; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text3); margin-bottom: .5rem; }
     .device-select { width: 100%; padding: .65rem .85rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); color: var(--text); font-size: .85rem; font-family: var(--font-body); }
     .device-select:focus { outline: none; border-color: var(--accent); }
 
-    /* Recordings list */
     .recording-list { display: flex; flex-direction: column; gap: .6rem; }
     .recording-item { display: flex; align-items: center; gap: .75rem; padding: .65rem .85rem; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r); }
-    .recording-item audio { flex: 1; height: 32px; }
+    .recording-item audio { flex: 1; height: 32px; min-width: 120px; }
     .recording-item span { font-size: .72rem; color: var(--text3); font-family: var(--font-mono); flex-shrink: 0; }
     .recording-empty { padding: 1rem; text-align: center; color: var(--text3); font-size: .82rem; background: var(--bg3); border: 1px dashed var(--border); border-radius: var(--r); }
 
-    /* Start overlay */
-    #startOverlay { position: absolute; inset: 0; background: var(--bg3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.25rem; z-index: 10; }
-    #startOverlay h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: #fff; }
+    #startOverlay { position: absolute; inset: 0; background: var(--bg3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.25rem; z-index: 10; border-radius: var(--r-lg); }
+    #startOverlay h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--heading); }
     #startOverlay p { color: var(--text2); font-size: .875rem; text-align: center; max-width: 260px; }
     .start-btn { display: inline-flex; align-items: center; gap: .6rem; padding: .85rem 2rem; border-radius: var(--r); background: var(--accent); color: #fff; font-size: 1rem; font-weight: 700; font-family: var(--font-display); cursor: pointer; border: none; box-shadow: 0 0 30px rgba(59,130,246,.35); transition: all var(--transition); }
     .start-btn:hover { background: var(--accent2); transform: translateY(-2px); }
 
-    /* Permission denied */
-    #permDenied { display: none; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; text-align: center; padding: 2rem; position: absolute; inset: 0; background: var(--bg3); z-index: 10; }
+    #permDenied { display: none; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; text-align: center; padding: 2rem; position: absolute; inset: 0; background: var(--bg3); z-index: 10; border-radius: var(--r-lg); }
     #permDenied h3 { font-family: var(--font-display); font-weight: 700; color: var(--red); }
     #permDenied p { font-size: .875rem; color: var(--text2); max-width: 280px; }
 
-    /* Sidebar */
     .camera-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
     .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 1.25rem; }
     .sidebar-card-title { font-family: var(--font-display); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin-bottom: 1rem; }
@@ -112,19 +102,62 @@
     .info-row-key { color: var(--text2); }
     .info-row-val { font-family: var(--font-mono); color: var(--text); font-weight: 700; font-size: .78rem; }
     .check-list { display: flex; flex-direction: column; gap: .5rem; }
-    .check-item { display: flex; align-items: center; gap: .65rem; font-size: .85rem; }
-    .check-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: .65rem; }
+    .check-item { display: flex; align-items: center; gap: .65rem; font-size: .85rem; color: var(--text2); }
+    .check-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: .65rem; font-weight: 700; }
     .check-icon.pass { background: rgba(34,197,94,.15); color: var(--green); border: 1px solid rgba(34,197,94,.3); }
     .check-icon.fail { background: rgba(239,68,68,.15); color: var(--red); border: 1px solid rgba(239,68,68,.3); }
     .check-icon.pending { background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
-    .check-icon.testing { background: rgba(59,130,246,.15); color: var(--accent2); border: 1px solid rgba(59,130,246,.3); animation: pulse-dot 1s infinite; }
 
-    /* Toast */
-    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface2); border: 1px solid var(--border2); padding: .65rem 1.4rem; border-radius: 100px; font-size: .875rem; color: var(--text); z-index: 9999; opacity: 0; transition: all .3s; pointer-events: none; }
-    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface); border: 1px solid var(--border); padding: .65rem 1.4rem; border-radius: 100px; font-size: .875rem; color: var(--text); z-index: 9999; opacity: 0; transition: all .3s; pointer-events: none; box-shadow: var(--shadow); }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
 
-    @media(max-width:1024px) { .tool-main { grid-template-columns: 1fr; } }
-    @media(max-width:480px) { .mic-controls { grid-template-columns: repeat(3,1fr); } .level-meter-label { width: 48px; } }
+    .tool-link { display: flex; align-items: center; gap: .6rem; padding: .6rem .75rem; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r); font-size: .82rem; color: var(--text2); transition: all var(--transition); text-decoration: none; }
+    .tool-link:hover { border-color: var(--accent); color: var(--text); background: var(--surface); }
+
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .feature-card { padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); transition: all var(--transition); }
+    .feature-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: var(--shadow-accent); }
+    .feature-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .feature-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--heading); margin-bottom: .5rem; }
+    .feature-desc { font-size: .9rem; color: var(--text2); line-height: 1.65; }
+
+    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
+    .steps-grid::before { content: ''; position: absolute; top: 36px; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(90deg, transparent, var(--border2), var(--accent), var(--border2), transparent); z-index: 0; }
+    .step-item { text-align: center; position: relative; z-index: 1; }
+    .step-num { width: 72px; height: 72px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--accent); margin: 0 auto 1.25rem; box-shadow: 0 0 20px rgba(59,130,246,.2); transition: all var(--transition); }
+    .step-item:hover .step-num { background: var(--accent); color: #fff; }
+    .step-title { font-family: var(--font-display); font-weight: 700; color: var(--heading); margin-bottom: .5rem; }
+    .step-desc { font-size: .875rem; color: var(--text2); line-height: 1.6; }
+
+    .compare-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .compare-card { padding: 1.75rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); transition: all var(--transition); }
+    .compare-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow-accent); }
+    .compare-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .compare-card-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--heading); margin-bottom: .25rem; }
+    .compare-card-sub { font-size: .85rem; color: var(--text3); margin-bottom: 1rem; }
+    .compare-item { display: flex; align-items: center; gap: .5rem; font-size: .85rem; color: var(--text2); padding: .25rem 0; }
+    .compare-item::before { content: '→'; color: var(--accent); font-size: .75rem; }
+
+    .faq-section { padding: 6rem 0; background: var(--bg); }
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: .75rem; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; transition: border-color var(--transition); }
+    .faq-item.open { border-color: var(--accent); }
+    .faq-q { width: 100%; padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; text-align: left; font-weight: 600; color: var(--heading); font-size: .95rem; background: none; border: none; cursor: pointer; transition: color var(--transition); font-family: var(--font-body); }
+    .faq-q:hover { color: var(--accent2); }
+    .faq-icon { width: 24px; height: 24px; border-radius: 6px; background: var(--surface2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; font-weight: 300; transition: all var(--transition); }
+    .faq-item.open .faq-icon { background: var(--accent); color: #fff; transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease; font-size: .9rem; color: var(--text2); line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 1.5rem 1.25rem; }
+    .faq-a p { margin: 0; }
+
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-eyebrow { display: inline-block; margin-bottom: .75rem; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent2); font-family: var(--font-mono); }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 800; color: var(--heading); margin-bottom: .75rem; line-height: 1.2; }
+    .section-subtitle { font-size: 1.05rem; color: var(--text2); max-width: 540px; margin: 0 auto; }
+
+    @media(max-width:1024px) { .tool-main { grid-template-columns: 1fr; } .features-grid { grid-template-columns: repeat(2, 1fr); } .steps-grid { grid-template-columns: repeat(2, 1fr); } .steps-grid::before { display: none; } .compare-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:768px) { .tool-hero-inner { flex-direction: column; align-items: flex-start; } .tool-status-badge { align-self: flex-start; } .features-grid { grid-template-columns: 1fr; } .compare-grid { grid-template-columns: 1fr; } }
+    @media(max-width:480px) { .mic-controls { grid-template-columns: repeat(3,1fr); } .level-meter-label { width: 48px; } .steps-grid { grid-template-columns: 1fr; } .recording-item { flex-wrap: wrap; } }
   </style>
 </head>
 <body>
@@ -132,14 +165,17 @@
   <header id="site-header" role="banner"></header>
 
   <div class="tool-page" id="main-content">
-    <!-- Tool Hero -->
     <div class="tool-hero">
       <div class="container">
         <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="../tools">Tools</a></li><li aria-current="page">Microphone Test</li></ol></nav>
         <div class="tool-hero-inner">
           <div class="tool-hero-left">
             <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
-              <span style="font-size:1.6rem" aria-hidden="true">🎙️</span>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="2" width="6" height="12" rx="3" fill="#3b82f6" fill-opacity="0.15"/>
+                <path d="M5 10a7 7 0 0014 0" stroke="#3b82f6" stroke-width="1.8"/>
+                <path d="M12 18v4M8 22h8" stroke="#3b82f6" stroke-width="1.8"/>
+              </svg>
               <h1>Microphone Test</h1>
             </div>
             <p>Test your microphone live in the browser. Check input level, frequency response, background noise, and record a quick playback — no app needed.</p>
@@ -152,12 +188,9 @@
       </div>
     </div>
 
-    <!-- Main App -->
     <div class="tool-main">
-      <!-- Left: Mic visualizer -->
       <div>
         <div class="mic-viewport" id="micViewport">
-          <!-- Start overlay -->
           <div id="startOverlay">
             <svg width="52" height="52" viewBox="0 0 52 52" fill="none" style="color:var(--accent)" aria-hidden="true"><rect x="19" y="6" width="14" height="24" rx="7" stroke="currentColor" stroke-width="2.2"/><path d="M12 24a14 14 0 0028 0" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M26 38v8M19 46h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
             <h3>Microphone Test</h3>
@@ -167,19 +200,16 @@
               Start Microphone Test
             </button>
           </div>
-          <!-- Permission denied overlay -->
           <div id="permDenied">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="color:var(--red)" aria-hidden="true"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2.5"/><path d="M16 16l16 16M32 16L16 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
             <h3>Microphone Access Denied</h3>
             <p>Please allow microphone permission in your browser settings and reload the page.</p>
           </div>
 
-          <!-- Live waveform -->
           <div class="mic-canvas-wrap">
             <canvas id="waveCanvas" aria-label="Live microphone waveform"></canvas>
           </div>
 
-          <!-- Level meter -->
           <div class="level-meter-row">
             <div class="level-meter-track" role="meter" aria-label="Microphone input level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="levelMeterTrack">
               <div class="level-meter-fill" id="levelMeterFill"></div>
@@ -189,10 +219,8 @@
             <span class="clip-badge" id="clipBadge">CLIPPING</span>
           </div>
 
-          <!-- Spectrum -->
           <div class="spectrum-wrap" id="spectrumWrap" aria-label="Live frequency spectrum" role="img"></div>
 
-          <!-- Device select -->
           <div class="device-select-row">
             <label for="deviceSelect">Input Device</label>
             <select class="device-select" id="deviceSelect" aria-label="Select microphone input device">
@@ -201,7 +229,6 @@
           </div>
         </div>
 
-        <!-- Controls -->
         <div class="mic-controls" role="toolbar" aria-label="Microphone test controls">
           <button class="cam-btn" id="recordBtn" title="Record a clip" aria-label="Start or stop recording a test clip">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3" fill="currentColor"/></svg>
@@ -217,7 +244,6 @@
           </button>
         </div>
 
-        <!-- Recordings -->
         <div style="margin-top:1.25rem">
           <div style="font-family:var(--font-display);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:.75rem">Playback Recordings</div>
           <div class="recording-list" id="recordingList">
@@ -226,9 +252,7 @@
         </div>
       </div>
 
-      <!-- Right: Sidebar -->
       <aside class="camera-sidebar">
-        <!-- Mic Info -->
         <div class="sidebar-card">
           <div class="sidebar-card-title">Mic Info</div>
           <div class="info-row"><span class="info-row-key">Input Level</span><span class="info-row-val" id="infoLevel">—</span></div>
@@ -239,7 +263,6 @@
           <div class="info-row"><span class="info-row-key">Devices Found</span><span class="info-row-val" id="infoDeviceCount">—</span></div>
         </div>
 
-        <!-- Test Results -->
         <div class="sidebar-card">
           <div class="sidebar-card-title">Diagnostic Results</div>
           <div class="check-list" id="checkList">
@@ -251,65 +274,95 @@
           </div>
         </div>
 
-        <!-- Other tests -->
         <div class="sidebar-card">
           <div class="sidebar-card-title">Other Tests</div>
           <div style="display:flex;flex-direction:column;gap:.5rem">
-            <a href="camera-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:1rem" aria-hidden="true">📷</span> Camera Test
-            </a>
-            <a href="touchscreen-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:1rem" aria-hidden="true">👆</span> Touchscreen Test
-            </a>
-            <a href="speaker-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:1rem" aria-hidden="true">🔊</span> Speaker Test
-            </a>
-            <a href="../index#detect" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:1rem" aria-hidden="true">📱</span> Detect My Phone
-            </a>
+            <a href="camera-test" class="tool-link"><span style="font-size:1rem" aria-hidden="true">📷</span> Camera Test</a>
+            <a href="touchscreen-test" class="tool-link"><span style="font-size:1rem" aria-hidden="true">👆</span> Touchscreen Test</a>
+            <a href="speaker-test" class="tool-link"><span style="font-size:1rem" aria-hidden="true">🔊</span> Speaker Test</a>
+            <a href="../index#detect" class="tool-link"><span style="font-size:1rem" aria-hidden="true">📱</span> Detect My Phone</a>
           </div>
         </div>
       </aside>
     </div>
 
-    <!-- ══════════════════════════════════════════════════
-         § Why use this mic test
-    ══════════════════════════════════════════════════════ -->
-    <section class="features-section" id="why-mic-test" aria-labelledby="why-heading">
+    <!-- ══════════════════════════════════════════════════════════
+         Why use this mic test
+    ══════════════════════════════════════════════════════════ -->
+    <section class="features-section" id="why-mic-test" aria-labelledby="why-heading" style="background:var(--bg2);padding:6rem 0;">
       <div class="container">
-        <div class="section-header" data-animate>
+        <div class="section-header">
           <span class="section-eyebrow">Why It Matters</span>
           <h2 class="section-title" id="why-heading">A Microphone Test That Checks Everything</h2>
           <p class="section-subtitle">One free tool to check input level, frequency response, background noise, and recording quality — built for phones, laptops, and headsets.</p>
         </div>
-        <div class="features-grid" data-stagger>
+        <div class="features-grid">
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">📊</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="14" rx="2" fill="#3b82f6" fill-opacity="0.1"/>
+                <path d="M6 6h12M6 10h8" stroke="#3b82f6" stroke-width="1.5"/>
+                <path d="M6 18l4-4 4 4 4-4" stroke="#3b82f6" stroke-width="1.8"/>
+                <circle cx="12" cy="18" r="2" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Live Level Meter</h3>
             <p class="feature-desc">Watch your input level move in real time with a clipping warning, so you know instantly if your microphone is too quiet or overdriven.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🌊</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 20l4-6 3 4 5-8 4 6" stroke="#8b5cf6" stroke-width="1.8"/>
+                <path d="M20 8v12H4V8" stroke="#8b5cf6" stroke-width="1.5"/>
+                <rect x="6" y="4" width="12" height="4" rx="1" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Live Waveform Display</h3>
             <p class="feature-desc">A real-time oscilloscope view of your voice shows whether the signal is clean, choppy, or dropping out as you speak.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🎚️</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" fill="#22c55e" fill-opacity="0.08"/>
+                <path d="M6 6v12M10 8v8M14 6v12M18 8v8" stroke="#22c55e" stroke-width="1.2"/>
+                <path d="M4 12h16" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="3 3"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Frequency Spectrum Analyzer</h3>
             <p class="feature-desc">See your microphone's frequency response across bass, mid, and treble bands to spot gaps or rolled-off ranges.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🤫</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#f59e0b" fill-opacity="0.08"/>
+                <circle cx="12" cy="12" r="3" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-width="1.5"/>
+                <path d="M12 2v3M12 19v3" stroke="#f59e0b" stroke-width="1.5"/>
+                <path d="M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12" stroke="#f59e0b" stroke-width="1.2"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Background Noise Test</h3>
             <p class="feature-desc">Measure your noise floor while staying silent to catch hiss, hum, or interference before a call or recording session.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">⏺️</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#ec4899" fill-opacity="0.08"/>
+                <circle cx="12" cy="12" r="3" fill="#ec4899" fill-opacity="0.2" stroke="#ec4899" stroke-width="1.5"/>
+                <polygon points="10 8 16 12 10 16 10 8" fill="#ec4899" fill-opacity="0.15"/>
+                <path d="M12 2v2M12 20v2" stroke="#ec4899" stroke-width="1.2"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Record &amp; Playback</h3>
             <p class="feature-desc">Record a short test clip and play it back immediately to listen for distortion, muffling, or echo.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🔒</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#06b6d4" fill-opacity="0.08"/>
+                <polyline points="9 12 11 14 15 10" stroke="#06b6d4" stroke-width="1.8"/>
+                <circle cx="12" cy="12" r="8" stroke="#06b6d4" stroke-width="1.2" stroke-dasharray="3 3" fill="none"/>
+              </svg>
+            </div>
             <h3 class="feature-title">100% Private, Runs Locally</h3>
             <p class="feature-desc">Your audio is processed entirely in your browser using the Web Audio API. Nothing is uploaded or stored on a server.</p>
           </article>
@@ -317,34 +370,54 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════
-         § How the mic test works
-    ══════════════════════════════════════════════════════ -->
-    <section class="how-section" id="how-mic-test-works" aria-labelledby="how-mic-heading">
+    <!-- ══════════════════════════════════════════════════════════
+         How the mic test works
+    ══════════════════════════════════════════════════════════ -->
+    <section class="how-section" id="how-mic-test-works" aria-labelledby="how-mic-heading" style="background:var(--bg);padding:6rem 0;">
       <div class="container">
-        <div class="section-header" data-animate>
+        <div class="section-header">
           <span class="section-eyebrow">The Process</span>
           <h2 class="section-title" id="how-mic-heading">How to Test Your Microphone Online</h2>
           <p class="section-subtitle">Four steps and you'll know exactly how your microphone is performing.</p>
         </div>
-        <div class="steps-grid" data-stagger>
+        <div class="steps-grid">
           <div class="step-item">
-            <div class="step-num" aria-hidden="true">1</div>
+            <div class="step-num" aria-hidden="true" style="border-color:#3b82f6;color:#3b82f6;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" stroke="currentColor"/>
+                <path d="M12 6v6l4 2" stroke="currentColor"/>
+              </svg>
+            </div>
             <h3 class="step-title">Allow Access</h3>
             <p class="step-desc">Tap "Start Microphone Test" and allow microphone permission when your browser prompts you. No app or download required.</p>
           </div>
           <div class="step-item">
-            <div class="step-num" aria-hidden="true">2</div>
+            <div class="step-num" aria-hidden="true" style="border-color:#22c55e;color:#22c55e;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="14" rx="2" stroke="currentColor"/>
+                <polyline points="6 9 10 13 18 5" stroke="currentColor"/>
+              </svg>
+            </div>
             <h3 class="step-title">Speak Normally</h3>
             <p class="step-desc">Talk at your normal volume and watch the live waveform, level meter, and spectrum react to your voice instantly.</p>
           </div>
           <div class="step-item">
-            <div class="step-num" aria-hidden="true">3</div>
+            <div class="step-num" aria-hidden="true" style="border-color:#8b5cf6;color:#8b5cf6;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" stroke="currentColor"/>
+                <path d="M12 8v4l3 3" stroke="currentColor"/>
+              </svg>
+            </div>
             <h3 class="step-title">Run the Checks</h3>
             <p class="step-desc">Run the noise floor test in silence, then record a short clip and play it back to judge overall sound quality.</p>
           </div>
           <div class="step-item">
-            <div class="step-num" aria-hidden="true">4</div>
+            <div class="step-num" aria-hidden="true" style="border-color:#f59e0b;color:#f59e0b;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" stroke="currentColor"/>
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="step-title">Review Results</h3>
             <p class="step-desc">Check the diagnostic list to see at a glance which parts of your microphone passed — signal, level, clipping, and playback.</p>
           </div>
@@ -352,19 +425,25 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════
-         § Who uses this tool
-    ══════════════════════════════════════════════════════ -->
-    <section class="compare-section" id="who-uses-mic-test" aria-labelledby="who-mic-heading">
+    <!-- ══════════════════════════════════════════════════════════
+         Who uses this tool
+    ══════════════════════════════════════════════════════════ -->
+    <section class="compare-section" id="who-uses-mic-test" aria-labelledby="who-mic-heading" style="background:var(--bg2);padding:6rem 0;">
       <div class="container">
-        <div class="section-header" data-animate>
+        <div class="section-header">
           <span class="section-eyebrow">Use Cases</span>
           <h2 class="section-title" id="who-mic-heading">Who Needs a Microphone Test?</h2>
           <p class="section-subtitle">From prepping for a call to buying a new headset, this microphone test covers every scenario.</p>
         </div>
-        <div class="compare-grid" data-stagger>
+        <div class="compare-grid">
           <article class="compare-card">
-            <div class="compare-card-icon" aria-hidden="true">🎥</div>
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="16" rx="2" fill="#3b82f6" fill-opacity="0.08"/>
+                <path d="M8 18l4 4 4-4" stroke="#3b82f6" stroke-width="1.8"/>
+                <circle cx="12" cy="10" r="3" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="compare-card-title">Remote Workers</h3>
             <p class="compare-card-sub">Check before meetings</p>
             <div class="compare-item">Confirm the right input device is selected</div>
@@ -372,7 +451,13 @@
             <div class="compare-item">Record a test clip to hear how you sound</div>
           </article>
           <article class="compare-card">
-            <div class="compare-card-icon" aria-hidden="true">🎧</div>
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#8b5cf6" fill-opacity="0.08"/>
+                <path d="M8 12h8M12 8v8" stroke="#8b5cf6" stroke-width="1.8"/>
+                <path d="M18 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="#8b5cf6" fill-opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="compare-card-title">Headset Buyers</h3>
             <p class="compare-card-sub">Verify before you commit</p>
             <div class="compare-item">Test a new headset mic right out of the box</div>
@@ -380,7 +465,13 @@
             <div class="compare-item">Check for background hiss or interference</div>
           </article>
           <article class="compare-card">
-            <div class="compare-card-icon" aria-hidden="true">🛠️</div>
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#f59e0b" fill-opacity="0.08"/>
+                <path d="M12 8v4l3 3" stroke="#f59e0b" stroke-width="1.8"/>
+                <circle cx="12" cy="12" r="2" fill="#f59e0b" fill-opacity="0.25" stroke="#f59e0b" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="compare-card-title">Troubleshooters</h3>
             <p class="compare-card-sub">Diagnose mic issues</p>
             <div class="compare-item">Figure out if silence is a hardware or app issue</div>
@@ -391,44 +482,80 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════
-         § Troubleshooting
-    ══════════════════════════════════════════════════════ -->
-    <section class="features-section" id="mic-troubleshooting" aria-labelledby="trouble-heading">
+    <!-- ══════════════════════════════════════════════════════════
+         Troubleshooting
+    ══════════════════════════════════════════════════════════ -->
+    <section class="features-section" id="mic-troubleshooting" aria-labelledby="trouble-heading" style="background:var(--bg);padding:6rem 0;">
       <div class="container">
-        <div class="section-header" data-animate>
+        <div class="section-header">
           <span class="section-eyebrow">Troubleshooting</span>
           <h2 class="section-title" id="trouble-heading">Common Microphone Problems This Test Reveals</h2>
           <p class="section-subtitle">If a check fails above, here's what it usually means.</p>
         </div>
-        <div class="features-grid" data-stagger>
+        <div class="features-grid">
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🚫</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#ef4444" fill-opacity="0.08"/>
+                <line x1="15" y1="9" x2="9" y2="15" stroke="#ef4444" stroke-width="1.8"/>
+                <line x1="9" y1="9" x2="15" y2="15" stroke="#ef4444" stroke-width="1.8"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Microphone Access Denied</h3>
             <p class="feature-desc">Usually a browser permission was blocked. Check your site settings and allow microphone access, then reload this mic test page.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🔇</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="2" width="6" height="12" rx="3" fill="#f59e0b" fill-opacity="0.1"/>
+                <path d="M5 10a7 7 0 0014 0" stroke="#f59e0b" stroke-width="1.8"/>
+                <line x1="12" y1="18" x2="12" y2="22" stroke="#f59e0b" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="feature-title">No Signal Detected</h3>
             <p class="feature-desc">The meter staying flat usually means the wrong input device is selected, the mic is muted at the OS level, or a cable is loose.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">📉</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="14" rx="2" fill="#8b5cf6" fill-opacity="0.08"/>
+                <path d="M8 6h8M8 10h5" stroke="#8b5cf6" stroke-width="1.5"/>
+                <path d="M6 18l4-4 4 4 4-4" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="2 2"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Level Too Quiet</h3>
             <p class="feature-desc">A consistently low meter reading often means input gain is turned down in your system sound settings, or you're too far from the mic.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">📈</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#ef4444" fill-opacity="0.08"/>
+                <path d="M12 6v6l3 2" stroke="#ef4444" stroke-width="1.8"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Constant Clipping</h3>
             <p class="feature-desc">If the clipping badge keeps triggering, your input gain is too high — lower it in your OS audio settings to avoid distorted recordings.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">📡</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#f59e0b" fill-opacity="0.08"/>
+                <circle cx="12" cy="12" r="4" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-width="1.5"/>
+                <path d="M12 2v2M12 20v2" stroke="#f59e0b" stroke-width="1.2"/>
+              </svg>
+            </div>
             <h3 class="feature-title">High Background Noise</h3>
             <p class="feature-desc">A high noise floor while silent can point to electrical interference, a faulty cable, or a fan or AC unit too close to the microphone.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🔁</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="2" fill="#8b5cf6" fill-opacity="0.08"/>
+                <path d="M6 6h12M6 10h8" stroke="#8b5cf6" stroke-width="1.5"/>
+                <circle cx="16" cy="16" r="3" stroke="#8b5cf6" stroke-width="1.5"/>
+                <polyline points="13 13 16 16 19 13" stroke="#8b5cf6" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Distorted or Muffled Playback</h3>
             <p class="feature-desc">If your recorded clip sounds muffled or crackly on playback, check for a damaged mic capsule, a covered port, or a corrupted driver.</p>
           </article>
@@ -436,75 +563,75 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════════════
          § FAQ
-    ══════════════════════════════════════════════════════ -->
+    ══════════════════════════════════════════════════════════ -->
     <section class="faq-section" id="mic-test-faq" aria-labelledby="faq-mic-heading">
       <div class="container">
-        <div class="section-header" data-animate>
+        <div class="section-header">
           <span class="section-eyebrow">FAQ</span>
           <h2 class="section-title" id="faq-mic-heading">Microphone Test — Common Questions</h2>
           <p class="section-subtitle">Everything you need to know before running a microphone test.</p>
         </div>
-        <div class="faq-list" role="list" data-animate>
+        <div class="faq-list" role="list">
 
           <div class="faq-item" role="listitem">
             <button class="faq-q" aria-expanded="false" aria-controls="mic-faq-a1" onclick="toggleFaq(this)">
-              How do I test if my microphone is working?
+              <span>How do I test if my microphone is working?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" id="mic-faq-a1" role="region">
-              Open this page, allow microphone access, and speak normally. The volume meter should move with your voice and the live waveform should react instantly. If nothing moves, the microphone is not being picked up by your browser.
+              <p>Open this page, allow microphone access, and speak normally. The volume meter should move with your voice and the live waveform should react instantly. If nothing moves, the microphone is not being picked up by your browser.</p>
             </div>
           </div>
 
           <div class="faq-item" role="listitem">
             <button class="faq-q" aria-expanded="false" aria-controls="mic-faq-a2" onclick="toggleFaq(this)">
-              Why is my microphone volume too low or too high?
+              <span>Why is my microphone volume too low or too high?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" id="mic-faq-a2" role="region">
-              The level meter shows your input in real time, including a clipping warning if your voice is overdriving the input. Low levels often mean the wrong device is selected or input gain is turned down in your OS sound settings; constant clipping means the gain is too high.
+              <p>The level meter shows your input in real time, including a clipping warning if your voice is overdriving the input. Low levels often mean the wrong device is selected or input gain is turned down in your OS sound settings; constant clipping means the gain is too high.</p>
             </div>
           </div>
 
           <div class="faq-item" role="listitem">
             <button class="faq-q" aria-expanded="false" aria-controls="mic-faq-a3" onclick="toggleFaq(this)">
-              What does the frequency spectrum show in a mic test?
+              <span>What does the frequency spectrum show in a mic test?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" id="mic-faq-a3" role="region">
-              The spectrum analyzer breaks your voice into frequency bands from low bass to high treble. A healthy microphone shows energy moving naturally across bands as you speak; a flat or missing range can indicate a faulty capsule or a software filter cutting frequencies.
+              <p>The spectrum analyzer breaks your voice into frequency bands from low bass to high treble. A healthy microphone shows energy moving naturally across bands as you speak; a flat or missing range can indicate a faulty capsule or a software filter cutting frequencies.</p>
             </div>
           </div>
 
           <div class="faq-item" role="listitem">
             <button class="faq-q" aria-expanded="false" aria-controls="mic-faq-a4" onclick="toggleFaq(this)">
-              How do I check background noise on my microphone?
+              <span>How do I check background noise on my microphone?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" id="mic-faq-a4" role="region">
-              Stay silent for a few seconds while the noise floor meter is running. A low, stable reading means a clean signal; a high or fluctuating reading while silent points to electrical interference, a faulty cable, or aggressive noise from a fan or AC unit near the mic.
+              <p>Stay silent for a few seconds while the noise floor meter is running. A low, stable reading means a clean signal; a high or fluctuating reading while silent points to electrical interference, a faulty cable, or aggressive noise from a fan or AC unit near the mic.</p>
             </div>
           </div>
 
           <div class="faq-item" role="listitem">
             <button class="faq-q" aria-expanded="false" aria-controls="mic-faq-a5" onclick="toggleFaq(this)">
-              Can I record and play back my microphone to check the sound quality?
+              <span>Can I record and play back my microphone to check the sound quality?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" id="mic-faq-a5" role="region">
-              Yes. The Record &amp; Playback section lets you record a short clip directly in your browser and play it back immediately, so you can listen for distortion, hiss, echo, or muffled audio before a call or recording session.
+              <p>Yes. The Record &amp; Playback section lets you record a short clip directly in your browser and play it back immediately, so you can listen for distortion, hiss, echo, or muffled audio before a call or recording session.</p>
             </div>
           </div>
 
           <div class="faq-item" role="listitem">
             <button class="faq-q" aria-expanded="false" aria-controls="mic-faq-a6" onclick="toggleFaq(this)">
-              Does this microphone test work with Bluetooth and USB headsets?
+              <span>Does this microphone test work with Bluetooth and USB headsets?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" id="mic-faq-a6" role="region">
-              Yes. Any microphone recognized by your operating system — built-in, USB, Bluetooth, or 3.5mm headset mics — can be selected from the device dropdown and tested the same way, as long as your browser has permission to access it.
+              <p>Yes. Any microphone recognized by your operating system — built-in, USB, Bluetooth, or 3.5mm headset mics — can be selected from the device dropdown and tested the same way, as long as your browser has permission to access it.</p>
             </div>
           </div>
 
@@ -643,6 +770,8 @@
     waveCtx.clearRect(0, 0, w, h);
     waveCtx.lineWidth = 2 * (window.devicePixelRatio || 1);
     waveCtx.strokeStyle = '#60a5fa';
+    waveCtx.shadowColor = 'rgba(96,165,250,0.3)';
+    waveCtx.shadowBlur = 8;
     waveCtx.beginPath();
     const sliceWidth = w / timeData.length;
     let x = 0;
@@ -653,6 +782,7 @@
       x += sliceWidth;
     }
     waveCtx.stroke();
+    waveCtx.shadowBlur = 0;
   }
 
   function updateLevel() {
@@ -702,7 +832,7 @@
     const step = Math.floor(freqData.length / BAR_COUNT);
     for (let i = 0; i < BAR_COUNT; i++) {
       let sum = 0;
-      for (let j = 0; j < step; j++) sum += freqData[i * step + j];
+      for (let j = 0; j < step; j++) sum += freqData[i * step + j] || 0;
       const avg = sum / step;
       bars[i].style.height = Math.max(2, (avg / 255) * 100) + '%';
     }
@@ -748,13 +878,20 @@
       mediaRecorder.start();
       isRecording = true;
       document.getElementById('recordBtn').classList.add('danger', 'active');
-      document.getElementById('recordBtn').lastChild.textContent = 'Stop';
+      document.getElementById('recordBtn').querySelector('span')?.remove();
+      const label = document.createElement('span');
+      label.textContent = 'Stop';
+      document.getElementById('recordBtn').appendChild(label);
       showToast('🔴 Recording started');
     } else {
       mediaRecorder.stop();
       isRecording = false;
       document.getElementById('recordBtn').classList.remove('danger', 'active');
-      document.getElementById('recordBtn').lastChild.textContent = 'Record';
+      const spans = document.getElementById('recordBtn').querySelectorAll('span');
+      spans.forEach(s => s.remove());
+      const label = document.createElement('span');
+      label.textContent = 'Record';
+      document.getElementById('recordBtn').appendChild(label);
     }
   }
 
@@ -791,7 +928,7 @@
     const el = document.getElementById(id);
     if (!el) return;
     el.className = 'check-icon ' + state;
-    el.textContent = state === 'pass' ? '✓' : state === 'fail' ? '✗' : state === 'testing' ? '…' : '?';
+    el.textContent = state === 'pass' ? '✓' : state === 'fail' ? '✗' : '?';
   }
   function showToast(msg) {
     const t = document.getElementById('toast');
