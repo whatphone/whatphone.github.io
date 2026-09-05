@@ -9,7 +9,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-MD16J6JVZ2');
 </script>
   <meta charset="UTF-8" />
@@ -23,8 +22,8 @@
   <meta property="og:description" content="Test your touchscreen for dead zones, multi-touch support, and response time directly in your browser. No app needed." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#080c14" />
-<!-- ── Favicon ───────────────────────────────────────── -->
- <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="/css/style.css" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Touchscreen Test","url":"https://whatphone.github.io/touchscreen-test","description":"Test your touchscreen online — dead zones, multi-touch support, swipe accuracy, and response time","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
@@ -32,70 +31,70 @@
   <style>
     .tool-page { padding-top: 72px; min-height: 100vh; }
     .tool-hero { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); background: var(--bg2); }
-    .breadcrumb ol { display: flex; align-items: center; gap: .5rem; list-style: none; font-size: .82rem; color: var(--text3); margin-bottom: 1.25rem; }
-    .breadcrumb li+li::before { content: '/'; opacity: .4; }
+    .breadcrumb ol { display: flex; align-items: center; gap: .5rem; list-style: none; font-size: .82rem; color: var(--text3); margin-bottom: 1.25rem; padding: 0; }
+    .breadcrumb li+li::before { content: '/'; opacity: .4; margin-right: .5rem; }
     .breadcrumb a { color: var(--text2); transition: color var(--transition); }
     .breadcrumb a:hover { color: var(--accent2); }
+    .breadcrumb [aria-current] { color: var(--accent2); }
     .tool-hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-    .tool-hero-left h1 { font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.5rem); font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: .5rem; }
-    .tool-hero-left p { color: var(--text2); font-size: 1rem; max-width: 520px; }
-    .tool-status-badge { display: inline-flex; align-items: center; gap: .5rem; padding: .45rem 1rem; border-radius: 100px; font-size: .82rem; font-weight: 600; background: var(--surface); border: 1px solid var(--border); }
+    .tool-hero-left h1 { font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.5rem); font-weight: 800; color: var(--heading); line-height: 1.15; margin-bottom: .5rem; }
+    .tool-hero-left p { color: var(--text2); font-size: 1rem; max-width: 520px; line-height: 1.6; }
+    .tool-status-badge { display: inline-flex; align-items: center; gap: .5rem; padding: .45rem 1rem; border-radius: 100px; font-size: .82rem; font-weight: 600; background: var(--surface); border: 1px solid var(--border); color: var(--text2); white-space: nowrap; }
     .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text3); flex-shrink: 0; }
     .status-dot.ready { background: var(--green); box-shadow: 0 0 8px rgba(34,197,94,.6); animation: pulse-dot 2s infinite; }
     .status-dot.error { background: var(--red); }
     .status-dot.active { background: var(--accent); box-shadow: 0 0 8px rgba(59,130,246,.6); animation: pulse-dot 1s infinite; }
     @keyframes pulse-dot { 0%,100%{opacity:1}50%{opacity:.4} }
 
-    /* Main layout */
     .tool-main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 5rem; display: grid; grid-template-columns: 1fr 320px; gap: 1.75rem; align-items: start; }
 
-    /* Tabs */
+    /* ── Tabs ─────────────────────────────────────────────────────── */
     .touch-tabs { display: grid; grid-template-columns: repeat(4,1fr); gap: .5rem; margin-bottom: 1rem; }
-    .touch-tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; padding: .65rem .4rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); font-size: .68rem; font-weight: 700; color: var(--text2); transition: all var(--transition); cursor: pointer; text-align: center; }
-    .touch-tab:hover { border-color: var(--accent); color: var(--text); }
-    .touch-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .touch-tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; padding: .65rem .4rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); font-size: .68rem; font-weight: 700; color: var(--text2); transition: all var(--transition); cursor: pointer; text-align: center; font-family: var(--font-body); }
+    .touch-tab:hover { border-color: var(--accent); color: var(--text); background: var(--surface2); }
+    .touch-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 4px 16px rgba(59,130,246,.3); }
     .touch-tab svg { flex-shrink: 0; }
 
-    /* Test surface */
-    .touch-surface-wrap { background: #000; border-radius: var(--r-lg); overflow: hidden; position: relative; border: 2px solid var(--border); touch-action: none; user-select: none; -webkit-user-select: none; }
+    /* ── Surface ──────────────────────────────────────────────────── */
+    .touch-surface-wrap { background: var(--bg); border-radius: var(--r-lg); overflow: hidden; position: relative; border: 2px solid var(--border); touch-action: none; user-select: none; -webkit-user-select: none; }
     .touch-surface { position: relative; width: 100%; height: 420px; touch-action: none; overflow: hidden; }
     .touch-panel { position: absolute; inset: 0; display: none; touch-action: none; }
     .touch-panel.active { display: block; }
 
-    /* Grid panel */
+    /* ── Grid Panel ───────────────────────────────────────────────── */
     #gridPanel { display: none; grid-template-columns: repeat(8,1fr); grid-template-rows: repeat(6,1fr); gap: 2px; padding: 2px; background: var(--bg3); }
     #gridPanel.active { display: grid; }
-    .grid-cell { background: var(--bg2); transition: background .15s ease; }
-    .grid-cell.hit { background: var(--green); box-shadow: inset 0 0 0 1px rgba(34,197,94,.6); }
+    .grid-cell { background: var(--bg2); border-radius: 2px; transition: all .2s ease; }
+    .grid-cell.hit { background: var(--green); box-shadow: inset 0 0 0 1px rgba(34,197,94,.6), 0 0 12px rgba(34,197,94,.2); }
 
-    /* Multitouch panel */
-    #multiPanel { background: radial-gradient(circle at 50% 50%, var(--bg3), #000); }
-    .touch-point { position: absolute; width: 64px; height: 64px; margin-left: -32px; margin-top: -32px; border-radius: 50%; background: rgba(59,130,246,.25); border: 2px solid var(--accent2); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; color: #fff; font-size: .95rem; pointer-events: none; box-shadow: 0 0 24px rgba(59,130,246,.5); }
+    /* ── Multi-Touch Panel ───────────────────────────────────────── */
+    #multiPanel { background: radial-gradient(ellipse at 50% 50%, var(--bg3), #0a0a0f); }
+    .touch-point { position: absolute; width: 64px; height: 64px; margin-left: -32px; margin-top: -32px; border-radius: 50%; background: rgba(59,130,246,.2); border: 2px solid var(--accent2); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; color: #fff; font-size: .95rem; pointer-events: none; box-shadow: 0 0 30px rgba(59,130,246,.4), inset 0 0 20px rgba(59,130,246,.1); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 
-    /* Swipe panel */
+    /* ── Swipe Panel ─────────────────────────────────────────────── */
     #swipePanel { background: var(--bg3); display: flex; align-items: center; justify-content: center; }
     .swipe-hint { display: flex; flex-direction: column; align-items: center; gap: .75rem; color: var(--text2); pointer-events: none; }
     .swipe-hint svg { opacity: .35; }
-    .swipe-trail { position: absolute; width: 14px; height: 14px; margin-left: -7px; margin-top: -7px; border-radius: 50%; background: var(--neon); opacity: .5; pointer-events: none; }
-    .swipe-result-badge { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); padding: .4rem 1rem; border-radius: 100px; background: rgba(34,211,238,.15); border: 1px solid rgba(34,211,238,.35); color: var(--neon); font-family: var(--font-mono); font-weight: 700; font-size: .82rem; opacity: 0; transition: opacity .2s; }
+    .swipe-trail { position: absolute; width: 14px; height: 14px; margin-left: -7px; margin-top: -7px; border-radius: 50%; background: var(--neon); opacity: .6; pointer-events: none; box-shadow: 0 0 16px rgba(14,116,144,.5); transition: opacity .3s; }
+    .swipe-result-badge { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); padding: .4rem 1.2rem; border-radius: 100px; background: rgba(34,211,238,.12); border: 1px solid rgba(34,211,238,.3); color: var(--neon); font-family: var(--font-mono); font-weight: 700; font-size: .82rem; opacity: 0; transition: opacity .3s; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
     .swipe-result-badge.show { opacity: 1; }
 
-    /* Accuracy/latency panel */
+    /* ── Accuracy Panel ──────────────────────────────────────────── */
     #accuracyPanel { background: var(--bg3); }
-    .target-dot { position: absolute; width: 36px; height: 36px; margin-left: -18px; margin-top: -18px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 6px rgba(59,130,246,.18), 0 0 24px rgba(59,130,246,.5); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: .8rem; cursor: pointer; animation: target-pulse 1.4s infinite; }
-    @keyframes target-pulse { 0%,100%{ transform: scale(1); } 50%{ transform: scale(1.08); } }
+    .target-dot { position: absolute; width: 40px; height: 40px; margin-left: -20px; margin-top: -20px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 8px rgba(59,130,246,.15), 0 0 40px rgba(59,130,246,.5); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: .8rem; cursor: pointer; animation: target-pulse 1.4s infinite; transition: left .3s ease, top .3s ease; }
+    @keyframes target-pulse { 0%,100%{ transform: scale(1); box-shadow: 0 0 0 8px rgba(59,130,246,.15), 0 0 40px rgba(59,130,246,.5); } 50%{ transform: scale(1.08); box-shadow: 0 0 0 14px rgba(59,130,246,.08), 0 0 60px rgba(59,130,246,.6); } }
     .accuracy-hint { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--text2); font-size: .85rem; text-align: center; padding: 2rem; pointer-events: none; }
 
     .touch-surface-overlay-label { position: absolute; bottom: 0; left: 0; right: 0; padding: .5rem .75rem; background: linear-gradient(transparent,rgba(0,0,0,.7)); display: flex; justify-content: space-between; font-size: .72rem; font-family: var(--font-mono); color: rgba(255,255,255,.7); pointer-events: none; }
 
-    /* Controls under surface */
+    /* ── Controls ─────────────────────────────────────────────────── */
     .touch-controls { display: grid; grid-template-columns: repeat(3,1fr); gap: .6rem; margin-top: 1rem; }
-    .cam-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; padding: .75rem .5rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); font-size: .72rem; font-weight: 600; color: var(--text2); transition: all var(--transition); cursor: pointer; }
+    .cam-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; padding: .75rem .5rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); font-size: .72rem; font-weight: 600; color: var(--text2); transition: all var(--transition); cursor: pointer; font-family: var(--font-body); }
     .cam-btn:hover { border-color: var(--accent); color: var(--text); background: var(--surface2); }
     .cam-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
     .cam-btn svg { flex-shrink: 0; }
 
-    /* Sidebar */
+    /* ── Sidebar ──────────────────────────────────────────────────── */
     .camera-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
     .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 1.25rem; }
     .sidebar-card-title { font-family: var(--font-display); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin-bottom: 1rem; }
@@ -104,25 +103,69 @@
     .info-row-key { color: var(--text2); }
     .info-row-val { font-family: var(--font-mono); color: var(--text); font-weight: 700; font-size: .78rem; }
     .check-list { display: flex; flex-direction: column; gap: .5rem; }
-    .check-item { display: flex; align-items: center; gap: .65rem; font-size: .85rem; }
-    .check-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: .65rem; }
+    .check-item { display: flex; align-items: center; gap: .65rem; font-size: .85rem; color: var(--text2); }
+    .check-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: .65rem; font-weight: 700; }
     .check-icon.pass { background: rgba(34,197,94,.15); color: var(--green); border: 1px solid rgba(34,197,94,.3); }
     .check-icon.fail { background: rgba(239,68,68,.15); color: var(--red); border: 1px solid rgba(239,68,68,.3); }
     .check-icon.pending { background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
-    .check-icon.testing { background: rgba(59,130,246,.15); color: var(--accent2); border: 1px solid rgba(59,130,246,.3); animation: pulse-dot 1s infinite; }
 
-    .progress-track { height: 8px; border-radius: 100px; background: var(--bg3); overflow: hidden; margin-top: .5rem; }
-    .progress-fill { height: 100%; background: linear-gradient(90deg,var(--accent),var(--neon)); border-radius: 100px; width: 0%; transition: width .2s ease; }
+    .progress-track { height: 6px; border-radius: 100px; background: var(--bg3); overflow: hidden; margin-top: .85rem; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg,var(--accent),var(--neon)); border-radius: 100px; width: 0%; transition: width .4s ease; }
 
-    .reset-link-btn { display: inline-flex; align-items: center; gap: .4rem; font-size: .78rem; color: var(--text3); background: none; border: none; cursor: pointer; padding: 0; margin-top: .85rem; transition: color var(--transition); }
+    .reset-link-btn { display: inline-flex; align-items: center; gap: .4rem; font-size: .78rem; color: var(--text3); background: none; border: none; cursor: pointer; padding: 0; margin-top: .85rem; transition: color var(--transition); font-family: var(--font-body); }
     .reset-link-btn:hover { color: var(--accent2); }
 
-    /* Toast */
-    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface2); border: 1px solid var(--border2); padding: .65rem 1.4rem; border-radius: 100px; font-size: .875rem; color: var(--text); z-index: 9999; opacity: 0; transition: all .3s; pointer-events: none; }
-    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .tool-link { display: flex; align-items: center; gap: .6rem; padding: .6rem .75rem; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r); font-size: .82rem; color: var(--text2); transition: all var(--transition); text-decoration: none; }
+    .tool-link:hover { border-color: var(--accent); color: var(--text); background: var(--surface); }
 
-    @media(max-width:1024px) { .tool-main { grid-template-columns: 1fr; } }
-    @media(max-width:640px) { .touch-tabs { grid-template-columns: repeat(2,1fr); } .touch-controls { grid-template-columns: repeat(3,1fr); } .touch-surface { height: 360px; } }
+    /* ── Features grid ───────────────────────────────────────────── */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .feature-card { padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); transition: all var(--transition); }
+    .feature-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: var(--shadow-accent); }
+    .feature-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .feature-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--heading); margin-bottom: .5rem; }
+    .feature-desc { font-size: .9rem; color: var(--text2); line-height: 1.65; }
+
+    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
+    .steps-grid::before { content: ''; position: absolute; top: 36px; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(90deg, transparent, var(--border2), var(--accent), var(--border2), transparent); z-index: 0; }
+    .step-item { text-align: center; position: relative; z-index: 1; }
+    .step-num { width: 72px; height: 72px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--accent); margin: 0 auto 1.25rem; box-shadow: 0 0 20px rgba(59,130,246,.2); transition: all var(--transition); }
+    .step-item:hover .step-num { background: var(--accent); color: #fff; }
+    .step-title { font-family: var(--font-display); font-weight: 700; color: var(--heading); margin-bottom: .5rem; }
+    .step-desc { font-size: .875rem; color: var(--text2); line-height: 1.6; }
+
+    .compare-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .compare-card { padding: 1.75rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); transition: all var(--transition); }
+    .compare-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow-accent); }
+    .compare-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .compare-card-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--heading); margin-bottom: .25rem; }
+    .compare-card-sub { font-size: .85rem; color: var(--text3); margin-bottom: 1rem; }
+    .compare-item { display: flex; align-items: center; gap: .5rem; font-size: .85rem; color: var(--text2); padding: .25rem 0; }
+    .compare-item::before { content: '→'; color: var(--accent); font-size: .75rem; }
+
+    .faq-section { padding: 6rem 0; background: var(--bg); }
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: .75rem; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; transition: border-color var(--transition); }
+    .faq-item.open { border-color: var(--accent); }
+    .faq-q { width: 100%; padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; text-align: left; font-weight: 600; color: var(--heading); font-size: .95rem; background: none; border: none; cursor: pointer; transition: color var(--transition); font-family: var(--font-body); }
+    .faq-q:hover { color: var(--accent2); }
+    .faq-icon { width: 24px; height: 24px; border-radius: 6px; background: var(--surface2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; font-weight: 300; transition: all var(--transition); }
+    .faq-item.open .faq-icon { background: var(--accent); color: #fff; transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease; font-size: .9rem; color: var(--text2); line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 1.5rem 1.25rem; }
+    .faq-a p { margin: 0; }
+
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-eyebrow { display: inline-block; margin-bottom: .75rem; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent2); font-family: var(--font-mono); }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 800; color: var(--heading); margin-bottom: .75rem; line-height: 1.2; }
+    .section-subtitle { font-size: 1.05rem; color: var(--text2); max-width: 540px; margin: 0 auto; }
+
+    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface); border: 1px solid var(--border); padding: .65rem 1.4rem; border-radius: 100px; font-size: .875rem; color: var(--text); z-index: 9999; opacity: 0; transition: all .3s; pointer-events: none; box-shadow: var(--shadow); }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+
+    @media(max-width:1024px) { .tool-main { grid-template-columns: 1fr; } .features-grid { grid-template-columns: repeat(2, 1fr); } .steps-grid { grid-template-columns: repeat(2, 1fr); } .steps-grid::before { display: none; } .compare-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:768px) { .tool-hero-inner { flex-direction: column; align-items: flex-start; } .tool-status-badge { align-self: flex-start; } .touch-surface { height: 360px; } }
+    @media(max-width:640px) { .touch-tabs { grid-template-columns: repeat(2,1fr); } .touch-controls { grid-template-columns: repeat(3,1fr); } .features-grid { grid-template-columns: 1fr; } .compare-grid { grid-template-columns: 1fr; } .steps-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -130,29 +173,30 @@
   <header id="site-header" role="banner"></header>
 
   <div class="tool-page" id="main-content">
-    <!-- Tool Hero -->
     <div class="tool-hero">
       <div class="container">
         <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="../tools">Tools</a></li><li aria-current="page">Touchscreen Test</li></ol></nav>
         <div class="tool-hero-inner">
           <div class="tool-hero-left">
             <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
-              <span style="font-size:1.6rem" aria-hidden="true">👆</span>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="2" width="18" height="20" rx="3" fill="#3b82f6" fill-opacity="0.12"/>
+                <circle cx="12" cy="12" r="2" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1.5"/>
+                <path d="M12 10v4M10 12h4" stroke="#3b82f6" stroke-width="1.5"/>
+              </svg>
               <h1>Touchscreen Test</h1>
             </div>
             <p>Test your screen for dead zones, multi-touch support, swipe accuracy, and response time — directly in your browser. No app needed.</p>
           </div>
           <div id="statusBadge" class="tool-status-badge" aria-live="polite">
-            <span class="status-dot active" id="statusDot"></span>
+            <span class="status-dot" id="statusDot"></span>
             <span id="statusText">Ready to test</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Main App -->
     <div class="tool-main">
-      <!-- Left: Test surface -->
       <div>
         <!-- Tabs -->
         <div class="touch-tabs" role="tablist" aria-label="Touchscreen test modes">
@@ -177,13 +221,10 @@
         <!-- Surface -->
         <div class="touch-surface-wrap">
           <div class="touch-surface" id="touchSurface">
-            <!-- Grid panel -->
             <div id="gridPanel" class="touch-panel active" role="tabpanel" aria-label="Touch grid test surface"></div>
-            <!-- Multi-touch panel -->
             <div id="multiPanel" class="touch-panel" role="tabpanel" aria-label="Multi-touch test surface">
               <div class="accuracy-hint" id="multiHint">Place one or more fingers on the screen</div>
             </div>
-            <!-- Swipe panel -->
             <div id="swipePanel" class="touch-panel" role="tabpanel" aria-label="Swipe gesture test surface">
               <div class="swipe-hint" id="swipeHint">
                 <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true"><path d="M10 28h36m0 0l-12-12m12 12l-12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -191,9 +232,8 @@
               </div>
               <div class="swipe-result-badge" id="swipeBadge">—</div>
             </div>
-            <!-- Accuracy panel -->
             <div id="accuracyPanel" class="touch-panel" role="tabpanel" aria-label="Touch accuracy and response time test surface">
-              <div class="accuracy-hint" id="accuracyHint">Tap "Start" below to spawn a target, then tap it as precisely as you can</div>
+              <div class="accuracy-hint" id="accuracyHint">Tap "Start Target" below, then tap the target as precisely as you can</div>
             </div>
           </div>
           <div class="touch-surface-overlay-label">
@@ -219,9 +259,8 @@
         </div>
       </div>
 
-      <!-- Right: Sidebar -->
+      <!-- Sidebar -->
       <aside class="camera-sidebar">
-        <!-- Device Info -->
         <div class="sidebar-card">
           <div class="sidebar-card-title">Touch Info</div>
           <div class="info-row"><span class="info-row-key">Touch Support</span><span class="info-row-val" id="infoSupport">—</span></div>
@@ -232,7 +271,6 @@
           <div class="info-row"><span class="info-row-key">Screen Size</span><span class="info-row-val" id="infoScreenSize">—</span></div>
         </div>
 
-        <!-- Test Results -->
         <div class="sidebar-card">
           <div class="sidebar-card-title">Diagnostic Results</div>
           <div class="check-list" id="checkList">
@@ -246,65 +284,97 @@
           <button class="reset-link-btn" id="resetAllBtn">↺ Reset all tests</button>
         </div>
 
-        <!-- Other tests -->
         <div class="sidebar-card">
           <div class="sidebar-card-title">Other Tests</div>
           <div style="display:flex;flex-direction:column;gap:.5rem">
-            <a href="camera-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:1rem" aria-hidden="true">📷</span> Camera Test
-            </a>
-            <a href="mic-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:1rem" aria-hidden="true">🎙️</span> Microphone Test
-            </a>
-            <a href="speaker-test" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:1rem" aria-hidden="true">🔊</span> Speaker Test
-            </a>
-            <a href="../index#detect" style="display:flex;align-items:center;gap:.6rem;padding:.6rem .75rem;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--text2);transition:all var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:1rem" aria-hidden="true">📱</span> Detect My Phone
-            </a>
+            <a href="camera-test" class="tool-link"><span style="font-size:1rem" aria-hidden="true">📷</span> Camera Test</a>
+            <a href="mic-test" class="tool-link"><span style="font-size:1rem" aria-hidden="true">🎙️</span> Microphone Test</a>
+            <a href="speaker-test" class="tool-link"><span style="font-size:1rem" aria-hidden="true">🔊</span> Speaker Test</a>
+            <a href="../index#detect" class="tool-link"><span style="font-size:1rem" aria-hidden="true">📱</span> Detect My Phone</a>
           </div>
         </div>
       </aside>
     </div>
 
-    <!-- ══════════════════════════════════════════════════
-         § Why use this touchscreen test
-    ══════════════════════════════════════════════════════ -->
-    <section class="features-section" id="why-touchscreen-test" aria-labelledby="why-heading">
+    <!-- ══════════════════════════════════════════════════════════
+         Why use this touchscreen test
+    ══════════════════════════════════════════════════════════ -->
+    <section class="features-section" id="why-touchscreen-test" aria-labelledby="why-heading" style="background:var(--bg2);padding:6rem 0;">
       <div class="container">
-        <div class="section-header" data-animate>
+        <div class="section-header">
           <span class="section-eyebrow">Why It Matters</span>
           <h2 class="section-title" id="why-heading">A Touchscreen Test That Checks Everything</h2>
           <p class="section-subtitle">One free tool to check dead zones, multi-touch, swipe accuracy, and response time — built for phones, tablets, and touch laptops.</p>
         </div>
-        <div class="features-grid" data-stagger>
+        <div class="features-grid">
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🔲</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="2" fill="#3b82f6" fill-opacity="0.08"/>
+                <rect x="5" y="5" width="14" height="14" rx="1" stroke="#3b82f6" stroke-width="1.2"/>
+                <path d="M8 8h8M8 12h8M8 16h5" stroke="#3b82f6" stroke-width="1.2"/>
+                <circle cx="18" cy="16" r="3" fill="#22c55e" fill-opacity="0.2" stroke="#22c55e" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Dead Zone Grid Test</h3>
             <p class="feature-desc">Drag across a 48-cell grid covering the full screen. Any cell that won't light up green is a likely dead spot on your digitizer.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">✋</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="8" cy="8" r="4" fill="#8b5cf6" fill-opacity="0.12" stroke="#8b5cf6" stroke-width="1.5"/>
+                <circle cx="18" cy="10" r="3" fill="#8b5cf6" fill-opacity="0.12" stroke="#8b5cf6" stroke-width="1.5"/>
+                <circle cx="12" cy="18" r="3.5" fill="#8b5cf6" fill-opacity="0.12" stroke="#8b5cf6" stroke-width="1.5"/>
+                <circle cx="8" cy="8" r="1.5" fill="#8b5cf6" fill-opacity="0.3"/>
+                <circle cx="18" cy="10" r="1" fill="#8b5cf6" fill-opacity="0.3"/>
+                <circle cx="12" cy="18" r="1.2" fill="#8b5cf6" fill-opacity="0.3"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Multi-Touch Test</h3>
             <p class="feature-desc">Place up to 10 fingers on screen at once and watch each one tracked live, confirming your screen's true multi-touch limit.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">↔️</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 12h16m0 0l-5-5m5 5l-5 5" stroke="#22c55e" stroke-width="1.8"/>
+                <path d="M8 4a4 4 0 0 0-4 4" stroke="#22c55e" stroke-width="1.2" stroke-dasharray="2 2"/>
+                <path d="M20 8a4 4 0 0 0-4-4" stroke="#22c55e" stroke-width="1.2" stroke-dasharray="2 2"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Swipe &amp; Gesture Test</h3>
             <p class="feature-desc">Swipe in any direction and this touchscreen test reports the detected direction, distance, and gesture speed instantly.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🎯</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#f59e0b" fill-opacity="0.08"/>
+                <circle cx="12" cy="12" r="3" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-width="1.5"/>
+                <path d="M12 2v3M12 19v3" stroke="#f59e0b" stroke-width="1.2"/>
+                <path d="M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12" stroke="#f59e0b" stroke-width="1.2"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Touch Accuracy Test</h3>
             <p class="feature-desc">Tap moving targets to measure how precisely your screen registers touches against where you actually pressed.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">⚡</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#ec4899" fill-opacity="0.08"/>
+                <path d="M12 6v6l4 2" stroke="#ec4899" stroke-width="1.8"/>
+                <circle cx="12" cy="12" r="2" fill="#ec4899" fill-opacity="0.2" stroke="#ec4899" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Response Time Readout</h3>
             <p class="feature-desc">See touch-to-response latency in milliseconds, helping you spot lag caused by software, screen protectors, or hardware wear.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🔒</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#06b6d4" fill-opacity="0.08"/>
+                <polyline points="9 12 11 14 15 10" stroke="#06b6d4" stroke-width="1.8"/>
+                <circle cx="12" cy="12" r="8" stroke="#06b6d4" stroke-width="1.2" stroke-dasharray="3 3" fill="none"/>
+              </svg>
+            </div>
             <h3 class="feature-title">100% Private, Runs Locally</h3>
             <p class="feature-desc">Every test runs client-side in your browser using standard Touch and Pointer Event APIs. Nothing is recorded or sent anywhere.</p>
           </article>
@@ -312,34 +382,42 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════
-         § How the touchscreen test works
-    ══════════════════════════════════════════════════════ -->
-    <section class="how-section" id="how-touchscreen-test-works" aria-labelledby="how-touch-heading">
+    <!-- ══════════════════════════════════════════════════════════
+         How the touchscreen test works
+    ══════════════════════════════════════════════════════════ -->
+    <section class="how-section" id="how-touchscreen-test-works" aria-labelledby="how-touch-heading" style="background:var(--bg);padding:6rem 0;">
       <div class="container">
-        <div class="section-header" data-animate>
+        <div class="section-header">
           <span class="section-eyebrow">The Process</span>
           <h2 class="section-title" id="how-touch-heading">How to Test Your Touchscreen Online</h2>
           <p class="section-subtitle">Four tabs, four checks — work through them in order for a full diagnostic.</p>
         </div>
-        <div class="steps-grid" data-stagger>
+        <div class="steps-grid">
           <div class="step-item">
-            <div class="step-num" aria-hidden="true">1</div>
+            <div class="step-num" aria-hidden="true" style="border-color:#3b82f6;color:#3b82f6;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor"/><rect x="5" y="5" width="14" height="14" rx="1" stroke="currentColor" stroke-width="1.2"/></svg>
+            </div>
             <h3 class="step-title">Run the Grid Test</h3>
             <p class="step-desc">Drag your finger over every cell until the whole surface turns green. Note any cell that refuses to light up.</p>
           </div>
           <div class="step-item">
-            <div class="step-num" aria-hidden="true">2</div>
+            <div class="step-num" aria-hidden="true" style="border-color:#8b5cf6;color:#8b5cf6;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4" stroke="currentColor"/><circle cx="18" cy="10" r="3" stroke="currentColor"/><circle cx="12" cy="18" r="3.5" stroke="currentColor"/></svg>
+            </div>
             <h3 class="step-title">Test Multi-Touch</h3>
             <p class="step-desc">Switch tabs and press multiple fingers down at once to confirm how many simultaneous touch points your screen supports.</p>
           </div>
           <div class="step-item">
-            <div class="step-num" aria-hidden="true">3</div>
+            <div class="step-num" aria-hidden="true" style="border-color:#22c55e;color:#22c55e;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16m0 0l-5-5m5 5l-5 5" stroke="currentColor"/></svg>
+            </div>
             <h3 class="step-title">Check Swipes</h3>
             <p class="step-desc">Swipe up, down, left, and right to confirm gesture direction and speed are read correctly by the digitizer.</p>
           </div>
           <div class="step-item">
-            <div class="step-num" aria-hidden="true">4</div>
+            <div class="step-num" aria-hidden="true" style="border-color:#f59e0b;color:#f59e0b;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke="currentColor"/><circle cx="12" cy="12" r="3" stroke="currentColor"/></svg>
+            </div>
             <h3 class="step-title">Measure Accuracy</h3>
             <p class="step-desc">Tap the moving target repeatedly to log response time and accuracy, then review your full results in the sidebar.</p>
           </div>
@@ -347,19 +425,25 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════
-         § Who uses this tool
-    ══════════════════════════════════════════════════════ -->
-    <section class="compare-section" id="who-uses-touchscreen-test" aria-labelledby="who-touch-heading">
+    <!-- ══════════════════════════════════════════════════════════
+         Who uses this tool
+    ══════════════════════════════════════════════════════════ -->
+    <section class="compare-section" id="who-uses-touchscreen-test" aria-labelledby="who-touch-heading" style="background:var(--bg2);padding:6rem 0;">
       <div class="container">
-        <div class="section-header" data-animate>
+        <div class="section-header">
           <span class="section-eyebrow">Use Cases</span>
           <h2 class="section-title" id="who-touch-heading">Who Needs a Touchscreen Test?</h2>
           <p class="section-subtitle">From a pre-purchase check to post-repair verification, this tool covers every situation.</p>
         </div>
-        <div class="compare-grid" data-stagger>
+        <div class="compare-grid">
           <article class="compare-card">
-            <div class="compare-card-icon" aria-hidden="true">🛒</div>
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#3b82f6" fill-opacity="0.08"/>
+                <path d="M12 6v6l4 2" stroke="#3b82f6" stroke-width="1.8"/>
+                <path d="M16 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="compare-card-title">Used Phone Buyers</h3>
             <p class="compare-card-sub">Verify before you pay</p>
             <div class="compare-item">Run the grid test to find dead zones quickly</div>
@@ -367,7 +451,14 @@
             <div class="compare-item">Check the screen feels accurate, not laggy</div>
           </article>
           <article class="compare-card">
-            <div class="compare-card-icon" aria-hidden="true">🧰</div>
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="2" fill="#8b5cf6" fill-opacity="0.08"/>
+                <path d="M6 6h12M6 10h8" stroke="#8b5cf6" stroke-width="1.5"/>
+                <circle cx="16" cy="16" r="3" stroke="#8b5cf6" stroke-width="1.5"/>
+                <polyline points="13 13 16 16 19 13" stroke="#8b5cf6" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="compare-card-title">Repair Technicians</h3>
             <p class="compare-card-sub">Validate digitizer replacements</p>
             <div class="compare-item">Confirm full-screen coverage after a screen swap</div>
@@ -375,7 +466,13 @@
             <div class="compare-item">Log response time before and after repair</div>
           </article>
           <article class="compare-card">
-            <div class="compare-card-icon" aria-hidden="true">🎮</div>
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#f59e0b" fill-opacity="0.08"/>
+                <circle cx="12" cy="12" r="3" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-width="1.5"/>
+                <path d="M12 2v2M12 20v2" stroke="#f59e0b" stroke-width="1.2"/>
+              </svg>
+            </div>
             <h3 class="compare-card-title">Gamers &amp; Power Users</h3>
             <p class="compare-card-sub">Check responsiveness</p>
             <div class="compare-item">Test multi-touch limits for gaming controls</div>
@@ -386,44 +483,80 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════
-         § Troubleshooting
-    ══════════════════════════════════════════════════════ -->
-    <section class="features-section" id="touchscreen-troubleshooting" aria-labelledby="trouble-touch-heading">
+    <!-- ══════════════════════════════════════════════════════════
+         Troubleshooting
+    ══════════════════════════════════════════════════════════ -->
+    <section class="features-section" id="touchscreen-troubleshooting" aria-labelledby="trouble-touch-heading" style="background:var(--bg);padding:6rem 0;">
       <div class="container">
-        <div class="section-header" data-animate>
+        <div class="section-header">
           <span class="section-eyebrow">Troubleshooting</span>
           <h2 class="section-title" id="trouble-touch-heading">Common Touchscreen Problems This Test Reveals</h2>
           <p class="section-subtitle">If a check fails above, here's what it usually means.</p>
         </div>
-        <div class="features-grid" data-stagger>
+        <div class="features-grid">
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">⬛</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="2" fill="#ef4444" fill-opacity="0.08"/>
+                <rect x="5" y="5" width="14" height="14" rx="1" fill="#ef4444" fill-opacity="0.15" stroke="#ef4444" stroke-width="1.2"/>
+                <path d="M9 9l6 6M15 9l-6 6" stroke="#ef4444" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Dark Cells That Won't Clear</h3>
             <p class="feature-desc">A cell that never turns green even after repeated dragging points to a physical dead zone on the digitizer or a cracked layer underneath.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">✌️</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#f59e0b" fill-opacity="0.08"/>
+                <circle cx="12" cy="12" r="4" stroke="#f59e0b" stroke-width="1.5"/>
+                <circle cx="12" cy="12" r="1.5" fill="#f59e0b" fill-opacity="0.3"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Multi-Touch Stops at One Finger</h3>
             <p class="feature-desc">If only a single touch point ever appears, your screen's max touch points value may be capped low, or a screen protector is interfering with sensing.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🔀</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 4v4M4 12h4M12 20v-4M20 12h-4" stroke="#8b5cf6" stroke-width="1.5"/>
+                <path d="M8 8l-2-2M16 8l2-2M8 16l-2 2M16 16l2 2" stroke="#8b5cf6" stroke-width="1.2"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Swipes Detected in the Wrong Direction</h3>
             <p class="feature-desc">Inconsistent swipe results usually mean digitizer noise or interference — try cleaning the screen and removing any case near the edges.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🐌</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#ec4899" fill-opacity="0.08"/>
+                <path d="M12 6v6l4 2" stroke="#ec4899" stroke-width="1.8"/>
+                <circle cx="12" cy="12" r="2" stroke="#ec4899" stroke-width="1.5"/>
+              </svg>
+            </div>
             <h3 class="feature-title">High Response Time</h3>
             <p class="feature-desc">Response times consistently above 150ms can indicate background CPU load, an aging battery throttling performance, or a thick screen protector.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">📐</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#f59e0b" fill-opacity="0.08"/>
+                <circle cx="12" cy="12" r="3" stroke="#f59e0b" stroke-width="1.5"/>
+                <path d="M12 2v2M12 20v2" stroke="#f59e0b" stroke-width="1.2"/>
+                <path d="M4.93 4.93l2.12 2.12" stroke="#f59e0b" stroke-width="1.2"/>
+              </svg>
+            </div>
             <h3 class="feature-title">Touches Landing Off-Target</h3>
             <p class="feature-desc">A consistent offset between where you tap and where the touch registers points to a digitizer calibration issue, often after a drop or repair.</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🚫</div>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#ef4444" fill-opacity="0.08"/>
+                <line x1="15" y1="9" x2="9" y2="15" stroke="#ef4444" stroke-width="1.8"/>
+                <line x1="9" y1="9" x2="15" y2="15" stroke="#ef4444" stroke-width="1.8"/>
+              </svg>
+            </div>
             <h3 class="feature-title">No Touch Detected At All</h3>
             <p class="feature-desc">If the "Touch Support" check fails immediately, your device or browser may not expose touch events — try a different browser or device.</p>
           </article>
@@ -431,75 +564,75 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════════════
          § FAQ
-    ══════════════════════════════════════════════════════ -->
+    ══════════════════════════════════════════════════════════ -->
     <section class="faq-section" id="touchscreen-test-faq" aria-labelledby="faq-touch-heading">
       <div class="container">
-        <div class="section-header" data-animate>
+        <div class="section-header">
           <span class="section-eyebrow">FAQ</span>
           <h2 class="section-title" id="faq-touch-heading">Touchscreen Test — Common Questions</h2>
           <p class="section-subtitle">Everything you need to know before running this touch and multi-touch test.</p>
         </div>
-        <div class="faq-list" role="list" data-animate>
+        <div class="faq-list" role="list">
 
           <div class="faq-item" role="listitem">
             <button class="faq-q" aria-expanded="false" aria-controls="touch-faq-a1" onclick="toggleFaq(this)">
-              How do I test my touchscreen for dead spots?
+              <span>How do I test my touchscreen for dead spots?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" id="touch-faq-a1" role="region">
-              Open the Grid Test tab and drag your finger across every cell on the screen. Each cell turns green once touched. Any cell that stays dark after you've covered the whole screen is a likely dead zone or unresponsive area.
+              <p>Open the Grid Test tab and drag your finger across every cell on the screen. Each cell turns green once touched. Any cell that stays dark after you've covered the whole screen is a likely dead zone or unresponsive area.</p>
             </div>
           </div>
 
           <div class="faq-item" role="listitem">
             <button class="faq-q" aria-expanded="false" aria-controls="touch-faq-a2" onclick="toggleFaq(this)">
-              How many fingers can this multi-touch test detect?
+              <span>How many fingers can this multi-touch test detect?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" id="touch-faq-a2" role="region">
-              This touchscreen test can detect and track up to 10 simultaneous touch points, which covers virtually every phone and tablet digitizer. Place multiple fingers on the screen at once in the Multi-Touch tab to see each one tracked with its own numbered marker.
+              <p>This touchscreen test can detect and track up to 10 simultaneous touch points, which covers virtually every phone and tablet digitizer. Place multiple fingers on the screen at once in the Multi-Touch tab to see each one tracked with its own numbered marker.</p>
             </div>
           </div>
 
           <div class="faq-item" role="listitem">
             <button class="faq-q" aria-expanded="false" aria-controls="touch-faq-a3" onclick="toggleFaq(this)">
-              What is a good touch response time?
+              <span>What is a good touch response time?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" id="touch-faq-a3" role="region">
-              Most modern phone touchscreens respond in under 100 milliseconds, with flagship devices often under 60ms. If this test consistently measures response times above 150ms, your screen may have a software issue, a worn-out digitizer, or a protective screen layer that's reducing sensitivity.
+              <p>Most modern phone touchscreens respond in under 100 milliseconds, with flagship devices often under 60ms. If this test consistently measures response times above 150ms, your screen may have a software issue, a worn-out digitizer, or a protective screen layer that's reducing sensitivity.</p>
             </div>
           </div>
 
           <div class="faq-item" role="listitem">
             <button class="faq-q" aria-expanded="false" aria-controls="touch-faq-a4" onclick="toggleFaq(this)">
-              Does this touchscreen test work on laptops with touch displays?
+              <span>Does this touchscreen test work on laptops with touch displays?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" id="touch-faq-a4" role="region">
-              Yes. Any device with a touch-capable screen and a modern browser — Windows touch laptops, Chromebooks, tablets, and phones — can run this test, since it relies on the standard browser Pointer Events and Touch Events APIs.
+              <p>Yes. Any device with a touch-capable screen and a modern browser — Windows touch laptops, Chromebooks, tablets, and phones — can run this test, since it relies on the standard browser Pointer Events and Touch Events APIs.</p>
             </div>
           </div>
 
           <div class="faq-item" role="listitem">
             <button class="faq-q" aria-expanded="false" aria-controls="touch-faq-a5" onclick="toggleFaq(this)">
-              Why does my screen register touches in the wrong place?
+              <span>Why does my screen register touches in the wrong place?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" id="touch-faq-a5" role="region">
-              This is usually a digitizer calibration issue, often caused by a thick or poorly fitted screen protector, physical screen damage, or software drift after a drop. The Accuracy Test tab shows exactly how far a registered touch lands from where you actually pressed.
+              <p>This is usually a digitizer calibration issue, often caused by a thick or poorly fitted screen protector, physical screen damage, or software drift after a drop. The Accuracy Test tab shows exactly how far a registered touch lands from where you actually pressed.</p>
             </div>
           </div>
 
           <div class="faq-item" role="listitem">
             <button class="faq-q" aria-expanded="false" aria-controls="touch-faq-a6" onclick="toggleFaq(this)">
-              Is this touch test free and does it work without installing an app?
+              <span>Is this touch test free and does it work without installing an app?</span>
               <span class="faq-icon" aria-hidden="true">+</span>
             </button>
             <div class="faq-a" id="touch-faq-a6" role="region">
-              Yes, this touchscreen test is completely free and runs directly in your mobile or desktop browser. No app, download, or account is required — just open the page and start testing.
+              <p>Yes, this touchscreen test is completely free and runs directly in your mobile or desktop browser. No app, download, or account is required — just open the page and start testing.</p>
             </div>
           </div>
 
@@ -522,14 +655,13 @@
   const GRID_COLS = 8, GRID_ROWS = 6, TOTAL_CELLS = GRID_COLS * GRID_ROWS;
   let hitCells = new Set();
   let activeTab = 'grid';
-  let activePointers = new Map(); // pointerId -> {el}
+  let activePointers = new Map();
   let maxSimultaneous = 0;
   let swipeStart = null;
   let accuracyActive = false, accuracyHits = 0, accuracyTotal = 0, lastResponseMs = null;
   let accuracyTargetTime = 0;
 
   // ── DOM refs ────────────────────────────────────────────────────
-  const surface = document.getElementById('touchSurface');
   const gridPanel = document.getElementById('gridPanel');
   const multiPanel = document.getElementById('multiPanel');
   const swipePanel = document.getElementById('swipePanel');
@@ -590,7 +722,7 @@
     if (e.buttons > 0 || e.pointerType === 'touch') markCellsUnderPoint(e.clientX, e.clientY);
   });
 
-  // ── Multi-touch panel ──────────────────────────────────────────
+  // ── Multi-touch ────────────────────────────────────────────────
   function renderTouchPoint(id, x, y) {
     let el = activePointers.get(id);
     if (!el) {
@@ -629,7 +761,7 @@
     multiPanel.addEventListener(ev, e => { removeTouchPoint(e.pointerId); updateActiveCount(); });
   });
 
-  // ── Swipe panel ──────────────────────────────────────────────────
+  // ── Swipe ───────────────────────────────────────────────────────
   let swipeTrailEls = [];
   function clearSwipeTrail() { swipeTrailEls.forEach(e => e.remove()); swipeTrailEls = []; }
   swipePanel.addEventListener('pointerdown', e => {
@@ -654,7 +786,7 @@
     const dx = e.clientX - swipeStart.x, dy = e.clientY - swipeStart.y;
     const dist = Math.hypot(dx, dy);
     const dt = Math.max(performance.now() - swipeStart.t, 1);
-    const speed = Math.round(dist / dt * 1000); // px/sec
+    const speed = Math.round(dist / dt * 1000);
     if (dist > 30) {
       let dir;
       if (Math.abs(dx) > Math.abs(dy)) dir = dx > 0 ? 'Right →' : '← Left';
@@ -674,7 +806,7 @@
   swipePanel.addEventListener('pointerup', finishSwipe);
   swipePanel.addEventListener('pointercancel', finishSwipe);
 
-  // ── Accuracy / response time panel ───────────────────────────────
+  // ── Accuracy ────────────────────────────────────────────────────
   function spawnTarget() {
     const rect = accuracyPanel.getBoundingClientRect();
     const margin = 40;
@@ -743,7 +875,7 @@
   }
   Object.entries(tabs).forEach(([key, t]) => t.btn.addEventListener('click', () => setActiveTab(key)));
 
-  // ── Action / Reset buttons ───────────────────────────────────────
+  // ── Buttons ─────────────────────────────────────────────────────
   actionBtn.addEventListener('click', () => {
     if (activeTab === 'grid') { resetGrid(); }
     else if (activeTab === 'multi') { resetMulti(); }
@@ -816,7 +948,7 @@
     const el = document.getElementById(id);
     if (!el) return;
     el.className = 'check-icon ' + state;
-    el.textContent = state === 'pass' ? '✓' : state === 'fail' ? '✗' : state === 'testing' ? '…' : '?';
+    el.textContent = state === 'pass' ? '✓' : state === 'fail' ? '✗' : '?';
   }
   function updateOverallProgress() {
     const ids = ['chk-support','chk-grid','chk-multi','chk-swipe','chk-accuracy'];
