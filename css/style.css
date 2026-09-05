@@ -1114,3 +1114,146 @@ code { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent2); 
   outline: 2px solid var(--accent); outline-offset: 3px;
   border-radius: 4px;
 }
+
+/* ══════════════════════════════════════════════════════════
+   FAQ (for camera-test and other tool pages)
+══════════════════════════════════════════════════════════ */
+.faq-section {
+  padding: 6rem 0;
+  background: var(--bg);
+}
+
+.faq-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+
+.faq-item.open {
+  border-color: var(--accent);
+}
+
+.faq-q {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--heading);
+  font-size: 0.95rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition);
+  font-family: var(--font-body);
+}
+
+.faq-q:hover {
+  color: var(--accent2);
+}
+
+.faq-q span:first-child {
+  flex: 1;
+}
+
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+  font-weight: 300;
+  transition: all var(--transition);
+}
+
+.faq-item.open .faq-icon {
+  background: var(--accent);
+  color: #fff;
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+.faq-item.open .faq-a {
+  max-height: 300px;
+  padding: 0 1.5rem 1.25rem;
+}
+
+.faq-a p {
+  margin: 0;
+}
+
+/* Ensure section headers in FAQ work */
+.faq-section .section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.faq-section .section-eyebrow {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  font-family: var(--font-mono);
+}
+
+.faq-section .section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.75rem);
+  font-weight: 800;
+  color: var(--heading);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.faq-section .section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text2);
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ── Section header animation ──────────────────────────────── */
+.faq-section [data-animate] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.faq-section [data-animate].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
