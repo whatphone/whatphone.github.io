@@ -1070,7 +1070,7 @@ code { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent2); 
   .hero-subtitle { margin: 0 auto 2rem; }
   .hero-actions { justify-content: center; }
   .hero-quick-info { justify-content: center; }
-  .hero-visual { order: -1; }
+  .hero-visual { order: 2; }
   .info-tags { display: none; }
   
   .nav-links {
