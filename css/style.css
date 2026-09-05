@@ -1255,3 +1255,117 @@ code { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent2); 
   opacity: 1;
   transform: translateY(0);
 }
+/* ── Language Selector ──────────────────────────────────── */
+.lang-selector {
+  position: relative;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text2);
+  border-radius: 8px;
+  transition: all var(--transition);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.lang-toggle:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+.lang-flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.lang-code {
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.lang-dropdown {
+  min-width: 140px;
+  right: 0;
+  left: auto;
+}
+
+.lang-dropdown .dropdown-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.875rem;
+  color: var(--text2);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.lang-dropdown .dropdown-link:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.lang-dropdown .dropdown-link .lang-label {
+  font-weight: 400;
+}
+
+.lang-dropdown .dropdown-link.active-lang {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--accent2);
+  font-weight: 600;
+}
+
+.lang-dropdown .dropdown-link.active-lang .lang-label {
+  font-weight: 600;
+}
+
+/* Mobile responsive for language selector */
+@media (max-width: 768px) {
+  .lang-selector {
+    width: 100%;
+  }
+
+  .lang-toggle {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .lang-dropdown {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    border-radius: var(--r);
+    padding: 0;
+    margin-top: 0.25rem;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease, border 0.3s ease;
+    border-color: transparent;
+    min-width: auto;
+  }
+
+  .lang-dropdown.open {
+    max-height: 300px;
+    padding: 0.25rem;
+    border-color: var(--border);
+  }
+
+  .lang-dropdown .dropdown-link {
+    padding: 0.6rem 0.75rem;
+  }
+}
