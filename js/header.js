@@ -1,13 +1,84 @@
-// Header Component
+// Header Component — Universal Multi-Language
 const Header = (() => {
+  // ── Translation Dictionary ──────────────────────────────
+  const translations = {
+    en: {
+      logo: 'What<span class="accent">Mobile</span>',
+      home: 'Home',
+      allTools: 'All Tools',
+      cameraTest: 'Camera Test',
+      micTest: 'Mic Test',
+      touchscreenTest: 'Touchscreen Test',
+      speakerTest: 'Speaker Test',
+      guides: 'Guides',
+      detectCta: 'Detect My Phone',
+      toggleLabel: 'Toggle navigation menu',
+    },
+    de: {
+      logo: 'What<span class="accent">Mobile</span>',
+      home: 'Startseite',
+      allTools: 'Alle Tools',
+      cameraTest: 'Kamera-Test',
+      micTest: 'Mikrofon-Test',
+      touchscreenTest: 'Touchscreen-Test',
+      speakerTest: 'Lautsprecher-Test',
+      guides: 'Anleitungen',
+      detectCta: 'Mein Handy erkennen',
+      toggleLabel: 'Navigationsmenü umschalten',
+    },
+    fr: {
+      logo: 'What<span class="accent">Mobile</span>',
+      home: 'Accueil',
+      allTools: 'Tous les outils',
+      cameraTest: 'Test Caméra',
+      micTest: 'Test Micro',
+      touchscreenTest: 'Test Écran Tactile',
+      speakerTest: 'Test Haut-Parleur',
+      guides: 'Guides',
+      detectCta: 'Détecter mon téléphone',
+      toggleLabel: 'Basculer le menu de navigation',
+    },
+    es: {
+      logo: 'What<span class="accent">Mobile</span>',
+      home: 'Inicio',
+      allTools: 'Todas las herramientas',
+      cameraTest: 'Prueba de Cámara',
+      micTest: 'Prueba de Micrófono',
+      touchscreenTest: 'Prueba de Pantalla Táctil',
+      speakerTest: 'Prueba de Altavoz',
+      guides: 'Guías',
+      detectCta: 'Detectar mi teléfono',
+      toggleLabel: 'Alternar menú de navegación',
+    },
+  };
+
+  // ── Language Detection ──────────────────────────────────
+  const getLang = () => {
+    const path = window.location.pathname;
+    // Check for /de/, /fr/, /es/ in the path
+    const match = path.match(/^\/(de|fr|es)\//);
+    if (match) return match[1];
+    // If root or unknown, default to English
+    return 'en';
+  };
+
+  const t = (key) => {
+    const lang = getLang();
+    return translations[lang]?.[key] || translations.en[key] || key;
+  };
+
+  // ── Render ──────────────────────────────────────────────
   const render = () => {
     const header = document.getElementById('site-header');
     if (!header) return;
 
+    const lang = getLang();
+    const langPrefix = lang === 'en' ? '' : `/${lang}`;
+
     header.innerHTML = `
       <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-inner">
-          <a href="/" class="nav-logo" aria-label="What Phone - Home">
+          <a href="${langPrefix}/" class="nav-logo" aria-label="${t('logo')} - Home">
             <span class="logo-icon">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <rect x="6" y="1" width="16" height="26" rx="3" stroke="currentColor" stroke-width="2"/>
@@ -17,33 +88,33 @@ const Header = (() => {
                 <path d="M9 16h4M9 18h6" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
               </svg>
             </span>
-            <span class="logo-text">What<span class="accent">Mobile</span></span>
+            <span class="logo-text">${t('logo')}</span>
           </a>
 
-          <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
+          <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="${t('toggleLabel')}">
             <span></span><span></span><span></span>
           </button>
 
           <ul class="nav-links" id="navMenu" role="list">
-            <li><a href="/" class="nav-link" data-section="detect">Home</a></li>
+            <li><a href="${langPrefix}/" class="nav-link" data-section="detect">${t('home')}</a></li>
             <li class="nav-dropdown">
               <button class="nav-link dropdown-toggle" id="dropdownToggle" aria-expanded="false" aria-haspopup="true">
-                All Tools
+                ${t('allTools')}
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="dropdown-arrow">
                   <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </button>
               <ul class="dropdown-menu" id="dropdownMenu" role="menu">
-                <li><a href="/camera-test" class="dropdown-link" role="menuitem">Camera Test</a></li>
-                <li><a href="/mic-test" class="dropdown-link" role="menuitem">Mic Test</a></li>
-                <li><a href="/touchscreen-test" class="dropdown-link" role="menuitem">Touchscreen Test</a></li>
-                <li><a href="/speaker-test" class="dropdown-link" role="menuitem">Speaker Test</a></li>
+                <li><a href="${langPrefix}/camera-test" class="dropdown-link" role="menuitem">${t('cameraTest')}</a></li>
+                <li><a href="${langPrefix}/mic-test" class="dropdown-link" role="menuitem">${t('micTest')}</a></li>
+                <li><a href="${langPrefix}/touchscreen-test" class="dropdown-link" role="menuitem">${t('touchscreenTest')}</a></li>
+                <li><a href="${langPrefix}/speaker-test" class="dropdown-link" role="menuitem">${t('speakerTest')}</a></li>
               </ul>
             </li>
-            <li><a href="/guides" class="nav-link" data-section="">Guides</a></li>                        
+            <li><a href="${langPrefix}/guides" class="nav-link" data-section="">${t('guides')}</a></li>
             <li>
-              <a href="/#detect" class="nav-cta" aria-label="Detect my phone now">
-                <span>Detect My Phone</span>
+              <a href="${langPrefix}/#detect" class="nav-cta" aria-label="${t('detectCta')}">
+                <span>${t('detectCta')}</span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -57,6 +128,7 @@ const Header = (() => {
     initNav();
   };
 
+  // ── Navigation Logic ────────────────────────────────────
   const initNav = () => {
     const toggle = document.getElementById('navToggle');
     const menu = document.getElementById('navMenu');
