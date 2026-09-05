@@ -13,7 +13,6 @@ const Header = (() => {
       guides: 'Guides',
       detectCta: 'Detect My Phone',
       toggleLabel: 'Toggle navigation menu',
-      languageSelector: 'Language',
     },
     de: {
       logo: 'What<span class="accent">Phone</span>',
@@ -26,7 +25,6 @@ const Header = (() => {
       guides: 'Anleitungen',
       detectCta: 'Mein Handy erkennen',
       toggleLabel: 'Navigationsmenü umschalten',
-      languageSelector: 'Sprache',
     },
     fr: {
       logo: 'What<span class="accent">Phone</span>',
@@ -39,7 +37,6 @@ const Header = (() => {
       guides: 'Guides',
       detectCta: 'Détecter mon téléphone',
       toggleLabel: 'Basculer le menu de navigation',
-      languageSelector: 'Langue',
     },
     es: {
       logo: 'What<span class="accent">Phone</span>',
@@ -52,7 +49,6 @@ const Header = (() => {
       guides: 'Guías',
       detectCta: 'Detectar mi teléfono',
       toggleLabel: 'Alternar menú de navegación',
-      languageSelector: 'Idioma',
     },
     it: {
       logo: 'What<span class="accent">Phone</span>',
@@ -65,7 +61,6 @@ const Header = (() => {
       guides: 'Guide',
       detectCta: 'Rileva il mio telefono',
       toggleLabel: 'Attiva/disattiva menu di navigazione',
-      languageSelector: 'Lingua',
     },
   };
 
@@ -129,8 +124,10 @@ const Header = (() => {
 
           <ul class="nav-links" id="navMenu" role="list">
             <li><a href="${langPrefix}/" class="nav-link" data-section="detect">${t('home')}</a></li>
+            
+            <!-- Tools Dropdown -->
             <li class="nav-dropdown">
-              <button class="nav-link dropdown-toggle" id="dropdownToggle" aria-expanded="false" aria-haspopup="true">
+              <button class="dropdown-toggle" id="dropdownToggle" aria-expanded="false" aria-haspopup="true">
                 ${t('allTools')}
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="dropdown-arrow">
                   <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -143,11 +140,12 @@ const Header = (() => {
                 <li><a href="${langPrefix}/speaker-test" class="dropdown-link" role="menuitem">${t('speakerTest')}</a></li>
               </ul>
             </li>
+            
             <li><a href="${langPrefix}/guides" class="nav-link" data-section="">${t('guides')}</a></li>
             
-            <!-- ── Language Selector ─────────────────────── -->
+            <!-- Language Selector -->
             <li class="nav-dropdown lang-selector">
-              <button class="nav-link dropdown-toggle lang-toggle" id="langToggle" aria-expanded="false" aria-haspopup="true">
+              <button class="lang-toggle" id="langToggle" aria-expanded="false" aria-haspopup="true">
                 <span class="lang-flag">${currentLangData.flag}</span>
                 <span class="lang-code">${currentLangData.code.toUpperCase()}</span>
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="dropdown-arrow">
@@ -155,14 +153,14 @@ const Header = (() => {
                 </svg>
               </button>
               <ul class="dropdown-menu lang-dropdown" id="langMenu" role="menu">
-                ${languages.map(lang => `
+                ${languages.map(langOption => `
                   <li>
-                    <a href="${lang.code === 'en' ? '/' : '/' + lang.code + '/'}" 
-                       class="dropdown-link ${lang.code === currentLang ? 'active-lang' : ''}" 
+                    <a href="${langOption.code === 'en' ? '/' : '/' + langOption.code + '/'}" 
+                       class="dropdown-link ${langOption.code === currentLang ? 'active-lang' : ''}" 
                        role="menuitem"
-                       data-lang="${lang.code}">
-                      <span class="lang-flag">${lang.flag}</span>
-                      <span class="lang-label">${lang.label}</span>
+                       data-lang="${langOption.code}">
+                      <span class="lang-flag">${langOption.flag}</span>
+                      <span class="lang-label">${langOption.label}</span>
                     </a>
                   </li>
                 `).join('')}
@@ -196,7 +194,8 @@ const Header = (() => {
     const langMenu = document.getElementById('langMenu');
 
     // Mobile toggle
-    toggle?.addEventListener('click', () => {
+    toggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!expanded));
       menu?.classList.toggle('open');
@@ -205,32 +204,42 @@ const Header = (() => {
 
     // Tools dropdown toggle
     dropdownToggle?.addEventListener('click', (e) => {
+      e.preventDefault();
       e.stopPropagation();
       const expanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
       dropdownToggle.setAttribute('aria-expanded', String(!expanded));
       dropdownMenu?.classList.toggle('open');
       // Close language dropdown if open
-      langMenu?.classList.remove('open');
-      langToggle?.setAttribute('aria-expanded', 'false');
+      if (langMenu?.classList.contains('open')) {
+        langMenu.classList.remove('open');
+        langToggle?.setAttribute('aria-expanded', 'false');
+      }
     });
 
     // Language dropdown toggle
     langToggle?.addEventListener('click', (e) => {
+      e.preventDefault();
       e.stopPropagation();
       const expanded = langToggle.getAttribute('aria-expanded') === 'true';
       langToggle.setAttribute('aria-expanded', String(!expanded));
       langMenu?.classList.toggle('open');
       // Close tools dropdown if open
-      dropdownMenu?.classList.remove('open');
-      dropdownToggle?.setAttribute('aria-expanded', 'false');
+      if (dropdownMenu?.classList.contains('open')) {
+        dropdownMenu.classList.remove('open');
+        dropdownToggle?.setAttribute('aria-expanded', 'false');
+      }
     });
 
     // Close dropdowns when clicking outside
     document.addEventListener('click', (e) => {
-      if (!e.target.closest('.nav-dropdown')) {
-        dropdownMenu?.classList.remove('open');
+      // Close tools dropdown
+      if (dropdownMenu && !e.target.closest('#dropdownToggle') && !e.target.closest('#dropdownMenu')) {
+        dropdownMenu.classList.remove('open');
         dropdownToggle?.setAttribute('aria-expanded', 'false');
-        langMenu?.classList.remove('open');
+      }
+      // Close language dropdown
+      if (langMenu && !e.target.closest('#langToggle') && !e.target.closest('#langMenu')) {
+        langMenu.classList.remove('open');
         langToggle?.setAttribute('aria-expanded', 'false');
       }
     });
@@ -277,8 +286,8 @@ const Header = (() => {
 
     sections.forEach(s => observer.observe(s));
 
-    // Close menu on link click
-    menu?.querySelectorAll('a:not(.nav-cta)').forEach(a => {
+    // Close mobile menu on link click
+    menu?.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         menu.classList.remove('open');
         toggle?.classList.remove('active');
