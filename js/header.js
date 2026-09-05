@@ -105,7 +105,7 @@ const Header = (() => {
     header.innerHTML = `
       <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-inner">
-          <a href="${langPrefix}/" class="nav-logo" aria-label="${t('logo')} - Home">
+          <a href="${langPrefix}/" class="nav-logo" aria-label="${t('logo')}">
             <span class="logo-icon">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <rect x="6" y="1" width="16" height="26" rx="3" stroke="currentColor" stroke-width="2"/>
