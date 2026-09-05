@@ -801,15 +801,16 @@
   </div>
 </section>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <footer id="site-footer" role="contentinfo"></footer>
-  
-  <script src="js/header.js?v=1.0.0" defer></script>
-  <script src="js/footer.js?v=1.0.0" defer></script>
-  
-  <script>
+</div> <!-- ← This closes .tool-page -->
 
-    // ── Global FAQ toggle ───────────────────────────────────────────
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<footer id="site-footer" role="contentinfo"></footer>
+
+<script src="js/header.js?v=1.0.0" defer></script>
+<script src="js/footer.js?v=1.0.0" defer></script>
+
+<script>
+// ── Global FAQ toggle ───────────────────────────────────────────
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
   const isOpen = item.classList.contains('open');
@@ -822,10 +823,10 @@ function toggleFaq(btn) {
     btn.setAttribute('aria-expanded', 'true');
   }
 }
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof Header !== 'undefined') Header.render();
-    if (typeof Footer !== 'undefined') Footer.render();
-  });
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof Header !== 'undefined') Header.render();
+  if (typeof Footer !== 'undefined') Footer.render();
 
   // ── State ───────────────────────────────────────────────────────
   let stream = null, mediaRecorder = null, recordedChunks = [], facingMode = 'environment';
@@ -1036,20 +1037,7 @@ function toggleFaq(btn) {
     clearTimeout(t._timer);
     t._timer = setTimeout(() => t.classList.remove('show'), 2600);
   }
-
-  // ── FAQ toggle ──────────────────────────────────────────────────
-function toggleFaq(btn) {
-  const item = btn.closest('.faq-item');
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i => {
-    i.classList.remove('open');
-    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-  });
-  if (!isOpen) {
-    item.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-  }
-}
-  </script>
+});
+</script>
 </body>
 </html>
