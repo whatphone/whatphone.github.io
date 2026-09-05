@@ -808,6 +808,20 @@
   <script src="js/footer.js?v=1.0.0" defer></script>
   
   <script>
+
+    // ── Global FAQ toggle ───────────────────────────────────────────
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
   document.addEventListener('DOMContentLoaded', () => {
     if (typeof Header !== 'undefined') Header.render();
     if (typeof Footer !== 'undefined') Footer.render();
