@@ -1,9 +1,9 @@
-// Header Component — Universal Multi-Language
+// Header Component — Universal Multi-Language with Language Selector
 const Header = (() => {
   // ── Translation Dictionary ──────────────────────────────
   const translations = {
     en: {
-      logo: 'What<span class="accent">Mobile</span>',
+      logo: 'What<span class="accent">Phone</span>',
       home: 'Home',
       allTools: 'All Tools',
       cameraTest: 'Camera Test',
@@ -13,9 +13,10 @@ const Header = (() => {
       guides: 'Guides',
       detectCta: 'Detect My Phone',
       toggleLabel: 'Toggle navigation menu',
+      languageSelector: 'Language',
     },
     de: {
-      logo: 'What<span class="accent">Mobile</span>',
+      logo: 'What<span class="accent">Phone</span>',
       home: 'Startseite',
       allTools: 'Alle Tools',
       cameraTest: 'Kamera-Test',
@@ -25,9 +26,10 @@ const Header = (() => {
       guides: 'Anleitungen',
       detectCta: 'Mein Handy erkennen',
       toggleLabel: 'Navigationsmenü umschalten',
+      languageSelector: 'Sprache',
     },
     fr: {
-      logo: 'What<span class="accent">Mobile</span>',
+      logo: 'What<span class="accent">Phone</span>',
       home: 'Accueil',
       allTools: 'Tous les outils',
       cameraTest: 'Test Caméra',
@@ -37,9 +39,10 @@ const Header = (() => {
       guides: 'Guides',
       detectCta: 'Détecter mon téléphone',
       toggleLabel: 'Basculer le menu de navigation',
+      languageSelector: 'Langue',
     },
     es: {
-      logo: 'What<span class="accent">Mobile</span>',
+      logo: 'What<span class="accent">Phone</span>',
       home: 'Inicio',
       allTools: 'Todas las herramientas',
       cameraTest: 'Prueba de Cámara',
@@ -49,22 +52,49 @@ const Header = (() => {
       guides: 'Guías',
       detectCta: 'Detectar mi teléfono',
       toggleLabel: 'Alternar menú de navegación',
+      languageSelector: 'Idioma',
+    },
+    it: {
+      logo: 'What<span class="accent">Phone</span>',
+      home: 'Home',
+      allTools: 'Tutti gli strumenti',
+      cameraTest: 'Test Fotocamera',
+      micTest: 'Test Microfono',
+      touchscreenTest: 'Test Schermo Tattile',
+      speakerTest: 'Test Altoparlante',
+      guides: 'Guide',
+      detectCta: 'Rileva il mio telefono',
+      toggleLabel: 'Attiva/disattiva menu di navigazione',
+      languageSelector: 'Lingua',
     },
   };
 
   // ── Language Detection ──────────────────────────────────
   const getLang = () => {
     const path = window.location.pathname;
-    // Check for /de/, /fr/, /es/ in the path
-    const match = path.match(/^\/(de|fr|es)\//);
+    const match = path.match(/^\/(de|fr|es|it)\//);
     if (match) return match[1];
-    // If root or unknown, default to English
     return 'en';
   };
 
   const t = (key) => {
     const lang = getLang();
     return translations[lang]?.[key] || translations.en[key] || key;
+  };
+
+  // ── Language Selector Options ──────────────────────────
+  const languages = [
+    { code: 'en', label: 'English', flag: '🇬🇧' },
+    { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
+    { code: 'fr', label: 'Français', flag: '🇫🇷' },
+    { code: 'es', label: 'Español', flag: '🇪🇸' },
+    { code: 'it', label: 'Italiano', flag: '🇮🇹' },
+  ];
+
+  const getCurrentLang = () => {
+    const path = window.location.pathname;
+    const match = path.match(/^\/(de|fr|es|it)\//);
+    return match ? match[1] : 'en';
   };
 
   // ── Render ──────────────────────────────────────────────
@@ -74,6 +104,8 @@ const Header = (() => {
 
     const lang = getLang();
     const langPrefix = lang === 'en' ? '' : `/${lang}`;
+    const currentLang = getCurrentLang();
+    const currentLangData = languages.find(l => l.code === currentLang) || languages[0];
 
     header.innerHTML = `
       <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -112,6 +144,31 @@ const Header = (() => {
               </ul>
             </li>
             <li><a href="${langPrefix}/guides" class="nav-link" data-section="">${t('guides')}</a></li>
+            
+            <!-- ── Language Selector ─────────────────────── -->
+            <li class="nav-dropdown lang-selector">
+              <button class="nav-link dropdown-toggle lang-toggle" id="langToggle" aria-expanded="false" aria-haspopup="true">
+                <span class="lang-flag">${currentLangData.flag}</span>
+                <span class="lang-code">${currentLangData.code.toUpperCase()}</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="dropdown-arrow">
+                  <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <ul class="dropdown-menu lang-dropdown" id="langMenu" role="menu">
+                ${languages.map(lang => `
+                  <li>
+                    <a href="${lang.code === 'en' ? '/' : '/' + lang.code + '/'}" 
+                       class="dropdown-link ${lang.code === currentLang ? 'active-lang' : ''}" 
+                       role="menuitem"
+                       data-lang="${lang.code}">
+                      <span class="lang-flag">${lang.flag}</span>
+                      <span class="lang-label">${lang.label}</span>
+                    </a>
+                  </li>
+                `).join('')}
+              </ul>
+            </li>
+
             <li>
               <a href="${langPrefix}/#detect" class="nav-cta" aria-label="${t('detectCta')}">
                 <span>${t('detectCta')}</span>
@@ -135,6 +192,8 @@ const Header = (() => {
     const header = document.getElementById('site-header');
     const dropdownToggle = document.getElementById('dropdownToggle');
     const dropdownMenu = document.getElementById('dropdownMenu');
+    const langToggle = document.getElementById('langToggle');
+    const langMenu = document.getElementById('langMenu');
 
     // Mobile toggle
     toggle?.addEventListener('click', () => {
@@ -144,27 +203,45 @@ const Header = (() => {
       toggle.classList.toggle('active');
     });
 
-    // Dropdown toggle
+    // Tools dropdown toggle
     dropdownToggle?.addEventListener('click', (e) => {
       e.stopPropagation();
       const expanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
       dropdownToggle.setAttribute('aria-expanded', String(!expanded));
       dropdownMenu?.classList.toggle('open');
+      // Close language dropdown if open
+      langMenu?.classList.remove('open');
+      langToggle?.setAttribute('aria-expanded', 'false');
     });
 
-    // Close dropdown when clicking outside
+    // Language dropdown toggle
+    langToggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const expanded = langToggle.getAttribute('aria-expanded') === 'true';
+      langToggle.setAttribute('aria-expanded', String(!expanded));
+      langMenu?.classList.toggle('open');
+      // Close tools dropdown if open
+      dropdownMenu?.classList.remove('open');
+      dropdownToggle?.setAttribute('aria-expanded', 'false');
+    });
+
+    // Close dropdowns when clicking outside
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.nav-dropdown')) {
         dropdownMenu?.classList.remove('open');
         dropdownToggle?.setAttribute('aria-expanded', 'false');
+        langMenu?.classList.remove('open');
+        langToggle?.setAttribute('aria-expanded', 'false');
       }
     });
 
-    // Close dropdown on Escape key
+    // Close dropdowns on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         dropdownMenu?.classList.remove('open');
         dropdownToggle?.setAttribute('aria-expanded', 'false');
+        langMenu?.classList.remove('open');
+        langToggle?.setAttribute('aria-expanded', 'false');
       }
     });
 
@@ -187,7 +264,7 @@ const Header = (() => {
 
     // Active section highlight
     const sections = document.querySelectorAll('section[id]');
-    const links = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+    const links = document.querySelectorAll('.nav-link:not(.dropdown-toggle):not(.lang-toggle)');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -208,6 +285,8 @@ const Header = (() => {
         toggle?.setAttribute('aria-expanded', 'false');
         dropdownMenu?.classList.remove('open');
         dropdownToggle?.setAttribute('aria-expanded', 'false');
+        langMenu?.classList.remove('open');
+        langToggle?.setAttribute('aria-expanded', 'false');
       });
     });
   };
