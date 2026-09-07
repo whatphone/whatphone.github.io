@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
+     crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MD16J6JVZ2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MD16J6JVZ2');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>WiFi Speed Test — Check Download, Upload, Jitter & Packet Loss | WhatPhone</title>
+  <meta name="description" content="Free WiFi speed test that goes beyond download and upload. Measure jitter and packet loss in real time to find out why your video calls freeze or drop — right in your browser, no app needed." />
+  <meta name="keywords" content="wifi speed test, internet speed test, jitter test, packet loss test, wifi latency test, why do my video calls freeze, ping test online, wifi speed test with jitter, network stability test, wifi test for zoom calls" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://whatphone.github.io/wifi-speed-test" />
+
+  <meta property="og:title" content="WiFi Speed Test — Download, Upload, Jitter & Packet Loss | WhatPhone" />
+  <meta property="og:description" content="Test your WiFi's real performance: download, upload, ping, jitter, and packet loss — the metrics that actually explain dropped video calls." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#f7f9fc" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"WiFi Speed & Latency Test","url":"https://whatphone.github.io/wifi-speed-test","description":"Test WiFi download speed, upload speed, ping, jitter, and packet loss directly in your browser","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good WiFi speed for video calls?","acceptedAnswer":{"@type":"Answer","text":"Most video call platforms only need 3-4 Mbps of download and upload speed for HD quality. If your download and upload numbers here are comfortably above that but calls still freeze, the real culprit is usually jitter or packet loss, not raw speed."}},{"@type":"Question","name":"What is jitter and why does it break video calls?","acceptedAnswer":{"@type":"Answer","text":"Jitter is the variation in delay between packets arriving at your device. Video and audio calls stream in a steady rhythm, so when packets arrive at uneven intervals, the app's buffer runs dry and you hear robotic audio or see frozen frames, even if your average speed looks fine."}},{"@type":"Question","name":"What counts as high packet loss on WiFi?","acceptedAnswer":{"@type":"Answer","text":"Under 1% packet loss is generally unnoticeable. 1-2.5% starts to cause occasional glitches in calls and streams. Above 2.5% is considered high and will cause regular freezing, dropped calls, and rubber-banding in online games."}},{"@type":"Question","name":"Why is my WiFi speed slower than what I pay for?","acceptedAnswer":{"@type":"Answer","text":"WiFi speed and your internet plan speed are two different things. Distance from the router, wall interference, band congestion (2.4GHz vs 5GHz), and the number of connected devices all reduce the WiFi speed you actually get, even when your ISP is delivering the full plan speed to your router."}},{"@type":"Question","name":"Does this test measure my WiFi or my internet plan?","acceptedAnswer":{"@type":"Answer","text":"It measures the full path from your device, over WiFi, through your router, out to your ISP, and back. If results are low, test again with a device connected via ethernet or standing next to the router to see how much WiFi itself is the bottleneck."}},{"@type":"Question","name":"Do I need to close other apps before testing?","acceptedAnswer":{"@type":"Answer","text":"Yes, for the most accurate reading. Streaming, cloud backups, and downloads running in the background will share bandwidth with the test and lower your download and upload results."}}]}</script>
+
+  <style>
+    .tool-page { padding-top: 72px; min-height: 100vh; }
+    .tool-hero { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); background: var(--bg2); }
+
+    .breadcrumb ol {
+      display: flex; align-items: center; gap: .5rem;
+      list-style: none; font-size: .82rem; color: var(--text3);
+      margin-bottom: 1.25rem; padding: 0;
+    }
+    .breadcrumb li+li::before { content: '/'; opacity: .4; margin-right: .5rem; }
+    .breadcrumb a { color: var(--text2); transition: color var(--transition); }
+    .breadcrumb a:hover { color: var(--accent2); }
+    .breadcrumb [aria-current] { color: var(--accent2); }
+
+    .tool-hero-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap;
+    }
+    .tool-hero-left h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800; color: var(--heading);
+      line-height: 1.15; margin-bottom: .5rem;
+    }
+    .tool-hero-left p { color: var(--text2); font-size: 1rem; max-width: 540px; line-height: 1.6; }
+
+    .tool-status-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .45rem 1rem; border-radius: 100px;
+      font-size: .82rem; font-weight: 600;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text2); white-space: nowrap;
+    }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text3); flex-shrink: 0; }
+    .status-dot.ready { background: var(--green); box-shadow: 0 0 8px rgba(34,197,94,.6); animation: pulse-dot 2s infinite; }
+    .status-dot.error { background: var(--red); }
+    .status-dot.testing { background: var(--accent); box-shadow: 0 0 8px rgba(59,130,246,.6); animation: pulse-dot 1s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    .tool-main {
+      max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 5rem;
+      display: grid; grid-template-columns: 1fr 320px; gap: 1.75rem; align-items: start;
+    }
+
+    /* ── Speed test panel ─────────────────────────────────────── */
+    .speed-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2rem; }
+    .speed-phase-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: .75rem; gap: 1rem; }
+    .speed-phase-label { font-family: var(--font-mono); font-size: .8rem; color: var(--accent2); text-transform: uppercase; letter-spacing: .08em; }
+    .speed-phase-pct { font-family: var(--font-mono); font-size: .8rem; color: var(--text3); }
+    .speed-progress-track { width: 100%; height: 6px; background: var(--bg3); border-radius: 100px; overflow: hidden; margin-bottom: 2rem; }
+    .speed-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--neon2)); transition: width .3s ease; border-radius: 100px; }
+
+    .speed-readouts { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
+    .speed-readout-card { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r); padding: 1.5rem; text-align: center; }
+    .speed-readout-label { display: flex; align-items: center; justify-content: center; gap: .4rem; font-size: .78rem; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: .08em; margin-bottom: .6rem; }
+    .speed-readout-value { font-family: var(--font-display); font-size: 2.6rem; font-weight: 800; color: var(--heading); line-height: 1; }
+    .speed-readout-unit { font-size: .82rem; color: var(--text3); font-family: var(--font-mono); margin-top: .35rem; }
+    .speed-readout-bar { height: 5px; background: var(--border); border-radius: 100px; margin-top: 1.1rem; overflow: hidden; }
+    .speed-readout-bar-fill { height: 100%; width: 0%; border-radius: 100px; transition: width .25s linear; }
+    .speed-readout-bar-fill.down { background: var(--accent); }
+    .speed-readout-bar-fill.up { background: #8b5cf6; }
+
+    .speed-stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.75rem; }
+    .speed-stat-chip { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r); padding: 1rem .5rem; text-align: center; }
+    .speed-stat-chip-val { font-family: var(--font-mono); font-weight: 700; font-size: 1.35rem; color: var(--heading); }
+    .speed-stat-chip-val.warn { color: var(--amber); }
+    .speed-stat-chip-val.bad { color: var(--red); }
+    .speed-stat-chip-label { font-size: .68rem; color: var(--text3); margin-top: .3rem; text-transform: uppercase; letter-spacing: .06em; }
+
+    .speed-start-btn {
+      width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+      padding: 1rem 2rem; border-radius: var(--r);
+      background: var(--accent); color: #fff;
+      font-size: 1.05rem; font-weight: 700; font-family: var(--font-display);
+      cursor: pointer; border: none;
+      box-shadow: 0 0 30px rgba(59,130,246,.35);
+      transition: all var(--transition);
+    }
+    .speed-start-btn:hover { background: var(--accent2); transform: translateY(-2px); }
+    .speed-start-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    .speed-verdict { margin-top: 1.5rem; padding: 1.1rem 1.25rem; border-radius: var(--r); background: var(--bg3); border: 1px solid var(--border); font-size: .88rem; color: var(--text2); line-height: 1.6; display: none; }
+    .speed-verdict.show { display: block; }
+    .speed-verdict strong { color: var(--heading); }
+
+    .tool-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+    .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 1.25rem; }
+    .sidebar-card-title { font-family: var(--font-display); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin-bottom: 1rem; }
+    .info-row { display: flex; justify-content: space-between; align-items: center; padding: .45rem 0; border-bottom: 1px solid var(--border); font-size: .82rem; }
+    .info-row:last-child { border-bottom: none; }
+    .info-row-key { color: var(--text2); }
+    .info-row-val { font-family: var(--font-mono); color: var(--text); font-weight: 700; font-size: .78rem; text-align: right; }
+
+    .check-list { display: flex; flex-direction: column; gap: .5rem; }
+    .check-item { display: flex; align-items: center; gap: .65rem; font-size: .85rem; color: var(--text2); }
+    .check-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: .65rem; font-weight: 700; }
+    .check-icon.pass { background: rgba(34,197,94,.15); color: var(--green); border: 1px solid rgba(34,197,94,.3); }
+    .check-icon.fail { background: rgba(239,68,68,.15); color: var(--red); border: 1px solid rgba(239,68,68,.3); }
+    .check-icon.pending { background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
+
+    .tool-link { display: flex; align-items: center; gap: .6rem; padding: .6rem .75rem; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r); font-size: .82rem; color: var(--text2); transition: all var(--transition); text-decoration: none; }
+    .tool-link:hover { border-color: var(--accent); color: var(--text); background: var(--surface); }
+
+    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface); border: 1px solid var(--border); padding: .65rem 1.4rem; border-radius: 100px; font-size: .875rem; color: var(--text); z-index: 9999; opacity: 0; transition: all .3s; pointer-events: none; box-shadow: var(--shadow); }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+
+    @media(max-width:1024px) { .tool-main { grid-template-columns: 1fr; } }
+    @media(max-width:768px) {
+      .tool-hero { padding: 2rem 0 1.5rem; }
+      .tool-hero-inner { flex-direction: column; align-items: flex-start; }
+      .tool-status-badge { align-self: flex-start; }
+    }
+    @media(max-width:480px) {
+      .speed-readouts { grid-template-columns: 1fr; }
+      .speed-stats-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── Shared marketing sections (reused across tool pages) ─── */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .feature-card { padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); transition: all var(--transition); }
+    .feature-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: var(--shadow-accent); }
+    .feature-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .feature-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--heading); margin-bottom: .5rem; }
+    .feature-desc { font-size: .9rem; color: var(--text2); line-height: 1.65; }
+
+    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
+    .steps-grid::before { content: ''; position: absolute; top: 36px; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(90deg, transparent, var(--border2), var(--accent), var(--border2), transparent); z-index: 0; }
+    .step-item { text-align: center; position: relative; z-index: 1; }
+    .step-num { width: 72px; height: 72px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--accent); margin: 0 auto 1.25rem; box-shadow: 0 0 20px rgba(59,130,246,.2); transition: all var(--transition); }
+    .step-item:hover .step-num { background: var(--accent); color: #fff; }
+    .step-title { font-family: var(--font-display); font-weight: 700; color: var(--heading); margin-bottom: .5rem; }
+    .step-desc { font-size: .875rem; color: var(--text2); line-height: 1.6; }
+
+    .compare-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .compare-card { padding: 1.75rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); transition: all var(--transition); }
+    .compare-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow-accent); }
+    .compare-card-icon { margin-bottom: 1rem; }
+    .compare-card-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--heading); margin-bottom: .25rem; }
+    .compare-card-sub { font-size: .85rem; color: var(--text3); margin-bottom: 1rem; }
+    .compare-item { display: flex; align-items: center; gap: .5rem; font-size: .85rem; color: var(--text2); padding: .25rem 0; }
+    .compare-item::before { content: '→'; color: var(--accent); font-size: .75rem; }
+
+    .faq-section { padding: 6rem 0; background: var(--bg); }
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: .75rem; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; transition: border-color var(--transition); }
+    .faq-item.open { border-color: var(--accent); }
+    .faq-q { width: 100%; padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; text-align: left; font-weight: 600; color: var(--heading); font-size: .95rem; background: none; border: none; cursor: pointer; transition: color var(--transition); font-family: var(--font-body); }
+    .faq-q:hover { color: var(--accent2); }
+    .faq-icon { width: 24px; height: 24px; border-radius: 6px; background: var(--surface2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; font-weight: 300; transition: all var(--transition); }
+    .faq-item.open .faq-icon { background: var(--accent); color: #fff; transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease; font-size: .9rem; color: var(--text2); line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 1.5rem 1.25rem; }
+    .faq-a p { margin: 0; }
+
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-eyebrow { display: inline-block; margin-bottom: .75rem; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent2); font-family: var(--font-mono); }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 800; color: var(--heading); margin-bottom: .75rem; line-height: 1.2; }
+    .section-subtitle { font-size: 1.05rem; color: var(--text2); max-width: 560px; margin: 0 auto; }
+
+    @media (max-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid::before { display: none; }
+      .compare-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header id="site-header" role="banner"></header>
+
+  <div class="tool-page" id="main-content">
+    <!-- Tool Hero -->
+    <div class="tool-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="../tools">Tools</a></li>
+            <li aria-current="page">WiFi Speed Test</li>
+          </ol>
+        </nav>
+        <div class="tool-hero-inner">
+          <div class="tool-hero-left">
+            <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
+              <span style="font-size:1.6rem" aria-hidden="true">📶</span>
+              <h1>WiFi Speed & Latency Test</h1>
+            </div>
+            <p>Measure download, upload, ping, jitter, and packet loss — the five numbers that actually explain why your video calls freeze, even when your "speed" looks fine.</p>
+          </div>
+          <div id="statusBadge" class="tool-status-badge" aria-live="polite">
+            <span class="status-dot" id="statusDot"></span>
+            <span id="statusText">Ready to test</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main App -->
+    <div class="tool-main">
+      <!-- Left: Test panel -->
+      <div class="speed-panel">
+        <div class="speed-phase-row">
+          <span class="speed-phase-label" id="phaseLabel">Idle</span>
+          <span class="speed-phase-pct" id="phasePct"></span>
+        </div>
+        <div class="speed-progress-track"><div class="speed-progress-fill" id="progressFill"></div></div>
+
+        <div class="speed-readouts">
+          <div class="speed-readout-card">
+            <div class="speed-readout-label">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v9M3.5 6.5L7 10l3.5-3.5" stroke="#3b82f6" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13h10" stroke="#3b82f6" stroke-width="1.4" stroke-linecap="round"/></svg>
+              Download
+            </div>
+            <div class="speed-readout-value" id="downloadVal">0</div>
+            <div class="speed-readout-unit">Mbps</div>
+            <div class="speed-readout-bar"><div class="speed-readout-bar-fill down" id="downloadBar"></div></div>
+          </div>
+          <div class="speed-readout-card">
+            <div class="speed-readout-label">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 13V4M3.5 7.5L7 4l3.5 3.5" stroke="#8b5cf6" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 1h10" stroke="#8b5cf6" stroke-width="1.4" stroke-linecap="round"/></svg>
+              Upload
+            </div>
+            <div class="speed-readout-value" id="uploadVal">0</div>
+            <div class="speed-readout-unit">Mbps</div>
+            <div class="speed-readout-bar"><div class="speed-readout-bar-fill up" id="uploadBar"></div></div>
+          </div>
+        </div>
+
+        <div class="speed-stats-row">
+          <div class="speed-stat-chip">
+            <div class="speed-stat-chip-val" id="pingVal">—</div>
+            <div class="speed-stat-chip-label">Ping (ms)</div>
+          </div>
+          <div class="speed-stat-chip">
+            <div class="speed-stat-chip-val" id="jitterVal">—</div>
+            <div class="speed-stat-chip-label">Jitter (ms)</div>
+          </div>
+          <div class="speed-stat-chip">
+            <div class="speed-stat-chip-val" id="lossVal">—</div>
+            <div class="speed-stat-chip-label">Packet Loss</div>
+          </div>
+        </div>
+
+        <button class="speed-start-btn" id="startTestBtn">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M7 6l5 3-5 3V6z" fill="currentColor"/></svg>
+          <span id="startBtnText">Start WiFi Test</span>
+        </button>
+
+        <div class="speed-verdict" id="speedVerdict"></div>
+      </div>
+
+      <!-- Right: Sidebar -->
+      <aside class="tool-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Connection Info</div>
+          <div class="info-row"><span class="info-row-key">Connection Type</span><span class="info-row-val" id="infoConnType">—</span></div>
+          <div class="info-row"><span class="info-row-key">Reported Downlink</span><span class="info-row-val" id="infoDownlink">—</span></div>
+          <div class="info-row"><span class="info-row-key">Reported RTT</span><span class="info-row-val" id="infoRtt">—</span></div>
+          <div class="info-row"><span class="info-row-key">Data Saver</span><span class="info-row-val" id="infoSaver">—</span></div>
+          <div class="info-row"><span class="info-row-key">Server</span><span class="info-row-val">Cloudflare Edge</span></div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Diagnostic Results</div>
+          <div class="check-list" id="checkList">
+            <div class="check-item"><div class="check-icon pending" id="chk-ping">?</div><span>Ping under 50ms</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-jitter">?</div><span>Jitter under 15ms</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-loss">?</div><span>Packet loss under 1%</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-down">?</div><span>Download ≥ 10 Mbps</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-up">?</div><span>Upload ≥ 3 Mbps</span></div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Other Tests</div>
+          <div style="display:flex;flex-direction:column;gap:.5rem">
+            <a href="gps-compass-test" class="tool-link"><span style="font-size:1rem" aria-hidden="true">🧭</span> GPS / Compass Test</a>
+            <a href="vibration-test" class="tool-link"><span style="font-size:1rem" aria-hidden="true">📳</span> Vibration Test</a>
+            <a href="camera-test" class="tool-link"><span style="font-size:1rem" aria-hidden="true">📷</span> Camera Test</a>
+            <a href="/#detect" class="tool-link"><span style="font-size:1rem" aria-hidden="true">📱</span> Detect My Phone</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         Why use this WiFi test
+    ══════════════════════════════════════════════════════════ -->
+    <section class="features-section" id="why-wifi-test" aria-labelledby="why-heading" style="background:var(--bg2);padding:6rem 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Why It Matters</span>
+          <h2 class="section-title" id="why-heading">More Than a Speed Number</h2>
+          <p class="section-subtitle">Most WiFi speed tests stop at download and upload. This one measures the two metrics that actually explain a choppy Zoom call or a laggy match: jitter and packet loss.</p>
+        </div>
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 15l4-8 4 5 3-4 5 7" stroke="#3b82f6"/>
+                <circle cx="12" cy="12" r="10" fill="#3b82f6" fill-opacity="0.06"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Real Jitter Measurement</h3>
+            <p class="feature-desc">We fire a rapid burst of pings and measure how much the delay between them varies — the exact instability that causes stuttering audio and frozen video frames.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#ef4444" fill-opacity="0.06"/>
+                <path d="M8 12l3 3 5-6" stroke="#ef4444" stroke-opacity="0.35"/>
+                <path d="M9 9l-2 2M17 9l2 2" stroke="#ef4444"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Packet Loss Detection</h3>
+            <p class="feature-desc">Every dropped or timed-out request during the ping burst is logged, giving you an estimated packet loss percentage most consumer speed tests never show.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#22c55e" fill-opacity="0.08"/>
+                <path d="M12 8v5M12 16v.5" stroke="#22c55e" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Accurate Ping</h3>
+            <p class="feature-desc">Ping is averaged across many samples rather than a single request, so one lucky or unlucky round trip can't skew your result.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4v16h16" stroke="#f59e0b"/>
+                <path d="M7 15l4-5 3 3 5-7" stroke="#f59e0b"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Live Download & Upload</h3>
+            <p class="feature-desc">Speeds update in real time as data streams to and from a nearby Cloudflare edge server, so you can watch throughput rise and dip as your connection actually behaves.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="6" width="14" height="9" rx="2" fill="#8b5cf6" fill-opacity="0.08"/>
+                <path d="M16 9l6-2v10l-6-2" stroke="#8b5cf6"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Works on Any Device</h3>
+            <p class="feature-desc">Runs the same way in a phone browser on WiFi or cellular, on a laptop, or on a smart TV browser — no app store, no install, no sign-up.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#06b6d4" fill-opacity="0.1"/>
+                <polyline points="9 12 11 14 15 10" stroke="#06b6d4"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">100% Private</h3>
+            <p class="feature-desc">The test exchanges throwaway data with the network — nothing about your device, files, or browsing is read, stored, or uploaded anywhere.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         How the WiFi test works
+    ══════════════════════════════════════════════════════════ -->
+    <section class="how-section" id="how-wifi-test-works" aria-labelledby="how-heading" style="background:var(--bg);padding:6rem 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">The Process</span>
+          <h2 class="section-title" id="how-heading">How the Test Runs</h2>
+          <p class="section-subtitle">Four short phases, roughly 15 seconds total, run automatically once you hit start.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-num" style="border-color:#3b82f6;color:#3b82f6;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <h3 class="step-title">Ping Burst</h3>
+            <p class="step-desc">A rapid series of small requests is sent to measure round-trip time, giving us ping, jitter, and any dropped requests.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="border-color:#22c55e;color:#22c55e;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M7 12l5 5 5-5"/><path d="M5 20h14"/></svg>
+            </div>
+            <h3 class="step-title">Download Test</h3>
+            <p class="step-desc">Data streams down from a nearby edge server for a few seconds while we track how fast the bytes actually arrive.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="border-color:#8b5cf6;color:#8b5cf6;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V8M7 12l5-5 5 5"/><path d="M5 4h14"/></svg>
+            </div>
+            <h3 class="step-title">Upload Test</h3>
+            <p class="step-desc">Your browser sends data back out, measuring the return path — often the weaker direction on home WiFi.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="border-color:#f59e0b;color:#f59e0b;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 class="step-title">Full Report</h3>
+            <p class="step-desc">All five results appear together with a plain-language verdict on whether your connection can handle calls, streaming, or gaming.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         Who uses this tool
+    ══════════════════════════════════════════════════════════ -->
+    <section class="compare-section" id="who-uses-wifi-test" aria-labelledby="who-heading" style="background:var(--bg2);padding:6rem 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Use Cases</span>
+          <h2 class="section-title" id="who-heading">Who Needs This Test?</h2>
+          <p class="section-subtitle">From remote workers to gamers, jitter and packet loss explain the problems raw speed numbers can't.</p>
+        </div>
+        <div class="compare-grid">
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="14" height="10" rx="2" fill="#3b82f6" fill-opacity="0.08"/>
+                <path d="M16 8l6-2v8l-6-2" stroke="#3b82f6"/>
+                <path d="M6 18h6" stroke="#3b82f6"/>
+              </svg>
+            </div>
+            <h3 class="compare-card-title">Remote Workers</h3>
+            <p class="compare-card-sub">Stop the call freezes</p>
+            <div class="compare-item">Check jitter before an important video call</div>
+            <div class="compare-item">Confirm upload can handle screen sharing</div>
+            <div class="compare-item">Prove a WiFi issue exists to your IT team</div>
+          </article>
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="12" rx="2" fill="#8b5cf6" fill-opacity="0.08"/>
+                <path d="M8 20h8M12 16v4" stroke="#8b5cf6"/>
+                <path d="M8 10l2 2 2-4 2 3 2-2" stroke="#8b5cf6"/>
+              </svg>
+            </div>
+            <h3 class="compare-card-title">Online Gamers</h3>
+            <p class="compare-card-sub">Diagnose lag and rubber-banding</p>
+            <div class="compare-item">Spot packet loss causing rubber-banding</div>
+            <div class="compare-item">Watch ping spikes during peak hours</div>
+            <div class="compare-item">Compare wired vs WiFi stability</div>
+          </article>
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" fill="#f59e0b" fill-opacity="0.08"/>
+                <path d="M12 7v5l3 2" stroke="#f59e0b"/>
+                <path d="M4.5 4.5l1.5 1.5M19.5 4.5l-1.5 1.5" stroke="#f59e0b"/>
+              </svg>
+            </div>
+            <h3 class="compare-card-title">Router Troubleshooters</h3>
+            <p class="compare-card-sub">Find the weak spot in the house</p>
+            <div class="compare-item">Compare results room by room</div>
+            <div class="compare-item">Test before and after a router reboot</div>
+            <div class="compare-item">Build a case for an ISP support call</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         Troubleshooting
+    ══════════════════════════════════════════════════════════ -->
+    <section class="features-section" id="wifi-troubleshooting" aria-labelledby="trouble-heading" style="background:var(--bg);padding:6rem 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Troubleshooting</span>
+          <h2 class="section-title" id="trouble-heading">What a Bad Result Usually Means</h2>
+          <p class="section-subtitle">If a number here comes back worse than expected, here's where to look first.</p>
+        </div>
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#ef4444" fill-opacity="0.08"/>
+                <path d="M9 9l6 6M15 9l-6 6" stroke="#ef4444"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">High Packet Loss</h3>
+            <p class="feature-desc">Usually router interference or distance. Move closer to the router, switch to the 5GHz band, or check for other devices flooding the same channel.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 15l4-8 4 5 3-4 5 7" stroke="#f59e0b"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">High Jitter</h3>
+            <p class="feature-desc">Often caused by a congested network — someone else streaming or downloading, or a VPN adding an inconsistent extra hop. Pause other traffic and re-test.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20V8M7 12l5-5 5 5" stroke="#8b5cf6" stroke-opacity="0.3"/>
+                <path d="M12 4v12M7 12l5 5 5-5" stroke="#8b5cf6"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Slow Download, Fine Upload</h3>
+            <p class="feature-desc">Can point to ISP throttling or evening congestion in your neighborhood. Re-test at a different time of day to see if it's load-related.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#06b6d4" fill-opacity="0.08"/>
+                <path d="M12 8v5M12 16v.5" stroke="#06b6d4"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Test Stalls or Fails</h3>
+            <p class="feature-desc">An ad blocker, VPN, or firewall may be blocking the test's requests. Try disabling extensions for this page or testing in a private window.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         FAQ
+    ══════════════════════════════════════════════════════════ -->
+    <section class="faq-section" id="wifi-test-faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">FAQ</span>
+          <h2 class="section-title" id="faq-heading">WiFi Speed Test — Common Questions</h2>
+          <p class="section-subtitle">Everything you need to know about reading your download, upload, jitter, and packet loss results.</p>
+        </div>
+        <div class="faq-list" role="list">
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)"><span>What is a good WiFi speed for video calls?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>Most video call platforms only need 3-4 Mbps of download and upload speed for HD quality. If your download and upload numbers here are comfortably above that but calls still freeze, the real culprit is usually jitter or packet loss, not raw speed.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)"><span>What is jitter and why does it break video calls?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>Jitter is the variation in delay between packets arriving at your device. Video and audio calls stream in a steady rhythm, so when packets arrive at uneven intervals, the app's buffer runs dry and you hear robotic audio or see frozen frames, even if your average speed looks fine.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)"><span>What counts as high packet loss on WiFi?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>Under 1% packet loss is generally unnoticeable. 1-2.5% starts to cause occasional glitches in calls and streams. Above 2.5% is considered high and will cause regular freezing, dropped calls, and rubber-banding in online games.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)"><span>Why is my WiFi speed slower than what I pay for?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>WiFi speed and your internet plan speed are two different things. Distance from the router, wall interference, band congestion (2.4GHz vs 5GHz), and the number of connected devices all reduce the WiFi speed you actually get, even when your ISP is delivering the full plan speed to your router.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)"><span>Does this test measure my WiFi or my internet plan?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>It measures the full path from your device, over WiFi, through your router, out to your ISP, and back. If results are low, test again with a device connected via ethernet or standing next to the router to see how much WiFi itself is the bottleneck.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)"><span>Do I need to close other apps before testing?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>Yes, for the most accurate reading. Streaming, cloud backups, and downloads running in the background will share bandwidth with the test and lower your download and upload results.</p></div>
+          </div>
+        </div>
+        <p style="text-align:center;margin-top:2.5rem;font-size:.9rem;color:var(--text3)">Want the technical breakdown? Read the full <a href="guides/wifi-speed-test-guide" style="color:var(--accent2);text-decoration:underline">WiFi speed test guide</a>.</p>
+      </div>
+    </section>
+
+  </div> <!-- close .tool-page -->
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <footer id="site-footer" role="contentinfo"></footer>
+
+  <script src="js/header.js?v=1.0.0" defer></script>
+  <script src="js/footer.js?v=1.0.0" defer></script>
+
+  <script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Header !== 'undefined') Header.render();
+    if (typeof Footer !== 'undefined') Footer.render();
+
+    const CF = 'https://speed.cloudflare.com';
+    const startBtn = document.getElementById('startTestBtn');
+    const startBtnText = document.getElementById('startBtnText');
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    const phaseLabel = document.getElementById('phaseLabel');
+    const phasePct = document.getElementById('phasePct');
+    const progressFill = document.getElementById('progressFill');
+    const downloadVal = document.getElementById('downloadVal');
+    const uploadVal = document.getElementById('uploadVal');
+    const downloadBar = document.getElementById('downloadBar');
+    const uploadBar = document.getElementById('uploadBar');
+    const pingVal = document.getElementById('pingVal');
+    const jitterVal = document.getElementById('jitterVal');
+    const lossVal = document.getElementById('lossVal');
+    const verdict = document.getElementById('speedVerdict');
+    const toast = document.getElementById('toast');
+
+    let running = false;
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function setStatus(type, text) {
+      statusText.textContent = text;
+      statusDot.className = 'status-dot ' + type;
+    }
+
+    function setCheck(id, state) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.className = 'check-icon ' + state;
+      el.textContent = state === 'pass' ? '✓' : state === 'fail' ? '✕' : '?';
+    }
+
+    function setPhase(label, pct) {
+      phaseLabel.textContent = label;
+      phasePct.textContent = pct + '%';
+      progressFill.style.width = pct + '%';
+    }
+
+    // ── Network Information API (best-effort, not all browsers expose it) ──
+    (function readConnectionInfo() {
+      const c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      if (!c) {
+        document.getElementById('infoConnType').textContent = 'Unavailable';
+        document.getElementById('infoDownlink').textContent = 'Unavailable';
+        document.getElementById('infoRtt').textContent = 'Unavailable';
+        document.getElementById('infoSaver').textContent = 'Unavailable';
+        return;
+      }
+      document.getElementById('infoConnType').textContent = (c.effectiveType || '—').toUpperCase();
+      document.getElementById('infoDownlink').textContent = c.downlink ? c.downlink + ' Mbps' : '—';
+      document.getElementById('infoRtt').textContent = c.rtt ? c.rtt + ' ms' : '—';
+      document.getElementById('infoSaver').textContent = c.saveData ? 'On' : 'Off';
+    })();
+
+    // ── Ping / Jitter / Packet Loss ──────────────────────────────
+    async function pingTest(samples) {
+      const rtts = [];
+      let lost = 0;
+      for (let i = 0; i < samples; i++) {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 2500);
+        const t0 = performance.now();
+        try {
+          await fetch(CF + '/__down?bytes=0&cb=' + Date.now() + '_' + i, { cache: 'no-store', signal: controller.signal });
+          rtts.push(performance.now() - t0);
+        } catch (e) {
+          lost++;
+        } finally {
+          clearTimeout(timer);
+        }
+        setPhase('Measuring ping & jitter', Math.round(((i + 1) / samples) * 20));
+      }
+      const avgPing = rtts.length ? rtts.reduce((a, b) => a + b, 0) / rtts.length : null;
+      let jitterSum = 0;
+      for (let i = 1; i < rtts.length; i++) jitterSum += Math.abs(rtts[i] - rtts[i - 1]);
+      const jitter = rtts.length > 1 ? jitterSum / (rtts.length - 1) : 0;
+      const packetLoss = (lost / samples) * 100;
+      return { avgPing, jitter, packetLoss };
+    }
+
+    // ── Download ─────────────────────────────────────────────────
+    async function downloadTest(durationMs) {
+      const controller = new AbortController();
+      const url = CF + '/__down?bytes=104857600&cb=' + Date.now();
+      const t0 = performance.now();
+      let totalBytes = 0, lastT = t0, lastBytes = 0, peak = 0;
+      try {
+        const resp = await fetch(url, { cache: 'no-store', signal: controller.signal });
+        const reader = resp.body.getReader();
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          totalBytes += value.length;
+          const now = performance.now();
+          if (now - lastT > 180) {
+            const instMbps = ((totalBytes - lastBytes) * 8) / ((now - lastT) / 1000) / 1e6;
+            peak = Math.max(peak, instMbps);
+            downloadVal.textContent = instMbps.toFixed(1);
+            downloadBar.style.width = Math.min(100, (instMbps / 300) * 100) + '%';
+            setPhase('Testing download speed', 20 + Math.round(((now - t0) / durationMs) * 40));
+            lastT = now; lastBytes = totalBytes;
+          }
+          if (now - t0 > durationMs) { controller.abort(); break; }
+        }
+      } catch (e) { /* stream aborted intentionally at duration cap */ }
+      const elapsed = (performance.now() - t0) / 1000;
+      const avgMbps = elapsed > 0 ? (totalBytes * 8) / elapsed / 1e6 : 0;
+      return avgMbps;
+    }
+
+    // ── Upload ───────────────────────────────────────────────────
+    function uploadTest(durationMs) {
+      return new Promise((resolve) => {
+        const size = 26 * 1024 * 1024;
+        const data = new Uint8Array(size);
+        const prefixLen = Math.min(size, 65536);
+        crypto.getRandomValues(data.subarray(0, prefixLen));
+        const blob = new Blob([data]);
+        const xhr = new XMLHttpRequest();
+        const t0 = performance.now();
+        let lastLoaded = 0, lastT = t0, finished = false;
+
+        xhr.upload.onprogress = (e) => {
+          const now = performance.now();
+          if (now - lastT > 180) {
+            const instMbps = ((e.loaded - lastLoaded) * 8) / ((now - lastT) / 1000) / 1e6;
+            uploadVal.textContent = instMbps.toFixed(1);
+            uploadBar.style.width = Math.min(100, (instMbps / 150) * 100) + '%';
+            setPhase('Testing upload speed', 60 + Math.round(((now - t0) / durationMs) * 35));
+            lastT = now; lastLoaded = e.loaded;
+          }
+        };
+        function finish() {
+          if (finished) return;
+          finished = true;
+          const elapsed = (performance.now() - t0) / 1000;
+          resolve(elapsed > 0 && lastLoaded > 0 ? (lastLoaded * 8) / elapsed / 1e6 : 0);
+        }
+        xhr.upload.onloadend = finish;
+        xhr.onerror = finish;
+        xhr.onabort = finish;
+        xhr.open('POST', CF + '/__up');
+        xhr.send(blob);
+        setTimeout(() => { try { xhr.abort(); } catch (e) {} finish(); }, durationMs);
+      });
+    }
+
+    function verdictText(down, up, ping, jitter, loss) {
+      const problems = [];
+      if (loss > 2.5) problems.push('high packet loss');
+      else if (loss > 1) problems.push('some packet loss');
+      if (jitter > 30) problems.push('high jitter');
+      else if (jitter > 15) problems.push('noticeable jitter');
+      if (ping > 100) problems.push('high ping');
+      if (down < 10) problems.push('low download speed');
+      if (up < 3) problems.push('low upload speed');
+
+      if (problems.length === 0) {
+        return '<strong>Looking solid.</strong> Your ping, jitter, and packet loss are all in a healthy range — this connection should handle video calls, streaming, and most online games without trouble.';
+      }
+      return '<strong>Possible issue found:</strong> ' + problems.join(', ') + '. This combination is a common cause of frozen video, robotic audio, or in-game lag. See the troubleshooting section below for the likely fix.';
+    }
+
+    startBtn.addEventListener('click', async function () {
+      if (running) return;
+      running = true;
+      startBtn.disabled = true;
+      startBtnText.textContent = 'Testing…';
+      setStatus('testing', 'Test in progress');
+      verdict.classList.remove('show');
+      ['chk-ping','chk-jitter','chk-loss','chk-down','chk-up'].forEach(id => setCheck(id, 'pending'));
+      downloadVal.textContent = '0'; uploadVal.textContent = '0';
+      downloadBar.style.width = '0%'; uploadBar.style.width = '0%';
+      pingVal.textContent = '—'; jitterVal.textContent = '—'; lossVal.textContent = '—';
+
+      try {
+        setPhase('Measuring ping & jitter', 0);
+        const { avgPing, jitter, packetLoss } = await pingTest(16);
+
+        if (avgPing !== null) {
+          pingVal.textContent = Math.round(avgPing);
+          jitterVal.textContent = jitter.toFixed(1);
+          lossVal.textContent = packetLoss.toFixed(0) + '%';
+          setCheck('chk-ping', avgPing < 50 ? 'pass' : 'fail');
+          setCheck('chk-jitter', jitter < 15 ? 'pass' : 'fail');
+          setCheck('chk-loss', packetLoss < 1 ? 'pass' : 'fail');
+          if (packetLoss > 2.5) lossVal.className = 'speed-stat-chip-val bad';
+          else if (packetLoss > 0) lossVal.className = 'speed-stat-chip-val warn';
+        } else {
+          pingVal.textContent = 'N/A';
+          setStatus('error', 'Network unreachable');
+          showToast('Could not reach the test server. Check your connection or disable ad blockers.');
+          running = false; startBtn.disabled = false; startBtnText.textContent = 'Try Again';
+          setPhase('Failed', 0);
+          return;
+        }
+
+        const down = await downloadTest(6000);
+        downloadVal.textContent = down.toFixed(1);
+        downloadBar.style.width = Math.min(100, (down / 300) * 100) + '%';
+        setCheck('chk-down', down >= 10 ? 'pass' : 'fail');
+
+        const up = await uploadTest(5000);
+        uploadVal.textContent = up.toFixed(1);
+        uploadBar.style.width = Math.min(100, (up / 150) * 100) + '%';
+        setCheck('chk-up', up >= 3 ? 'pass' : 'fail');
+
+        setPhase('Done', 100);
+        setStatus('ready', 'Test complete');
+        verdict.innerHTML = verdictText(down, up, avgPing, jitter, packetLoss);
+        verdict.classList.add('show');
+        showToast('✅ Test complete');
+      } catch (err) {
+        console.error('WiFi test error:', err);
+        setStatus('error', 'Test failed');
+        showToast('Something interrupted the test. Please try again.');
+        setPhase('Failed', 0);
+      }
+
+      running = false;
+      startBtn.disabled = false;
+      startBtnText.textContent = 'Test Again';
+    });
+  });
+  </script>
+</body>
+</html>
