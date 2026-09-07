@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
+     crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MD16J6JVZ2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MD16J6JVZ2');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Vibration Test — Test Your Phone's Vibration Motor & Haptics | WhatPhone</title>
+  <meta name="description" content="Free online vibration test for Android phones. Trigger the vibration motor at different intensities and patterns to check if it's weak, stuck, or broken — no app needed." />
+  <meta name="keywords" content="vibration test online, phone vibration test, vibration motor not working, haptic feedback test, taptic engine test, vibrate motor check, phone vibrate test android, vibration weak fix" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://whatphone.github.io/vibration-test" />
+
+  <meta property="og:title" content="Vibration Test — Test Your Phone's Vibration Motor | WhatPhone" />
+  <meta property="og:description" content="Trigger different vibration intensities and patterns to check if your phone's vibration motor is working properly." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#f7f9fc" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Vibration / Haptic Test","url":"https://whatphone.github.io/vibration-test","description":"Trigger your phone's vibration motor at different intensities and patterns to check if it is working properly","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why doesn't vibration work on my iPhone?","acceptedAnswer":{"@type":"Answer","text":"Apple has never implemented the web Vibration API in Safari on iOS, for battery and privacy reasons. This is a deliberate browser restriction, not a bug in this tool or a sign your Taptic Engine is broken — the motor itself only responds to native app and system haptics on iPhone, which a website cannot trigger."}},{"@type":"Question","name":"Why do I need to tap a button before it vibrates?","acceptedAnswer":{"@type":"Answer","text":"Browsers only allow the Vibration API to run in direct response to a user action like a tap or click. This prevents websites from silently buzzing your phone in the background, so every pattern here requires you to press its button."}},{"@type":"Question","name":"Can this test automatically detect a broken vibration motor?","acceptedAnswer":{"@type":"Answer","text":"Not fully. The browser can only confirm it successfully sent a vibration command — it cannot sense whether the motor physically moved. That's why this tool asks you to confirm 'did you feel that?' after each pattern, combining the technical check with your own physical confirmation."}},{"@type":"Question","name":"Does Do Not Disturb or silent mode block vibration?","acceptedAnswer":{"@type":"Answer","text":"On most Android phones, silent mode and Do Not Disturb only mute sound and notifications — vibration triggered directly by an app or website will usually still fire. If nothing happens at all, check your system vibration settings rather than assuming the motor is broken."}},{"@type":"Question","name":"Why does the vibration feel weak?","acceptedAnswer":{"@type":"Answer","text":"A thick case, the phone resting on a soft surface, low battery combined with battery saver mode, or a worn vibration motor can all make vibration feel weaker than normal. Try the test again on a hard surface with the case removed and battery saver off."}},{"@type":"Question","name":"Is this safe to run on any phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. It uses the standard, built-in web Vibration API supported by Chrome, Firefox, Samsung Internet, and other Android browsers. No special permission or install is required, and nothing is sent to a server."}}]}</script>
+
+  <style>
+    .tool-page { padding-top: 72px; min-height: 100vh; }
+    .tool-hero { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); background: var(--bg2); }
+
+    .breadcrumb ol { display: flex; align-items: center; gap: .5rem; list-style: none; font-size: .82rem; color: var(--text3); margin-bottom: 1.25rem; padding: 0; }
+    .breadcrumb li+li::before { content: '/'; opacity: .4; margin-right: .5rem; }
+    .breadcrumb a { color: var(--text2); transition: color var(--transition); }
+    .breadcrumb a:hover { color: var(--accent2); }
+    .breadcrumb [aria-current] { color: var(--accent2); }
+
+    .tool-hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .tool-hero-left h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: var(--heading); line-height: 1.15; margin-bottom: .5rem; }
+    .tool-hero-left p { color: var(--text2); font-size: 1rem; max-width: 540px; line-height: 1.6; }
+
+    .tool-status-badge { display: inline-flex; align-items: center; gap: .5rem; padding: .45rem 1rem; border-radius: 100px; font-size: .82rem; font-weight: 600; background: var(--surface); border: 1px solid var(--border); color: var(--text2); white-space: nowrap; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text3); flex-shrink: 0; }
+    .status-dot.ready { background: var(--green); box-shadow: 0 0 8px rgba(34,197,94,.6); animation: pulse-dot 2s infinite; }
+    .status-dot.error { background: var(--red); }
+    .status-dot.testing { background: var(--accent); box-shadow: 0 0 8px rgba(59,130,246,.6); animation: pulse-dot 1s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    .tool-main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 5rem; display: grid; grid-template-columns: 1fr 320px; gap: 1.75rem; align-items: start; }
+
+    /* ── Vibration panel ──────────────────────────────────────── */
+    .vibe-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2rem; }
+    .vibe-unsupported { display: none; align-items: center; gap: .9rem; background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.25); color: var(--red); border-radius: var(--r); padding: 1rem 1.25rem; font-size: .85rem; margin-bottom: 1.5rem; line-height: 1.5; }
+    .vibe-unsupported.show { display: flex; }
+
+    .vibe-stage { display: flex; align-items: center; justify-content: center; margin-bottom: 1.75rem; }
+    .vibe-pulse-ring { width: 130px; height: 130px; border-radius: 50%; background: var(--bg3); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; position: relative; transition: transform .12s ease; }
+    .vibe-pulse-ring.buzzing { animation: vibe-shake .12s infinite; border-color: var(--accent); box-shadow: 0 0 0 8px rgba(59,130,246,.12); }
+    @keyframes vibe-shake { 0%,100%{transform:translateX(0) rotate(0)} 25%{transform:translateX(-3px) rotate(-1.5deg)} 75%{transform:translateX(3px) rotate(1.5deg)} }
+    .vibe-pulse-icon { color: var(--accent); }
+
+    .vibe-waveform { display: flex; align-items: flex-end; gap: 3px; height: 44px; margin: 0 auto 1.75rem; max-width: 420px; justify-content: center; }
+    .vibe-bar { width: 8px; border-radius: 3px 3px 0 0; background: var(--border); transition: background .15s; }
+    .vibe-bar.on { background: var(--accent); }
+    .vibe-bar.pause { background: var(--border); opacity: .5; }
+
+    .vibe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .85rem; margin-bottom: 1.5rem; }
+    .vibe-btn { display: flex; flex-direction: column; align-items: center; gap: .4rem; padding: 1.1rem .5rem; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r); font-size: .8rem; font-weight: 600; color: var(--text2); cursor: pointer; transition: all var(--transition); text-align: center; }
+    .vibe-btn:hover { border-color: var(--accent); color: var(--text); background: var(--surface); transform: translateY(-2px); }
+    .vibe-btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+    .vibe-btn-icon { font-size: 1.3rem; }
+    .vibe-btn-sub { font-size: .68rem; color: var(--text3); font-family: var(--font-mono); }
+
+    .vibe-custom { display: flex; align-items: center; gap: 1rem; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r); padding: 1rem 1.25rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .vibe-custom label { font-size: .82rem; font-weight: 600; color: var(--text2); white-space: nowrap; }
+    .vibe-custom input[type=range] { flex: 1; min-width: 140px; accent-color: var(--accent); }
+    .vibe-custom-val { font-family: var(--font-mono); font-weight: 700; color: var(--heading); min-width: 60px; text-align: right; }
+    .vibe-custom-btn { padding: .55rem 1.1rem; background: var(--accent); color: #fff; border-radius: 8px; font-size: .82rem; font-weight: 700; border: none; cursor: pointer; transition: background var(--transition); }
+    .vibe-custom-btn:hover { background: var(--accent2); }
+    .vibe-custom-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+    .vibe-confirm { display: none; align-items: center; justify-content: space-between; gap: 1rem; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r); padding: 1rem 1.25rem; flex-wrap: wrap; }
+    .vibe-confirm.show { display: flex; }
+    .vibe-confirm-text { font-size: .88rem; color: var(--text2); font-weight: 600; }
+    .vibe-confirm-actions { display: flex; gap: .6rem; }
+    .vibe-confirm-btn { padding: .5rem 1rem; border-radius: 8px; font-size: .8rem; font-weight: 700; border: 1px solid var(--border); background: var(--surface); color: var(--text2); cursor: pointer; transition: all var(--transition); }
+    .vibe-confirm-btn.yes:hover { border-color: var(--green); color: var(--green); }
+    .vibe-confirm-btn.no:hover { border-color: var(--red); color: var(--red); }
+
+    .tool-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+    .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 1.25rem; }
+    .sidebar-card-title { font-family: var(--font-display); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin-bottom: 1rem; }
+    .info-row { display: flex; justify-content: space-between; align-items: center; padding: .45rem 0; border-bottom: 1px solid var(--border); font-size: .82rem; gap: .5rem; }
+    .info-row:last-child { border-bottom: none; }
+    .info-row-key { color: var(--text2); }
+    .info-row-val { font-family: var(--font-mono); color: var(--text); font-weight: 700; font-size: .78rem; text-align: right; }
+
+    .check-list { display: flex; flex-direction: column; gap: .5rem; }
+    .check-item { display: flex; align-items: center; gap: .65rem; font-size: .85rem; color: var(--text2); }
+    .check-icon { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: .65rem; font-weight: 700; }
+    .check-icon.pass { background: rgba(34,197,94,.15); color: var(--green); border: 1px solid rgba(34,197,94,.3); }
+    .check-icon.fail { background: rgba(239,68,68,.15); color: var(--red); border: 1px solid rgba(239,68,68,.3); }
+    .check-icon.pending { background: var(--surface2); color: var(--text3); border: 1px solid var(--border); }
+
+    .tool-link { display: flex; align-items: center; gap: .6rem; padding: .6rem .75rem; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r); font-size: .82rem; color: var(--text2); transition: all var(--transition); text-decoration: none; }
+    .tool-link:hover { border-color: var(--accent); color: var(--text); background: var(--surface); }
+
+    .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--surface); border: 1px solid var(--border); padding: .65rem 1.4rem; border-radius: 100px; font-size: .875rem; color: var(--text); z-index: 9999; opacity: 0; transition: all .3s; pointer-events: none; box-shadow: var(--shadow); }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+
+    @media(max-width:1024px) { .tool-main { grid-template-columns: 1fr; } }
+    @media(max-width:768px) {
+      .tool-hero { padding: 2rem 0 1.5rem; }
+      .tool-hero-inner { flex-direction: column; align-items: flex-start; }
+      .tool-status-badge { align-self: flex-start; }
+    }
+    @media(max-width:480px) { .vibe-grid { grid-template-columns: repeat(2,1fr); } }
+
+    /* ── Shared marketing sections ───────────────────────────── */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .feature-card { padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); transition: all var(--transition); }
+    .feature-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: var(--shadow-accent); }
+    .feature-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.2); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+    .feature-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--heading); margin-bottom: .5rem; }
+    .feature-desc { font-size: .9rem; color: var(--text2); line-height: 1.65; }
+
+    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
+    .steps-grid::before { content: ''; position: absolute; top: 36px; left: 12.5%; right: 12.5%; height: 1px; background: linear-gradient(90deg, transparent, var(--border2), var(--accent), var(--border2), transparent); z-index: 0; }
+    .step-item { text-align: center; position: relative; z-index: 1; }
+    .step-num { width: 72px; height: 72px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--accent); margin: 0 auto 1.25rem; box-shadow: 0 0 20px rgba(59,130,246,.2); transition: all var(--transition); }
+    .step-item:hover .step-num { background: var(--accent); color: #fff; }
+    .step-title { font-family: var(--font-display); font-weight: 700; color: var(--heading); margin-bottom: .5rem; }
+    .step-desc { font-size: .875rem; color: var(--text2); line-height: 1.6; }
+
+    .compare-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .compare-card { padding: 1.75rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); transition: all var(--transition); }
+    .compare-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow-accent); }
+    .compare-card-icon { margin-bottom: 1rem; }
+    .compare-card-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--heading); margin-bottom: .25rem; }
+    .compare-card-sub { font-size: .85rem; color: var(--text3); margin-bottom: 1rem; }
+    .compare-item { display: flex; align-items: center; gap: .5rem; font-size: .85rem; color: var(--text2); padding: .25rem 0; }
+    .compare-item::before { content: '→'; color: var(--accent); font-size: .75rem; }
+
+    .faq-section { padding: 6rem 0; background: var(--bg); }
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: .75rem; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; transition: border-color var(--transition); }
+    .faq-item.open { border-color: var(--accent); }
+    .faq-q { width: 100%; padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; text-align: left; font-weight: 600; color: var(--heading); font-size: .95rem; background: none; border: none; cursor: pointer; transition: color var(--transition); font-family: var(--font-body); }
+    .faq-q:hover { color: var(--accent2); }
+    .faq-icon { width: 24px; height: 24px; border-radius: 6px; background: var(--surface2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; font-weight: 300; transition: all var(--transition); }
+    .faq-item.open .faq-icon { background: var(--accent); color: #fff; transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease; font-size: .9rem; color: var(--text2); line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 1.5rem 1.25rem; }
+    .faq-a p { margin: 0; }
+
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-eyebrow { display: inline-block; margin-bottom: .75rem; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent2); font-family: var(--font-mono); }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 800; color: var(--heading); margin-bottom: .75rem; line-height: 1.2; }
+    .section-subtitle { font-size: 1.05rem; color: var(--text2); max-width: 560px; margin: 0 auto; }
+
+    @media (max-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid::before { display: none; }
+      .compare-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header id="site-header" role="banner"></header>
+
+  <div class="tool-page" id="main-content">
+    <div class="tool-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="../tools">Tools</a></li>
+            <li aria-current="page">Vibration Test</li>
+          </ol>
+        </nav>
+        <div class="tool-hero-inner">
+          <div class="tool-hero-left">
+            <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
+              <span style="font-size:1.6rem" aria-hidden="true">📳</span>
+              <h1>Vibration / Haptic Test</h1>
+            </div>
+            <p>Trigger your phone's vibration motor at different intensities and patterns to feel whether it's working, weak, or stuck. Best on Android — see the note below for iPhone.</p>
+          </div>
+          <div id="statusBadge" class="tool-status-badge" aria-live="polite">
+            <span class="status-dot" id="statusDot"></span>
+            <span id="statusText">Checking support…</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-main">
+      <!-- Left: Vibration panel -->
+      <div class="vibe-panel">
+        <div class="vibe-unsupported" id="unsupportedBanner">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16v.5"/></svg>
+          <div><strong>Vibration API not available in this browser.</strong> This is expected on iPhone — Safari does not support web-triggered vibration. Try this test in Chrome or Samsung Internet on an Android device.</div>
+        </div>
+
+        <div class="vibe-stage">
+          <div class="vibe-pulse-ring" id="pulseRing">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" class="vibe-pulse-icon" aria-hidden="true">
+              <rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="1.8"/>
+              <line x1="12" y1="18" x2="12" y2="18.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="vibe-waveform" id="waveform" aria-hidden="true"></div>
+
+        <div class="vibe-grid" id="vibeGrid">
+          <button class="vibe-btn" data-pattern="10" data-label="Light Tap"><span class="vibe-btn-icon">🫳</span>Light Tap<span class="vibe-btn-sub">10ms</span></button>
+          <button class="vibe-btn" data-pattern="50" data-label="Short Buzz"><span class="vibe-btn-icon">〜</span>Short Buzz<span class="vibe-btn-sub">50ms</span></button>
+          <button class="vibe-btn" data-pattern="150" data-label="Medium Buzz"><span class="vibe-btn-icon">〰️</span>Medium Buzz<span class="vibe-btn-sub">150ms</span></button>
+          <button class="vibe-btn" data-pattern="400" data-label="Strong Buzz"><span class="vibe-btn-icon">💥</span>Strong Buzz<span class="vibe-btn-sub">400ms</span></button>
+          <button class="vibe-btn" data-pattern="1000" data-label="Long Rumble"><span class="vibe-btn-icon">🌊</span>Long Rumble<span class="vibe-btn-sub">1000ms</span></button>
+          <button class="vibe-btn" data-pattern="100,100,100" data-label="Double Pulse"><span class="vibe-btn-icon">••</span>Double Pulse<span class="vibe-btn-sub">2 pulses</span></button>
+          <button class="vibe-btn" data-pattern="80,80,80,80,80" data-label="Triple Pulse"><span class="vibe-btn-icon">•••</span>Triple Pulse<span class="vibe-btn-sub">3 pulses</span></button>
+          <button class="vibe-btn" data-pattern="100,150,100,150,100,600" data-label="Heartbeat"><span class="vibe-btn-icon">💓</span>Heartbeat<span class="vibe-btn-sub">lub-dub</span></button>
+          <button class="vibe-btn" data-pattern="80,80,80,80,80,80,200,80,200,80,200,80,80,80,80,80,80,80" data-label="SOS Pattern"><span class="vibe-btn-icon">🆘</span>SOS Pattern<span class="vibe-btn-sub">· · · — — — · · ·</span></button>
+        </div>
+
+        <div class="vibe-custom">
+          <label for="customRange">Custom duration</label>
+          <input type="range" id="customRange" min="10" max="2000" step="10" value="200">
+          <span class="vibe-custom-val" id="customVal">200ms</span>
+          <button class="vibe-custom-btn" id="customBtn">Test</button>
+        </div>
+
+        <div class="vibe-confirm" id="vibeConfirm">
+          <span class="vibe-confirm-text">Did you feel that vibration?</span>
+          <div class="vibe-confirm-actions">
+            <button class="vibe-confirm-btn yes" id="feltYes">Yes, felt it</button>
+            <button class="vibe-confirm-btn no" id="feltNo">No, felt nothing</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Sidebar -->
+      <aside class="tool-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Device Info</div>
+          <div class="info-row"><span class="info-row-key">Vibration API</span><span class="info-row-val" id="infoApiSupport">—</span></div>
+          <div class="info-row"><span class="info-row-key">Platform</span><span class="info-row-val" id="infoPlatform">—</span></div>
+          <div class="info-row"><span class="info-row-key">Patterns Tested</span><span class="info-row-val" id="infoTested">0 / 10</span></div>
+          <div class="info-row"><span class="info-row-key">Confirmed Felt</span><span class="info-row-val" id="infoFelt">0</span></div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Diagnostic Results</div>
+          <div class="check-list" id="checkList">
+            <div class="check-item"><div class="check-icon pending" id="chk-api">?</div><span>Vibration API supported</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-trigger">?</div><span>Command sent successfully</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-felt">?</div><span>Motor confirmed felt</span></div>
+            <div class="check-item"><div class="check-icon pending" id="chk-pattern">?</div><span>Multi-pulse pattern works</span></div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Other Tests</div>
+          <div style="display:flex;flex-direction:column;gap:.5rem">
+            <a href="wifi-speed-test" class="tool-link"><span style="font-size:1rem" aria-hidden="true">📶</span> WiFi Speed Test</a>
+            <a href="gps-compass-test" class="tool-link"><span style="font-size:1rem" aria-hidden="true">🧭</span> GPS / Compass Test</a>
+            <a href="camera-test" class="tool-link"><span style="font-size:1rem" aria-hidden="true">📷</span> Camera Test</a>
+            <a href="/#detect" class="tool-link"><span style="font-size:1rem" aria-hidden="true">📱</span> Detect My Phone</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         Why use this vibration test
+    ══════════════════════════════════════════════════════════ -->
+    <section class="features-section" id="why-vibe-test" aria-labelledby="why-heading" style="background:var(--bg2);padding:6rem 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Why It Matters</span>
+          <h2 class="section-title" id="why-heading">Feel Your Vibration Motor at Every Intensity</h2>
+          <p class="section-subtitle">A single default buzz won't reveal a motor that's weak, uneven, or only fails on longer patterns. This test runs the full range.</p>
+        </div>
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2" fill="#3b82f6" fill-opacity="0.08"/><path d="M4 9v6M20 9v6" stroke-opacity="0.5"/></svg>
+            </div>
+            <h3 class="feature-title">Nine Preset Intensities</h3>
+            <p class="feature-desc">From a 10ms light tap to a full one-second rumble, run the motor through short and long bursts to spot where it weakens.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+            </div>
+            <h3 class="feature-title">Pattern &amp; Rhythm Testing</h3>
+            <p class="feature-desc">Double pulses, a heartbeat rhythm, and a full SOS pattern check that the motor can start and stop cleanly, not just hold one buzz.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h4l2-7 4 14 2-7h4" stroke="#22c55e"/></svg>
+            </div>
+            <h3 class="feature-title">Custom Duration Slider</h3>
+            <p class="feature-desc">Dial in any duration from 10ms to 2 seconds to reproduce exactly the buzz length a specific app or notification uses.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4" stroke-opacity="0.3"/><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4" stroke="#f59e0b"/></svg>
+            </div>
+            <h3 class="feature-title">Human-Confirmed Results</h3>
+            <p class="feature-desc">After each buzz, you confirm whether you actually felt it — combining the software signal with the physical check no browser API alone can do.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2" fill="#ec4899" fill-opacity="0.08"/><path d="M8 9h8M8 13h5" stroke="#ec4899"/></svg>
+            </div>
+            <h3 class="feature-title">Live Waveform Visual</h3>
+            <p class="feature-desc">A bar visualization shows exactly when the motor is on and off for each pattern, so you can match what you feel to what was sent.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#06b6d4" fill-opacity="0.1"/><polyline points="9 12 11 14 15 10" stroke="#06b6d4"/></svg>
+            </div>
+            <h3 class="feature-title">100% Private, No Install</h3>
+            <p class="feature-desc">Everything runs through the browser's standard Vibration API — no app, no permission prompt, and nothing is recorded or sent anywhere.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         How it works
+    ══════════════════════════════════════════════════════════ -->
+    <section class="how-section" id="how-vibe-test-works" aria-labelledby="how-heading" style="background:var(--bg);padding:6rem 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">The Process</span>
+          <h2 class="section-title" id="how-heading">How to Run a Full Motor Check</h2>
+          <p class="section-subtitle">Work through the presets from weakest to strongest for the clearest picture.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-item">
+            <div class="step-num" style="border-color:#3b82f6;color:#3b82f6;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>
+            </div>
+            <h3 class="step-title">Hold Your Phone</h3>
+            <p class="step-desc">Hold the phone in your hand rather than resting it on a soft surface — a couch cushion or carpet will muffle a working motor.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="border-color:#22c55e;color:#22c55e;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.6" fill="#22c55e"/><circle cx="12" cy="12" r="1.6" fill="#22c55e"/><circle cx="19" cy="12" r="1.6" fill="#22c55e"/></svg>
+            </div>
+            <h3 class="step-title">Tap a Pattern</h3>
+            <p class="step-desc">Start with Light Tap, then work up to Strong Buzz. Each button fires that exact pattern immediately.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="border-color:#8b5cf6;color:#8b5cf6;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+            </div>
+            <h3 class="step-title">Confirm What You Felt</h3>
+            <p class="step-desc">Answer "Yes" or "No" after each buzz — this builds an accurate tally of which intensities the motor can still produce.</p>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="border-color:#f59e0b;color:#f59e0b;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 class="step-title">Review the Tally</h3>
+            <p class="step-desc">Check the sidebar for how many patterns were confirmed felt out of ten — a low count points to a weakening motor.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         Who uses this tool
+    ══════════════════════════════════════════════════════════ -->
+    <section class="compare-section" id="who-uses-vibe-test" aria-labelledby="who-heading" style="background:var(--bg2);padding:6rem 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Use Cases</span>
+          <h2 class="section-title" id="who-heading">Who Needs a Vibration Test?</h2>
+          <p class="section-subtitle">Anyone who relies on their phone buzzing reliably — or who wants proof before a return or repair.</p>
+        </div>
+        <div class="compare-grid">
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" fill="#3b82f6" fill-opacity="0.08"/><path d="M8 8l1.5 8h5L16 8"/></svg>
+            </div>
+            <h3 class="compare-card-title">Used Phone Buyers</h3>
+            <p class="compare-card-sub">Verify before you pay</p>
+            <div class="compare-item">Confirm the motor still buzzes at all intensities</div>
+            <div class="compare-item">Listen and feel for a rattling, worn motor</div>
+            <div class="compare-item">Test before a return window closes</div>
+          </article>
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" fill="#8b5cf6" fill-opacity="0.08"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3 class="compare-card-title">Accessibility Users</h3>
+            <p class="compare-card-sub">Depend on haptic alerts</p>
+            <div class="compare-item">Confirm silent-mode alerts will still be felt</div>
+            <div class="compare-item">Check the motor before a critical event</div>
+            <div class="compare-item">Compare intensity across two devices</div>
+          </article>
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" fill="#f59e0b" fill-opacity="0.08"/><path d="M8 9h8M8 13h5M8 17h3"/></svg>
+            </div>
+            <h3 class="compare-card-title">App Developers</h3>
+            <p class="compare-card-sub">Preview haptic timing</p>
+            <div class="compare-item">Prototype a notification's buzz length</div>
+            <div class="compare-item">Test multi-pulse patterns cross-device</div>
+            <div class="compare-item">Confirm the Vibration API is available</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         Troubleshooting
+    ══════════════════════════════════════════════════════════ -->
+    <section class="features-section" id="vibe-troubleshooting" aria-labelledby="trouble-heading" style="background:var(--bg);padding:6rem 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Troubleshooting</span>
+          <h2 class="section-title" id="trouble-heading">Nothing Happened When You Tapped a Button?</h2>
+          <p class="section-subtitle">Here's how to tell a browser limitation from an actual hardware problem.</p>
+        </div>
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2" fill="#ef4444" fill-opacity="0.08"/><path d="M10 8h4M10 12h4" stroke-opacity="0.4"/></svg>
+            </div>
+            <h3 class="feature-title">iPhone Shows "Not Supported"</h3>
+            <p class="feature-desc">Expected. Safari on iOS has no web Vibration API, so this reflects a browser limitation, not a broken Taptic Engine. Test native app haptics instead.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" fill="#f59e0b" fill-opacity="0.08"/><path d="M12 8v5M12 16v.5"/></svg>
+            </div>
+            <h3 class="feature-title">API Supported But No Buzz</h3>
+            <p class="feature-desc">Check your phone's system vibration setting isn't fully disabled, and that battery saver mode — which sometimes limits haptics — is off, then retry.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2" stroke-opacity="0.3"/><path d="M4 9v6M20 9v6"/></svg>
+            </div>
+            <h3 class="feature-title">Weak or Inconsistent Buzz</h3>
+            <p class="feature-desc">A thick case, a soft surface, or a worn motor can all mute vibration. Remove the case, hold the phone in hand, and compare Light Tap to Strong Buzz.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6" stroke-opacity="0.3"/><circle cx="19" cy="12" r="1.6"/></svg>
+            </div>
+            <h3 class="feature-title">Single Buzz Works, Pattern Doesn't</h3>
+            <p class="feature-desc">If simple buzzes work but multi-pulse patterns feel like one long buzz, the motor is fine — some Android skins simplify complex patterns by design.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         FAQ
+    ══════════════════════════════════════════════════════════ -->
+    <section class="faq-section" id="vibe-test-faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">FAQ</span>
+          <h2 class="section-title" id="faq-heading">Vibration Test — Common Questions</h2>
+          <p class="section-subtitle">What to expect, and what iPhone users should know before testing.</p>
+        </div>
+        <div class="faq-list" role="list">
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)"><span>Why doesn't vibration work on my iPhone?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>Apple has never implemented the web Vibration API in Safari on iOS, for battery and privacy reasons. This is a deliberate browser restriction, not a bug in this tool or a sign your Taptic Engine is broken — the motor itself only responds to native app and system haptics on iPhone, which a website cannot trigger.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)"><span>Why do I need to tap a button before it vibrates?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>Browsers only allow the Vibration API to run in direct response to a user action like a tap or click. This prevents websites from silently buzzing your phone in the background, so every pattern here requires you to press its button.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)"><span>Can this test automatically detect a broken vibration motor?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>Not fully. The browser can only confirm it successfully sent a vibration command — it cannot sense whether the motor physically moved. That's why this tool asks you to confirm "did you feel that?" after each pattern, combining the technical check with your own physical confirmation.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)"><span>Does Do Not Disturb or silent mode block vibration?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>On most Android phones, silent mode and Do Not Disturb only mute sound and notifications — vibration triggered directly by an app or website will usually still fire. If nothing happens at all, check your system vibration settings rather than assuming the motor is broken.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)"><span>Why does the vibration feel weak?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>A thick case, the phone resting on a soft surface, low battery combined with battery saver mode, or a worn vibration motor can all make vibration feel weaker than normal. Try the test again on a hard surface with the case removed and battery saver off.</p></div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)"><span>Is this safe to run on any phone?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>Yes. It uses the standard, built-in web Vibration API supported by Chrome, Firefox, Samsung Internet, and other Android browsers. No special permission or install is required, and nothing is sent to a server.</p></div>
+          </div>
+        </div>
+        <p style="text-align:center;margin-top:2.5rem;font-size:.9rem;color:var(--text3)">Want the full breakdown of what's happening under the hood? Read the <a href="guides/vibration-motor-guide" style="color:var(--accent2);text-decoration:underline">vibration motor guide</a>.</p>
+      </div>
+    </section>
+
+  </div> <!-- close .tool-page -->
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <footer id="site-footer" role="contentinfo"></footer>
+
+  <script src="js/header.js?v=1.0.0" defer></script>
+  <script src="js/footer.js?v=1.0.0" defer></script>
+
+  <script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Header !== 'undefined') Header.render();
+    if (typeof Footer !== 'undefined') Footer.render();
+
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    const unsupportedBanner = document.getElementById('unsupportedBanner');
+    const pulseRing = document.getElementById('pulseRing');
+    const waveform = document.getElementById('waveform');
+    const toast = document.getElementById('toast');
+    const vibeConfirm = document.getElementById('vibeConfirm');
+    const infoTested = document.getElementById('infoTested');
+    const infoFelt = document.getElementById('infoFelt');
+
+    let tested = 0, felt = 0, multiPulseWorked = false;
+    const supported = typeof navigator.vibrate === 'function';
+
+    function showToast(msg) { toast.textContent = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2200); }
+    function setStatus(type, text) { statusText.textContent = text; statusDot.className = 'status-dot ' + type; }
+    function setCheck(id, state) { const el = document.getElementById(id); if (!el) return; el.className = 'check-icon ' + state; el.textContent = state === 'pass' ? '✓' : state === 'fail' ? '✕' : '?'; }
+
+    // ── Device info ──────────────────────────────────────────────
+    document.getElementById('infoApiSupport').textContent = supported ? 'Supported' : 'Not supported';
+    document.getElementById('infoPlatform').textContent = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || 'Unknown';
+    setCheck('chk-api', supported ? 'pass' : 'fail');
+
+    if (!supported) {
+      unsupportedBanner.classList.add('show');
+      setStatus('error', 'Not supported');
+      document.querySelectorAll('.vibe-btn, #customBtn').forEach(b => b.disabled = true);
+    } else {
+      setStatus('ready', 'Ready to test');
+    }
+
+    function renderWaveform(pattern) {
+      waveform.innerHTML = '';
+      const maxSeg = Math.max(...pattern, 1);
+      pattern.forEach((ms, i) => {
+        const bar = document.createElement('div');
+        bar.className = 'vibe-bar ' + (i % 2 === 0 ? 'on' : 'pause');
+        const heightPct = Math.max(15, Math.min(100, (ms / maxSeg) * 100));
+        bar.style.height = heightPct + '%';
+        bar.style.width = Math.max(6, Math.min(28, ms / 15)) + 'px';
+        waveform.appendChild(bar);
+      });
+    }
+
+    function pulseAnimation(totalMs) {
+      pulseRing.classList.add('buzzing');
+      setTimeout(() => pulseRing.classList.remove('buzzing'), Math.min(totalMs, 4000));
+    }
+
+    function runPattern(pattern, label) {
+      if (!supported) { showToast('Vibration API not supported on this device.'); return; }
+      const ok = navigator.vibrate(pattern);
+      setCheck('chk-trigger', ok ? 'pass' : 'fail');
+      const total = pattern.reduce((a, b) => a + b, 0);
+      pulseAnimation(total);
+      renderWaveform(pattern.length > 1 ? pattern : [pattern[0], Math.round(pattern[0] * 0.4)]);
+      if (pattern.length > 2) { multiPulseWorked = ok; setCheck('chk-pattern', ok ? 'pass' : 'fail'); }
+      tested++;
+      infoTested.textContent = Math.min(tested, 10) + ' / 10';
+      vibeConfirm.classList.add('show');
+      if (ok) showToast('Vibrating: ' + label);
+      else showToast('Command sent, but the browser reported an error.');
+    }
+
+    document.querySelectorAll('.vibe-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const pattern = this.dataset.pattern.split(',').map(Number);
+        runPattern(pattern, this.dataset.label);
+      });
+    });
+
+    const customRange = document.getElementById('customRange');
+    const customVal = document.getElementById('customVal');
+    customRange.addEventListener('input', () => customVal.textContent = customRange.value + 'ms');
+    document.getElementById('customBtn').addEventListener('click', function () {
+      runPattern([parseInt(customRange.value, 10)], 'Custom ' + customRange.value + 'ms');
+    });
+
+    document.getElementById('feltYes').addEventListener('click', function () {
+      felt++;
+      infoFelt.textContent = felt;
+      setCheck('chk-felt', 'pass');
+      vibeConfirm.classList.remove('show');
+      showToast('👍 Logged as felt');
+    });
+    document.getElementById('feltNo').addEventListener('click', function () {
+      vibeConfirm.classList.remove('show');
+      showToast('Noted — try a stronger pattern or check the troubleshooting section');
+    });
+  });
+  </script>
+</body>
+</html>
