@@ -138,9 +138,9 @@ const Header = (() => {
                 <li><a href="${langPrefix}/mic-test" class="dropdown-link" role="menuitem">${t('micTest')}</a></li>
                 <li><a href="${langPrefix}/touchscreen-test" class="dropdown-link" role="menuitem">${t('touchscreenTest')}</a></li>
                 <li><a href="${langPrefix}/speaker-test" class="dropdown-link" role="menuitem">${t('speakerTest')}</a></li>
-                <li><a href="${langPrefix}/vibration-test" class="dropdown-link" role="menuitem">${t('vibrationTest')}</a></li>
-                <li><a href="${langPrefix}/wifi-speed-test" class="dropdown-link" role="menuitem">${t('wifispeedTest')}</a></li>
-                <li><a href="${langPrefix}/gps-compass-test" class="dropdown-link" role="menuitem">${t('gpscompassTest')}</a></li>
+                <li><a href="${langPrefix}/vibration-test" class="dropdown-link" role="menuitem">${t('Vibration Test')}</a></li>
+                <li><a href="${langPrefix}/wifi-speed-test" class="dropdown-link" role="menuitem">${t('Wifi Speed Test')}</a></li>
+                <li><a href="${langPrefix}/gps-compass-test" class="dropdown-link" role="menuitem">${t('GPS Compass Test')}</a></li>
                 
               </ul>
             </li>
