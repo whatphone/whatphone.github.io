@@ -1106,26 +1106,30 @@
         btn.setAttribute('aria-expanded', 'true');
       }
     }
-
+</script>
+  
     // ── Ad popup logic (overrides the default loader for detect button) ──
+  <script>
     (function() {
       const AD_DURATION = 5; // seconds
+
+      // Grab DOM elements
       const popup = document.getElementById('adPopup');
       const timerCount = document.getElementById('adTimerCount');
       const adContainer = document.getElementById('adContainer');
+
+      // Hide the original loader (we use the ad popup instead)
+      const originalLoader = document.getElementById('detectLoader');
+      if (originalLoader) originalLoader.style.display = 'none';
+
       let adTimerInterval = null;
+      let adInjected = false;
 
-      // Inject the ad script into the container (once)
+      // Inject the 300x250 ad inside the popup container (once)
       function injectAd() {
-        if (!adContainer) return;
-        // Prevent duplicate injection
-        if (adContainer.querySelector('iframe') || adContainer.querySelector('script[src*="highrevenueformat"]')) {
-          return;
-        }
-        // Clear any placeholder
-        adContainer.innerHTML = '';
+        if (adInjected || !adContainer) return;
+        adInjected = true;
 
-        // Set up atOptions inside the container (scoped)
         const optionsScript = document.createElement('script');
         optionsScript.type = 'text/javascript';
         optionsScript.text = `
@@ -1139,28 +1143,22 @@
         `;
         adContainer.appendChild(optionsScript);
 
-        // Load the invoke.js script inside the container
         const invokeScript = document.createElement('script');
         invokeScript.src = 'https://www.highrevenueformat.com/81443cd2b70e4089345fae478ec5b90a/invoke.js';
         adContainer.appendChild(invokeScript);
       }
 
-      // Show the popup and return a promise that resolves after the timer ends
+      // Show popup, count down, resolve after AD_DURATION seconds
       function showAdPopup() {
         return new Promise((resolve) => {
           let remaining = AD_DURATION;
           timerCount.textContent = remaining;
 
-          // Show popup
           popup.classList.add('active');
-
-          // Inject ad (if not already)
           injectAd();
 
-          // Clear any existing interval
           if (adTimerInterval) clearInterval(adTimerInterval);
 
-          // Start countdown
           adTimerInterval = setInterval(() => {
             remaining -= 1;
             timerCount.textContent = remaining;
@@ -1174,82 +1172,54 @@
         });
       }
 
-      // Override the detection flow: we need to intercept the detect button click
-      // Wait for the DOM and app.js to be ready, then attach our own handler that
-      // shows the ad popup before triggering the original detection.
-      // Since app.js already attaches its own listener, we need to remove it or
-      // work around it. We'll replace the button with a clone to remove existing listeners,
-      // then attach our own that shows the ad and calls the original detection logic.
-      // However, the original detection logic is inside UI.render() which is bound to the
-      // original button. To avoid complex interference, we'll clone the button and
-      // re-implement a simplified flow that still uses DeviceDetector and UI.renderResults.
-      // We'll also ensure the loader (#detectLoader) doesn't show.
+      // Wait for app.js to be parsed and DeviceDetector to exist,
+      // then wrap its `detect` method so the ad shows only on user-triggered detection.
+      // The original UI.render() in app.js calls DeviceDetector.detect() when the user
+      // clicks the button — so wrapping detect() is the cleanest, non-invasive hook.
+      function wrapDetector() {
+        if (typeof DeviceDetector === 'undefined' || !DeviceDetector.detect) {
+          // app.js not ready yet — try again shortly
+          setTimeout(wrapDetector, 50);
+          return;
+        }
 
-      document.addEventListener('DOMContentLoaded', function() {
-        const originalBtn = document.getElementById('detectBtn');
-        if (!originalBtn) return;
+        // Already wrapped? bail out.
+        if (DeviceDetector._adWrapped) return;
+        DeviceDetector._adWrapped = true;
 
-        // Clone the button to remove any existing event listeners
-        const newBtn = originalBtn.cloneNode(true);
-        originalBtn.parentNode.replaceChild(newBtn, originalBtn);
+        const originalDetect = DeviceDetector.detect.bind(DeviceDetector);
 
-        // Hide the original loader (we use ad popup)
-        const loader = document.getElementById('detectLoader');
-        if (loader) loader.style.display = 'none';
+        DeviceDetector.detect = async function() {
+          // Only show the ad when the user actually clicks "Detect My Phone",
+          // not during the silent auto-detection on page load.
+          // The auto-detect happens within the first ~500ms; the button click comes later.
+          const isUserTriggered = window._userClickedDetect === true;
 
-        // Attach our own listener
-        newBtn.addEventListener('click', async function() {
-          newBtn.disabled = true;
-          newBtn.classList.add('loading');
-
-          // 1. Show ad popup with timer (returns a promise that resolves after 5s)
-          await showAdPopup();
-
-          // 2. Perform detection using DeviceDetector (from app.js global scope)
-          // Check if DeviceDetector is available
-          if (typeof DeviceDetector === 'undefined') {
-            console.error('DeviceDetector not loaded');
-            newBtn.disabled = false;
-            newBtn.classList.remove('loading');
-            return;
+          if (isUserTriggered) {
+            window._userClickedDetect = false; // consume the flag
+            await showAdPopup();
           }
 
-          const detectionData = await DeviceDetector.detect();
+          return originalDetect();
+        };
 
-          // 3. Render results using the UI module (if available)
-          if (typeof UI !== 'undefined' && UI.renderResults) {
-            UI.renderResults(detectionData);
-          } else {
-            // Fallback: manual minimal rendering
-            const resultSection = document.getElementById('resultSection');
-            if (resultSection) {
-              resultSection.innerHTML = `
-                <div style="background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:1.5rem; text-align:left;">
-                  <h3 style="font-family:var(--font-display); margin-bottom:1rem;">Device detected</h3>
-                  <p><strong>Brand:</strong> ${detectionData.ua.brand}</p>
-                  <p><strong>Model:</strong> ${detectionData.ua.model}</p>
-                  <p><strong>OS:</strong> ${detectionData.ua.os} ${detectionData.ua.osVersion}</p>
-                  <p><strong>Browser:</strong> ${detectionData.ua.browser} ${detectionData.ua.browserVersion}</p>
-                  <p><strong>Screen:</strong> ${detectionData.screen.logicalResolution}</p>
-                  <p><strong>CPU cores:</strong> ${detectionData.hardware.cores}</p>
-                  <p><strong>RAM:</strong> ${detectionData.hardware.memory}</p>
-                  <p><strong>Battery:</strong> ${detectionData.hardware.batteryLevel || 'N/A'}</p>
-                </div>
-              `;
-              resultSection.classList.add('visible');
-            }
+        // Mark the flag when the real detect button is clicked,
+        // BEFORE app.js's own click handler runs. We use capture phase
+        // so our listener fires first, then app.js's bubble-phase listener
+        // runs and calls the (now wrapped) DeviceDetector.detect().
+        document.addEventListener('click', function(e) {
+          if (e.target && e.target.closest && e.target.closest('#detectBtn')) {
+            window._userClickedDetect = true;
           }
+        }, true); // <-- capture phase
+      }
 
-          // 4. Enable button and scroll to results
-          newBtn.disabled = false;
-          newBtn.classList.remove('loading');
-          const resultSection = document.getElementById('resultSection');
-          if (resultSection) {
-            resultSection.classList.add('visible');
-            resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        });
-      });
+      // Start trying to wrap once the DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', wrapDetector);
+      } else {
+        wrapDetector();
+      }
     })();
   </script>
 </body>
