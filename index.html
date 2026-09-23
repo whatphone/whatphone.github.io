@@ -161,6 +161,25 @@
     </div>
   </div>
 
+  <!-- ── AD POPUP (shown during detection) ── -->
+  <div id="adPopup" role="dialog" aria-modal="true" aria-label="Advertisement and scanning progress">
+    <div class="ad-popup-inner">
+      <div class="ad-label">Advertisement</div>
+      <div class="ad-scan-indicator">
+        <span class="dot-pulse"></span> Scanning device…
+      </div>
+      <!-- 300x250 ad container – script will inject iframe here -->
+      <div class="ad-container" id="adContainer">
+        <!-- The HighRevenueFormat script will render the ad iframe inside this div -->
+      </div>
+      <div class="ad-timer">
+        <span class="timer-number" id="adTimerCount">5</span>
+        <span class="timer-label">seconds</span>
+      </div>
+      <div class="ad-close-hint">Please wait, detecting your device…</div>
+    </div>
+  </div>
+
   <!-- ── Main Content ─────────────────────────────────── -->
   <main id="main-content">
 
@@ -962,6 +981,113 @@
   <!-- ── Footer (rendered by JS) ──────────────────────── -->
   <footer id="site-footer" role="contentinfo"></footer>
 
+  <!-- ── Ad Popup Styles (injected to ensure availability) ── -->
+  <style>
+    /* ── Ad popup overlay styles ─────────────────────────── */
+    #adPopup {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+    #adPopup.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .ad-popup-inner {
+      background: var(--surface, #ffffff);
+      border-radius: 24px;
+      padding: 2rem 1.5rem 1.75rem;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      position: relative;
+      text-align: center;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .ad-popup-inner .ad-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text3, #7c8aa0);
+      margin-bottom: 0.25rem;
+    }
+    .ad-container {
+      width: 300px;
+      height: 250px;
+      background: #eef3f9;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid var(--border, #e1e7f0);
+    }
+    .ad-container iframe {
+      width: 300px;
+      height: 250px;
+      border: none;
+      display: block;
+    }
+    .ad-timer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--text2, #55617a);
+    }
+    .ad-timer .timer-number {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--accent, #3b82f6);
+      min-width: 2rem;
+    }
+    .ad-timer .timer-label {
+      font-size: 0.8rem;
+    }
+    .ad-close-hint {
+      font-size: 0.7rem;
+      color: var(--text3, #7c8aa0);
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.02em;
+    }
+    .ad-scan-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--neon, #0e7490);
+      font-family: 'Space Mono', monospace;
+    }
+    .ad-scan-indicator .dot-pulse {
+      width: 8px;
+      height: 8px;
+      background: var(--neon, #0e7490);
+      border-radius: 50%;
+      animation: pulse-dot 1.2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+  </style>
+
   <!-- ── Scripts ──────────────────────────────────────── -->
   <script src="js/header.js" defer></script>
   <script src="js/footer.js" defer></script>
@@ -980,6 +1106,151 @@
         btn.setAttribute('aria-expanded', 'true');
       }
     }
+
+    // ── Ad popup logic (overrides the default loader for detect button) ──
+    (function() {
+      const AD_DURATION = 5; // seconds
+      const popup = document.getElementById('adPopup');
+      const timerCount = document.getElementById('adTimerCount');
+      const adContainer = document.getElementById('adContainer');
+      let adTimerInterval = null;
+
+      // Inject the ad script into the container (once)
+      function injectAd() {
+        if (!adContainer) return;
+        // Prevent duplicate injection
+        if (adContainer.querySelector('iframe') || adContainer.querySelector('script[src*="highrevenueformat"]')) {
+          return;
+        }
+        // Clear any placeholder
+        adContainer.innerHTML = '';
+
+        // Set up atOptions inside the container (scoped)
+        const optionsScript = document.createElement('script');
+        optionsScript.type = 'text/javascript';
+        optionsScript.text = `
+          atOptions = {
+            'key' : '81443cd2b70e4089345fae478ec5b90a',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+          };
+        `;
+        adContainer.appendChild(optionsScript);
+
+        // Load the invoke.js script inside the container
+        const invokeScript = document.createElement('script');
+        invokeScript.src = 'https://www.highrevenueformat.com/81443cd2b70e4089345fae478ec5b90a/invoke.js';
+        adContainer.appendChild(invokeScript);
+      }
+
+      // Show the popup and return a promise that resolves after the timer ends
+      function showAdPopup() {
+        return new Promise((resolve) => {
+          let remaining = AD_DURATION;
+          timerCount.textContent = remaining;
+
+          // Show popup
+          popup.classList.add('active');
+
+          // Inject ad (if not already)
+          injectAd();
+
+          // Clear any existing interval
+          if (adTimerInterval) clearInterval(adTimerInterval);
+
+          // Start countdown
+          adTimerInterval = setInterval(() => {
+            remaining -= 1;
+            timerCount.textContent = remaining;
+            if (remaining <= 0) {
+              clearInterval(adTimerInterval);
+              adTimerInterval = null;
+              popup.classList.remove('active');
+              resolve();
+            }
+          }, 1000);
+        });
+      }
+
+      // Override the detection flow: we need to intercept the detect button click
+      // Wait for the DOM and app.js to be ready, then attach our own handler that
+      // shows the ad popup before triggering the original detection.
+      // Since app.js already attaches its own listener, we need to remove it or
+      // work around it. We'll replace the button with a clone to remove existing listeners,
+      // then attach our own that shows the ad and calls the original detection logic.
+      // However, the original detection logic is inside UI.render() which is bound to the
+      // original button. To avoid complex interference, we'll clone the button and
+      // re-implement a simplified flow that still uses DeviceDetector and UI.renderResults.
+      // We'll also ensure the loader (#detectLoader) doesn't show.
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const originalBtn = document.getElementById('detectBtn');
+        if (!originalBtn) return;
+
+        // Clone the button to remove any existing event listeners
+        const newBtn = originalBtn.cloneNode(true);
+        originalBtn.parentNode.replaceChild(newBtn, originalBtn);
+
+        // Hide the original loader (we use ad popup)
+        const loader = document.getElementById('detectLoader');
+        if (loader) loader.style.display = 'none';
+
+        // Attach our own listener
+        newBtn.addEventListener('click', async function() {
+          newBtn.disabled = true;
+          newBtn.classList.add('loading');
+
+          // 1. Show ad popup with timer (returns a promise that resolves after 5s)
+          await showAdPopup();
+
+          // 2. Perform detection using DeviceDetector (from app.js global scope)
+          // Check if DeviceDetector is available
+          if (typeof DeviceDetector === 'undefined') {
+            console.error('DeviceDetector not loaded');
+            newBtn.disabled = false;
+            newBtn.classList.remove('loading');
+            return;
+          }
+
+          const detectionData = await DeviceDetector.detect();
+
+          // 3. Render results using the UI module (if available)
+          if (typeof UI !== 'undefined' && UI.renderResults) {
+            UI.renderResults(detectionData);
+          } else {
+            // Fallback: manual minimal rendering
+            const resultSection = document.getElementById('resultSection');
+            if (resultSection) {
+              resultSection.innerHTML = `
+                <div style="background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:1.5rem; text-align:left;">
+                  <h3 style="font-family:var(--font-display); margin-bottom:1rem;">Device detected</h3>
+                  <p><strong>Brand:</strong> ${detectionData.ua.brand}</p>
+                  <p><strong>Model:</strong> ${detectionData.ua.model}</p>
+                  <p><strong>OS:</strong> ${detectionData.ua.os} ${detectionData.ua.osVersion}</p>
+                  <p><strong>Browser:</strong> ${detectionData.ua.browser} ${detectionData.ua.browserVersion}</p>
+                  <p><strong>Screen:</strong> ${detectionData.screen.logicalResolution}</p>
+                  <p><strong>CPU cores:</strong> ${detectionData.hardware.cores}</p>
+                  <p><strong>RAM:</strong> ${detectionData.hardware.memory}</p>
+                  <p><strong>Battery:</strong> ${detectionData.hardware.batteryLevel || 'N/A'}</p>
+                </div>
+              `;
+              resultSection.classList.add('visible');
+            }
+          }
+
+          // 4. Enable button and scroll to results
+          newBtn.disabled = false;
+          newBtn.classList.remove('loading');
+          const resultSection = document.getElementById('resultSection');
+          if (resultSection) {
+            resultSection.classList.add('visible');
+            resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    })();
   </script>
 </body>
 </html>
