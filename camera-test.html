@@ -464,6 +464,99 @@
     }
     .section-subtitle { font-size: 1.05rem; color: var(--text2); max-width: 540px; margin: 0 auto; }
 
+    /* ── Ad popup overlay (added for camera test) ─────────────── */
+    #adPopup {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+    #adPopup.active { opacity: 1; visibility: visible; }
+    .ad-popup-inner {
+      background: var(--surface, #ffffff);
+      border-radius: 24px;
+      padding: 2rem 1.5rem 1.75rem;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      text-align: center;
+      font-family: var(--font-body, 'DM Sans', sans-serif);
+    }
+    .ad-popup-inner .ad-label {
+      font-family: var(--font-mono, 'Space Mono', monospace);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text3, #7c8aa0);
+      margin-bottom: 0.25rem;
+    }
+    .ad-container {
+      width: 300px;
+      height: 250px;
+      background: #eef3f9;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid var(--border, #e1e7f0);
+    }
+    .ad-container iframe {
+      width: 300px;
+      height: 250px;
+      border: none;
+      display: block;
+    }
+    .ad-timer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      font-family: var(--font-mono, 'Space Mono', monospace);
+      font-size: 0.9rem;
+      color: var(--text2, #55617a);
+    }
+    .ad-timer .timer-number {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--accent, #3b82f6);
+      min-width: 2rem;
+    }
+    .ad-timer .timer-label { font-size: 0.8rem; }
+    .ad-close-hint {
+      font-size: 0.7rem;
+      color: var(--text3, #7c8aa0);
+      font-family: var(--font-mono, 'Space Mono', monospace);
+    }
+    .ad-scan-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--neon, #0e7490);
+      font-family: var(--font-mono, 'Space Mono', monospace);
+    }
+    .ad-scan-indicator .dot-pulse {
+      width: 8px;
+      height: 8px;
+      background: var(--neon, #0e7490);
+      border-radius: 50%;
+      animation: pulse-dot 1.2s infinite;
+    }
+
     @media (max-width: 1024px) {
       .features-grid { grid-template-columns: repeat(2, 1fr); }
       .steps-grid { grid-template-columns: repeat(2, 1fr); }
@@ -480,6 +573,24 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header id="site-header" role="banner"></header>
+
+  <!-- ── AD POPUP (shown when starting camera test) ── -->
+  <div id="adPopup" role="dialog" aria-modal="true" aria-label="Advertisement and scanning progress">
+    <div class="ad-popup-inner">
+      <div class="ad-label">Advertisement</div>
+      <div class="ad-scan-indicator">
+        <span class="dot-pulse"></span> Initializing camera…
+      </div>
+      <div class="ad-container" id="adContainer">
+        <!-- The HighRevenueFormat script will render the ad iframe inside this div -->
+      </div>
+      <div class="ad-timer">
+        <span class="timer-number" id="adTimerCount">5</span>
+        <span class="timer-label">seconds</span>
+      </div>
+      <div class="ad-close-hint">Please wait, preparing your camera test…</div>
+    </div>
+  </div>
 
   <div class="tool-page" id="main-content">
     <!-- Tool Hero -->
@@ -1129,8 +1240,66 @@
       }
     }
 
+    // ── Ad popup logic (shown before camera starts) ─────────────
+    const AD_DURATION = 5; // seconds
+    let adTimerInterval = null;
+    let adInjected = false;
+
+    function injectCameraAd() {
+      if (adInjected) return;
+      adInjected = true;
+      const adContainer = document.getElementById('adContainer');
+      if (!adContainer) return;
+
+      const optionsScript = document.createElement('script');
+      optionsScript.type = 'text/javascript';
+      optionsScript.text = `
+        atOptions = {
+          'key' : '81443cd2b70e4089345fae478ec5b90a',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+      `;
+      adContainer.appendChild(optionsScript);
+
+      const invokeScript = document.createElement('script');
+      invokeScript.src = 'https://www.highrevenueformat.com/81443cd2b70e4089345fae478ec5b90a/invoke.js';
+      invokeScript.async = true;
+      adContainer.appendChild(invokeScript);
+    }
+
+    function showCameraAdPopup() {
+      return new Promise((resolve) => {
+        const popup = document.getElementById('adPopup');
+        const timerCount = document.getElementById('adTimerCount');
+        if (!popup || !timerCount) { resolve(); return; }
+
+        let remaining = AD_DURATION;
+        timerCount.textContent = remaining;
+        popup.classList.add('active');
+        injectCameraAd();
+
+        if (adTimerInterval) clearInterval(adTimerInterval);
+        adTimerInterval = setInterval(() => {
+          remaining -= 1;
+          timerCount.textContent = remaining;
+          if (remaining <= 0) {
+            clearInterval(adTimerInterval);
+            adTimerInterval = null;
+            popup.classList.remove('active');
+            resolve();
+          }
+        }, 1000);
+      });
+    }
+
     // ── Start Camera ─────────────────────────────────────────────
     async function startCamera() {
+      // Show the ad popup for AD_DURATION seconds before requesting camera
+      await showCameraAdPopup();
+
       setStatus('testing', 'Requesting access…');
       try {
         const devices = await navigator.mediaDevices.enumerateDevices();
