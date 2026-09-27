@@ -289,33 +289,53 @@
           <p class="section-subtitle">Click the button above or press below to scan your device. Results appear instantly.</p>
         </div>
 
-        <!-- Result Section -->
-        <div id="resultSection" aria-live="polite" aria-label="Device detection results">
-          <div id="deviceCard" role="region" aria-label="Device identification card"></div>
-          <div class="result-grid" style="margin-top:1.5rem">
-            <div>
-              <!-- Specs Tabs -->
-              <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem;margin-bottom:1.5rem" aria-label="Technical specifications">
-                <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--heading);margin-bottom:1rem">Technical Specs</h3>
-                <div id="specsTabs"></div>
-              </div>
-            </div>
-            <div>
-              <!-- Capabilities -->
-              <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem;margin-bottom:1.5rem" aria-label="Browser and hardware capabilities">
-                <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--heading);margin-bottom:1rem">Capabilities</h3>
-                <div id="capabilitiesGrid" class="cap-grid" role="list"></div>
-              </div>
-              <!-- Advanced -->
-              <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem">
-                <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--heading);margin-bottom:1rem">Advanced Info</h3>
-                <div id="advancedInfo"></div>
-              </div>
-            </div>
-          </div>
+        <!-- Replace the existing #resultSection in index.html with this -->
+<div id="resultSection" aria-live="polite" aria-label="Device detection results">
+  <div id="deviceCard" role="region" aria-label="Device identification card">
+    <!-- Initial State before test runs -->
+    <div class="results-placeholder">
+      <div class="placeholder-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+          <line x1="12" y1="18" x2="12.01" y2="18"></line>
+        </svg>
+      </div>
+      <h3 class="placeholder-title">Device Detection Ready</h3>
+      <p class="placeholder-text">Click the <strong>"Detect My Phone"</strong> button above to instantly generate your full device and hardware specifications report.</p>
+      <div class="placeholder-badge">
+        <span class="dot"></span> Status: Awaiting Scan
+      </div>
+    </div>
+  </div>
+
+  <div class="result-grid" style="margin-top:1.5rem">
+    <div>
+      <!-- Specs Tabs -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem;margin-bottom:1.5rem" aria-label="Technical specifications">
+        <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--heading);margin-bottom:1rem">Technical Specs</h3>
+        <div id="specsTabs">
+          <p style="color:var(--text3); font-size:0.9rem;">Run detection to view screen, OS, and browser specifications.</p>
         </div>
       </div>
-    </section>
+    </div>
+    <div>
+      <!-- Capabilities -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem;margin-bottom:1.5rem" aria-label="Browser and hardware capabilities">
+        <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--heading);margin-bottom:1rem">Capabilities</h3>
+        <div id="capabilitiesGrid" class="cap-grid" role="list">
+          <p style="color:var(--text3); font-size:0.9rem; grid-column: 1/-1;">Run detection to reveal 30+ hardware capabilities.</p>
+        </div>
+      </div>
+      <!-- Advanced -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem">
+        <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--heading);margin-bottom:1rem">Advanced Info</h3>
+        <div id="advancedInfo">
+          <p style="color:var(--text3); font-size:0.9rem;">Run detection to extract system user-agent & client hints.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- ══════════════════════════════════════════════════
          § 4 — FEATURES
