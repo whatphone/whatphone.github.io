@@ -1651,3 +1651,76 @@ code { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent2); 
     display: none;
   }
 }
+/* ── Fix Layout Shift & Shaking ────────────────────────── */
+html, body {
+  /* Prevents horizontal scroll/shaking caused by layout jumps */
+  overflow-x: hidden;
+  touch-action: manipulation;
+}
+
+/* ── Result Section Placeholder State ───────────────────── */
+#resultSection {
+  display: block; /* Ensure section stays in the DOM flow */
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  min-height: 400px; /* Lock min-height to prevent layout jump when populated */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Skeleton Placeholder Container */
+.results-placeholder {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.placeholder-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent2);
+}
+
+.placeholder-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: 0.5rem;
+}
+
+.placeholder-text {
+  font-size: 0.95rem;
+  color: var(--text2);
+  max-width: 420px;
+  margin: 0 auto 1.5rem;
+}
+
+.placeholder-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--bg3);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--text2);
+}
+
+.placeholder-badge .dot {
+  width: 8px;
+  height: 8px;
+  background: var(--amber);
+  border-radius: 50%;
+}
