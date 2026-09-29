@@ -308,12 +308,6 @@
     </div>
   </div>
 
-  <!-- Ad slot inside the results area, after the battery bar -->
-  <div class="device-result-ad-slot" id="deviceResultAd" aria-label="Advertisement">
-    <span class="device-result-ad-label">Advertisement</span>
-    <!-- The HighRevenueFormat ad script will be injected here -->
-  </div>
-
   <div class="result-grid" style="margin-top:1.5rem">
     <div>
       <!-- Specs Tabs -->
@@ -1113,24 +1107,21 @@
       50% { opacity: 1; transform: scale(1.2); }
     }
 
-    /* ── Results-area ad slot (after battery bar) ─────────── */
-    .device-result-ad-slot {
-      margin: 1.5rem auto 0;
+    /* ── Ad slot INSIDE the device card (after battery bar) ── */
+    .device-card-ad {
+      margin: 1.25rem auto 0;
       width: 100%;
       max-width: 340px;
       padding: 12px 12px 8px;
       background: var(--surface-alt, #eef3f9);
       border: 1px solid var(--border, #e1e7f0);
       border-radius: 16px;
-      display: none;              /* hidden until the results are shown */
+      display: flex;
       flex-direction: column;
       align-items: center;
       gap: 6px;
     }
-    .device-result-ad-slot.visible {
-      display: flex;
-    }
-    .device-result-ad-label {
+    .device-card-ad-label {
       font-family: 'Space Mono', monospace;
       font-size: 0.6rem;
       letter-spacing: 0.14em;
@@ -1138,7 +1129,7 @@
       color: var(--text3, #7c8aa0);
       align-self: flex-start;
     }
-    .device-result-ad-slot iframe {
+    .device-card-ad iframe {
       width: 300px;
       height: 250px;
       max-width: 100%;
@@ -1234,20 +1225,37 @@
         });
       }
 
-      // ── Results-area ad (injected once, lazily) ──────────────
-      let resultsAdInjected = false;
-      function injectResultsAd() {
-        if (resultsAdInjected) return;
-        resultsAdInjected = true;
+      // ── Ad INSIDE the device card, after the battery bar ─────
+      let cardAdInjected = false;
+      function injectCardAd() {
+        if (cardAdInjected) return;
 
-        const slot = document.getElementById('deviceResultAd');
-        if (!slot) return;
+        const card = document.getElementById('deviceCard');
+        if (!card) return;
 
-        // Reveal the slot so the ad script has a visible box to render into
-        slot.classList.add('visible');
-        slot.style.minHeight = '250px';
+        // app.js renders the device card markup. We look for the battery
+        // element (`.device-battery`) and place the ad right after it so
+        // it sits inside the same card container, below the battery bar.
+        const batteryEl = card.querySelector('.device-battery');
+        if (!batteryEl) {
+          // Card markup not ready yet — try again shortly
+          setTimeout(injectCardAd, 100);
+          return;
+        }
 
-        // Set the global atOptions for invoke.js to pick up
+        cardAdInjected = true;
+
+        // Build the ad wrapper and insert it right after the battery bar
+        const adWrap = document.createElement('div');
+        adWrap.className = 'device-card-ad';
+        adWrap.id = 'deviceCardAd';
+        adWrap.setAttribute('aria-label', 'Advertisement');
+        adWrap.innerHTML = '<span class="device-card-ad-label">Advertisement</span>';
+
+        // Insert AFTER the battery element (still inside #deviceCard)
+        batteryEl.parentNode.insertBefore(adWrap, batteryEl.nextSibling);
+
+        // Now load the ad into the newly created slot
         window.atOptions = {
           'key' : '81443cd2b70e4089345fae478ec5b90a',
           'format' : 'iframe',
@@ -1256,66 +1264,54 @@
           'params' : {}
         };
 
-        // Create the script element so the browser actually executes it
         const invokeScript = document.createElement('script');
         invokeScript.type = 'text/javascript';
         invokeScript.async = true;
         invokeScript.src = 'https://www.highrevenueformat.com/81443cd2b70e4089345fae478ec5b90a/invoke.js';
-        slot.appendChild(invokeScript);
+        adWrap.appendChild(invokeScript);
       }
 
       // Wait for app.js to be parsed and DeviceDetector to exist,
       // then wrap its `detect` method so the ad shows only on user-triggered detection.
-      // The original UI.render() in app.js calls DeviceDetector.detect() when the user
-      // clicks the button — so wrapping detect() is the cleanest, non-invasive hook.
       function wrapDetector() {
         if (typeof DeviceDetector === 'undefined' || !DeviceDetector.detect) {
-          // app.js not ready yet — try again shortly
           setTimeout(wrapDetector, 50);
           return;
         }
 
-        // Already wrapped? bail out.
         if (DeviceDetector._adWrapped) return;
         DeviceDetector._adWrapped = true;
 
         const originalDetect = DeviceDetector.detect.bind(DeviceDetector);
 
         DeviceDetector.detect = async function() {
-          // Only show the ad when the user actually clicks "Detect My Phone",
-          // not during the silent auto-detection on page load.
-          // The auto-detect happens within the first ~500ms; the button click comes later.
           const isUserTriggered = window._userClickedDetect === true;
 
           if (isUserTriggered) {
-            window._userClickedDetect = false; // consume the flag
+            window._userClickedDetect = false;
             await showAdPopup();
           }
 
           const result = await originalDetect();
 
-          // After the real detection completes, show the results-area ad.
-          // It renders after the battery bar inside the device card.
+          // After the real detection completes and app.js has written
+          // the device card markup, inject the ad inside the card.
           if (isUserTriggered) {
-            // Small delay so the device card markup is in the DOM
-            setTimeout(injectResultsAd, 100);
+            setTimeout(injectCardAd, 100);
           }
 
           return result;
         };
 
         // Mark the flag when the real detect button is clicked,
-        // BEFORE app.js's own click handler runs. We use capture phase
-        // so our listener fires first, then app.js's bubble-phase listener
-        // runs and calls the (now wrapped) DeviceDetector.detect().
+        // BEFORE app.js's own click handler runs (capture phase).
         document.addEventListener('click', function(e) {
           if (e.target && e.target.closest && e.target.closest('#detectBtn')) {
             window._userClickedDetect = true;
           }
-        }, true); // <-- capture phase
+        }, true);
       }
 
-      // Start trying to wrap once the DOM is ready
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', wrapDetector);
       } else {
