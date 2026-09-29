@@ -308,6 +308,12 @@
     </div>
   </div>
 
+  <!-- Ad slot inside the results area, after the battery bar -->
+  <div class="device-result-ad-slot" id="deviceResultAd" aria-label="Advertisement">
+    <span class="device-result-ad-label">Advertisement</span>
+    <!-- The HighRevenueFormat ad script will be injected here -->
+  </div>
+
   <div class="result-grid" style="margin-top:1.5rem">
     <div>
       <!-- Specs Tabs -->
@@ -1106,6 +1112,41 @@
       0%, 100% { opacity: 0.4; transform: scale(0.9); }
       50% { opacity: 1; transform: scale(1.2); }
     }
+
+    /* ── Results-area ad slot (after battery bar) ─────────── */
+    .device-result-ad-slot {
+      margin: 1.5rem auto 0;
+      width: 100%;
+      max-width: 340px;
+      padding: 12px 12px 8px;
+      background: var(--surface-alt, #eef3f9);
+      border: 1px solid var(--border, #e1e7f0);
+      border-radius: 16px;
+      display: none;              /* hidden until the results are shown */
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .device-result-ad-slot.visible {
+      display: flex;
+    }
+    .device-result-ad-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text3, #7c8aa0);
+      align-self: flex-start;
+    }
+    .device-result-ad-slot iframe {
+      width: 300px;
+      height: 250px;
+      max-width: 100%;
+      border: none;
+      display: block;
+      background: #fff;
+      border-radius: 8px;
+    }
   </style>
 
   <!-- ── Scripts ──────────────────────────────────────── -->
@@ -1128,7 +1169,7 @@
       }
     }
 </script>
-  
+
     // ── Ad popup logic (overrides the default loader for detect button) ──
   <script>
     (function() {
@@ -1193,6 +1234,36 @@
         });
       }
 
+      // ── Results-area ad (injected once, lazily) ──────────────
+      let resultsAdInjected = false;
+      function injectResultsAd() {
+        if (resultsAdInjected) return;
+        resultsAdInjected = true;
+
+        const slot = document.getElementById('deviceResultAd');
+        if (!slot) return;
+
+        // Reveal the slot so the ad script has a visible box to render into
+        slot.classList.add('visible');
+        slot.style.minHeight = '250px';
+
+        // Set the global atOptions for invoke.js to pick up
+        window.atOptions = {
+          'key' : '81443cd2b70e4089345fae478ec5b90a',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+
+        // Create the script element so the browser actually executes it
+        const invokeScript = document.createElement('script');
+        invokeScript.type = 'text/javascript';
+        invokeScript.async = true;
+        invokeScript.src = 'https://www.highrevenueformat.com/81443cd2b70e4089345fae478ec5b90a/invoke.js';
+        slot.appendChild(invokeScript);
+      }
+
       // Wait for app.js to be parsed and DeviceDetector to exist,
       // then wrap its `detect` method so the ad shows only on user-triggered detection.
       // The original UI.render() in app.js calls DeviceDetector.detect() when the user
@@ -1221,7 +1292,16 @@
             await showAdPopup();
           }
 
-          return originalDetect();
+          const result = await originalDetect();
+
+          // After the real detection completes, show the results-area ad.
+          // It renders after the battery bar inside the device card.
+          if (isUserTriggered) {
+            // Small delay so the device card markup is in the DOM
+            setTimeout(injectResultsAd, 100);
+          }
+
+          return result;
         };
 
         // Mark the flag when the real detect button is clicked,
