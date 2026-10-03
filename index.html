@@ -168,10 +168,10 @@
       <div class="ad-scan-indicator">
         <span class="dot-pulse"></span> Scanning device…
       </div>
-      <!-- 300x250 ad container – script will inject iframe here -->
-      <div class="ad-container" id="adContainer" style="width:100%;max-width:480px;min-height:120px;">
-  <div id="container-80e69f9e0965d4beea4ea32c92f55b06-popup"></div>
-</div>
+      <!-- Native 2:2 banner ad container -->
+      <div class="ad-native-container" id="adNativeContainer">
+        <div id="container-80e69f9e0965d4beea4ea32c92f55b06-popup"></div>
+      </div>
       <div class="ad-timer">
         <span class="timer-number" id="adTimerCount">5</span>
         <span class="timer-label">seconds</span>
@@ -289,384 +289,386 @@
           <p class="section-subtitle">Click the button above or press below to scan your device. Results appear instantly.</p>
         </div>
 
-        <!-- Replace the existing #resultSection in index.html with this -->
-<div id="resultSection" aria-live="polite" aria-label="Device detection results">
-  <div id="deviceCard" role="region" aria-label="Device identification card">
-    <!-- Initial State before test runs -->
-    <div class="results-placeholder">
-      <div class="placeholder-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-          <line x1="12" y1="18" x2="12.01" y2="18"></line>
-        </svg>
-      </div>
-      <h3 class="placeholder-title">Device Detection Ready</h3>
-      <p class="placeholder-text">Click the <strong>"Detect My Phone"</strong> button above to instantly generate your full device and hardware specifications report.</p>
-      <div class="placeholder-badge">
-        <span class="dot"></span> Status: Awaiting Scan
-      </div>
-    </div>
-  </div>
+        <div id="resultSection" aria-live="polite" aria-label="Device detection results">
+          <div id="deviceCard" role="region" aria-label="Device identification card">
+            <!-- Initial State before test runs -->
+            <div class="results-placeholder">
+              <div class="placeholder-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                  <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+              </div>
+              <h3 class="placeholder-title">Device Detection Ready</h3>
+              <p class="placeholder-text">Click the <strong>"Detect My Phone"</strong> button above to instantly generate your full device and hardware specifications report.</p>
+              <div class="placeholder-badge">
+                <span class="dot"></span> Status: Awaiting Scan
+              </div>
+            </div>
+          </div>
 
-  <div class="result-grid" style="margin-top:1.5rem">
-    <div>
-      <!-- Specs Tabs -->
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem;margin-bottom:1.5rem" aria-label="Technical specifications">
-        <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--heading);margin-bottom:1rem">Technical Specs</h3>
-        <div id="specsTabs">
-          <p style="color:var(--text3); font-size:0.9rem;">Run detection to view screen, OS, and browser specifications.</p>
+          <div class="result-grid" style="margin-top:1.5rem">
+            <div>
+              <!-- Specs Tabs -->
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem;margin-bottom:1.5rem" aria-label="Technical specifications">
+                <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--heading);margin-bottom:1rem">Technical Specs</h3>
+                <div id="specsTabs">
+                  <p style="color:var(--text3); font-size:0.9rem;">Run detection to view screen, OS, and browser specifications.</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <!-- Capabilities -->
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem;margin-bottom:1.5rem" aria-label="Browser and hardware capabilities">
+                <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--heading);margin-bottom:1rem">Capabilities</h3>
+                <div id="capabilitiesGrid" class="cap-grid" role="list">
+                  <p style="color:var(--text3); font-size:0.9rem; grid-column: 1/-1;">Run detection to reveal 30+ hardware capabilities.</p>
+                </div>
+              </div>
+              <!-- Advanced -->
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem">
+                <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--heading);margin-bottom:1rem">Advanced Info</h3>
+                <div id="advancedInfo">
+                  <p style="color:var(--text3); font-size:0.9rem;">Run detection to extract system user-agent & client hints.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
       </div>
-    </div>
-    <div>
-      <!-- Capabilities -->
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem;margin-bottom:1.5rem" aria-label="Browser and hardware capabilities">
-        <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--heading);margin-bottom:1rem">Capabilities</h3>
-        <div id="capabilitiesGrid" class="cap-grid" role="list">
-          <p style="color:var(--text3); font-size:0.9rem; grid-column: 1/-1;">Run detection to reveal 30+ hardware capabilities.</p>
-        </div>
-      </div>
-      <!-- Advanced -->
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.5rem">
-        <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--heading);margin-bottom:1rem">Advanced Info</h3>
-        <div id="advancedInfo">
-          <p style="color:var(--text3); font-size:0.9rem;">Run detection to extract system user-agent & client hints.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    </section>
 
     <!-- ══════════════════════════════════════════════════
          § 4 — FEATURES
     ══════════════════════════════════════════════════════ -->
     <section class="features-section" id="features" aria-labelledby="features-heading">
-  <div class="container">
-    <div class="section-header" data-animate>
-      <span class="section-eyebrow">What We Detect</span>
-      <h2 class="section-title" id="features-heading">Everything About Your Device</h2>
-      <p class="section-subtitle">From your phone's model name to its network speed — we surface it all.</p>
-    </div>
-    <div class="features-grid" data-stagger>
-      
-      <!-- Device Identity -->
-      <article class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-            <line x1="12" y1="18" x2="12" y2="18" />
-          </svg>
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">What We Detect</span>
+          <h2 class="section-title" id="features-heading">Everything About Your Device</h2>
+          <p class="section-subtitle">From your phone's model name to its network speed — we surface it all.</p>
         </div>
-        <h3 class="feature-title">Device Identity</h3>
-        <p class="feature-desc">Detect your exact device brand, model name, and generation. Supports Apple, Samsung, Google Pixel, OnePlus, Xiaomi, Motorola, and 50+ manufacturers.</p>
-      </article>
+        <div class="features-grid" data-stagger>
+          
+          <!-- Device Identity -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                <line x1="12" y1="18" x2="12" y2="18" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Device Identity</h3>
+            <p class="feature-desc">Detect your exact device brand, model name, and generation. Supports Apple, Samsung, Google Pixel, OnePlus, Xiaomi, Motorola, and 50+ manufacturers.</p>
+          </article>
 
-      <!-- Hardware Specs -->
-      <article class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="3" />
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H5.78a1.65 1.65 0 0 0-1.51 1 1.65 1.65 0 0 0 .33 1.82l.04.04A10 10 0 0 0 12 17.66 10 10 0 0 0 19.36 15z" />
-            <path d="M4.6 9a1.65 1.65 0 0 0-.33 1.82c.26.6.86.99 1.51 1h12.44a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82L12 4.34 4.6 9z" />
-          </svg>
-        </div>
-        <h3 class="feature-title">Hardware Specs</h3>
-        <p class="feature-desc">CPU core count, RAM capacity, architecture, and touch points. See what's actually powering your device under the hood.</p>
-      </article>
+          <!-- Hardware Specs -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3" />
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H5.78a1.65 1.65 0 0 0-1.51 1 1.65 1.65 0 0 0 .33 1.82l.04.04A10 10 0 0 0 12 17.66 10 10 0 0 0 19.36 15z" />
+                <path d="M4.6 9a1.65 1.65 0 0 0-.33 1.82c.26.6.86.99 1.51 1h12.44a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82L12 4.34 4.6 9z" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Hardware Specs</h3>
+            <p class="feature-desc">CPU core count, RAM capacity, architecture, and touch points. See what's actually powering your device under the hood.</p>
+          </article>
 
-      <!-- Screen Analysis -->
-      <article class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-            <line x1="8" y1="21" x2="16" y2="21" />
-            <line x1="12" y1="17" x2="12" y2="21" />
-          </svg>
-        </div>
-        <h3 class="feature-title">Screen Analysis</h3>
-        <p class="feature-desc">Physical and logical resolution, pixel density ratio, color gamut (sRGB / P3 / Rec2020), HDR support, and display orientation.</p>
-      </article>
+          <!-- Screen Analysis -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Screen Analysis</h3>
+            <p class="feature-desc">Physical and logical resolution, pixel density ratio, color gamut (sRGB / P3 / Rec2020), HDR support, and display orientation.</p>
+          </article>
 
-      <!-- Battery Status -->
-      <article class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="7" width="16" height="10" rx="2" ry="2" />
-            <line x1="22" y1="11" x2="22" y2="13" />
-            <line x1="6" y1="11" x2="12" y2="11" />
-          </svg>
-        </div>
-        <h3 class="feature-title">Battery Status</h3>
-        <p class="feature-desc">Live battery percentage, charging status, estimated time to full charge, and remaining discharge time.</p>
-      </article>
+          <!-- Battery Status -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="16" height="10" rx="2" ry="2" />
+                <line x1="22" y1="11" x2="22" y2="13" />
+                <line x1="6" y1="11" x2="12" y2="11" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Battery Status</h3>
+            <p class="feature-desc">Live battery percentage, charging status, estimated time to full charge, and remaining discharge time.</p>
+          </article>
 
-      <!-- Network Info -->
-      <article class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12.55a10.94 10.94 0 0 1 14.08 0" />
-            <path d="M1.42 9a16 16 0 0 1 21.16 0" />
-            <path d="M8.53 16.11a6 6 0 0 1 6.94 0" />
-            <circle cx="12" cy="20" r="1" />
-          </svg>
-        </div>
-        <h3 class="feature-title">Network Info</h3>
-        <p class="feature-desc">Connection type (WiFi, 4G, 5G), effective bandwidth, round-trip latency, and data saver mode status.</p>
-      </article>
+          <!-- Network Info -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12.55a10.94 10.94 0 0 1 14.08 0" />
+                <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+                <path d="M8.53 16.11a6 6 0 0 1 6.94 0" />
+                <circle cx="12" cy="20" r="1" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Network Info</h3>
+            <p class="feature-desc">Connection type (WiFi, 4G, 5G), effective bandwidth, round-trip latency, and data saver mode status.</p>
+          </article>
 
-      <!-- Browser Capabilities -->
-      <article class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" />
-            <line x1="2" y1="12" x2="22" y2="12" />
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-          </svg>
-        </div>
-        <h3 class="feature-title">Browser Capabilities</h3>
-        <p class="feature-desc">WebGL renderer, WebGPU, WebRTC, Service Workers, Push API, Payment API, Web Share, and 20+ other browser features.</p>
-      </article>
+          <!-- Browser Capabilities -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Browser Capabilities</h3>
+            <p class="feature-desc">WebGL renderer, WebGPU, WebRTC, Service Workers, Push API, Payment API, Web Share, and 20+ other browser features.</p>
+          </article>
 
-      <!-- Sensor Detection -->
-      <article class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-            <circle cx="12" cy="10" r="3" />
-          </svg>
-        </div>
-        <h3 class="feature-title">Sensor Detection</h3>
-        <p class="feature-desc">Detect gyroscope, accelerometer, magnetometer, geolocation, camera API, NFC, Bluetooth, and USB availability.</p>
-      </article>
+          <!-- Sensor Detection -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Sensor Detection</h3>
+            <p class="feature-desc">Detect gyroscope, accelerometer, magnetometer, geolocation, camera API, NFC, Bluetooth, and USB availability.</p>
+          </article>
 
-      <!-- Export & Share -->
-      <article class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
-            <polyline points="8 12 12 16 16 12" />
-            <line x1="12" y1="2" x2="12" y2="16" />
-          </svg>
-        </div>
-        <h3 class="feature-title">Export & Share</h3>
-        <p class="feature-desc">Copy your device report, share via native share sheet, or download as a full JSON report for developers and support tickets.</p>
-      </article>
+          <!-- Export & Share -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                <polyline points="8 12 12 16 16 12" />
+                <line x1="12" y1="2" x2="12" y2="16" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Export & Share</h3>
+            <p class="feature-desc">Copy your device report, share via native share sheet, or download as a full JSON report for developers and support tickets.</p>
+          </article>
 
-      <!-- 100% Private -->
-      <article class="feature-card">
-        <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            <polyline points="9 12 11 14 15 10" />
-          </svg>
-        </div>
-        <h3 class="feature-title">100% Private</h3>
-        <p class="feature-desc">All detection happens locally in your browser using JavaScript APIs. Zero data is transmitted, stored, or shared. No account required.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════
-     § ABOUT US
-══════════════════════════════════════════════════════════ -->
-<section class="about-section" id="about" aria-labelledby="about-heading">
-  <div class="container">
-    <div class="about-grid" data-animate>
-      <!-- Text content -->
-      <div class="about-content">
-        <span class="section-eyebrow">About WhatPhone</span>
-        <h2 class="about-title" id="about-heading">
-          Built for privacy,<br/>powered by the browser.
-        </h2>
-        <p class="about-desc">
-          WhatPhone was created by a small team of privacy-conscious developers who believe that
-          <strong>device information should be accessible without compromising user data</strong>.
-          Every detection runs entirely client‑side — no servers, no logs, no tracking.
-        </p>
-        <p class="about-desc">
-          We support <strong>50+ device manufacturers</strong>, from Apple and Samsung to OnePlus,
-          Xiaomi, and Google Pixel. Our detection engine combines User Agent parsing,
-          high‑entropy Client Hints, and screen resolution fingerprinting to deliver
-          the most accurate device report possible — all in under a second.
-        </p>
-        <div class="about-actions">
-          <a href="#main-content" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem;">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="9" cy="9" r="3" fill="currentColor"/>
-            </svg>
-            <span>Try It Now</span>
-          </a>
-          <a href="#features" class="btn-secondary" style="display:inline-flex; align-items:center; gap:0.5rem;">
-            Explore Features
-            <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-        <div class="about-trust">
-          <span class="trust-badge">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M8 0L9.8 5.4L15.6 5.4L11 8.9L12.7 14.3L8 10.8L3.3 14.3L5 8.9L0.4 5.4L6.2 5.4L8 0Z" fill="#3b82f6"/>
-            </svg>
-            <span>100% client‑side</span>
-          </span>
-          <span class="trust-badge">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M8 0L9.8 5.4L15.6 5.4L11 8.9L12.7 14.3L8 10.8L3.3 14.3L5 8.9L0.4 5.4L6.2 5.4L8 0Z" fill="#3b82f6"/>
-            </svg>
-            <span>No data stored</span>
-          </span>
-          <span class="trust-badge">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M8 0L9.8 5.4L15.6 5.4L11 8.9L12.7 14.3L8 10.8L3.3 14.3L5 8.9L0.4 5.4L6.2 5.4L8 0Z" fill="#3b82f6"/>
-            </svg>
-            <span>Open source</span>
-          </span>
+          <!-- 100% Private -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <polyline points="9 12 11 14 15 10" />
+              </svg>
+            </div>
+            <h3 class="feature-title">100% Private</h3>
+            <p class="feature-desc">All detection happens locally in your browser using JavaScript APIs. Zero data is transmitted, stored, or shared. No account required.</p>
+          </article>
         </div>
       </div>
+    </section>
 
-      <!-- Image / visual -->
-      <div class="about-visual" aria-hidden="true">
-        <div class="about-image-wrapper">
-          <img
-            src="images/about.webp"
-            alt="WhatPhone team illustration: a stylized device detection concept"
-            class="about-image"
-            loading="lazy"
-          />
-          <div class="about-image-glow"></div>
-          <div class="about-image-badge">
-            <span>⚡</span> 50+ manufacturers
+    <!-- ══════════════════════════════════════════════════════
+         § ABOUT US
+    ══════════════════════════════════════════════════════════ -->
+    <section class="about-section" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-grid" data-animate>
+          <!-- Text content -->
+          <div class="about-content">
+            <span class="section-eyebrow">About WhatPhone</span>
+            <h2 class="about-title" id="about-heading">
+              Built for privacy,<br/>powered by the browser.
+            </h2>
+            <p class="about-desc">
+              WhatPhone was created by a small team of privacy-conscious developers who believe that
+              <strong>device information should be accessible without compromising user data</strong>.
+              Every detection runs entirely client‑side — no servers, no logs, no tracking.
+            </p>
+            <p class="about-desc">
+              We support <strong>50+ device manufacturers</strong>, from Apple and Samsung to OnePlus,
+              Xiaomi, and Google Pixel. Our detection engine combines User Agent parsing,
+              high‑entropy Client Hints, and screen resolution fingerprinting to deliver
+              the most accurate device report possible — all in under a second.
+            </p>
+            <div class="about-actions">
+              <a href="#main-content" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem;">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="9" cy="9" r="3" fill="currentColor"/>
+                </svg>
+                <span>Try It Now</span>
+              </a>
+              <a href="#features" class="btn-secondary" style="display:inline-flex; align-items:center; gap:0.5rem;">
+                Explore Features
+                <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+            <div class="about-trust">
+              <span class="trust-badge">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M8 0L9.8 5.4L15.6 5.4L11 8.9L12.7 14.3L8 10.8L3.3 14.3L5 8.9L0.4 5.4L6.2 5.4L8 0Z" fill="#3b82f6"/>
+                </svg>
+                <span>100% client‑side</span>
+              </span>
+              <span class="trust-badge">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M8 0L9.8 5.4L15.6 5.4L11 8.9L12.7 14.3L8 10.8L3.3 14.3L5 8.9L0.4 5.4L6.2 5.4L8 0Z" fill="#3b82f6"/>
+                </svg>
+                <span>No data stored</span>
+              </span>
+              <span class="trust-badge">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M8 0L9.8 5.4L15.6 5.4L11 8.9L12.7 14.3L8 10.8L3.3 14.3L5 8.9L0.4 5.4L6.2 5.4L8 0Z" fill="#3b82f6"/>
+                </svg>
+                <span>Open source</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Image / visual -->
+          <div class="about-visual" aria-hidden="true">
+            <div class="about-image-wrapper">
+              <img
+                src="images/about.webp"
+                alt="WhatPhone team illustration: a stylized device detection concept"
+                class="about-image"
+                loading="lazy"
+              />
+              <div class="about-image-glow"></div>
+              <div class="about-image-badge">
+                <span>⚡</span> 50+ manufacturers
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
     
 
-   <section class="compat-section" id="compatibility" aria-labelledby="compat-heading">
-  <div class="container">
-    <div class="section-header" data-animate>
-      <span class="section-eyebrow">Web Applications</span>
-      <h2 class="section-title" id="compat-heading">Test Your Hardware</h2>
-      <p class="section-subtitle">Click any tool below to launch the test — camera, mic, touchscreen, or speaker.</p>
-    </div>
-    <div class="compat-grid" data-stagger>
-      
-      <!-- Camera Test -->
-      <article class="compat-card">
-        <div class="compat-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2d7ee7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" fill="#d4e3fd" stroke="#2d7ee7"/>
-            <circle cx="12" cy="13" r="4" fill="#f9c74f" stroke="#f9a825" stroke-width="1.5"/>
-          </svg>
+    <section class="compat-section" id="compatibility" aria-labelledby="compat-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">Web Applications</span>
+          <h2 class="section-title" id="compat-heading">Test Your Hardware</h2>
+          <p class="section-subtitle">Click any tool below to launch the test — camera, mic, touchscreen, or speaker.</p>
         </div>
-        <h3 class="compat-name">Camera Test</h3>
-        <p class="compat-desc">Check front/rear camera</p>
-        <a href="/camera-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
-      </article>
+        <div class="compat-grid" data-stagger>
+          
+          <!-- Camera Test -->
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2d7ee7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" fill="#d4e3fd" stroke="#2d7ee7"/>
+                <circle cx="12" cy="13" r="4" fill="#f9c74f" stroke="#f9a825" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 class="compat-name">Camera Test</h3>
+            <p class="compat-desc">Check front/rear camera</p>
+            <a href="/camera-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
+          </article>
 
-      <!-- Mic Test -->
-      <article class="compat-card">
-        <div class="compat-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" fill="#fadbd8" stroke="#e74c3c"/>
-            <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="#e74c3c"/>
-            <line x1="12" y1="19" x2="12" y2="23" stroke="#e74c3c"/>
-            <line x1="8" y1="23" x2="16" y2="23" stroke="#e74c3c"/>
-            <circle cx="12" cy="10" r="1.5" fill="#e74c3c" stroke="none"/>
-          </svg>
+          <!-- Mic Test -->
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" fill="#fadbd8" stroke="#e74c3c"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="#e74c3c"/>
+                <line x1="12" y1="19" x2="12" y2="23" stroke="#e74c3c"/>
+                <line x1="8" y1="23" x2="16" y2="23" stroke="#e74c3c"/>
+                <circle cx="12" cy="10" r="1.5" fill="#e74c3c" stroke="none"/>
+              </svg>
+            </div>
+            <h3 class="compat-name">Mic Test</h3>
+            <p class="compat-desc">Test microphone input</p>
+            <a href="/mic-test" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
+          </article>
+
+          <!-- Touchscreen Test -->
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 10.5V7a2 2 0 0 1 4 0v3.5" fill="#d5f5e3" stroke="#27ae60"/>
+                <path d="M11 8.5V5a2 2 0 0 1 4 0v3.5" fill="#d5f5e3" stroke="#27ae60"/>
+                <path d="M15 10.5V8a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6h-1.5A6.5 6.5 0 0 1 5 13.5V9a2 2 0 0 1 4 0v1.5" stroke="#27ae60" fill="#d5f5e3"/>
+                <circle cx="13" cy="11" r="1.2" fill="#f1c40f" stroke="none"/>
+              </svg>
+            </div>
+            <h3 class="compat-name">Touchscreen Test</h3>
+            <p class="compat-desc">Multi-touch & accuracy</p>
+            <a href="/touchscreen-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
+          </article>
+
+          <!-- Speaker Test -->
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#8e44ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="#e8daef" stroke="#8e44ad"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="#8e44ad"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="#8e44ad"/>
+                <circle cx="17" cy="12" r="2" fill="#f1c40f" stroke="none"/>
+              </svg>
+            </div>
+            <h3 class="compat-name">Speaker Test</h3>
+            <p class="compat-desc">Audio output & stereo</p>
+            <a href="/speaker-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
+          </article>
+
+          <!-- Vibration Test -->
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#f39c12" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2" fill="#fdebd0" stroke="#f39c12"/>
+                <line x1="8" y1="8" x2="16" y2="16" stroke="#f39c12"/>
+                <line x1="16" y1="8" x2="8" y2="16" stroke="#f39c12"/>
+                <circle cx="12" cy="12" r="3" fill="#e67e22" stroke="none"/>
+              </svg>
+            </div>
+            <h3 class="compat-name">Vibration Test</h3>
+            <p class="compat-desc">Haptic feedback & motor</p>
+            <a href="/vibration-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
+          </article>
+
+          <!-- GPS / Compass Test -->
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2980b9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" fill="#d6eaf8" stroke="#2980b9"/>
+                <path d="M12 2v4" stroke="#2980b9"/>
+                <path d="M12 22v-4" stroke="#2980b9"/>
+                <path d="M4 12h4" stroke="#2980b9"/>
+                <path d="M20 12h-4" stroke="#2980b9"/>
+                <circle cx="12" cy="12" r="3" fill="#f1c40f" stroke="none"/>
+                <circle cx="12" cy="12" r="1.5" fill="#e67e22" stroke="none"/>
+              </svg>
+            </div>
+            <h3 class="compat-name">GPS / Compass</h3>
+            <p class="compat-desc">Location & heading</p>
+            <a href="/gps-compass-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
+          </article>
+
+          <!-- WiFi Speed Test -->
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1abc9c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12.5a8 8 0 0 1 14 0" fill="none" stroke="#1abc9c"/>
+                <path d="M8.5 15.5a4.5 4.5 0 0 1 7 0" fill="none" stroke="#1abc9c"/>
+                <circle cx="12" cy="19" r="1.8" fill="#f1c40f" stroke="none"/>
+                <path d="M2 9.5a12 12 0 0 1 20 0" fill="none" stroke="#1abc9c"/>
+                <rect x="10" y="8" width="4" height="2" fill="#1abc9c" stroke="none"/>
+              </svg>
+            </div>
+            <h3 class="compat-name">WiFi Speed</h3>
+            <p class="compat-desc">Bandwidth & latency</p>
+            <a href="/wifi-speed-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
+          </article>
+
         </div>
-        <h3 class="compat-name">Mic Test</h3>
-        <p class="compat-desc">Test microphone input</p>
-        <a href="/mic-test" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
-      </article>
-
-      <!-- Touchscreen Test -->
-      <article class="compat-card">
-        <div class="compat-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 10.5V7a2 2 0 0 1 4 0v3.5" fill="#d5f5e3" stroke="#27ae60"/>
-            <path d="M11 8.5V5a2 2 0 0 1 4 0v3.5" fill="#d5f5e3" stroke="#27ae60"/>
-            <path d="M15 10.5V8a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6h-1.5A6.5 6.5 0 0 1 5 13.5V9a2 2 0 0 1 4 0v1.5" stroke="#27ae60" fill="#d5f5e3"/>
-            <circle cx="13" cy="11" r="1.2" fill="#f1c40f" stroke="none"/>
-          </svg>
-        </div>
-        <h3 class="compat-name">Touchscreen Test</h3>
-        <p class="compat-desc">Multi-touch & accuracy</p>
-        <a href="/touchscreen-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
-      </article>
-
-      <!-- Speaker Test -->
-      <article class="compat-card">
-        <div class="compat-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#8e44ad" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="#e8daef" stroke="#8e44ad"/>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="#8e44ad"/>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="#8e44ad"/>
-            <circle cx="17" cy="12" r="2" fill="#f1c40f" stroke="none"/>
-          </svg>
-        </div>
-        <h3 class="compat-name">Speaker Test</h3>
-        <p class="compat-desc">Audio output & stereo</p>
-        <a href="/speaker-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
-      </article>
-
-      <!-- Vibration Test (new) -->
-      <article class="compat-card">
-        <div class="compat-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#f39c12" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="4" y="4" width="16" height="16" rx="2" fill="#fdebd0" stroke="#f39c12"/>
-            <line x1="8" y1="8" x2="16" y2="16" stroke="#f39c12"/>
-            <line x1="16" y1="8" x2="8" y2="16" stroke="#f39c12"/>
-            <circle cx="12" cy="12" r="3" fill="#e67e22" stroke="none"/>
-          </svg>
-        </div>
-        <h3 class="compat-name">Vibration Test</h3>
-        <p class="compat-desc">Haptic feedback & motor</p>
-        <a href="/vibration-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
-      </article>
-
-      <!-- GPS / Compass Test (new) -->
-      <article class="compat-card">
-        <div class="compat-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2980b9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" fill="#d6eaf8" stroke="#2980b9"/>
-            <path d="M12 2v4" stroke="#2980b9"/>
-            <path d="M12 22v-4" stroke="#2980b9"/>
-            <path d="M4 12h4" stroke="#2980b9"/>
-            <path d="M20 12h-4" stroke="#2980b9"/>
-            <circle cx="12" cy="12" r="3" fill="#f1c40f" stroke="none"/>
-            <circle cx="12" cy="12" r="1.5" fill="#e67e22" stroke="none"/>
-          </svg>
-        </div>
-        <h3 class="compat-name">GPS / Compass</h3>
-        <p class="compat-desc">Location & heading</p>
-        <a href="/gps-compass-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
-      </article>
-
-      <!-- WiFi Speed Test (new) -->
-      <article class="compat-card">
-        <div class="compat-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#1abc9c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12.5a8 8 0 0 1 14 0" fill="none" stroke="#1abc9c"/>
-            <path d="M8.5 15.5a4.5 4.5 0 0 1 7 0" fill="none" stroke="#1abc9c"/>
-            <circle cx="12" cy="19" r="1.8" fill="#f1c40f" stroke="none"/>
-            <path d="M2 9.5a12 12 0 0 1 20 0" fill="none" stroke="#1abc9c"/>
-            <rect x="10" y="8" width="4" height="2" fill="#1abc9c" stroke="none"/>
-          </svg>
-        </div>
-        <h3 class="compat-name">WiFi Speed</h3>
-        <p class="compat-desc">Bandwidth & latency</p>
-        <a href="/wifi-speed-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
-      </article>
-
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
 
     <!-- ══════════════════════════════════════════════════
          § 5 — HOW IT WORKS
@@ -739,159 +741,160 @@
          § 7 — COMPARE / USE CASES
     ══════════════════════════════════════════════════════ -->
     <section class="compare-section" id="compare" aria-labelledby="compare-heading">
-  <div class="container">
-    <div class="section-header" data-animate>
-      <span class="section-eyebrow">Use Cases</span>
-      <h2 class="section-title" id="compare-heading">Who Uses WhatPhone?</h2>
-      <p class="section-subtitle">From curious users to developers — everyone needs device info at some point.</p>
-    </div>
-    <div class="compare-grid" data-stagger>
-      
-      <!-- Everyday Users -->
-      <article class="compare-card">
-        <div class="compare-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">Use Cases</span>
+          <h2 class="section-title" id="compare-heading">Who Uses WhatPhone?</h2>
+          <p class="section-subtitle">From curious users to developers — everyone needs device info at some point.</p>
         </div>
-        <h3 class="compare-card-title">Everyday Users</h3>
-        <p class="compare-card-sub">Curious about your own device</p>
-        <ul class="compare-list" aria-label="Use cases for everyday users">
-          <li class="compare-item">Check your exact phone model</li>
-          <li class="compare-item">See battery and network status</li>
-          <li class="compare-item">Verify your OS version</li>
-          <li class="compare-item">Share specs with support teams</li>
-        </ul>
-      </article>
+        <div class="compare-grid" data-stagger>
+          
+          <!-- Everyday Users -->
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
+            <h3 class="compare-card-title">Everyday Users</h3>
+            <p class="compare-card-sub">Curious about your own device</p>
+            <ul class="compare-list" aria-label="Use cases for everyday users">
+              <li class="compare-item">Check your exact phone model</li>
+              <li class="compare-item">See battery and network status</li>
+              <li class="compare-item">Verify your OS version</li>
+              <li class="compare-item">Share specs with support teams</li>
+            </ul>
+          </article>
 
-      <!-- Developers -->
-      <article class="compare-card">
-        <div class="compare-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="16 18 22 12 16 6" />
-            <polyline points="8 6 2 12 8 18" />
-          </svg>
+          <!-- Developers -->
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </div>
+            <h3 class="compare-card-title">Developers</h3>
+            <p class="compare-card-sub">Debug and test across devices</p>
+            <ul class="compare-list" aria-label="Use cases for developers">
+              <li class="compare-item">Test WebGL / WebGPU support</li>
+              <li class="compare-item">Verify browser capabilities</li>
+              <li class="compare-item">Check UA strings and Client Hints</li>
+              <li class="compare-item">Export full JSON device report</li>
+            </ul>
+          </article>
+
+          <!-- Support Teams -->
+          <article class="compare-card">
+            <div class="compare-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                <path d="M8 10h.01" />
+                <path d="M12 10h.01" />
+                <path d="M16 10h.01" />
+              </svg>
+            </div>
+            <h3 class="compare-card-title">Support Teams</h3>
+            <p class="compare-card-sub">Diagnose customer issues faster</p>
+            <ul class="compare-list" aria-label="Use cases for support teams">
+              <li class="compare-item">Get exact device info instantly</li>
+              <li class="compare-item">Identify OS and browser version</li>
+              <li class="compare-item">Check network conditions</li>
+              <li class="compare-item">Shareable detection link</li>
+            </ul>
+          </article>
+
         </div>
-        <h3 class="compare-card-title">Developers</h3>
-        <p class="compare-card-sub">Debug and test across devices</p>
-        <ul class="compare-list" aria-label="Use cases for developers">
-          <li class="compare-item">Test WebGL / WebGPU support</li>
-          <li class="compare-item">Verify browser capabilities</li>
-          <li class="compare-item">Check UA strings and Client Hints</li>
-          <li class="compare-item">Export full JSON device report</li>
-        </ul>
-      </article>
+      </div>
+    </section>
 
-      <!-- Support Teams -->
-      <article class="compare-card">
-        <div class="compare-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            <path d="M8 10h.01" />
-            <path d="M12 10h.01" />
-            <path d="M16 10h.01" />
-          </svg>
-        </div>
-        <h3 class="compare-card-title">Support Teams</h3>
-        <p class="compare-card-sub">Diagnose customer issues faster</p>
-        <ul class="compare-list" aria-label="Use cases for support teams">
-          <li class="compare-item">Get exact device info instantly</li>
-          <li class="compare-item">Identify OS and browser version</li>
-          <li class="compare-item">Check network conditions</li>
-          <li class="compare-item">Shareable detection link</li>
-        </ul>
-      </article>
-
-    </div>
-  </div>
-</section>
     <!-- ══════════════════════════════════════════════════
          § 8 — COMPATIBILITY
     ══════════════════════════════════════════════════════ -->
-   <section class="compat-section" id="compatibility" aria-labelledby="compat-heading">
-  <div class="container">
-    <div class="section-header" data-animate>
-      <span class="section-eyebrow">Works Everywhere</span>
-      <h2 class="section-title" id="compat-heading">Universal Browser Support</h2>
-      <p class="section-subtitle">No app download. Works natively in every modern browser on every platform.</p>
-    </div>
-    <div class="compat-grid" data-stagger>
-      
-      <!-- Chrome -->
-      <article class="compat-card">
-        <div class="compat-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" />
-            <circle cx="12" cy="12" r="4" />
-            <line x1="21.17" y1="8" x2="12" y2="8" />
-            <line x1="3.95" y1="6.06" x2="8.54" y2="14" />
-            <line x1="10.88" y1="21.94" x2="15.46" y2="14" />
-          </svg>
+    <section class="compat-section" id="compatibility" aria-labelledby="compat-heading">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-eyebrow">Works Everywhere</span>
+          <h2 class="section-title" id="compat-heading">Universal Browser Support</h2>
+          <p class="section-subtitle">No app download. Works natively in every modern browser on every platform.</p>
         </div>
-        <h3 class="compat-name">Chrome</h3>
-        <p class="compat-desc">Android & Desktop</p>
-        <span class="compat-status">Full Support</span>
-      </article>
+        <div class="compat-grid" data-stagger>
+          
+          <!-- Chrome -->
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="4" />
+                <line x1="21.17" y1="8" x2="12" y2="8" />
+                <line x1="3.95" y1="6.06" x2="8.54" y2="14" />
+                <line x1="10.88" y1="21.94" x2="15.46" y2="14" />
+              </svg>
+            </div>
+            <h3 class="compat-name">Chrome</h3>
+            <p class="compat-desc">Android & Desktop</p>
+            <span class="compat-status">Full Support</span>
+          </article>
 
-      <!-- Safari -->
-      <article class="compat-card">
-        <div class="compat-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20z" />
-            <path d="M2 12h20" />
-          </svg>
+          <!-- Safari -->
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20z" />
+                <path d="M2 12h20" />
+              </svg>
+            </div>
+            <h3 class="compat-name">Safari</h3>
+            <p class="compat-desc">iPhone, iPad & Mac</p>
+            <span class="compat-status">Full Support</span>
+          </article>
+
+          <!-- Firefox -->
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C8 2 4.5 4.5 3 8c-1 2.5-1 6 2 9.5 2 2.5 5 3.5 9 3.5s7-1.5 8.5-5c1.5-3.5 0-7.5-2.5-10C17.5 3 15 2 12 2z" />
+                <path d="M12 6c-2 0-4 1.5-4.5 3.5S8 14 10 16c2 2 5 1.5 6.5-.5s1.5-4.5 0-6.5C15 7.5 13.5 6 12 6z" />
+              </svg>
+            </div>
+            <h3 class="compat-name">Firefox</h3>
+            <p class="compat-desc">Android & Desktop</p>
+            <span class="compat-status">Full Support</span>
+          </article>
+
+          <!-- Edge -->
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
+                <path d="M8.5 8.5c-1 1-1.5 2.5-1.5 4 0 3 2.5 5.5 5.5 5.5s5.5-2.5 5.5-5.5-2.5-5.5-5.5-5.5c-1.5 0-2.5.5-3.5 1.5" />
+                <path d="M12 8.5c-1.5 0-2.5 1-3 2.5" />
+              </svg>
+            </div>
+            <h3 class="compat-name">Edge</h3>
+            <p class="compat-desc">Windows & Android</p>
+            <span class="compat-status">Full Support</span>
+          </article>
+
+          <!-- Samsung Internet -->
+          <article class="compat-card">
+            <div class="compat-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" ry="2" />
+                <line x1="8" y1="10" x2="16" y2="10" />
+                <line x1="8" y1="14" x2="14" y2="14" />
+              </svg>
+            </div>
+            <h3 class="compat-name">Samsung Internet</h3>
+            <p class="compat-desc">Galaxy Devices</p>
+            <span class="compat-status">Full Support</span>
+          </article>
+
         </div>
-        <h3 class="compat-name">Safari</h3>
-        <p class="compat-desc">iPhone, iPad & Mac</p>
-        <span class="compat-status">Full Support</span>
-      </article>
-
-      <!-- Firefox -->
-      <article class="compat-card">
-        <div class="compat-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2C8 2 4.5 4.5 3 8c-1 2.5-1 6 2 9.5 2 2.5 5 3.5 9 3.5s7-1.5 8.5-5c1.5-3.5 0-7.5-2.5-10C17.5 3 15 2 12 2z" />
-            <path d="M12 6c-2 0-4 1.5-4.5 3.5S8 14 10 16c2 2 5 1.5 6.5-.5s1.5-4.5 0-6.5C15 7.5 13.5 6 12 6z" />
-          </svg>
-        </div>
-        <h3 class="compat-name">Firefox</h3>
-        <p class="compat-desc">Android & Desktop</p>
-        <span class="compat-status">Full Support</span>
-      </article>
-
-      <!-- Edge -->
-      <article class="compat-card">
-        <div class="compat-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
-            <path d="M8.5 8.5c-1 1-1.5 2.5-1.5 4 0 3 2.5 5.5 5.5 5.5s5.5-2.5 5.5-5.5-2.5-5.5-5.5-5.5c-1.5 0-2.5.5-3.5 1.5" />
-            <path d="M12 8.5c-1.5 0-2.5 1-3 2.5" />
-          </svg>
-        </div>
-        <h3 class="compat-name">Edge</h3>
-        <p class="compat-desc">Windows & Android</p>
-        <span class="compat-status">Full Support</span>
-      </article>
-
-      <!-- Samsung Internet -->
-      <article class="compat-card">
-        <div class="compat-logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="2" ry="2" />
-            <line x1="8" y1="10" x2="16" y2="10" />
-            <line x1="8" y1="14" x2="14" y2="14" />
-          </svg>
-        </div>
-        <h3 class="compat-name">Samsung Internet</h3>
-        <p class="compat-desc">Galaxy Devices</p>
-        <span class="compat-status">Full Support</span>
-      </article>
-
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
 
     <!-- ══════════════════════════════════════════════════
          § 9 — FAQ
@@ -1001,7 +1004,7 @@
   <!-- ── Footer (rendered by JS) ──────────────────────── -->
   <footer id="site-footer" role="contentinfo"></footer>
 
-  <!-- ── Ad Popup Styles (injected to ensure availability) ── -->
+  <!-- ── Ad Popup Styles ── -->
   <style>
     /* ── Ad popup overlay styles ─────────────────────────── */
     #adPopup {
@@ -1026,8 +1029,8 @@
       background: var(--surface, #ffffff);
       border-radius: 24px;
       padding: 2rem 1.5rem 1.75rem;
-      max-width: 400px;
-      width: 90%;
+      max-width: 520px;
+      width: 92%;
       box-shadow: 0 30px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
       display: flex;
       flex-direction: column;
@@ -1045,9 +1048,10 @@
       color: var(--text3, #7c8aa0);
       margin-bottom: 0.25rem;
     }
-    .ad-container {
-      width: 300px;
-      height: 250px;
+    /* Native 2:2 banner container */
+    .ad-native-container {
+      width: 100%;
+      min-height: 250px;
       background: #eef3f9;
       border-radius: 12px;
       display: flex;
@@ -1055,12 +1059,14 @@
       justify-content: center;
       overflow: hidden;
       border: 1px solid var(--border, #e1e7f0);
+      padding: 8px;
     }
-    .ad-container iframe {
-      width: 300px;
-      height: 250px;
-      border: none;
-      display: block;
+    .ad-native-container > div {
+      width: 100%;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .ad-timer {
       display: flex;
@@ -1107,38 +1113,37 @@
       50% { opacity: 1; transform: scale(1.2); }
     }
 
-    /* ── Ad slot INSIDE the device card (after battery bar) ── */
-    /* ── Ad slot INSIDE the device card (native banner) ── */
-.device-card-ad {
-  margin: 1.25rem auto 0;
-  width: 100%;
-  max-width: 480px;
-  padding: 12px 12px 8px;
-  background: var(--surface-alt, #eef3f9);
-  border: 1px solid var(--border, #e1e7f0);
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  min-height: 100px; /* prevents layout jump while loading */
-}
-.device-card-ad-label {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text3, #7c8aa0);
-  align-self: flex-start;
-}
-/* Native banner script injects a div with this ID */
-.device-card-ad #container-80e69f9e0965d4beea4ea32c92f55b06 {
-  width: 100%;
-  min-height: 90px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    /* ── Ad slot INSIDE the device card (native 2:2 banner) ── */
+    .device-card-ad {
+      margin: 1.25rem auto 0;
+      width: 100%;
+      max-width: 480px;
+      padding: 12px 12px 8px;
+      background: var(--surface-alt, #eef3f9);
+      border: 1px solid var(--border, #e1e7f0);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      min-height: 120px;
+    }
+    .device-card-ad-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text3, #7c8aa0);
+      align-self: flex-start;
+    }
+    /* Native banner script injects a div with this ID */
+    .device-card-ad #container-80e69f9e0965d4beea4ea32c92f55b06 {
+      width: 100%;
+      min-height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   </style>
 
   <!-- ── Scripts ──────────────────────────────────────── -->
@@ -1160,9 +1165,9 @@
         btn.setAttribute('aria-expanded', 'true');
       }
     }
-</script>
+  </script>
 
-    // ── Ad popup logic (overrides the default loader for detect button) ──
+  <!-- ── Ad popup & card ad logic ── -->
   <script>
     (function() {
       const AD_DURATION = 5; // seconds
@@ -1170,7 +1175,7 @@
       // Grab DOM elements
       const popup = document.getElementById('adPopup');
       const timerCount = document.getElementById('adTimerCount');
-      const adContainer = document.getElementById('adContainer');
+      const adNativeContainer = document.getElementById('adNativeContainer');
 
       // Hide the original loader (we use the ad popup instead)
       const originalLoader = document.getElementById('detectLoader');
@@ -1179,21 +1184,23 @@
       let adTimerInterval = null;
       let adInjected = false;
 
-      // Inject the 300x250 ad inside the popup container (once)
+      // Inject the native 2:2 ad inside the popup container (once)
       function injectAd() {
-  if (adInjected || !adContainer) return;
-  adInjected = true;
+        if (adInjected || !adNativeContainer) return;
+        adInjected = true;
 
-  const container = document.createElement('div');
-  container.id = 'container-80e69f9e0965d4beea4ea32c92f55b06';
-  adContainer.appendChild(container);
+        // Create the target container for the native banner
+        const container = document.createElement('div');
+        container.id = 'container-80e69f9e0965d4beea4ea32c92f55b06-popup';
+        adNativeContainer.appendChild(container);
 
-  const invokeScript = document.createElement('script');
-  invokeScript.async = true;
-  invokeScript.setAttribute('data-cfasync', 'false');
-  invokeScript.src = 'https://pl31637473.profitableratecpmnetwork.com/80e69f9e0965d4beea4ea32c92f55b06/invoke.js';
-  adContainer.appendChild(invokeScript);
-}
+        // Load the native banner invoke script
+        const invokeScript = document.createElement('script');
+        invokeScript.async = true;
+        invokeScript.setAttribute('data-cfasync', 'false');
+        invokeScript.src = 'https://pl31637473.profitableratecpmnetwork.com/80e69f9e0965d4beea4ea32c92f55b06/invoke.js';
+        adNativeContainer.appendChild(invokeScript);
+      }
 
       // Show popup, count down, resolve after AD_DURATION seconds
       function showAdPopup() {
@@ -1219,45 +1226,44 @@
         });
       }
 
-      // ── Ad INSIDE the device card, after the battery bar ─────
-      // ── Native banner ad INSIDE the device card ─────────────
-let cardAdInjected = false;
-function injectCardAd() {
-  if (cardAdInjected) return;
+      // ── Native 2:2 banner ad INSIDE the device card ─────────────
+      let cardAdInjected = false;
+      function injectCardAd() {
+        if (cardAdInjected) return;
 
-  const card = document.getElementById('deviceCard');
-  if (!card) return;
+        const card = document.getElementById('deviceCard');
+        if (!card) return;
 
-  const batteryEl = card.querySelector('.device-battery');
-  if (!batteryEl) {
-    setTimeout(injectCardAd, 100);
-    return;
-  }
+        const batteryEl = card.querySelector('.device-battery');
+        if (!batteryEl) {
+          setTimeout(injectCardAd, 100);
+          return;
+        }
 
-  cardAdInjected = true;
+        cardAdInjected = true;
 
-  // Build the ad wrapper
-  const adWrap = document.createElement('div');
-  adWrap.className = 'device-card-ad';
-  adWrap.id = 'deviceCardAd';
-  adWrap.setAttribute('aria-label', 'Advertisement');
-  adWrap.innerHTML = '<span class="device-card-ad-label">Advertisement</span>';
+        // Build the ad wrapper
+        const adWrap = document.createElement('div');
+        adWrap.className = 'device-card-ad';
+        adWrap.id = 'deviceCardAd';
+        adWrap.setAttribute('aria-label', 'Advertisement');
+        adWrap.innerHTML = '<span class="device-card-ad-label">Advertisement</span>';
 
-  // Insert AFTER the battery bar, inside #deviceCard
-  batteryEl.parentNode.insertBefore(adWrap, batteryEl.nextSibling);
+        // Insert AFTER the battery bar, inside #deviceCard
+        batteryEl.parentNode.insertBefore(adWrap, batteryEl.nextSibling);
 
-  // ── Native banner: inject target container first ──
-  const container = document.createElement('div');
-  container.id = 'container-80e69f9e0965d4beea4ea32c92f55b06';
-  adWrap.appendChild(container);
+        // ── Native banner: inject target container first ──
+        const container = document.createElement('div');
+        container.id = 'container-80e69f9e0965d4beea4ea32c92f55b06';
+        adWrap.appendChild(container);
 
-  // ── Then load the invoke script ──
-  const invokeScript = document.createElement('script');
-  invokeScript.async = true;
-  invokeScript.setAttribute('data-cfasync', 'false');
-  invokeScript.src = 'https://pl31637473.profitableratecpmnetwork.com/80e69f9e0965d4beea4ea32c92f55b06/invoke.js';
-  adWrap.appendChild(invokeScript);
-}
+        // ── Then load the invoke script ──
+        const invokeScript = document.createElement('script');
+        invokeScript.async = true;
+        invokeScript.setAttribute('data-cfasync', 'false');
+        invokeScript.src = 'https://pl31637473.profitableratecpmnetwork.com/80e69f9e0965d4beea4ea32c92f55b06/invoke.js';
+        adWrap.appendChild(invokeScript);
+      }
 
       // Wait for app.js to be parsed and DeviceDetector to exist,
       // then wrap its `detect` method so the ad shows only on user-triggered detection.
