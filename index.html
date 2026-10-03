@@ -168,13 +168,12 @@
       <div class="ad-scan-indicator">
         <span class="dot-pulse"></span> Scanning device…
       </div>
-      <!-- 300x250 ad container – script will inject iframe here -->
       <!-- Native Banner 2:2 ad container -->
-<div class="ad-container" id="adContainer">
-  <span class="ad-container-label">Sponsored</span>
-  <script async="async" data-cfasync="false" src="https://pl31637473.profitableratecpmnetwork.com/80e69f9e0965d4beea4ea32c92f55b06/invoke.js"></script>
-  <div id="container-80e69f9e0965d4beea4ea32c92f55b06"></div>
-</div>
+      <div class="ad-container" id="adContainer">
+        <span class="ad-container-label">Sponsored</span>
+        <script async="async" data-cfasync="false" src="https://pl31637473.profitableratecpmnetwork.com/80e69f9e0965d4beea4ea32c92f55b06/invoke.js"></script>
+        <div id="container-80e69f9e0965d4beea4ea32c92f55b06"></div>
+      </div>
       <div class="ad-timer">
         <span class="timer-number" id="adTimerCount">5</span>
         <span class="timer-label">seconds</span>
@@ -1049,54 +1048,67 @@
       margin-bottom: 0.25rem;
     }
     .ad-container {
-  width: 300px;
-  height: 300px;
-  max-width: 100%;
-  background: #eef3f9;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border: 1px solid var(--border, #e1e7f0);
-  position: relative;
-  padding: 6px;
-}
+      width: 300px;
+      height: 300px;
+      max-width: 100%;
+      background: #eef3f9;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid var(--border, #e1e7f0);
+      position: relative;
+      padding: 6px;
+    }
 
-.ad-container-label {
-  position: absolute;
-  top: 4px;
-  left: 8px;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.55rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text3, #7c8aa0);
-  pointer-events: none;
-  z-index: 2;
-}
+    .ad-container-label {
+      position: absolute;
+      top: 4px;
+      left: 8px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text3, #7c8aa0);
+      pointer-events: none;
+      z-index: 2;
+    }
 
-.ad-container iframe,
-.ad-container ins,
-.ad-container > div:not(.ad-container-label),
-.ad-container #container-80e69f9e0965d4beea4ea32c92f55b06 {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 300px;
-  max-height: 300px;
-  border: none;
-  display: block;
-  margin: 0 auto;
-}
+    .ad-container iframe,
+    .ad-container ins,
+    .ad-container > div:not(.ad-container-label),
+    .ad-container #container-80e69f9e0965d4beea4ea32c92f55b06 {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 300px;
+      max-height: 300px;
+      border: none;
+      display: block;
+      margin: 0 auto;
+    }
 
-#container-80e69f9e0965d4beea4ea32c92f55b06 {
-  width: 100% !important;
-  height: 100% !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    #container-80e69f9e0965d4beea4ea32c92f55b06 {
+      width: 100% !important;
+      height: 100% !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 420px) {
+      .ad-container {
+        width: 100%;
+        height: 280px;
+      }
+      .ad-container iframe,
+      .ad-container ins,
+      .ad-container > div:not(.ad-container-label) {
+        max-height: 280px;
+      }
+    }
+
     .ad-timer {
       display: flex;
       align-items: center;
@@ -1194,9 +1206,9 @@
         btn.setAttribute('aria-expanded', 'true');
       }
     }
-</script>
+  </script>
 
-    // ── Ad popup logic (overrides the default loader for detect button) ──
+  <!-- ── Ad popup logic (overrides the default loader for detect button) ── -->
   <script>
     (function() {
       const AD_DURATION = 5; // seconds
@@ -1211,20 +1223,13 @@
       if (originalLoader) originalLoader.style.display = 'none';
 
       let adTimerInterval = null;
-      let adInjected = false;
 
-      // Inject the 300x250 ad inside the popup container (once)
-      @media (max-width: 420px) {
-  .ad-container {
-    width: 100%;
-    height: 280px;
-  }
-  .ad-container iframe,
-  .ad-container ins,
-  .ad-container > div:not(.ad-container-label) {
-    max-height: 280px;
-  }
-}
+      // The Adsterra native banner script is already inline in the HTML inside
+      // #adContainer, so nothing dynamic needs to happen here. The script will
+      // render itself into #container-80e69f9e0965d4beea4ea32c92f55b06.
+      function injectAd() {
+        // no-op — kept so showAdPopup() still works
+      }
 
       // Show popup, count down, resolve after AD_DURATION seconds
       function showAdPopup() {
