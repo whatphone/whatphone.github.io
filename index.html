@@ -169,9 +169,9 @@
         <span class="dot-pulse"></span> Scanning device…
       </div>
       <!-- 300x250 ad container – script will inject iframe here -->
-      <div class="ad-container" id="adContainer">
-        <!-- The HighRevenueFormat script will render the ad iframe inside this div -->
-      </div>
+      <div class="ad-container" id="adContainer" style="width:100%;max-width:480px;min-height:120px;">
+  <div id="container-80e69f9e0965d4beea4ea32c92f55b06-popup"></div>
+</div>
       <div class="ad-timer">
         <span class="timer-number" id="adTimerCount">5</span>
         <span class="timer-label">seconds</span>
@@ -1108,36 +1108,37 @@
     }
 
     /* ── Ad slot INSIDE the device card (after battery bar) ── */
-    .device-card-ad {
-      margin: 1.25rem auto 0;
-      width: 100%;
-      max-width: 340px;
-      padding: 12px 12px 8px;
-      background: var(--surface-alt, #eef3f9);
-      border: 1px solid var(--border, #e1e7f0);
-      border-radius: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-    .device-card-ad-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text3, #7c8aa0);
-      align-self: flex-start;
-    }
-    .device-card-ad iframe {
-      width: 300px;
-      height: 250px;
-      max-width: 100%;
-      border: none;
-      display: block;
-      background: #fff;
-      border-radius: 8px;
-    }
+    /* ── Ad slot INSIDE the device card (native banner) ── */
+.device-card-ad {
+  margin: 1.25rem auto 0;
+  width: 100%;
+  max-width: 480px;
+  padding: 12px 12px 8px;
+  background: var(--surface-alt, #eef3f9);
+  border: 1px solid var(--border, #e1e7f0);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-height: 100px; /* prevents layout jump while loading */
+}
+.device-card-ad-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text3, #7c8aa0);
+  align-self: flex-start;
+}
+/* Native banner script injects a div with this ID */
+.device-card-ad #container-80e69f9e0965d4beea4ea32c92f55b06 {
+  width: 100%;
+  min-height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   </style>
 
   <!-- ── Scripts ──────────────────────────────────────── -->
@@ -1180,26 +1181,19 @@
 
       // Inject the 300x250 ad inside the popup container (once)
       function injectAd() {
-        if (adInjected || !adContainer) return;
-        adInjected = true;
+  if (adInjected || !adContainer) return;
+  adInjected = true;
 
-        const optionsScript = document.createElement('script');
-        optionsScript.type = 'text/javascript';
-        optionsScript.text = `
-          atOptions = {
-            'key' : '81443cd2b70e4089345fae478ec5b90a',
-            'format' : 'iframe',
-            'height' : 250,
-            'width' : 300,
-            'params' : {}
-          };
-        `;
-        adContainer.appendChild(optionsScript);
+  const container = document.createElement('div');
+  container.id = 'container-80e69f9e0965d4beea4ea32c92f55b06';
+  adContainer.appendChild(container);
 
-        const invokeScript = document.createElement('script');
-        invokeScript.src = 'https://www.highrevenueformat.com/81443cd2b70e4089345fae478ec5b90a/invoke.js';
-        adContainer.appendChild(invokeScript);
-      }
+  const invokeScript = document.createElement('script');
+  invokeScript.async = true;
+  invokeScript.setAttribute('data-cfasync', 'false');
+  invokeScript.src = 'https://pl31637473.profitableratecpmnetwork.com/80e69f9e0965d4beea4ea32c92f55b06/invoke.js';
+  adContainer.appendChild(invokeScript);
+}
 
       // Show popup, count down, resolve after AD_DURATION seconds
       function showAdPopup() {
@@ -1226,50 +1220,44 @@
       }
 
       // ── Ad INSIDE the device card, after the battery bar ─────
-      let cardAdInjected = false;
-      function injectCardAd() {
-        if (cardAdInjected) return;
+      // ── Native banner ad INSIDE the device card ─────────────
+let cardAdInjected = false;
+function injectCardAd() {
+  if (cardAdInjected) return;
 
-        const card = document.getElementById('deviceCard');
-        if (!card) return;
+  const card = document.getElementById('deviceCard');
+  if (!card) return;
 
-        // app.js renders the device card markup. We look for the battery
-        // element (`.device-battery`) and place the ad right after it so
-        // it sits inside the same card container, below the battery bar.
-        const batteryEl = card.querySelector('.device-battery');
-        if (!batteryEl) {
-          // Card markup not ready yet — try again shortly
-          setTimeout(injectCardAd, 100);
-          return;
-        }
+  const batteryEl = card.querySelector('.device-battery');
+  if (!batteryEl) {
+    setTimeout(injectCardAd, 100);
+    return;
+  }
 
-        cardAdInjected = true;
+  cardAdInjected = true;
 
-        // Build the ad wrapper and insert it right after the battery bar
-        const adWrap = document.createElement('div');
-        adWrap.className = 'device-card-ad';
-        adWrap.id = 'deviceCardAd';
-        adWrap.setAttribute('aria-label', 'Advertisement');
-        adWrap.innerHTML = '<span class="device-card-ad-label">Advertisement</span>';
+  // Build the ad wrapper
+  const adWrap = document.createElement('div');
+  adWrap.className = 'device-card-ad';
+  adWrap.id = 'deviceCardAd';
+  adWrap.setAttribute('aria-label', 'Advertisement');
+  adWrap.innerHTML = '<span class="device-card-ad-label">Advertisement</span>';
 
-        // Insert AFTER the battery element (still inside #deviceCard)
-        batteryEl.parentNode.insertBefore(adWrap, batteryEl.nextSibling);
+  // Insert AFTER the battery bar, inside #deviceCard
+  batteryEl.parentNode.insertBefore(adWrap, batteryEl.nextSibling);
 
-        // Now load the ad into the newly created slot
-        window.atOptions = {
-          'key' : '81443cd2b70e4089345fae478ec5b90a',
-          'format' : 'iframe',
-          'height' : 250,
-          'width' : 300,
-          'params' : {}
-        };
+  // ── Native banner: inject target container first ──
+  const container = document.createElement('div');
+  container.id = 'container-80e69f9e0965d4beea4ea32c92f55b06';
+  adWrap.appendChild(container);
 
-        const invokeScript = document.createElement('script');
-        invokeScript.type = 'text/javascript';
-        invokeScript.async = true;
-        invokeScript.src = 'https://www.highrevenueformat.com/81443cd2b70e4089345fae478ec5b90a/invoke.js';
-        adWrap.appendChild(invokeScript);
-      }
+  // ── Then load the invoke script ──
+  const invokeScript = document.createElement('script');
+  invokeScript.async = true;
+  invokeScript.setAttribute('data-cfasync', 'false');
+  invokeScript.src = 'https://pl31637473.profitableratecpmnetwork.com/80e69f9e0965d4beea4ea32c92f55b06/invoke.js';
+  adWrap.appendChild(invokeScript);
+}
 
       // Wait for app.js to be parsed and DeviceDetector to exist,
       // then wrap its `detect` method so the ad shows only on user-triggered detection.
