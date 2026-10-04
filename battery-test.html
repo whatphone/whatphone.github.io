@@ -1080,6 +1080,87 @@
     </section>
 
     <!-- ══════════════════════════════════════════════════════
+     § Related Guide — Battery Health
+══════════════════════════════════════════════════════ -->
+<section class="guide-cta" aria-labelledby="guide-cta-heading" style="padding:4rem 0;background:var(--bg);border-top:1px solid var(--border);">
+  <div class="container">
+    <a href="battery-health-guide.html"
+       class="guide-cta-card"
+       aria-label="Read the full battery health guide"
+       style="display:flex;align-items:center;gap:1.25rem;padding:1.5rem 1.75rem;background:linear-gradient(135deg,#fff8f0 0%,#fef3e6 60%,#f5ecff 100%);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow);transition:all var(--transition);text-decoration:none;color:inherit;position:relative;overflow:hidden;">
+
+      <div class="guide-cta-icon" aria-hidden="true"
+           style="flex-shrink:0;width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,rgba(255,107,74,.15),rgba(139,92,246,.12));border:1px solid rgba(255,107,74,.25);display:flex;align-items:center;justify-content:center;color:var(--accent);">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          <path d="M9 7h7M9 11h7M9 15h4"/>
+        </svg>
+      </div>
+
+      <div class="guide-cta-text" style="flex:1;min-width:0;">
+        <div class="guide-cta-eyebrow"
+             style="font-family:var(--font-mono);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:.35rem;">
+          Recommended Reading
+        </div>
+        <div class="guide-cta-title"
+             id="guide-cta-heading"
+             style="font-family:var(--font-display);font-size:1.15rem;font-weight:800;color:var(--heading);line-height:1.25;margin-bottom:.35rem;">
+          Battery Health Guide — How to Read Your Results
+        </div>
+        <div class="guide-cta-desc"
+             style="font-size:.9rem;color:var(--text2);line-height:1.55;">
+          Learn what a healthy drain rate looks like, how to spot a failing battery, and when to replace it — plus 12 tips to extend battery life.
+        </div>
+      </div>
+
+      <div class="guide-cta-arrow" aria-hidden="true"
+           style="flex-shrink:0;width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--accent);transition:all var(--transition);">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </a>
+  </div>
+</section>
+
+<style>
+  /* ── Guide CTA hover polish (self-contained) ───────── */
+  .guide-cta-card:hover {
+    border-color: rgba(255,107,74,.4) !important;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255,107,74,.08) !important;
+  }
+  .guide-cta-card:hover .guide-cta-icon {
+    transform: scale(1.06) rotate(-3deg);
+    background: linear-gradient(135deg, rgba(255,107,74,.25), rgba(139,92,246,.18)) !important;
+  }
+  .guide-cta-card:hover .guide-cta-arrow {
+    background: linear-gradient(135deg, var(--accent), var(--accent2)) !important;
+    color: #fff !important;
+    border-color: var(--accent) !important;
+    transform: translateX(4px);
+  }
+  .guide-cta-icon,
+  .guide-cta-arrow {
+    transition: all var(--transition);
+  }
+
+  @media (max-width: 640px) {
+    .guide-cta-card {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      text-align: left;
+      padding: 1.5rem !important;
+      gap: 1rem !important;
+    }
+    .guide-cta-arrow {
+      align-self: flex-end;
+    }
+  }
+</style>
+
+    <!-- ══════════════════════════════════════════════════════
          § FAQ
     ══════════════════════════════════════════════════════ -->
     <section class="faq-section" id="battery-test-faq" aria-labelledby="faq-heading">
