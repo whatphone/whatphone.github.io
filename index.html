@@ -1108,11 +1108,11 @@
       50% { opacity: 1; transform: scale(1.2); }
     }
 
-    /* ── 2:2 native banner INSIDE the device card ── */
+    /* ── In-card ad (300x250, same network as popup) ── */
     .device-card-ad {
       margin: 1.25rem auto 0;
       width: 100%;
-      max-width: 480px;
+      max-width: 340px;
       padding: 12px 12px 8px;
       background: var(--surface-alt, #eef3f9);
       border: 1px solid var(--border, #e1e7f0);
@@ -1121,7 +1121,7 @@
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      min-height: 120px;
+      min-height: 280px;
     }
     .device-card-ad-label {
       font-family: 'Space Mono', monospace;
@@ -1131,21 +1131,12 @@
       color: var(--text3, #7c8aa0);
       align-self: flex-start;
     }
-    /* The native banner script will inject into this container */
-    .device-card-ad #container-80e69f9e0965d4beea4ea32c92f55b06-card {
-      width: 100%;
-      min-height: 100px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .device-card-ad iframe,
-    .device-card-ad img {
-      width: 100%;
-      max-width: 480px;
-      height: auto;
+    .device-card-ad iframe {
+      width: 300px;
+      height: 250px;
       border: none;
       display: block;
+      border-radius: 8px;
     }
   </style>
 
@@ -1170,7 +1161,7 @@
     }
 </script>
 
-    // ── Ad popup (300x250 iframe) + in-card (native 2:2 banner) ──
+    // ── Ad popup (300x250 iframe) + in-card (300x250 iframe, same network) ──
   <script>
     (function() {
       const AD_DURATION = 5; // seconds
@@ -1234,9 +1225,10 @@
         });
       }
 
-      // ── In-card ad: 2:2 native banner via Profitableratecpmnetwork ──
-      // Uses a UNIQUE container id with "-card" suffix so it never
-      // collides with the popup ad (which uses a different network anyway).
+      // ── In-card ad: 300x250 iframe via HighRevenueFormat (same as popup) ──
+      // Uses a SEPARATE iframe instance so it doesn't conflict with the popup ad.
+      // Each iframe needs its own atOptions defined at load time, so we inject
+      // a scoped script that sets atOptions then loads invoke.js.
       let cardAdInjected = false;
       function injectCardAd() {
         if (cardAdInjected) return;
@@ -1263,17 +1255,39 @@
         // Insert AFTER the battery bar, inside #deviceCard
         batteryEl.parentNode.insertBefore(adWrap, batteryEl.nextSibling);
 
-        // Native banner: inject the target container FIRST
-        const container = document.createElement('div');
-        container.id = 'container-80e69f9e0965d4beea4ea32c92f55b06-card';
-        adWrap.appendChild(container);
+        // Create the iframe that will hold the 300x250 ad
+        const iframe = document.createElement('iframe');
+        iframe.width = '300';
+        iframe.height = '250';
+        iframe.style.border = 'none';
+        iframe.style.display = 'block';
+        iframe.style.margin = '0 auto';
+        iframe.setAttribute('scrolling', 'no');
+        adWrap.appendChild(iframe);
 
-        // Then load the invoke script
-        const invokeScript = document.createElement('script');
-        invokeScript.async = true;
-        invokeScript.setAttribute('data-cfasync', 'false');
-        invokeScript.src = 'https://pl31637473.profitableratecpmnetwork.com/80e69f9e0965d4beea4ea32c92f55b06/invoke.js';
-        adWrap.appendChild(invokeScript);
+        // Write the ad-loading HTML into the iframe.
+        // We use a unique key so the network treats it as a separate ad slot.
+        const iframeDoc = iframe.contentWindow.document;
+        iframeDoc.open();
+        iframeDoc.write(`
+          <!DOCTYPE html>
+          <html>
+          <head><meta charset="utf-8"></head>
+          <body style="margin:0;padding:0;overflow:hidden;">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : '81443cd2b70e4089345fae478ec5b90a',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+              };
+            <\/script>
+            <script type="text/javascript" src="https://www.highrevenueformat.com/81443cd2b70e4089345fae478ec5b90a/invoke.js"><\/script>
+          </body>
+          </html>
+        `);
+        iframeDoc.close();
       }
 
       // Wait for app.js to be parsed and DeviceDetector to exist,
