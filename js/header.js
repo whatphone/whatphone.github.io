@@ -10,6 +10,10 @@ const Header = (() => {
       micTest: 'Mic Test',
       touchscreenTest: 'Touchscreen Test',
       speakerTest: 'Speaker Test',
+      batteryTest: 'Battery Test',
+      vibrationTest: 'Vibration Test',
+      wifiSpeedTest: 'WiFi Speed Test',
+      gpsCompassTest: 'GPS Compass Test',
       guides: 'Guides',
       detectCta: 'Detect My Phone',
       toggleLabel: 'Toggle navigation menu',
@@ -22,6 +26,10 @@ const Header = (() => {
       micTest: 'Mikrofon-Test',
       touchscreenTest: 'Touchscreen-Test',
       speakerTest: 'Lautsprecher-Test',
+      batteryTest: 'Akku-Test',
+      vibrationTest: 'Vibrationstest',
+      wifiSpeedTest: 'WLAN-Geschwindigkeitstest',
+      gpsCompassTest: 'GPS-Kompasstest',
       guides: 'Anleitungen',
       detectCta: 'Mein Handy erkennen',
       toggleLabel: 'Navigationsmenü umschalten',
@@ -34,6 +42,10 @@ const Header = (() => {
       micTest: 'Test Micro',
       touchscreenTest: 'Test Écran Tactile',
       speakerTest: 'Test Haut-Parleur',
+      batteryTest: 'Test Batterie',
+      vibrationTest: 'Test Vibration',
+      wifiSpeedTest: 'Test Vitesse WiFi',
+      gpsCompassTest: 'Test GPS Boussole',
       guides: 'Guides',
       detectCta: 'Détecter mon téléphone',
       toggleLabel: 'Basculer le menu de navigation',
@@ -46,6 +58,10 @@ const Header = (() => {
       micTest: 'Prueba de Micrófono',
       touchscreenTest: 'Prueba de Pantalla Táctil',
       speakerTest: 'Prueba de Altavoz',
+      batteryTest: 'Prueba de Batería',
+      vibrationTest: 'Prueba de Vibración',
+      wifiSpeedTest: 'Prueba de Velocidad WiFi',
+      gpsCompassTest: 'Prueba GPS Brújula',
       guides: 'Guías',
       detectCta: 'Detectar mi teléfono',
       toggleLabel: 'Alternar menú de navegación',
@@ -58,6 +74,10 @@ const Header = (() => {
       micTest: 'Test Microfono',
       touchscreenTest: 'Test Schermo Tattile',
       speakerTest: 'Test Altoparlante',
+      batteryTest: 'Test Batteria',
+      vibrationTest: 'Test Vibrazione',
+      wifiSpeedTest: 'Test Velocità WiFi',
+      gpsCompassTest: 'Test GPS Bussola',
       guides: 'Guide',
       detectCta: 'Rileva il mio telefono',
       toggleLabel: 'Attiva/disattiva menu di navigazione',
@@ -138,10 +158,10 @@ const Header = (() => {
                 <li><a href="${langPrefix}/mic-test" class="dropdown-link" role="menuitem">${t('micTest')}</a></li>
                 <li><a href="${langPrefix}/touchscreen-test" class="dropdown-link" role="menuitem">${t('touchscreenTest')}</a></li>
                 <li><a href="${langPrefix}/speaker-test" class="dropdown-link" role="menuitem">${t('speakerTest')}</a></li>
-                <li><a href="${langPrefix}/vibration-test" class="dropdown-link" role="menuitem">${t('Vibration Test')}</a></li>
-                <li><a href="${langPrefix}/wifi-speed-test" class="dropdown-link" role="menuitem">${t('Wifi Speed Test')}</a></li>
-                <li><a href="${langPrefix}/gps-compass-test" class="dropdown-link" role="menuitem">${t('GPS Compass Test')}</a></li>
-                
+                <li><a href="${langPrefix}/battery-test" class="dropdown-link" role="menuitem">${t('batteryTest')}</a></li>
+                <li><a href="${langPrefix}/vibration-test" class="dropdown-link" role="menuitem">${t('vibrationTest')}</a></li>
+                <li><a href="${langPrefix}/wifi-speed-test" class="dropdown-link" role="menuitem">${t('wifiSpeedTest')}</a></li>
+                <li><a href="${langPrefix}/gps-compass-test" class="dropdown-link" role="menuitem">${t('gpsCompassTest')}</a></li>
               </ul>
             </li>
             
