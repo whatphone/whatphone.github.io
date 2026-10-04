@@ -13,6 +13,7 @@
     { name: "Mic Test",          icon: "🎤", url: "/mic-test",          desc: "Check your microphone input and volume." },
     { name: "Touchscreen Test",  icon: "👆", url: "/touchscreen-test",  desc: "Multi-touch accuracy and gesture testing." },
     { name: "Speaker Test",      icon: "🔊", url: "/speaker-test",      desc: "Test audio output, stereo and left/right channels." },
+    { name: "Battery Test",      icon: "🔋", url: "/battery-test",      desc: "Check battery level, drain rate, and health." },
     { name: "Vibration Test",    icon: "📳", url: "/vibration-test",    desc: "Check haptic feedback and vibration motor." },
     { name: "WiFi Speed Test",   icon: "📶", url: "/wifi-speed-test",   desc: "Measure bandwidth, latency and connection quality." },
     { name: "GPS / Compass",     icon: "🧭", url: "/gps-compass-test",  desc: "Test geolocation and device orientation sensors." },
@@ -456,9 +457,11 @@
   }
 
   // ── 7. Build the tool list with categories ──
+  // First 8 items are hardware tests; the rest are WhatPhone pages.
+  // (Battery Test is now #5 in the hardware list.)
   const categories = [
-    { title: "Hardware Tests", items: toolsList.slice(0, 7) },
-    { title: "WhatPhone",      items: toolsList.slice(7) },
+    { title: "Hardware Tests", items: toolsList.slice(0, 8) },
+    { title: "WhatPhone",      items: toolsList.slice(8) },
   ];
 
   categories.forEach((cat) => {
