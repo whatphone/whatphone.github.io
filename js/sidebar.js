@@ -2,7 +2,7 @@
  * WhatPhone — sidebar.js
  * Fixed dynamic sidebar for WhatPhone device testing tools.
  * Theme: Warm Light / Soft Aurora (matches style.css)
- * Includes: 300x250 advertisement at the top + tool links from header.js
+ * Includes: tool links from header.js
  */
 
 (function () {
@@ -154,66 +154,6 @@
       box-shadow: 0 4px 12px rgba(255,107,74,0.15);
     }
 
-    /* ── Ad slot at the top ────────────────────────────── */
-    .wp-sb-ad {
-      padding: 16px 22px 10px;
-      flex-shrink: 0;
-      border-bottom: 1px solid #ece3d5;
-      background: linear-gradient(180deg, #fff9f2 0%, #fdfbf7 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-    .wp-sb-ad-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #948674;
-      align-self: flex-start;
-      font-weight: 700;
-    }
-    .wp-sb-ad-slot {
-      width: 300px;
-      height: 250px;
-      max-width: 100%;
-      background: #f7f2ea;
-      border: 1px solid #ece3d5;
-      border-radius: 14px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      box-shadow: 0 4px 16px rgba(61,51,40,0.06);
-    }
-    /* Placeholder shown until/if the ad iframe loads */
-    .wp-sb-ad-slot::before {
-      content: 'Advertisement';
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #948674;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .wp-sb-ad-slot iframe {
-      position: relative;
-      z-index: 1;
-      width: 300px;
-      height: 250px;
-      border: none;
-      display: block;
-      background: #ffffff;
-    }
-
     /* ── Scrollable tool list ──────────────────────────── */
     .wp-sb-body {
       flex: 1;
@@ -346,9 +286,7 @@
     @media (max-width: 480px) {
       .wp-tools-sidebar { width: 100vw; right: -100vw; }
       .wp-tools-trigger { bottom: 18px; right: 18px; width: 54px; height: 54px; font-size: 1.35rem; }
-      .wp-sb-ad-slot { width: 100%; max-width: 300px; }
       .wp-sb-header { padding: 16px 18px; }
-      .wp-sb-ad { padding: 14px 18px 8px; }
       .wp-sb-body { padding: 12px 12px 20px; }
       .wp-sb-footer { padding: 12px 18px 16px; }
     }
@@ -396,14 +334,6 @@
         <button class="wp-sb-close" id="wpToolsClose" aria-label="Close tools sidebar">✕</button>
       </div>
 
-      <!-- Ad slot at the top of the sidebar -->
-      <div class="wp-sb-ad">
-        <span class="wp-sb-ad-label">Advertisement</span>
-        <div class="wp-sb-ad-slot" id="wpSbAdSlot" aria-label="Advertisement">
-          <!-- Ad script injects iframe here -->
-        </div>
-      </div>
-
       <div class="wp-sb-body" id="wpToolsBody"></div>
 
       <div class="wp-sb-footer">
@@ -418,45 +348,8 @@
   const overlay   = document.getElementById("wpToolsOverlay");
   const closeBtn  = document.getElementById("wpToolsClose");
   const body      = document.getElementById("wpToolsBody");
-  const adSlot    = document.getElementById("wpSbAdSlot");
 
-  // ── 6. Inject the 300x250 HighRevenueFormat ad into the sidebar top slot ──
-  // The ad loads once, and only when the sidebar is first opened (lazy load).
-  let adInjected = false;
-  function injectSidebarAd() {
-    if (adInjected || !adSlot) return;
-    adInjected = true;
-
-    // atOptions must be defined globally for invoke.js to pick it up.
-    // We save the previous value (if any) so we don't clobber an existing ad config.
-    const prevAtOptions = window.atOptions;
-
-    // Set up the ad options (same key as the popup ad on the homepage)
-    const optionsScript = document.createElement("script");
-    optionsScript.type = "text/javascript";
-    optionsScript.textContent = `
-      atOptions = {
-        'key' : '81443cd2b70e4089345fae478ec5b90a',
-        'format' : 'iframe',
-        'height' : 250,
-        'width' : 300,
-        'params' : {}
-      };
-    `;
-    adSlot.appendChild(optionsScript);
-
-    // Load the invoke.js script inside the slot so it renders the iframe in-place
-    const invokeScript = document.createElement("script");
-    invokeScript.src = "https://www.highrevenueformat.com/81443cd2b70e4089345fae478ec5b90a/invoke.js";
-    invokeScript.async = true;
-    invokeScript.onload = () => {
-      // Restore previous atOptions if we overwrote something meaningful
-      if (prevAtOptions !== undefined) window.atOptions = prevAtOptions;
-    };
-    adSlot.appendChild(invokeScript);
-  }
-
-  // ── 7. Build the tool list with categories ──
+  // ── 6. Build the tool list with categories ──
   // First 8 items are hardware tests; the rest are WhatPhone pages.
   // (Battery Test is now #5 in the hardware list.)
   const categories = [
@@ -488,7 +381,7 @@
     });
   });
 
-  // ── 8. Open / close / toggle handlers ──
+  // ── 7. Open / close / toggle handlers ──
   function openSidebar() {
     sidebar.classList.add("open");
     trigger.classList.add("active");
@@ -497,7 +390,6 @@
     trigger.setAttribute("aria-expanded", "true");
     sidebar.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";   // lock background scroll
-    injectSidebarAd();                          // lazy-load the ad once
   }
 
   function closeSidebar() {
