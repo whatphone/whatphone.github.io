@@ -170,12 +170,13 @@
       </div>
       <!-- 300x250 ad container – script will inject iframe here -->
       <div class="ad-container" id="adContainer">
-        <!-- HighRevenueFormat script renders the 300x250 iframe inside this div -->
+        <!-- Adsterra script renders the 300x250 iframe inside this div -->
       </div>
       <div class="ad-timer">
         <span class="timer-number" id="adTimerCount">5</span>
         <span class="timer-label">seconds</span>
       </div>
+      <button type="button" id="adCloseBtn" class="ad-close-btn" aria-label="Close advertisement" disabled>Close Ad</button>
       <div class="ad-close-hint">Please wait, detecting your device…</div>
     </div>
   </div>
@@ -1082,6 +1083,25 @@
     .ad-timer .timer-label {
       font-size: 0.8rem;
     }
+    .ad-close-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: var(--accent, #3b82f6);
+      border: none;
+      border-radius: 999px;
+      padding: 0.6rem 1.4rem;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .ad-close-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .ad-close-btn:not(:disabled):hover {
+      transform: translateY(-1px);
+    }
     .ad-close-hint {
       font-size: 0.7rem;
       color: var(--text3, #7c8aa0);
@@ -1165,11 +1185,13 @@
   <script>
     (function() {
       const AD_DURATION = 5; // seconds
+      const CLOSE_ENABLE_AFTER = 2; // seconds before close button becomes active
 
       // Grab DOM elements
       const popup = document.getElementById('adPopup');
       const timerCount = document.getElementById('adTimerCount');
       const adContainer = document.getElementById('adContainer');
+      const adCloseBtn = document.getElementById('adCloseBtn');
 
       // Hide the original loader (we use the ad popup instead)
       const originalLoader = document.getElementById('detectLoader');
@@ -1177,35 +1199,73 @@
 
       let adTimerInterval = null;
       let popupAdInjected = false;
+      let popupResolveFn = null;
 
-      // ── Popup ad: 300x250 iframe via HighRevenueFormat ──
-      // This network uses atOptions + invoke.js and injects its own
-      // <iframe> into the container.
+      // ── Popup ad: 300x250 iframe via Adsterra (bauval.org) ──
+      // Uses an isolated iframe + document.write so this slot does not
+      // collide with the in-card ad slot's global atOptions.
       function injectPopupAd() {
         if (popupAdInjected || !adContainer) return;
         popupAdInjected = true;
 
-        // Define atOptions (this network reads it globally)
-        window.atOptions = {
-          'key' : '81443cd2b70e4089345fae478ec5b90a',
-          'format' : 'iframe',
-          'height' : 250,
-          'width' : 300,
-          'params' : {}
-        };
+        adContainer.innerHTML = '';
 
-        const invokeScript = document.createElement('script');
-        invokeScript.type = 'text/javascript';
-        invokeScript.async = true;
-        invokeScript.src = 'https://www.highrevenueformat.com/81443cd2b70e4089345fae478ec5b90a/invoke.js';
-        adContainer.appendChild(invokeScript);
+        const iframe = document.createElement('iframe');
+        iframe.width = '300';
+        iframe.height = '250';
+        iframe.style.border = 'none';
+        iframe.style.display = 'block';
+        iframe.setAttribute('scrolling', 'no');
+        adContainer.appendChild(iframe);
+
+        const iframeDoc = iframe.contentWindow.document;
+        iframeDoc.open();
+        iframeDoc.write(`
+          <!DOCTYPE html>
+          <html>
+          <head><meta charset="utf-8"></head>
+          <body style="margin:0;padding:0;overflow:hidden;">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : '81443cd2b70e4089345fae478ec5b90a',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+              };
+            <\/script>
+            <script type="text/javascript" src="https://bauval.org/22/81443cd2b70e4089345fae478ec5b90a"><\/script>
+          </body>
+          </html>
+        `);
+        iframeDoc.close();
+      }
+
+      // Finish the popup: hide it and resolve the pending detection promise
+      function finishPopup() {
+        if (adTimerInterval) {
+          clearInterval(adTimerInterval);
+          adTimerInterval = null;
+        }
+        popup.classList.remove('active');
+        if (popupResolveFn) {
+          const fn = popupResolveFn;
+          popupResolveFn = null;
+          fn();
+        }
       }
 
       // Show popup, count down, resolve after AD_DURATION seconds
+      // or when the user clicks Close (after CLOSE_ENABLE_AFTER).
       function showAdPopup() {
         return new Promise((resolve) => {
+          popupResolveFn = resolve;
           let remaining = AD_DURATION;
+          let elapsed = 0;
           timerCount.textContent = remaining;
+
+          adCloseBtn.disabled = true;
+          adCloseBtn.textContent = `Close in ${CLOSE_ENABLE_AFTER}s`;
 
           popup.classList.add('active');
           injectPopupAd();
@@ -1214,22 +1274,37 @@
 
           adTimerInterval = setInterval(() => {
             remaining -= 1;
-            timerCount.textContent = remaining;
+            elapsed += 1;
+            timerCount.textContent = remaining > 0 ? remaining : 0;
+
+            if (elapsed >= CLOSE_ENABLE_AFTER && adCloseBtn.disabled) {
+              adCloseBtn.disabled = false;
+              adCloseBtn.textContent = 'Close Ad';
+            }
+
             if (remaining <= 0) {
-              clearInterval(adTimerInterval);
-              adTimerInterval = null;
-              popup.classList.remove('active');
-              resolve();
+              finishPopup();
             }
           }, 1000);
         });
       }
 
-      // ── In-card ad: 300x250 iframe via HighRevenueFormat (same as popup) ──
+      // Close button + Escape key both dismiss the popup early
+      if (adCloseBtn) {
+        adCloseBtn.addEventListener('click', () => {
+          if (!adCloseBtn.disabled) finishPopup();
+        });
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popup.classList.contains('active') && !adCloseBtn.disabled) {
+          finishPopup();
+        }
+      });
+
+      // ── In-card ad: 300x250 iframe via Adsterra (bauval.org) ──
       // Uses a SEPARATE iframe instance so it doesn't conflict with the popup ad.
-      // Each iframe needs its own atOptions defined at load time, so we inject
-      // a scoped script that sets atOptions then loads invoke.js.
       let cardAdInjected = false;
+      let cardAdAttempts = 0;
       function injectCardAd() {
         if (cardAdInjected) return;
 
@@ -1238,7 +1313,11 @@
 
         const batteryEl = card.querySelector('.device-battery');
         if (!batteryEl) {
-          // Card markup not ready yet — retry shortly
+          // Card markup not ready yet — retry briefly, then bail out
+          if (++cardAdAttempts > 50) {
+            console.warn('Ad: .device-battery never appeared; skipping in-card ad.');
+            return;
+          }
           setTimeout(injectCardAd, 100);
           return;
         }
@@ -1266,28 +1345,28 @@
         adWrap.appendChild(iframe);
 
         // Write the ad-loading HTML into the iframe.
-// We use a unique key so the network treats it as a separate ad slot.
-const iframeDoc = iframe.contentWindow.document;
-iframeDoc.open();
-iframeDoc.write(`
-  <!DOCTYPE html>
-  <html>
-  <head><meta charset="utf-8"></head>
-  <body style="margin:0;padding:0;overflow:hidden;">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : '81443cd2b70e4089345fae478ec5b90a',
-        'format' : 'iframe',
-        'height' : 250,
-        'width' : 300,
-        'params' : {}
-      };
-    <\/script>
-    <script type="text/javascript" src="https://bauval.org/22/81443cd2b70e4089345fae478ec5b90a"><\/script>
-  </body>
-  </html>
-`);
-iframeDoc.close();
+        // We use a unique key so the network treats it as a separate ad slot.
+        const iframeDoc = iframe.contentWindow.document;
+        iframeDoc.open();
+        iframeDoc.write(`
+          <!DOCTYPE html>
+          <html>
+          <head><meta charset="utf-8"></head>
+          <body style="margin:0;padding:0;overflow:hidden;">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : '81443cd2b70e4089345fae478ec5b90a',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+              };
+            <\/script>
+            <script type="text/javascript" src="https://bauval.org/22/81443cd2b70e4089345fae478ec5b90a"><\/script>
+          </body>
+          </html>
+        `);
+        iframeDoc.close();
       }
 
       // Wait for app.js to be parsed and DeviceDetector to exist,
