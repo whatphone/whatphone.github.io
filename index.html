@@ -1266,28 +1266,28 @@
         adWrap.appendChild(iframe);
 
         // Write the ad-loading HTML into the iframe.
-        // We use a unique key so the network treats it as a separate ad slot.
-        const iframeDoc = iframe.contentWindow.document;
-        iframeDoc.open();
-        iframeDoc.write(`
-          <!DOCTYPE html>
-          <html>
-          <head><meta charset="utf-8"></head>
-          <body style="margin:0;padding:0;overflow:hidden;">
-            <script type="text/javascript">
-              atOptions = {
-                'key' : '81443cd2b70e4089345fae478ec5b90a',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-              };
-            <\/script>
-            <script type="text/javascript" src="https://www.highrevenueformat.com/81443cd2b70e4089345fae478ec5b90a/invoke.js"><\/script>
-          </body>
-          </html>
-        `);
-        iframeDoc.close();
+// We use a unique key so the network treats it as a separate ad slot.
+const iframeDoc = iframe.contentWindow.document;
+iframeDoc.open();
+iframeDoc.write(`
+  <!DOCTYPE html>
+  <html>
+  <head><meta charset="utf-8"></head>
+  <body style="margin:0;padding:0;overflow:hidden;">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '81443cd2b70e4089345fae478ec5b90a',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    <\/script>
+    <script type="text/javascript" src="https://bauval.org/22/81443cd2b70e4089345fae478ec5b90a"><\/script>
+  </body>
+  </html>
+`);
+iframeDoc.close();
       }
 
       // Wait for app.js to be parsed and DeviceDetector to exist,
