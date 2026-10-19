@@ -50,20 +50,7 @@
 
   <!-- ── Preconnect ───────────────────────────────────── -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <script>
-  (function() {
-    try {
-      var saved = localStorage.getItem('whatphone-theme');
-      var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var theme = saved || (systemDark ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-    } catch (e) {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  })();
-</script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />  
 
   <!-- ── Stylesheet ───────────────────────────────────── -->
   <link rel="stylesheet" href="css/style.css" />
@@ -1790,5 +1777,17 @@
     });
   });
   </script>
+  <script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('whatphone-theme');
+      var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (systemDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
 </body>
 </html>
