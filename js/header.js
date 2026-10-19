@@ -1,4 +1,4 @@
-// Header Component — Universal Multi-Language with Language Selector
+// Header Component — Universal Multi-Language with Language & Theme Selectors
 const Header = (() => {
   // ── Translation Dictionary ──────────────────────────────
   const translations = {
@@ -23,6 +23,7 @@ const Header = (() => {
       guides: 'Guides',
       detectCta: 'Detect My Phone',
       toggleLabel: 'Toggle navigation menu',
+      themeToggle: 'Toggle light/dark theme',
     },
     de: {
       logo: 'What<span class="accent">Phone</span>',
@@ -45,6 +46,7 @@ const Header = (() => {
       guides: 'Anleitungen',
       detectCta: 'Mein Handy erkennen',
       toggleLabel: 'Navigationsmenü umschalten',
+      themeToggle: 'Hell-/Dunkelmodus umschalten',
     },
     fr: {
       logo: 'What<span class="accent">Phone</span>',
@@ -67,6 +69,7 @@ const Header = (() => {
       guides: 'Guides',
       detectCta: 'Détecter mon téléphone',
       toggleLabel: 'Basculer le menu de navigation',
+      themeToggle: 'Basculer le thème clair/sombre',
     },
     es: {
       logo: 'What<span class="accent">Phone</span>',
@@ -89,6 +92,7 @@ const Header = (() => {
       guides: 'Guías',
       detectCta: 'Detectar mi teléfono',
       toggleLabel: 'Alternar menú de navegación',
+      themeToggle: 'Alternar tema claro/oscuro',
     },
     it: {
       logo: 'What<span class="accent">Phone</span>',
@@ -111,6 +115,7 @@ const Header = (() => {
       guides: 'Guide',
       detectCta: 'Rileva il mio telefono',
       toggleLabel: 'Attiva/disattiva menu di navigazione',
+      themeToggle: 'Attiva/disattiva tema chiaro/scuro',
     },
   };
 
@@ -142,6 +147,48 @@ const Header = (() => {
     return match ? match[1] : 'en';
   };
 
+  // ── Theme Handling ─────────────────────────────────────
+  const THEME_KEY = 'whatphone-theme';
+  const THEME_COLORS = { light: '#fdfbf7', dark: '#080c14' };
+
+  const getCurrentTheme = () => {
+    return document.documentElement.getAttribute('data-theme') || 'light';
+  };
+
+  const applyTheme = (theme, animate = true) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch (e) { /* localStorage may be disabled */ }
+
+    // Update theme-color meta for mobile browser chrome
+    const meta = document.getElementById('themeColorMeta');
+    if (meta) {
+      meta.setAttribute('content', THEME_COLORS[theme] || THEME_COLORS.light);
+    }
+
+    // Sync the toggle button's aria-state if it exists
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) {
+      toggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+      toggle.setAttribute('title', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    // Animate the transition, then remove the class
+    if (animate) {
+      document.documentElement.classList.add('theme-transition');
+      clearTimeout(window._themeTransitionTimer);
+      window._themeTransitionTimer = setTimeout(() => {
+        document.documentElement.classList.remove('theme-transition');
+      }, 350);
+    }
+  };
+
+  const toggleTheme = () => {
+    const current = getCurrentTheme();
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  };
+
   // ── Render ──────────────────────────────────────────────
   const render = () => {
     const header = document.getElementById('site-header');
@@ -151,6 +198,7 @@ const Header = (() => {
     const langPrefix = lang === 'en' ? '' : `/${lang}`;
     const currentLang = getCurrentLang();
     const currentLangData = languages.find(l => l.code === currentLang) || languages[0];
+    const currentTheme = getCurrentTheme();
 
     header.innerHTML = `
       <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -203,6 +251,19 @@ const Header = (() => {
             
             <li><a href="${langPrefix}/guides" class="nav-link" data-section="">${t('guides')}</a></li>
             
+            <!-- Theme Toggle -->
+            <li>
+              <button class="theme-toggle" id="themeToggle" aria-label="${t('themeToggle')}" aria-pressed="${currentTheme === 'dark' ? 'true' : 'false'}" title="${currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}">
+                <svg class="theme-icon theme-icon-sun" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="9" cy="9" r="3.5"/>
+                  <path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.2 3.2l1.4 1.4M13.4 13.4l1.4 1.4M3.2 14.8l1.4-1.4M13.4 4.6l1.4-1.4"/>
+                </svg>
+                <svg class="theme-icon theme-icon-moon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M15.5 10.5A6.5 6.5 0 1 1 7.5 2.5a5 5 0 0 0 8 8z"/>
+                </svg>
+              </button>
+            </li>
+
             <!-- Language Selector -->
             <li class="nav-dropdown lang-selector">
               <button class="lang-toggle" id="langToggle" aria-expanded="false" aria-haspopup="true">
@@ -252,6 +313,7 @@ const Header = (() => {
     const dropdownMenu = document.getElementById('dropdownMenu');
     const langToggle = document.getElementById('langToggle');
     const langMenu = document.getElementById('langMenu');
+    const themeToggle = document.getElementById('themeToggle');
 
     // Mobile toggle
     toggle?.addEventListener('click', (e) => {
@@ -290,14 +352,19 @@ const Header = (() => {
       }
     });
 
+    // Theme toggle
+    themeToggle?.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleTheme();
+    });
+
     // Close dropdowns when clicking outside
     document.addEventListener('click', (e) => {
-      // Close tools dropdown
       if (dropdownMenu && !e.target.closest('#dropdownToggle') && !e.target.closest('#dropdownMenu')) {
         dropdownMenu.classList.remove('open');
         dropdownToggle?.setAttribute('aria-expanded', 'false');
       }
-      // Close language dropdown
       if (langMenu && !e.target.closest('#langToggle') && !e.target.closest('#langMenu')) {
         langMenu.classList.remove('open');
         langToggle?.setAttribute('aria-expanded', 'false');
@@ -360,5 +427,6 @@ const Header = (() => {
     });
   };
 
-  return { render };
+  // ── Public API ──────────────────────────────────────────
+  return { render, applyTheme, toggleTheme, getCurrentTheme };
 })();
