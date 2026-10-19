@@ -15,15 +15,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Phone Hardware Tests — Camera, Touchscreen, Mic & Speaker | WhatPhone</title>
-  <meta name="description" content="Free online phone hardware diagnostic tools. Test your phone's camera, touchscreen, microphone, and speaker directly in your browser — no app download required." />
-  <meta name="keywords" content="phone hardware test online, camera test phone, touchscreen test, microphone test phone, speaker test phone, phone diagnostic tool, browser hardware test" />
+  <title>Phone Hardware &amp; Screen Tests — Camera, Touch, Sensors &amp; More | WhatPhone</title>
+  <meta name="description" content="Free online phone hardware diagnostic tools. Test your phone's camera, touchscreen, microphone, speaker, sensors, display, and OLED panel directly in your browser — no app download required." />
+  <meta name="keywords" content="phone hardware test online, camera test phone, touchscreen test, microphone test phone, speaker test phone, dead pixel test, refresh rate test, motion sensors test, proximity sensor test, ambient light sensor test, oled burn-in test, phone diagnostic tool, browser hardware test" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" href="https://whatphone.github.io/tools" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://whatphone.github.io/tools" />
-  <meta property="og:title" content="Phone Hardware Tests — Camera, Touchscreen, Mic & Speaker | WhatPhone" />
-  <meta property="og:description" content="Test your phone camera, touchscreen, microphone, and speakers free in your browser. Instant results, no app needed." />
+  <meta property="og:title" content="Phone Hardware &amp; Screen Tests — Camera, Touch, Sensors &amp; More | WhatPhone" />
+  <meta property="og:description" content="Test your phone camera, touchscreen, microphone, speakers, sensors, and display free in your browser. Instant results, no app needed." />
   <meta property="og:site_name" content="WhatPhone" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#080c14" />
@@ -33,47 +33,216 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
   <style>
+    /* ── Fix: dark theme with white headings ──────────────── */
+    body {
+      background: #080c14;
+      color: var(--text);
+    }
     .tools-hero { padding: 9rem 0 5rem; position: relative; overflow: hidden; }
-    .tools-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(59,130,246,0.1) 0%, transparent 70%), var(--bg); }
+    .tools-hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(59,130,246,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 90% 20%, rgba(139,92,246,0.08) 0%, transparent 60%),
+        #080c14;
+    }
     .tools-hero .container { position: relative; z-index: 1; }
     .breadcrumb ol { display: flex; align-items: center; gap: .5rem; list-style: none; font-size: .82rem; color: var(--text3); margin-bottom: 2rem; }
     .breadcrumb li+li::before { content: '/'; opacity: .4; }
     .breadcrumb a { color: var(--text2); transition: color var(--transition); }
     .breadcrumb a:hover { color: var(--accent2); }
-    .tools-hero-title { font-family: var(--font-display); font-size: clamp(2.2rem,4.5vw,3.5rem); font-weight: 800; color: #fff; line-height: 1.1; letter-spacing: -.02em; margin: 1rem 0 1.25rem; }
-    .tools-hero-sub { font-size: 1.1rem; color: var(--text2); line-height: 1.7; max-width: 580px; margin-bottom: 1.75rem; }
-    .meta-chip { display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .9rem; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; font-size: .82rem; color: var(--text2); margin: 0 .3rem .5rem 0; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .4rem .95rem;
+      background: rgba(59,130,246,.1);
+      border: 1px solid rgba(59,130,246,.25);
+      border-radius: 100px;
+      font-size: .78rem; font-weight: 600;
+      color: #60a5fa;
+      letter-spacing: .05em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .eyebrow-dot {
+      width: 7px; height: 7px;
+      background: #3b82f6;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(59,130,246,.8);
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .tools-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin: 1rem 0 1.25rem;
+    }
+    .tools-hero-title .highlight {
+      background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .tools-hero-sub {
+      font-size: 1.1rem;
+      color: #94a3b8;
+      line-height: 1.7;
+      max-width: 620px;
+      margin-bottom: 1.75rem;
+    }
+    .meta-chip {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .35rem .9rem;
+      background: #10151f;
+      border: 1px solid #1e2636;
+      border-radius: 100px;
+      font-size: .82rem;
+      color: #94a3b8;
+      margin: 0 .3rem .5rem 0;
+    }
+
+    /* ── Tool grid ─────────────────────────────────────────── */
     .tools-grid-section { padding: 3rem 0 7rem; }
     .tools-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.75rem; }
-    .tool-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition); }
-    .tool-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 60px rgba(0,0,0,.4), var(--shadow-accent); }
-    .tool-card-visual { height: 180px; background: var(--bg3); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .tool-card-icon { width: 88px; height: 88px; border-radius: 24px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 2; transition: transform var(--transition); }
+
+    .tool-card {
+      display: flex; flex-direction: column;
+      background: #10151f;
+      border: 1px solid #1e2636;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .tool-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.4), var(--shadow-accent);
+    }
+    .tool-card-visual {
+      height: 180px;
+      background: #0a0f18;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .tool-card-icon {
+      width: 88px; height: 88px;
+      border-radius: 24px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 2;
+      transition: transform var(--transition);
+    }
     .tool-card:hover .tool-card-icon { transform: scale(1.1); }
     .tool-card-glow { position: absolute; inset: 0; opacity: 0; transition: opacity var(--transition); }
     .tool-card:hover .tool-card-glow { opacity: 1; }
-    .tool-card-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; gap: .75rem; }
-    .tool-card-tag { display: inline-flex; padding: .2rem .65rem; border-radius: 6px; font-size: .72rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
-    .tool-card-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; color: #fff; }
-    .tool-card-desc { font-size: .9rem; color: var(--text2); line-height: 1.65; flex: 1; }
-    .tool-card-features { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .25rem; }
-    .tool-feat { padding: .2rem .55rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; font-size: .72rem; color: var(--text3); font-family: var(--font-mono); }
-    .tool-card-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .75rem 1.5rem; border-radius: var(--r); font-size: .9rem; font-weight: 700; font-family: var(--font-display); margin-top: 1rem; transition: all var(--transition); }
+    .tool-card-body {
+      padding: 1.75rem;
+      flex: 1;
+      display: flex; flex-direction: column; gap: .75rem;
+    }
+    .tool-card-tag {
+      display: inline-flex;
+      padding: .2rem .65rem;
+      border-radius: 6px;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase;
+      align-self: flex-start;
+    }
+    .tool-card-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem; font-weight: 800;
+      color: #ffffff;
+    }
+    .tool-card-desc {
+      font-size: .9rem;
+      color: #94a3b8;
+      line-height: 1.65;
+      flex: 1;
+    }
+    .tool-card-features {
+      display: flex; flex-wrap: wrap; gap: .4rem;
+      margin-top: .25rem;
+    }
+    .tool-feat {
+      padding: .2rem .55rem;
+      background: #0a0f18;
+      border: 1px solid #1e2636;
+      border-radius: 6px;
+      font-size: .72rem;
+      color: #64748b;
+      font-family: var(--font-mono);
+    }
+    .tool-card-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: .75rem 1.5rem;
+      border-radius: var(--r);
+      font-size: .9rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+      margin-top: 1rem;
+      transition: all var(--transition);
+      text-decoration: none;
+    }
     .tool-card-btn:hover { transform: translateY(-1px); }
-    @media(max-width:768px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    /* ── Detect CTA ─────────────────────────────────────────── */
+    .detect-cta {
+      margin-top: 4rem;
+      background: #10151f;
+      border: 1px solid #1e2636;
+      border-radius: var(--r-lg);
+      padding: 2.5rem 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap;
+      position: relative; overflow: hidden;
+    }
+    .detect-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 80% 50%, rgba(59,130,246,.08), transparent 60%);
+      pointer-events: none;
+    }
+    .detect-cta h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 800;
+      color: #ffffff;
+      margin-bottom: .5rem;
+    }
+    .detect-cta p {
+      color: #94a3b8;
+      font-size: .95rem;
+      max-width: 480px;
+    }
+    .detect-cta > div { position: relative; }
+
+    @media(max-width:768px) {
+      .tools-grid { grid-template-columns: 1fr; }
+      .detect-cta { padding: 2rem 1.5rem; }
+    }
   </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Phone Hardware Tests",
+    "name": "Phone Hardware & Screen Tests",
     "url": "https://whatphone.github.io/tools",
-    "description": "Free browser-based phone hardware diagnostic tools",
+    "description": "Free browser-based phone hardware diagnostic tools — camera, touchscreen, mic, speaker, sensors, display, and OLED burn-in tests",
     "hasPart": [
       { "@type": "WebApplication", "name": "Camera Test", "url": "https://whatphone.github.io/camera-test", "applicationCategory": "UtilitiesApplication" },
       { "@type": "WebApplication", "name": "Touchscreen Test", "url": "https://whatphone.github.io/touchscreen-test", "applicationCategory": "UtilitiesApplication" },
       { "@type": "WebApplication", "name": "Microphone Test", "url": "https://whatphone.github.io/mic-test", "applicationCategory": "UtilitiesApplication" },
-      { "@type": "WebApplication", "name": "Speaker Test", "url": "https://whatphone.github.io/speaker-test", "applicationCategory": "UtilitiesApplication" }
+      { "@type": "WebApplication", "name": "Speaker Test", "url": "https://whatphone.github.io/speaker-test", "applicationCategory": "UtilitiesApplication" },
+      { "@type": "WebApplication", "name": "Dead Pixel Test", "url": "https://whatphone.github.io/dead-pixel", "applicationCategory": "UtilitiesApplication" },
+      { "@type": "WebApplication", "name": "Refresh Rate Test", "url": "https://whatphone.github.io/refresh-rate-test", "applicationCategory": "UtilitiesApplication" },
+      { "@type": "WebApplication", "name": "Motion Sensors Suite", "url": "https://whatphone.github.io/motion-sensors", "applicationCategory": "UtilitiesApplication" },
+      { "@type": "WebApplication", "name": "Proximity Sensor Test", "url": "https://whatphone.github.io/proximity-sensor-test", "applicationCategory": "UtilitiesApplication" },
+      { "@type": "WebApplication", "name": "Ambient Light Sensor Test", "url": "https://whatphone.github.io/ambient-light-sensor-test", "applicationCategory": "UtilitiesApplication" },
+      { "@type": "WebApplication", "name": "OLED Burn-in Test", "url": "https://whatphone.github.io/oled-burn-in-test", "applicationCategory": "UtilitiesApplication" }
     ]
   }
   </script>
@@ -87,9 +256,13 @@
       <div class="container">
         <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">Tools</li></ol></nav>
         <div class="hero-eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Free · Browser-Based · Instant</div>
-        <h1 class="tools-hero-title">Phone Hardware<br/><span class="highlight">Diagnostic Tools</span></h1>
-        <p class="tools-hero-sub">Test your phone's camera, touchscreen, microphone, and speaker directly in your browser. No app download, no sign-up — results in seconds.</p>
-        <div><span class="meta-chip">🔧 4 Free Tools</span><span class="meta-chip">📱 Mobile Optimised</span><span class="meta-chip">🔒 No Data Stored</span></div>
+        <h1 class="tools-hero-title">Phone Hardware &amp; Screen<br/><span class="highlight">Diagnostic Tools</span></h1>
+        <p class="tools-hero-sub">Test your phone's camera, touchscreen, microphone, speaker, sensors, and display directly in your browser. No app download, no sign-up — results in seconds.</p>
+        <div>
+          <span class="meta-chip">🔧 10 Free Tools</span>
+          <span class="meta-chip">📱 Mobile Optimised</span>
+          <span class="meta-chip">🔒 No Data Stored</span>
+        </div>
       </div>
     </section>
 
@@ -98,7 +271,9 @@
         <h2 id="tools-heading" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">All diagnostic tools</h2>
         <div class="tools-grid">
 
-          <!-- Camera -->
+          <!-- ═══════════════════════════════════════════════
+               CAMERA TEST
+          ═══════════════════════════════════════════════ -->
           <article class="tool-card" style="opacity:0;transform:translateY(20px);transition:.5s ease" data-animate>
             <div class="tool-card-visual">
               <div class="tool-card-glow" style="background:radial-gradient(circle at 50% 50%,rgba(59,130,246,.12),transparent 70%)"></div>
@@ -113,15 +288,17 @@
               <div class="tool-card-features">
                 <span class="tool-feat">Live Preview</span><span class="tool-feat">Front/Rear Switch</span><span class="tool-feat">Snapshot</span><span class="tool-feat">Resolution Check</span><span class="tool-feat">Video Record</span>
               </div>
-              <a href="camera-test" class="tool-card-btn" style="background:var(--accent);color:#fff;box-shadow:0 0 24px rgba(59,130,246,.3)" aria-label="Start camera test">
+              <a href="camera-test" class="tool-card-btn" style="background:#3b82f6;color:#fff;box-shadow:0 0 24px rgba(59,130,246,.3)" aria-label="Start camera test">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
                 Start Camera Test
               </a>
             </div>
           </article>
 
-          <!-- Touchscreen -->
-          <article class="tool-card" style="opacity:0;transform:translateY(20px);transition:.5s ease .08s" data-animate>
+          <!-- ═══════════════════════════════════════════════
+               TOUCHSCREEN TEST
+          ═══════════════════════════════════════════════ -->
+          <article class="tool-card" style="opacity:0;transform:translateY(20px);transition:.5s ease .06s" data-animate>
             <div class="tool-card-visual">
               <div class="tool-card-glow" style="background:radial-gradient(circle at 50% 50%,rgba(34,211,238,.1),transparent 70%)"></div>
               <div class="tool-card-icon" style="background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.2);color:#22d3ee;box-shadow:0 0 40px rgba(34,211,238,.15)">
@@ -142,8 +319,10 @@
             </div>
           </article>
 
-          <!-- Mic -->
-          <article class="tool-card" style="opacity:0;transform:translateY(20px);transition:.5s ease .16s" data-animate>
+          <!-- ═══════════════════════════════════════════════
+               MICROPHONE TEST
+          ═══════════════════════════════════════════════ -->
+          <article class="tool-card" style="opacity:0;transform:translateY(20px);transition:.5s ease .12s" data-animate>
             <div class="tool-card-visual">
               <div class="tool-card-glow" style="background:radial-gradient(circle at 50% 50%,rgba(34,197,94,.1),transparent 70%)"></div>
               <div class="tool-card-icon" style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:#22c55e;box-shadow:0 0 40px rgba(34,197,94,.15)">
@@ -155,7 +334,7 @@
               <h2 class="tool-card-title">Microphone Test</h2>
               <p class="tool-card-desc">Test your phone's microphone live — see real-time waveforms, frequency spectrum, decibel levels, and record a clip to play back. Instantly diagnose mic issues.</p>
               <div class="tool-card-features">
-                <span class="tool-feat">Live Waveform</span><span class="tool-feat">dB Meter</span><span class="tool-feat">Record & Playback</span><span class="tool-feat">Spectrum View</span><span class="tool-feat">Noise Level</span>
+                <span class="tool-feat">Live Waveform</span><span class="tool-feat">dB Meter</span><span class="tool-feat">Record &amp; Playback</span><span class="tool-feat">Spectrum View</span><span class="tool-feat">Noise Level</span>
               </div>
               <a href="mic-test" class="tool-card-btn" style="background:rgba(34,197,94,.12);color:#4ade80;border:1px solid rgba(34,197,94,.25)" aria-label="Start microphone test">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
@@ -164,8 +343,10 @@
             </div>
           </article>
 
-          <!-- Speaker -->
-          <article class="tool-card" style="opacity:0;transform:translateY(20px);transition:.5s ease .24s" data-animate>
+          <!-- ═══════════════════════════════════════════════
+               SPEAKER TEST
+          ═══════════════════════════════════════════════ -->
+          <article class="tool-card" style="opacity:0;transform:translateY(20px);transition:.5s ease .18s" data-animate>
             <div class="tool-card-visual">
               <div class="tool-card-glow" style="background:radial-gradient(circle at 50% 50%,rgba(245,158,11,.1),transparent 70%)"></div>
               <div class="tool-card-icon" style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);color:#f59e0b;box-shadow:0 0 40px rgba(245,158,11,.15)">
@@ -185,13 +366,160 @@
               </a>
             </div>
           </article>
+
+          <!-- ═══════════════════════════════════════════════
+               DEAD PIXEL TEST
+          ═══════════════════════════════════════════════ -->
+          <article class="tool-card" style="opacity:0;transform:translateY(20px);transition:.5s ease .24s" data-animate>
+            <div class="tool-card-visual">
+              <div class="tool-card-glow" style="background:radial-gradient(circle at 50% 50%,rgba(239,68,68,.1),transparent 70%)"></div>
+              <div class="tool-card-icon" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#f87171;box-shadow:0 0 40px rgba(239,68,68,.15)">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="4" y="4" width="36" height="36" rx="6" stroke="currentColor" stroke-width="2"/><line x1="14" y1="14" x2="30" y2="30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="30" y1="14" x2="14" y2="30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="22" cy="22" r="4" fill="currentColor" opacity=".4"/></svg>
+              </div>
+            </div>
+            <div class="tool-card-body">
+              <span class="tool-card-tag" style="background:rgba(239,68,68,.08);color:#f87171;border:1px solid rgba(239,68,68,.18)">Display</span>
+              <h2 class="tool-card-title">Dead Pixel Test</h2>
+              <p class="tool-card-desc">Cycle through full-screen solid colors — black, white, red, green, blue, gray, and more — to spot dead or stuck pixels on your screen. Simple and fast.</p>
+              <div class="tool-card-features">
+                <span class="tool-feat">Solid Colors</span><span class="tool-feat">Tap to Cycle</span><span class="tool-feat">Arrow Keys</span><span class="tool-feat">Auto Mode</span><span class="tool-feat">Full-Screen</span>
+              </div>
+              <a href="dead-pixel" class="tool-card-btn" style="background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.25)" aria-label="Start dead pixel test">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+                Start Pixel Test
+              </a>
+            </div>
+          </article>
+
+          <!-- ═══════════════════════════════════════════════
+               REFRESH RATE TEST
+          ═══════════════════════════════════════════════ -->
+          <article class="tool-card" style="opacity:0;transform:translateY(20px);transition:.5s ease .30s" data-animate>
+            <div class="tool-card-visual">
+              <div class="tool-card-glow" style="background:radial-gradient(circle at 50% 50%,rgba(251,146,60,.1),transparent 70%)"></div>
+              <div class="tool-card-icon" style="background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.2);color:#fb923c;box-shadow:0 0 40px rgba(251,146,60,.15)">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><polyline points="4,32 14,20 22,26 32,10 40,18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="20" r="2" fill="currentColor"/><circle cx="22" cy="26" r="2" fill="currentColor"/><circle cx="32" cy="10" r="2" fill="currentColor"/></svg>
+              </div>
+            </div>
+            <div class="tool-card-body">
+              <span class="tool-card-tag" style="background:rgba(251,146,60,.08);color:#fb923c;border:1px solid rgba(251,146,60,.18)">Display</span>
+              <h2 class="tool-card-title">Refresh Rate Test</h2>
+              <p class="tool-card-desc">Measure your display's actual refresh rate in Hz using requestAnimationFrame. Compare measured vs claimed Hz and run motion blur & flicker tests.</p>
+              <div class="tool-card-features">
+                <span class="tool-feat">Real Hz Measure</span><span class="tool-feat">Frame Time Graph</span><span class="tool-feat">Motion Test</span><span class="tool-feat">Flicker Test</span><span class="tool-feat">Stability</span>
+              </div>
+              <a href="refresh-rate-test" class="tool-card-btn" style="background:rgba(251,146,60,.12);color:#fb923c;border:1px solid rgba(251,146,60,.25)" aria-label="Start refresh rate test">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+                Start Hz Test
+              </a>
+            </div>
+          </article>
+
+          <!-- ═══════════════════════════════════════════════
+               MOTION SENSORS SUITE
+          ═══════════════════════════════════════════════ -->
+          <article class="tool-card" style="opacity:0;transform:translateY(20px);transition:.5s ease .36s" data-animate>
+            <div class="tool-card-visual">
+              <div class="tool-card-glow" style="background:radial-gradient(circle at 50% 50%,rgba(139,92,246,.1),transparent 70%)"></div>
+              <div class="tool-card-icon" style="background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);color:#a78bfa;box-shadow:0 0 40px rgba(139,92,246,.15)">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><circle cx="22" cy="22" r="16" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="22" r="6" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="22" r="2" fill="currentColor"/><path d="M22 6v6M22 32v6M6 22h6M32 22h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <div class="tool-card-body">
+              <span class="tool-card-tag" style="background:rgba(139,92,246,.08);color:#a78bfa;border:1px solid rgba(139,92,246,.18)">Sensors</span>
+              <h2 class="tool-card-title">Motion Sensors Suite</h2>
+              <p class="tool-card-desc">Real-time graphs for accelerometer, gyroscope, and orientation. Run shake, tilt, and compass calibration tests — all from your browser.</p>
+              <div class="tool-card-features">
+                <span class="tool-feat">Accelerometer</span><span class="tool-feat">Gyroscope</span><span class="tool-feat">3D Orientation</span><span class="tool-feat">Shake Test</span><span class="tool-feat">Compass</span>
+              </div>
+              <a href="motion-sensors" class="tool-card-btn" style="background:rgba(139,92,246,.12);color:#a78bfa;border:1px solid rgba(139,92,246,.25)" aria-label="Start motion sensors test">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+                Open Sensors
+              </a>
+            </div>
+          </article>
+
+          <!-- ═══════════════════════════════════════════════
+               PROXIMITY SENSOR TEST
+          ═══════════════════════════════════════════════ -->
+          <article class="tool-card" style="opacity:0;transform:translateY(20px);transition:.5s ease .42s" data-animate>
+            <div class="tool-card-visual">
+              <div class="tool-card-glow" style="background:radial-gradient(circle at 50% 50%,rgba(6,182,212,.1),transparent 70%)"></div>
+              <div class="tool-card-icon" style="background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.2);color:#22d3ee;box-shadow:0 0 40px rgba(6,182,212,.15)">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="12" y="2" width="20" height="40" rx="4" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="8" r="2" fill="currentColor" opacity=".6"/><path d="M18 10c0-2 2-3 4-3s4 1 4 3" stroke="currentColor" stroke-width="1.5"/><circle cx="22" cy="24" r="3" fill="currentColor" opacity=".3"/><path d="M14 30c0-4 3-6 8-6s8 2 8 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg>
+              </div>
+            </div>
+            <div class="tool-card-body">
+              <span class="tool-card-tag" style="background:rgba(6,182,212,.08);color:#22d3ee;border:1px solid rgba(6,182,212,.18)">Sensors</span>
+              <h2 class="tool-card-title">Proximity Sensor Test</h2>
+              <p class="tool-card-desc">Cover the top of your phone and check if the sensor detects it — the same check that dims your screen during calls. Simple interactive test with live feedback.</p>
+              <div class="tool-card-features">
+                <span class="tool-feat">Cover Test</span><span class="tool-feat">Near/Far State</span><span class="tool-feat">Screen Dim Preview</span><span class="tool-feat">Live Meter</span><span class="tool-feat">Android</span>
+              </div>
+              <a href="proximity-sensor-test" class="tool-card-btn" style="background:rgba(6,182,212,.12);color:#22d3ee;border:1px solid rgba(6,182,212,.25)" aria-label="Start proximity sensor test">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+                Start Proximity Test
+              </a>
+            </div>
+          </article>
+
+          <!-- ═══════════════════════════════════════════════
+               AMBIENT LIGHT SENSOR TEST
+          ═══════════════════════════════════════════════ -->
+          <article class="tool-card" style="opacity:0;transform:translateY(20px);transition:.5s ease .48s" data-animate>
+            <div class="tool-card-visual">
+              <div class="tool-card-glow" style="background:radial-gradient(circle at 50% 50%,rgba(251,191,36,.1),transparent 70%)"></div>
+              <div class="tool-card-icon" style="background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.2);color:#fbbf24;box-shadow:0 0 40px rgba(251,191,36,.15)">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><circle cx="22" cy="22" r="8" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="22" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="22" y1="4" x2="22" y2="9"/><line x1="22" y1="35" x2="22" y2="40"/><line x1="4" y1="22" x2="9" y2="22"/><line x1="35" y1="22" x2="40" y2="22"/><line x1="9" y1="9" x2="13" y2="13"/><line x1="31" y1="31" x2="35" y2="35"/><line x1="9" y1="35" x2="13" y2="31"/><line x1="31" y1="13" x2="35" y2="9"/></g></svg>
+              </div>
+            </div>
+            <div class="tool-card-body">
+              <span class="tool-card-tag" style="background:rgba(251,191,36,.08);color:#fbbf24;border:1px solid rgba(251,191,36,.18)">Sensors</span>
+              <h2 class="tool-card-title">Ambient Light Sensor Test</h2>
+              <p class="tool-card-desc">See live lux readings from your phone's light sensor and test auto-brightness by covering and uncovering the sensor. Includes lux history graph and environment classification.</p>
+              <div class="tool-card-features">
+                <span class="tool-feat">Live Lux</span><span class="tool-feat">Lux History</span><span class="tool-feat">Auto-Brightness</span><span class="tool-feat">Cover Test</span><span class="tool-feat">Android</span>
+              </div>
+              <a href="ambient-light-sensor-test" class="tool-card-btn" style="background:rgba(251,191,36,.12);color:#fbbf24;border:1px solid rgba(251,191,36,.25)" aria-label="Start ambient light sensor test">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+                Start Light Test
+              </a>
+            </div>
+          </article>
+
+          <!-- ═══════════════════════════════════════════════
+               OLED BURN-IN TEST
+          ═══════════════════════════════════════════════ -->
+          <article class="tool-card" style="opacity:0;transform:translateY(20px);transition:.5s ease .54s" data-animate>
+            <div class="tool-card-visual">
+              <div class="tool-card-glow" style="background:radial-gradient(circle at 50% 50%,rgba(167,139,250,.1),transparent 70%)"></div>
+              <div class="tool-card-icon" style="background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.2);color:#c4b5fd;box-shadow:0 0 40px rgba(167,139,250,.15)">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="3" y="6" width="38" height="32" rx="4" stroke="currentColor" stroke-width="2"/><path d="M3 14h38M3 22h38M3 30h38" stroke="currentColor" stroke-width="1.5" opacity=".4"/><rect x="3" y="6" width="19" height="10" fill="currentColor" opacity=".15"/><rect x="22" y="22" width="19" height="10" fill="currentColor" opacity=".15"/><circle cx="38" cy="10" r="2" fill="currentColor"/></svg>
+              </div>
+            </div>
+            <div class="tool-card-body">
+              <span class="tool-card-tag" style="background:rgba(167,139,250,.08);color:#c4b5fd;border:1px solid rgba(167,139,250,.18)">Display</span>
+              <h2 class="tool-card-title">OLED Burn-in Test</h2>
+              <p class="tool-card-desc">Detect burn-in and image retention on OLED and LCD screens. Cycle through solid colors, gradients, and retention check patterns with a short timer.</p>
+              <div class="tool-card-features">
+                <span class="tool-feat">Solid Colors</span><span class="tool-feat">Gradients</span><span class="tool-feat">Retention Patterns</span><span class="tool-feat">Auto Timer</span><span class="tool-feat">Full-Screen</span>
+              </div>
+              <a href="oled-burn-in-test" class="tool-card-btn" style="background:rgba(167,139,250,.12);color:#c4b5fd;border:1px solid rgba(167,139,250,.25)" aria-label="Start OLED burn-in test">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
+                Start Burn-in Test
+              </a>
+            </div>
+          </article>
+
         </div>
 
         <!-- Detect CTA -->
-        <div style="margin-top:4rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;position:relative;overflow:hidden">
-          <div style="position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(59,130,246,.07),transparent 60%);pointer-events:none"></div>
-          <div><h2 style="font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:.5rem">Don't Know Your Phone Model?</h2><p style="color:var(--text2);font-size:.95rem;max-width:480px">Identify your exact device, OS, and 30+ capabilities first — then run the right tests for your phone.</p></div>
-          <a href="/" class="btn-primary" style="display:inline-flex;flex-shrink:0">
+        <div class="detect-cta">
+          <div>
+            <h2>Don't Know Your Phone Model?</h2>
+            <p>Identify your exact device, OS, and 30+ capabilities first — then run the right tests for your phone.</p>
+          </div>
+          <a href="/" class="btn-primary" style="display:inline-flex;flex-shrink:0;text-decoration:none;position:relative">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg>
             Detect My Phone
           </a>
