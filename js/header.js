@@ -14,6 +14,12 @@ const Header = (() => {
       vibrationTest: 'Vibration Test',
       wifiSpeedTest: 'WiFi Speed Test',
       gpsCompassTest: 'GPS Compass Test',
+      deadPixelTest: 'Dead Pixel Test',
+      refreshRateTest: 'Refresh Rate Test',
+      motionSensors: 'Motion Sensors',
+      proximitySensor: 'Proximity Sensor',
+      ambientLight: 'Ambient Light',
+      oledBurnIn: 'OLED Burn-in Test',
       guides: 'Guides',
       detectCta: 'Detect My Phone',
       toggleLabel: 'Toggle navigation menu',
@@ -30,6 +36,12 @@ const Header = (() => {
       vibrationTest: 'Vibrationstest',
       wifiSpeedTest: 'WLAN-Geschwindigkeitstest',
       gpsCompassTest: 'GPS-Kompasstest',
+      deadPixelTest: 'Dead-Pixel-Test',
+      refreshRateTest: 'Bildwiederholrate-Test',
+      motionSensors: 'Bewegungssensoren',
+      proximitySensor: 'Näherungssensor',
+      ambientLight: 'Umgebungslicht',
+      oledBurnIn: 'OLED-Einbrenn-Test',
       guides: 'Anleitungen',
       detectCta: 'Mein Handy erkennen',
       toggleLabel: 'Navigationsmenü umschalten',
@@ -46,6 +58,12 @@ const Header = (() => {
       vibrationTest: 'Test Vibration',
       wifiSpeedTest: 'Test Vitesse WiFi',
       gpsCompassTest: 'Test GPS Boussole',
+      deadPixelTest: 'Test Pixel Mort',
+      refreshRateTest: 'Test Taux de Rafraîchissement',
+      motionSensors: 'Capteurs de Mouvement',
+      proximitySensor: 'Capteur de Proximité',
+      ambientLight: 'Lumière Ambiante',
+      oledBurnIn: 'Test de Brûlure OLED',
       guides: 'Guides',
       detectCta: 'Détecter mon téléphone',
       toggleLabel: 'Basculer le menu de navigation',
@@ -62,6 +80,12 @@ const Header = (() => {
       vibrationTest: 'Prueba de Vibración',
       wifiSpeedTest: 'Prueba de Velocidad WiFi',
       gpsCompassTest: 'Prueba GPS Brújula',
+      deadPixelTest: 'Prueba de Píxeles Muertos',
+      refreshRateTest: 'Prueba de Frecuencia de Actualización',
+      motionSensors: 'Sensores de Movimiento',
+      proximitySensor: 'Sensor de Proximidad',
+      ambientLight: 'Luz Ambiental',
+      oledBurnIn: 'Prueba de Quemado OLED',
       guides: 'Guías',
       detectCta: 'Detectar mi teléfono',
       toggleLabel: 'Alternar menú de navegación',
@@ -78,6 +102,12 @@ const Header = (() => {
       vibrationTest: 'Test Vibrazione',
       wifiSpeedTest: 'Test Velocità WiFi',
       gpsCompassTest: 'Test GPS Bussola',
+      deadPixelTest: 'Test Pixel Morti',
+      refreshRateTest: 'Test Frequenza di Aggiornamento',
+      motionSensors: 'Sensori di Movimento',
+      proximitySensor: 'Sensore di Prossimità',
+      ambientLight: 'Luce Ambientale',
+      oledBurnIn: 'Test Burn-in OLED',
       guides: 'Guide',
       detectCta: 'Rileva il mio telefono',
       toggleLabel: 'Attiva/disattiva menu di navigazione',
@@ -162,6 +192,12 @@ const Header = (() => {
                 <li><a href="${langPrefix}/vibration-test" class="dropdown-link" role="menuitem">${t('vibrationTest')}</a></li>
                 <li><a href="${langPrefix}/wifi-speed-test" class="dropdown-link" role="menuitem">${t('wifiSpeedTest')}</a></li>
                 <li><a href="${langPrefix}/gps-compass-test" class="dropdown-link" role="menuitem">${t('gpsCompassTest')}</a></li>
+                <li><a href="${langPrefix}/dead-pixel" class="dropdown-link" role="menuitem">${t('deadPixelTest')}</a></li>
+                <li><a href="${langPrefix}/refresh-rate-test" class="dropdown-link" role="menuitem">${t('refreshRateTest')}</a></li>
+                <li><a href="${langPrefix}/motion-sensors" class="dropdown-link" role="menuitem">${t('motionSensors')}</a></li>
+                <li><a href="${langPrefix}/proximity-sensor-test" class="dropdown-link" role="menuitem">${t('proximitySensor')}</a></li>
+                <li><a href="${langPrefix}/ambient-light-sensor-test" class="dropdown-link" role="menuitem">${t('ambientLight')}</a></li>
+                <li><a href="${langPrefix}/oled-burn-in-test" class="dropdown-link" role="menuitem">${t('oledBurnIn')}</a></li>
               </ul>
             </li>
             
