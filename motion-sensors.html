@@ -1,0 +1,2622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" 
+    crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MD16J6JVZ2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MD16J6JVZ2');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ── Primary Meta ─────────────────────────────────── -->
+  <title>Motion Sensors Suite — Accelerometer, Gyroscope & Orientation Test | WhatPhone</title>
+  <meta name="description" content="Free advanced motion sensors test. Real-time graphs for accelerometer, gyroscope, and device orientation. Run shake, tilt, and calibration checks on your phone, tablet, or laptop — no app needed." />
+  <meta name="keywords" content="motion sensors test, accelerometer test, gyroscope test, device orientation test, motion sensor suite, shake test, tilt test, sensor calibration check, phone sensors test, motion graph online" />
+  <meta name="author" content="WhatPhone" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://whatphone.github.io/motion-sensors" />
+  <link rel="alternate" hreflang="en" href="https://whatphone.github.io/motion-sensors" />
+  <link rel="alternate" hreflang="x-default" href="https://whatphone.github.io/motion-sensors" />
+
+  <!-- ── Open Graph ────────────────────────────────────── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://whatphone.github.io/motion-sensors" />
+  <meta property="og:title" content="Motion Sensors Suite — Accelerometer, Gyroscope & Orientation Test" />
+  <meta property="og:description" content="Real-time motion sensor graphs, orientation visualization, shake/tilt accuracy tests, and calibration checks. Free, private, no app." />
+  <meta property="og:image" content="https://whatphone.github.io/assets/og-image.png" />
+  <meta property="og:site_name" content="WhatPhone" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ── Twitter Card ──────────────────────────────────── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@whatphone" />
+  <meta name="twitter:title" content="Motion Sensors Suite — Accelerometer, Gyroscope & Orientation Test" />
+  <meta name="twitter:description" content="Real-time motion graphs, orientation visualization, shake/tilt tests & calibration checks. Free & private." />
+  <meta name="twitter:image" content="https://whatphone.github.io/assets/og-image.png" />
+
+  <!-- ── Favicon ───────────────────────────────────────── -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+
+  <!-- ── Theme Color ───────────────────────────────────── -->
+  <meta name="theme-color" content="#080c14" />
+  <meta name="msapplication-TileColor" content="#080c14" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- ── Preconnect ───────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- ── Stylesheet ───────────────────────────────────── -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- ── Schema Markup ────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://whatphone.github.io/motion-sensors#app",
+        "name": "Motion Sensors Suite",
+        "url": "https://whatphone.github.io/motion-sensors",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires a modern web browser with DeviceMotion and DeviceOrientation support",
+        "description": "Free online advanced motion sensors suite. View real-time graphs for accelerometer, gyroscope, and device orientation, run shake and tilt accuracy tests, and perform simple calibration checks on any phone, tablet, or laptop.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Real-time accelerometer graph (X/Y/Z)",
+          "Real-time gyroscope graph (alpha/beta/gamma)",
+          "3D orientation visualization",
+          "Shake detection accuracy test",
+          "Tilt accuracy test with level indicator",
+          "Compass heading with calibration check",
+          "Live numeric readouts",
+          "Works on phones, tablets, and laptops",
+          "No app download required"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://whatphone.github.io/motion-sensors#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I test the motion sensors on my phone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open this page on your phone, tap 'Enable Sensors', and allow motion access when prompted. The real-time graphs will start plotting accelerometer and gyroscope data as you move, tilt, or shake your device. Use the shake and tilt tests to verify accuracy, and the compass calibration check to confirm heading."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does my browser not show sensor data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most browsers require explicit permission for motion sensors on non-secure origins or newer iOS versions. Make sure you are on HTTPS, tap 'Enable Sensors', and grant the permission prompt. Some desktop browsers without motion hardware will not produce data — that is normal."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between the accelerometer and gyroscope?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The accelerometer measures linear acceleration including gravity, so it can detect tilt and shake. The gyroscope measures the rate of rotation around each axis, so it tracks angular velocity. Together they enable full motion tracking. This suite shows both graphs live."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calibrate my phone's motion sensors?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Place the device on a flat, level surface and check the tilt readout. If it does not show roughly 0° on pitch and roll, move the phone in a figure-8 pattern several times. For the compass, rotate the phone slowly around each axis. Then re-open the tilt test to verify the calibration."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ── Motion Sensors Suite styles ─────────────────────────── */
+    :root {
+      --ms-bg: #080c14;
+      --ms-surface: #10151f;
+      --ms-surface2: #161d2a;
+      --ms-border: #1e2636;
+      --ms-border2: #2a3446;
+      --ms-text: #c8d2e0;
+      --ms-text2: #7a8aa0;
+      --ms-text3: #4a5568;
+      --ms-heading: #f0f4fa;
+      --ms-accent: #ff6b4a;
+      --ms-accent2: #f5573a;
+      --ms-neon: #8b5cf6;
+      --ms-green: #22c55e;
+      --ms-red: #ef4444;
+      --ms-amber: #f59e0b;
+      --ms-sky: #0ea5e9;
+      --ms-cyan: #06b6d4;
+      --ms-font-display: 'Syne', sans-serif;
+      --ms-font-body: 'DM Sans', sans-serif;
+      --ms-font-mono: 'Space Mono', monospace;
+      --ms-r: 14px;
+      --ms-r-lg: 24px;
+      --ms-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      --ms-shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.6);
+      --ms-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--ms-bg);
+      color: var(--ms-text);
+      font-family: var(--ms-font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Permission overlay ───────────────────────────────────── */
+    #sensorOverlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99998;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      background: rgba(8, 12, 20, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      text-align: center;
+      padding: 2rem;
+    }
+    #sensorOverlay.active { display: flex; }
+    #sensorOverlay h2 {
+      font-family: var(--ms-font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--ms-heading);
+    }
+    #sensorOverlay p {
+      color: var(--ms-text2);
+      font-size: 0.95rem;
+      max-width: 360px;
+      line-height: 1.65;
+    }
+    .sensor-permission-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: var(--ms-r);
+      background: linear-gradient(135deg, var(--ms-accent) 0%, var(--ms-accent2) 100%);
+      color: #fff;
+      font-weight: 700;
+      font-family: var(--ms-font-display);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(255, 107, 74, 0.35);
+      transition: all var(--ms-transition);
+    }
+    .sensor-permission-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(255, 107, 74, 0.5);
+    }
+    .sensor-close-btn {
+      font-size: 0.8rem;
+      color: var(--ms-text3);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.4rem 0.8rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .sensor-close-btn:hover { color: var(--ms-text2); }
+
+    /* ── Page layout ──────────────────────────────────────────── */
+    .ms-page {
+      padding-top: 72px;
+      min-height: 100vh;
+      background: var(--ms-bg);
+    }
+
+    /* Hero */
+    .ms-hero {
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: 1px solid var(--ms-border);
+      background: linear-gradient(180deg, var(--ms-bg) 0%, var(--ms-surface) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .ms-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 10% 0%, rgba(255, 107, 74, 0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 10%, rgba(139, 92, 246, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 50% 100%, rgba(6, 182, 212, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .ms-hero .container { position: relative; z-index: 1; }
+
+    .ms-breadcrumb ol {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      list-style: none;
+      font-size: 0.8rem;
+      color: var(--ms-text3);
+      margin-bottom: 1.5rem;
+      padding: 0;
+    }
+    .ms-breadcrumb li + li::before {
+      content: '/';
+      opacity: 0.4;
+      margin-right: 0.5rem;
+    }
+    .ms-breadcrumb a { color: var(--ms-text2); transition: color var(--ms-transition); }
+    .ms-breadcrumb a:hover { color: var(--ms-accent); }
+    .ms-breadcrumb [aria-current] { color: var(--ms-accent); }
+
+    .ms-hero-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .ms-hero-left h1 {
+      font-family: var(--ms-font-display);
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--ms-heading);
+      line-height: 1.12;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .ms-hero-left h1 span {
+      background: linear-gradient(135deg, var(--ms-accent) 0%, #ff9478 50%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .ms-hero-left p {
+      color: var(--ms-text2);
+      font-size: 1.05rem;
+      max-width: 580px;
+      line-height: 1.65;
+    }
+
+    .ms-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: var(--ms-surface);
+      border: 1px solid var(--ms-border);
+      color: var(--ms-text2);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ms-status-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--ms-text3); flex-shrink: 0;
+    }
+    .ms-status-dot.ready {
+      background: var(--ms-green);
+      box-shadow: 0 0 8px rgba(34,197,94,0.6);
+      animation: ms-pulse 2s infinite;
+    }
+    .ms-status-dot.live {
+      background: var(--ms-accent);
+      box-shadow: 0 0 8px rgba(255,107,74,0.6);
+      animation: ms-pulse 1s infinite;
+    }
+    .ms-status-dot.error { background: var(--ms-red); }
+    @keyframes ms-pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    /* ── Main layout ──────────────────────────────────────────── */
+    .ms-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 1.75rem;
+      align-items: start;
+    }
+
+    /* ── Sensor graph cards ───────────────────────────────────── */
+    .ms-graph-card {
+      background: var(--ms-surface);
+      border: 1px solid var(--ms-border);
+      border-radius: var(--ms-r-lg);
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--ms-shadow);
+    }
+    .ms-graph-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid var(--ms-border);
+      gap: 1rem;
+    }
+    .ms-graph-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--ms-font-display);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--ms-heading);
+    }
+    .ms-graph-title .icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(255,107,74,0.1);
+      border: 1px solid rgba(255,107,74,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ms-accent);
+      flex-shrink: 0;
+    }
+    .ms-graph-values {
+      display: flex;
+      gap: 0.9rem;
+      font-family: var(--ms-font-mono);
+      font-size: 0.78rem;
+      flex-wrap: wrap;
+    }
+    .ms-graph-values .val {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .ms-graph-values .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+    .ms-graph-values .x { color: var(--ms-accent); }
+    .ms-graph-values .x .dot { background: var(--ms-accent); }
+    .ms-graph-values .y { color: var(--ms-green); }
+    .ms-graph-values .y .dot { background: var(--ms-green); }
+    .ms-graph-values .z { color: var(--ms-neon); }
+    .ms-graph-values .z .dot { background: var(--ms-neon); }
+
+    .ms-graph-canvas-wrap {
+      position: relative;
+      background: var(--ms-bg);
+    }
+    .ms-graph-canvas-wrap canvas {
+      display: block;
+      width: 100%;
+      height: 180px;
+    }
+
+    /* ── Orientation visual ───────────────────────────────────── */
+    .ms-orient-card {
+      background: var(--ms-surface);
+      border: 1px solid var(--ms-border);
+      border-radius: var(--ms-r-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--ms-shadow);
+    }
+    .ms-card-title {
+      font-family: var(--ms-font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ms-text3);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .ms-card-title .title-right {
+      font-family: var(--ms-font-mono);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ms-text3);
+    }
+
+    .ms-orient-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    /* 3D device visualization */
+    #deviceVisual {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 600px;
+    }
+    #deviceCube {
+      width: 110px;
+      height: 180px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.05s linear;
+    }
+    .cube-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(255, 107, 74, 0.5);
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(255,107,74,0.15), rgba(139,92,246,0.1));
+      box-shadow: inset 0 0 40px rgba(255,107,74,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ms-font-mono);
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .cube-face.front { transform: translateZ(55px); }
+    .cube-face.back { transform: rotateY(180deg) translateZ(55px); }
+    .cube-face.right { transform: rotateY(90deg) translateZ(55px); }
+    .cube-face.left { transform: rotateY(-90deg) translateZ(55px); }
+    .cube-face.top { transform: rotateX(90deg) translateZ(55px); }
+    .cube-face.bottom { transform: rotateX(-90deg) translateZ(55px); }
+    .cube-face .axis-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .cube-face .axis-arrow {
+      font-size: 1.2rem;
+      color: var(--ms-accent);
+      opacity: 0.7;
+    }
+
+    .ms-orient-readouts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+    .ms-orient-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.55rem 0.85rem;
+      background: var(--ms-bg);
+      border: 1px solid var(--ms-border);
+      border-radius: 10px;
+      font-size: 0.82rem;
+    }
+    .ms-orient-row .label { color: var(--ms-text2); }
+    .ms-orient-row .value {
+      font-family: var(--ms-font-mono);
+      font-weight: 700;
+      color: var(--ms-heading);
+    }
+    .ms-orient-row .value.accent { color: var(--ms-accent); }
+    .ms-orient-row .value.green { color: var(--ms-green); }
+    .ms-orient-row .value.neon { color: var(--ms-neon); }
+
+    /* ── Test buttons ─────────────────────────────────────────── */
+    .ms-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .ms-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--ms-r);
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: var(--ms-font-display);
+      border: none;
+      cursor: pointer;
+      transition: all var(--ms-transition);
+      white-space: nowrap;
+    }
+    .ms-btn-primary {
+      background: linear-gradient(135deg, var(--ms-accent) 0%, var(--ms-accent2) 100%);
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(255,107,74,0.3);
+    }
+    .ms-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(255,107,74,0.45);
+    }
+    .ms-btn-primary:active { transform: translateY(0); }
+    .ms-btn-primary:disabled {
+      opacity: 0.6; cursor: not-allowed; transform: none;
+    }
+    .ms-btn-secondary {
+      background: var(--ms-surface2);
+      color: var(--ms-text);
+      border: 1px solid var(--ms-border);
+    }
+    .ms-btn-secondary:hover {
+      border-color: var(--ms-accent);
+      color: var(--ms-accent);
+      background: var(--ms-surface);
+    }
+    .ms-btn-sm {
+      padding: 0.55rem 1rem;
+      font-size: 0.8rem;
+    }
+
+    /* ── Test panels ──────────────────────────────────────────── */
+    .ms-test-panel {
+      background: var(--ms-surface);
+      border: 1px solid var(--ms-border);
+      border-radius: var(--ms-r-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--ms-shadow);
+      display: none;
+    }
+    .ms-test-panel.active { display: block; }
+
+    .ms-test-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .ms-test-header h3 {
+      font-family: var(--ms-font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ms-heading);
+    }
+    .ms-test-close {
+      font-size: 0.78rem;
+      color: var(--ms-text3);
+      background: none;
+      border: 1px solid var(--ms-border);
+      border-radius: 8px;
+      padding: 0.35rem 0.75rem;
+      cursor: pointer;
+      transition: all var(--ms-transition);
+    }
+    .ms-test-close:hover { color: var(--ms-accent); border-color: var(--ms-accent); }
+
+    /* Shake test */
+    #shakeGauge {
+      width: 100%;
+      height: 140px;
+      display: block;
+      background: var(--ms-bg);
+      border-radius: 12px;
+      border: 1px solid var(--ms-border);
+    }
+    .shake-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .shake-stat {
+      background: var(--ms-bg);
+      border: 1px solid var(--ms-border);
+      border-radius: 10px;
+      padding: 0.75rem;
+      text-align: center;
+    }
+    .shake-stat-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ms-text3);
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+    .shake-stat-value {
+      font-family: var(--ms-font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ms-heading);
+    }
+
+    /* Tilt test */
+    .tilt-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    #tiltBubble {
+      width: 100%;
+      aspect-ratio: 1/1;
+      max-height: 200px;
+      display: block;
+      background: var(--ms-bg);
+      border-radius: 50%;
+      border: 1px solid var(--ms-border);
+      margin: 0 auto;
+    }
+    .tilt-readouts {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .tilt-verdict {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+    .tilt-verdict.level {
+      background: rgba(34,197,94,0.12);
+      color: var(--ms-green);
+      border: 1px solid rgba(34,197,94,0.3);
+    }
+    .tilt-verdict.off {
+      background: rgba(245,158,11,0.12);
+      color: var(--ms-amber);
+      border: 1px solid rgba(245,158,11,0.3);
+    }
+
+    /* Compass */
+    .compass-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    #compassRose {
+      width: 100%;
+      aspect-ratio: 1/1;
+      max-height: 200px;
+      display: block;
+      margin: 0 auto;
+    }
+    .compass-readouts {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .compass-calib {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+    .compass-calib.good {
+      background: rgba(34,197,94,0.12);
+      color: var(--ms-green);
+      border: 1px solid rgba(34,197,94,0.3);
+    }
+    .compass-calib.medium {
+      background: rgba(245,158,11,0.12);
+      color: var(--ms-amber);
+      border: 1px solid rgba(245,158,11,0.3);
+    }
+    .compass-calib.poor {
+      background: rgba(239,68,68,0.12);
+      color: var(--ms-red);
+      border: 1px solid rgba(239,68,68,0.3);
+    }
+
+    /* ── Sidebar ──────────────────────────────────────────────── */
+    .ms-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .ms-card {
+      background: var(--ms-surface);
+      border: 1px solid var(--ms-border);
+      border-radius: var(--ms-r-lg);
+      padding: 1.5rem;
+      box-shadow: var(--ms-shadow);
+    }
+    .ms-tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--ms-border);
+      font-size: 0.85rem;
+      color: var(--ms-text2);
+      line-height: 1.55;
+    }
+    .ms-tip:last-child { border-bottom: none; padding-bottom: 0; }
+    .ms-tip:first-child { padding-top: 0; }
+    .ms-tip-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255,107,74,0.1);
+      border: 1px solid rgba(255,107,74,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--ms-accent);
+      font-size: 0.8rem;
+    }
+    .ms-tip strong { color: var(--ms-heading); font-weight: 600; }
+
+    .ms-sensor-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .ms-sensor-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 0.75rem;
+      background: var(--ms-bg);
+      border: 1px solid var(--ms-border);
+      border-radius: 10px;
+      font-size: 0.82rem;
+    }
+    .ms-sensor-item .name { color: var(--ms-text2); }
+    .ms-sensor-item .status {
+      font-family: var(--ms-font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--ms-text3);
+    }
+    .ms-sensor-item .status.ok { color: var(--ms-green); }
+    .ms-sensor-item .status.missing { color: var(--ms-red); }
+
+    .ms-tool-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .ms-tool-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.65rem 0.85rem;
+      background: var(--ms-bg);
+      border: 1px solid var(--ms-border);
+      border-radius: var(--ms-r);
+      font-size: 0.82rem;
+      color: var(--ms-text2);
+      transition: all var(--ms-transition);
+      text-decoration: none;
+    }
+    .ms-tool-link:hover {
+      border-color: var(--ms-accent);
+      color: var(--ms-text);
+      background: var(--ms-surface);
+    }
+    .ms-tool-link .tool-icon { font-size: 1rem; flex-shrink: 0; }
+
+    /* ── Sections ─────────────────────────────────────────────── */
+    .ms-section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--ms-border);
+    }
+    .ms-section-alt {
+      background: linear-gradient(180deg, var(--ms-surface) 0%, var(--ms-bg) 100%);
+    }
+    .ms-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .ms-section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .ms-section-eyebrow {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      padding: 0.3rem 0.9rem;
+      background: rgba(255,107,74,0.1);
+      border: 1px solid rgba(255,107,74,0.2);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ms-accent);
+      font-family: var(--ms-font-mono);
+    }
+    .ms-section-title {
+      font-family: var(--ms-font-display);
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: var(--ms-heading);
+      margin-bottom: 0.75rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .ms-section-subtitle {
+      font-size: 1.02rem;
+      color: var(--ms-text2);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .ms-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .ms-feature-card {
+      background: var(--ms-surface);
+      border: 1px solid var(--ms-border);
+      border-radius: var(--ms-r-lg);
+      padding: 1.75rem;
+      transition: all var(--ms-transition);
+    }
+    .ms-feature-card:hover {
+      border-color: rgba(255,107,74,0.3);
+      transform: translateY(-4px);
+      box-shadow: var(--ms-shadow-lg);
+    }
+    .ms-feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(255,107,74,0.08);
+      border: 1px solid rgba(255,107,74,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+      color: var(--ms-accent);
+    }
+    .ms-feature-icon svg { width: 24px; height: 24px; }
+    .ms-feature-title {
+      font-family: var(--ms-font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ms-heading);
+      margin-bottom: 0.5rem;
+    }
+    .ms-feature-desc {
+      font-size: 0.88rem;
+      color: var(--ms-text2);
+      line-height: 1.65;
+    }
+
+    .ms-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      position: relative;
+    }
+    .ms-steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 34px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--ms-border), var(--ms-accent), var(--ms-border), transparent);
+      z-index: 0;
+    }
+    .ms-step-item {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .ms-step-num {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: var(--ms-surface);
+      border: 2px solid var(--ms-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ms-font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--ms-accent);
+      margin: 0 auto 1rem;
+      box-shadow: 0 0 20px rgba(255,107,74,0.15);
+      transition: all var(--ms-transition);
+    }
+    .ms-step-item:hover .ms-step-num {
+      background: var(--ms-accent);
+      color: #fff;
+      box-shadow: 0 0 30px rgba(255,107,74,0.4);
+    }
+    .ms-step-title {
+      font-family: var(--ms-font-display);
+      font-weight: 700;
+      color: var(--ms-heading);
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+    .ms-step-desc {
+      font-size: 0.82rem;
+      color: var(--ms-text2);
+      line-height: 1.6;
+    }
+
+    /* FAQ */
+    .ms-faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .ms-faq-item {
+      background: var(--ms-surface);
+      border: 1px solid var(--ms-border);
+      border-radius: var(--ms-r);
+      overflow: hidden;
+      transition: border-color var(--ms-transition);
+    }
+    .ms-faq-item.open { border-color: rgba(255,107,74,0.4); }
+    .ms-faq-q {
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+      font-weight: 600;
+      color: var(--ms-heading);
+      font-size: 0.95rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--ms-font-body);
+      transition: color var(--ms-transition);
+    }
+    .ms-faq-q:hover { color: var(--ms-accent); }
+    .ms-faq-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: var(--ms-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+      font-weight: 300;
+      transition: all var(--ms-transition);
+    }
+    .ms-faq-item.open .ms-faq-icon {
+      background: var(--ms-accent);
+      color: #fff;
+      transform: rotate(45deg);
+    }
+    .ms-faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      font-size: 0.9rem;
+      color: var(--ms-text2);
+      line-height: 1.75;
+    }
+    .ms-faq-item.open .ms-faq-a {
+      max-height: 400px;
+      padding: 0 1.5rem 1.25rem;
+    }
+    .ms-faq-a p { margin: 0; }
+
+    /* Toast */
+    .ms-toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--ms-surface);
+      border: 1px solid var(--ms-border2);
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      color: var(--ms-text);
+      z-index: 9999;
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      box-shadow: var(--ms-shadow-lg);
+    }
+    .ms-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .ms-main { grid-template-columns: 1fr; }
+      .ms-features-grid { grid-template-columns: repeat(2, 1fr); }
+      .ms-steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .ms-steps-grid::before { display: none; }
+    }
+    @media (max-width: 768px) {
+      .ms-hero { padding: 2rem 0 1.5rem; }
+      .ms-hero-inner { flex-direction: column; }
+      .ms-status-badge { align-self: flex-start; }
+      .ms-features-grid { grid-template-columns: 1fr; }
+      .ms-steps-grid { grid-template-columns: 1fr; }
+      .ms-main { padding: 1.5rem 1rem 3rem; }
+      .ms-orient-body,
+      .tilt-body,
+      .compass-body { grid-template-columns: 1fr; }
+      .shake-stats { grid-template-columns: repeat(2, 1fr); }
+      .ms-graph-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .ms-actions { flex-direction: column; }
+      .ms-btn { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .shake-stats { grid-template-columns: 1fr 1fr; }
+      .ms-orient-readouts { gap: 0.4rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--ms-accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content" style="position:absolute;top:-100%;left:1rem;background:var(--ms-accent);color:#fff;padding:0.5rem 1rem;border-radius:8px;font-weight:600;z-index:99999;transition:top 0.25s;">Skip to main content</a>
+
+  <!-- Header -->
+  <header id="site-header" role="banner"></header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SENSOR PERMISSION OVERLAY
+  ══════════════════════════════════════════════════════════ -->
+  <div id="sensorOverlay" role="dialog" aria-modal="true" aria-labelledby="sensorOverlayTitle">
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style="color:var(--ms-accent)" aria-hidden="true">
+      <circle cx="28" cy="28" r="22" stroke="currentColor" stroke-width="2.2"/>
+      <circle cx="28" cy="28" r="10" stroke="currentColor" stroke-width="2.2" stroke-dasharray="4 4"/>
+      <circle cx="28" cy="28" r="3" fill="currentColor"/>
+      <path d="M28 6v6M28 44v6M6 28h6M44 28h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+    <h2 id="sensorOverlayTitle">Enable Motion Sensors</h2>
+    <p>This test needs access to your device's accelerometer, gyroscope, and orientation sensors. Tap below and allow the browser prompt.</p>
+    <button class="sensor-permission-btn" id="enableSensorsBtn">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="9" r="7"/>
+        <polygon points="7 6 12 9 7 12 7 6" fill="currentColor" stroke="none"/>
+      </svg>
+      Enable Sensors
+    </button>
+    <button class="sensor-close-btn" id="sensorOverlayCloseBtn">Not now</button>
+  </div>
+
+  <!-- ── Main Content ─────────────────────────────────── -->
+  <main class="ms-page" id="main-content">
+
+    <!-- ══════════════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════════════════ -->
+    <section class="ms-hero">
+      <div class="container">
+        <nav class="ms-breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li aria-current="page">Motion Sensors Suite</li>
+          </ol>
+        </nav>
+        <div class="ms-hero-inner">
+          <div class="ms-hero-left">
+            <h1>Motion Sensors Suite<br/><span>Live Accelerometer, Gyroscope & Orientation</span></h1>
+            <p>Visualize your device's motion sensors in real time. Plot accelerometer and gyroscope data, see a live 3D orientation model, run shake and tilt accuracy tests, and check your compass calibration — all in your browser.</p>
+          </div>
+          <div class="ms-status-badge" id="msStatusBadge" aria-live="polite">
+            <span class="ms-status-dot" id="msStatusDot"></span>
+            <span id="msStatusText">Sensors inactive</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         MAIN AREA
+    ══════════════════════════════════════════════════════ -->
+    <div class="ms-main">
+      <!-- Left column -->
+      <div>
+        <!-- Enable button -->
+        <div class="ms-actions">
+          <button class="ms-btn ms-btn-primary" id="enableSensorsBtnMain" aria-label="Enable motion sensors">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="9" r="7"/>
+              <polygon points="7 6 12 9 7 12 7 6" fill="currentColor" stroke="none"/>
+            </svg>
+            Enable Sensors
+          </button>
+          <button class="ms-btn ms-btn-secondary" id="shakeTestBtn" aria-label="Run shake accuracy test">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9h2l2-4 2 8 2-6 2 4h2"/>
+            </svg>
+            Shake Test
+          </button>
+          <button class="ms-btn ms-btn-secondary" id="tiltTestBtn" aria-label="Run tilt accuracy test">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="9" r="7"/>
+              <circle cx="9" cy="9" r="2" fill="currentColor"/>
+              <line x1="9" y1="2" x2="9" y2="5"/>
+            </svg>
+            Tilt Test
+          </button>
+          <button class="ms-btn ms-btn-secondary" id="compassTestBtn" aria-label="Run compass calibration check">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="9" r="7"/>
+              <polygon points="9 3 11 9 9 8 7 9" fill="currentColor"/>
+            </svg>
+            Compass Check
+          </button>
+        </div>
+
+        <!-- Accelerometer graph -->
+        <div class="ms-graph-card">
+          <div class="ms-graph-header">
+            <div class="ms-graph-title">
+              <div class="icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 17 9 11 13 15 21 7"/>
+                </svg>
+              </div>
+              Accelerometer
+              <span style="font-size:0.7rem;color:var(--ms-text3);font-family:var(--ms-font-mono);font-weight:400;margin-left:0.3rem;">m/s²</span>
+            </div>
+            <div class="ms-graph-values">
+              <span class="val x"><span class="dot"></span>X: <span id="accX">0.00</span></span>
+              <span class="val y"><span class="dot"></span>Y: <span id="accY">0.00</span></span>
+              <span class="val z"><span class="dot"></span>Z: <span id="accZ">0.00</span></span>
+            </div>
+          </div>
+          <div class="ms-graph-canvas-wrap">
+            <canvas id="accCanvas" aria-label="Accelerometer graph"></canvas>
+          </div>
+        </div>
+
+        <!-- Gyroscope graph -->
+        <div class="ms-graph-card">
+          <div class="ms-graph-header">
+            <div class="ms-graph-title">
+              <div class="icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+              Gyroscope
+              <span style="font-size:0.7rem;color:var(--ms-text3);font-family:var(--ms-font-mono);font-weight:400;margin-left:0.3rem;">°/s</span>
+            </div>
+            <div class="ms-graph-values">
+              <span class="val x"><span class="dot"></span>α: <span id="gyroAlpha">0.0</span></span>
+              <span class="val y"><span class="dot"></span>β: <span id="gyroBeta">0.0</span></span>
+              <span class="val z"><span class="dot"></span>γ: <span id="gyroGamma">0.0</span></span>
+            </div>
+          </div>
+          <div class="ms-graph-canvas-wrap">
+            <canvas id="gyroCanvas" aria-label="Gyroscope graph"></canvas>
+          </div>
+        </div>
+
+        <!-- Orientation visualization -->
+        <div class="ms-orient-card">
+          <div class="ms-card-title">
+            <span>3D Orientation</span>
+            <span class="title-right" id="orientStatus">Awaiting sensors</span>
+          </div>
+          <div class="ms-orient-body">
+            <div id="deviceVisual" aria-hidden="true">
+              <div id="deviceCube">
+                <div class="cube-face front"><div class="axis-label"><span class="axis-arrow">▲</span><span>TOP</span></div></div>
+                <div class="cube-face back"></div>
+                <div class="cube-face right"></div>
+                <div class="cube-face left"></div>
+                <div class="cube-face top"></div>
+                <div class="cube-face bottom"></div>
+              </div>
+            </div>
+            <div class="ms-orient-readouts">
+              <div class="ms-orient-row">
+                <span class="label">Alpha (Z rotation)</span>
+                <span class="value accent" id="orientAlpha">0°</span>
+              </div>
+              <div class="ms-orient-row">
+                <span class="label">Beta (X pitch)</span>
+                <span class="value green" id="orientBeta">0°</span>
+              </div>
+              <div class="ms-orient-row">
+                <span class="label">Gamma (Y roll)</span>
+                <span class="value neon" id="orientGamma">0°</span>
+              </div>
+              <div class="ms-orient-row">
+                <span class="label">Compass Heading</span>
+                <span class="value" id="orientHeading">0°</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shake test panel -->
+        <div class="ms-test-panel" id="shakePanel" role="region" aria-label="Shake accuracy test">
+          <div class="ms-test-header">
+            <h3>🤝 Shake Accuracy Test</h3>
+            <button class="ms-test-close" onclick="closeTest('shake')">Close</button>
+          </div>
+          <p style="font-size:0.85rem;color:var(--ms-text2);margin-bottom:1rem;">Shake your device — the meter below tracks peaks and detects shakes. Each spike registers as a shake event.</p>
+          <canvas id="shakeGauge" aria-label="Shake detection gauge"></canvas>
+          <div class="shake-stats">
+            <div class="shake-stat">
+              <div class="shake-stat-label">Shakes</div>
+              <div class="shake-stat-value" id="shakeCount">0</div>
+            </div>
+            <div class="shake-stat">
+              <div class="shake-stat-label">Peak</div>
+              <div class="shake-stat-value" id="shakePeak">0.0</div>
+            </div>
+            <div class="shake-stat">
+              <div class="shake-stat-label">RMS</div>
+              <div class="shake-stat-value" id="shakeRms">0.0</div>
+            </div>
+            <div class="shake-stat">
+              <div class="shake-stat-label">Verdict</div>
+              <div class="shake-stat-value" id="shakeVerdict">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tilt test panel -->
+        <div class="ms-test-panel" id="tiltPanel" role="region" aria-label="Tilt accuracy test">
+          <div class="ms-test-header">
+            <h3>📐 Tilt Accuracy Test</h3>
+            <button class="ms-test-close" onclick="closeTest('tilt')">Close</button>
+          </div>
+          <p style="font-size:0.85rem;color:var(--ms-text2);margin-bottom:1rem;">Lay your device flat on a level surface. The bubble should center and read near 0° pitch and roll.</p>
+          <div class="tilt-body">
+            <canvas id="tiltBubble" aria-label="Tilt bubble level"></canvas>
+            <div class="tilt-readouts">
+              <div class="ms-orient-row">
+                <span class="label">Pitch</span>
+                <span class="value accent" id="tiltPitch">0.0°</span>
+              </div>
+              <div class="ms-orient-row">
+                <span class="label">Roll</span>
+                <span class="value green" id="tiltRoll">0.0°</span>
+              </div>
+              <div class="ms-orient-row">
+                <span class="label">Total Tilt</span>
+                <span class="value neon" id="tiltTotal">0.0°</span>
+              </div>
+              <div class="tilt-verdict off" id="tiltVerdict">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <circle cx="7" cy="7" r="6"/>
+                  <path d="M7 4v4M7 10v1"/>
+                </svg>
+                Not level
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compass panel -->
+        <div class="ms-test-panel" id="compassPanel" role="region" aria-label="Compass calibration check">
+          <div class="ms-test-header">
+            <h3>🧭 Compass Calibration Check</h3>
+            <button class="ms-test-close" onclick="closeTest('compass')">Close</button>
+          </div>
+          <p style="font-size:0.85rem;color:var(--ms-text2);margin-bottom:1rem;">Slowly rotate the device in a figure-8. The heading should respond smoothly and settle on a stable value.</p>
+          <div class="compass-body">
+            <canvas id="compassRose" aria-label="Compass rose"></canvas>
+            <div class="compass-readouts">
+              <div class="ms-orient-row">
+                <span class="label">Heading</span>
+                <span class="value accent" id="compassHeading">0°</span>
+              </div>
+              <div class="ms-orient-row">
+                <span class="label">Cardinal</span>
+                <span class="value green" id="compassCardinal">N</span>
+              </div>
+              <div class="ms-orient-row">
+                <span class="label">Accuracy</span>
+                <span class="value neon" id="compassAccuracy">—</span>
+              </div>
+              <div class="compass-calib poor" id="compassCalib">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <circle cx="7" cy="7" r="6"/>
+                  <path d="M7 4v4M7 10v1"/>
+                </svg>
+                Not calibrated — rotate device
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="ms-sidebar">
+        <!-- Sensor availability -->
+        <div class="ms-card">
+          <div class="ms-card-title" style="margin-bottom:1rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 8v4M12 16v1"/>
+            </svg>
+            Sensor Availability
+          </div>
+          <div class="ms-sensor-list">
+            <div class="ms-sensor-item">
+              <span class="name">Accelerometer</span>
+              <span class="status" id="sensorAccel">Checking…</span>
+            </div>
+            <div class="ms-sensor-item">
+              <span class="name">Gyroscope</span>
+              <span class="status" id="sensorGyro">Checking…</span>
+            </div>
+            <div class="ms-sensor-item">
+              <span class="name">Device Orientation</span>
+              <span class="status" id="sensorOrient">Checking…</span>
+            </div>
+            <div class="ms-sensor-item">
+              <span class="name">Compass</span>
+              <span class="status" id="sensorCompass">Checking…</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tips -->
+        <div class="ms-card">
+          <div class="ms-card-title" style="margin-bottom:1rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            Testing Tips
+          </div>
+          <div class="ms-tip">
+            <div class="ms-tip-icon">📱</div>
+            <div><strong>Use a secure origin</strong> — sensors only work over HTTPS on most browsers.</div>
+          </div>
+          <div class="ms-tip">
+            <div class="ms-tip-icon">🔋</div>
+            <div><strong>Disable battery saver</strong> — it can throttle sensor sampling rates.</div>
+          </div>
+          <div class="ms-tip">
+            <div class="ms-tip-icon">📐</div>
+            <div><strong>Calibrate flat</strong> — lay the device on a level surface before tilt and compass tests.</div>
+          </div>
+          <div class="ms-tip">
+            <div class="ms-tip-icon">🔄</div>
+            <div><strong>Figure-8 for compass</strong> — rotate the device in a figure-8 to improve compass accuracy.</div>
+          </div>
+        </div>
+
+        <!-- Other tools -->
+        <div class="ms-card">
+          <div class="ms-card-title" style="margin-bottom:1rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="2"/>
+              <line x1="8" y1="8" x2="16" y2="16"/>
+              <line x1="16" y1="8" x2="8" y2="16"/>
+            </svg>
+            More Sensor Tests
+          </div>
+          <div class="ms-tool-links">
+            <a href="/gps-compass-test" class="ms-tool-link"><span class="tool-icon">🧭</span> GPS / Compass Test</a>
+            <a href="/refresh-rate-test" class="ms-tool-link"><span class="tool-icon">⚡</span> Refresh Rate Test</a>
+            <a href="/dead-pixel" class="ms-tool-link"><span class="tool-icon">🔴</span> Dead Pixel Test</a>
+            <a href="/touchscreen-test" class="ms-tool-link"><span class="tool-icon">👆</span> Touchscreen Test</a>
+            <a href="/#detect" class="ms-tool-link"><span class="tool-icon">📱</span> Detect My Phone</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         FEATURES
+    ══════════════════════════════════════════════════════ -->
+    <section class="ms-section ms-section-alt" aria-labelledby="ms-features-heading">
+      <div class="ms-container">
+        <div class="ms-section-header">
+          <span class="ms-section-eyebrow">Features</span>
+          <h2 class="ms-section-title" id="ms-features-heading">What This Motion Sensors Suite Includes</h2>
+          <p class="ms-section-subtitle">A full laboratory for your phone's inertial sensors — right in the browser.</p>
+        </div>
+        <div class="ms-features-grid">
+          <article class="ms-feature-card">
+            <div class="ms-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 17 9 11 13 15 21 7"/>
+              </svg>
+            </div>
+            <h3 class="ms-feature-title">Live Accelerometer Graph</h3>
+            <p class="ms-feature-desc">Real-time X/Y/Z acceleration plot in m/s². Detect gravity, tilt, and shake intensity with a rolling 240-sample buffer.</p>
+          </article>
+          <article class="ms-feature-card">
+            <div class="ms-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <h3 class="ms-feature-title">Live Gyroscope Graph</h3>
+            <p class="ms-feature-desc">Real-time alpha/beta/gamma rotation-rate graph in °/s. Track angular velocity on all three axes.</p>
+          </article>
+          <article class="ms-feature-card">
+            <div class="ms-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="2" width="16" height="20" rx="2"/>
+                <line x1="12" y1="18" x2="12.01" y2="18"/>
+              </svg>
+            </div>
+            <h3 class="ms-feature-title">3D Orientation Model</h3>
+            <p class="ms-feature-desc">A live 3D device cube that mimics your phone's real orientation using alpha, beta, and gamma angles.</p>
+          </article>
+          <article class="ms-feature-card">
+            <div class="ms-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9h2l2-4 2 8 2-6 2 4h2"/>
+              </svg>
+            </div>
+            <h3 class="ms-feature-title">Shake Detection Test</h3>
+            <p class="ms-feature-desc">A real-time shake meter that counts discrete shake events, tracks peak acceleration and RMS, and gives an accuracy verdict.</p>
+          </article>
+          <article class="ms-feature-card">
+            <div class="ms-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                <line x1="12" y1="2" x2="12" y2="6"/>
+              </svg>
+            </div>
+            <h3 class="ms-feature-title">Tilt Accuracy Test</h3>
+            <p class="ms-feature-desc">A digital bubble level with pitch, roll, and total-tilt readouts. Confirms whether your accelerometer is level-calibrated.</p>
+          </article>
+          <article class="ms-feature-card">
+            <div class="ms-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="12 4 14 12 12 10 10 12" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3 class="ms-feature-title">Compass Calibration Check</h3>
+            <p class="ms-feature-desc">Live compass rose with heading, cardinal direction, and accuracy indicator. Guides you through figure-8 calibration.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         HOW IT WORKS
+    ══════════════════════════════════════════════════════ -->
+    <section class="ms-section" aria-labelledby="ms-how-heading">
+      <div class="ms-container">
+        <div class="ms-section-header">
+          <span class="ms-section-eyebrow">How It Works</span>
+          <h2 class="ms-section-title" id="ms-how-heading">Test Your Motion Sensors in 4 Steps</h2>
+          <p class="ms-section-subtitle">No app, no sign-up — just accurate sensor data in your browser.</p>
+        </div>
+        <div class="ms-steps-grid">
+          <div class="ms-step-item">
+            <div class="ms-step-num" aria-hidden="true">1</div>
+            <h3 class="ms-step-title">Enable Sensors</h3>
+            <p class="ms-step-desc">Tap "Enable Sensors" and allow the browser permission prompt. This unlocks accelerometer, gyroscope, and orientation data.</p>
+          </div>
+          <div class="ms-step-item">
+            <div class="ms-step-num" aria-hidden="true">2</div>
+            <h3 class="ms-step-title">Watch the Graphs</h3>
+            <p class="ms-step-desc">Tilt, rotate, and move your device to see the accelerometer and gyroscope graphs respond in real time.</p>
+          </div>
+          <div class="ms-step-item">
+            <div class="ms-step-num" aria-hidden="true">3</div>
+            <h3 class="ms-step-title">Run the Tests</h3>
+            <p class="ms-step-desc">Open the Shake, Tilt, or Compass test panels. Each provides live feedback and an accuracy verdict.</p>
+          </div>
+          <div class="ms-step-item">
+            <div class="ms-step-num" aria-hidden="true">4</div>
+            <h3 class="ms-step-title">Review Results</h3>
+            <p class="ms-step-desc">Check the sensor availability panel and the verdicts to confirm your device's sensors are functioning and calibrated.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         FAQ
+    ══════════════════════════════════════════════════════ -->
+    <section class="ms-section ms-section-alt" id="ms-faq" aria-labelledby="ms-faq-heading">
+      <div class="ms-container">
+        <div class="ms-section-header">
+          <span class="ms-section-eyebrow">FAQ</span>
+          <h2 class="ms-section-title" id="ms-faq-heading">Motion Sensors Suite — Common Questions</h2>
+          <p class="ms-section-subtitle">Everything you need to know about testing your device's motion sensors.</p>
+        </div>
+        <div class="ms-faq-list" role="list">
+          <div class="ms-faq-item" role="listitem">
+            <button class="ms-faq-q" aria-expanded="false" aria-controls="ms-faq-a1" onclick="toggleMsFaq(this)">
+              <span>How do I test the motion sensors on my phone?</span>
+              <span class="ms-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="ms-faq-a" id="ms-faq-a1" role="region">
+              <p>Open this page on your phone, tap "Enable Sensors", and allow motion access when prompted. The real-time graphs will start plotting accelerometer and gyroscope data as you move, tilt, or shake your device. Use the shake and tilt tests to verify accuracy, and the compass calibration check to confirm heading.</p>
+            </div>
+          </div>
+          <div class="ms-faq-item" role="listitem">
+            <button class="ms-faq-q" aria-expanded="false" aria-controls="ms-faq-a2" onclick="toggleMsFaq(this)">
+              <span>Why does my browser not show sensor data?</span>
+              <span class="ms-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="ms-faq-a" id="ms-faq-a2" role="region">
+              <p>Most browsers require explicit permission for motion sensors on non-secure origins or newer iOS versions. Make sure you are on HTTPS, tap "Enable Sensors", and grant the permission prompt. Some desktop browsers without motion hardware will not produce data — that is normal.</p>
+            </div>
+          </div>
+          <div class="ms-faq-item" role="listitem">
+            <button class="ms-faq-q" aria-expanded="false" aria-controls="ms-faq-a3" onclick="toggleMsFaq(this)">
+              <span>What is the difference between the accelerometer and gyroscope?</span>
+              <span class="ms-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="ms-faq-a" id="ms-faq-a3" role="region">
+              <p>The accelerometer measures linear acceleration including gravity, so it can detect tilt and shake. The gyroscope measures the rate of rotation around each axis, so it tracks angular velocity. Together they enable full motion tracking. This suite shows both graphs live.</p>
+            </div>
+          </div>
+          <div class="ms-faq-item" role="listitem">
+            <button class="ms-faq-q" aria-expanded="false" aria-controls="ms-faq-a4" onclick="toggleMsFaq(this)">
+              <span>How do I calibrate my phone's motion sensors?</span>
+              <span class="ms-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="ms-faq-a" id="ms-faq-a4" role="region">
+              <p>Place the device on a flat, level surface and check the tilt readout. If it does not show roughly 0° on pitch and roll, move the phone in a figure-8 pattern several times. For the compass, rotate the phone slowly around each axis. Then re-open the tilt test to verify the calibration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="site-footer" role="contentinfo"></footer>
+
+  <!-- Toast -->
+  <div class="ms-toast" id="msToast" role="status" aria-live="polite"></div>
+
+  <!-- ── Scripts ──────────────────────────────────────── -->
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/sidebar.js" defer></script>
+
+  <script>
+  // ══════════════════════════════════════════════════════════
+  //  MOTION SENSORS SUITE — Main Logic
+  // ══════════════════════════════════════════════════════════
+  document.addEventListener('DOMContentLoaded', function() {
+    // Header/footer
+    if (typeof Header !== 'undefined') Header.render();
+    if (typeof Footer !== 'undefined') Footer.render();
+
+    // ── DOM refs ───────────────────────────────────────────
+    const statusDot        = document.getElementById('msStatusDot');
+    const statusText       = document.getElementById('msStatusText');
+    const enableBtnMain    = document.getElementById('enableSensorsBtnMain');
+    const enableBtnOverlay = document.getElementById('enableSensorsBtn');
+    const overlay          = document.getElementById('sensorOverlay');
+    const overlayCloseBtn  = document.getElementById('sensorOverlayCloseBtn');
+    const toastEl          = document.getElementById('msToast');
+
+    // Accelerometer
+    const accCanvas   = document.getElementById('accCanvas');
+    const accCtx      = accCanvas.getContext('2d');
+    const accXEl      = document.getElementById('accX');
+    const accYEl      = document.getElementById('accY');
+    const accZEl      = document.getElementById('accZ');
+
+    // Gyroscope
+    const gyroCanvas  = document.getElementById('gyroCanvas');
+    const gyroCtx     = gyroCanvas.getContext('2d');
+    const gyroAlphaEl = document.getElementById('gyroAlpha');
+    const gyroBetaEl  = document.getElementById('gyroBeta');
+    const gyroGammaEl = document.getElementById('gyroGamma');
+
+    // Orientation
+    const orientCube    = document.getElementById('deviceCube');
+    const orientAlphaEl = document.getElementById('orientAlpha');
+    const orientBetaEl  = document.getElementById('orientBeta');
+    const orientGammaEl = document.getElementById('orientGamma');
+    const orientHeading = document.getElementById('orientHeading');
+    const orientStatus  = document.getElementById('orientStatus');
+
+    // Sensor availability
+    const sensorAccel   = document.getElementById('sensorAccel');
+    const sensorGyro    = document.getElementById('sensorGyro');
+    const sensorOrient  = document.getElementById('sensorOrient');
+    const sensorCompass = document.getElementById('sensorCompass');
+
+    // Test panels
+    const shakePanel    = document.getElementById('shakePanel');
+    const tiltPanel     = document.getElementById('tiltPanel');
+    const compassPanel  = document.getElementById('compassPanel');
+    const shakeTestBtn  = document.getElementById('shakeTestBtn');
+    const tiltTestBtn   = document.getElementById('tiltTestBtn');
+    const compassTestBtn= document.getElementById('compassTestBtn');
+
+    // Shake test elements
+    const shakeGauge  = document.getElementById('shakeGauge');
+    const shakeCtx    = shakeGauge.getContext('2d');
+    const shakeCountEl= document.getElementById('shakeCount');
+    const shakePeakEl = document.getElementById('shakePeak');
+    const shakeRmsEl  = document.getElementById('shakeRms');
+    const shakeVerdictEl = document.getElementById('shakeVerdict');
+
+    // Tilt test elements
+    const tiltBubble  = document.getElementById('tiltBubble');
+    const tiltCtx     = tiltBubble.getContext('2d');
+    const tiltPitchEl = document.getElementById('tiltPitch');
+    const tiltRollEl  = document.getElementById('tiltRoll');
+    const tiltTotalEl = document.getElementById('tiltTotal');
+    const tiltVerdict = document.getElementById('tiltVerdict');
+
+    // Compass elements
+    const compassRose = document.getElementById('compassRose');
+    const compassCtx  = compassRose.getContext('2d');
+    const compassHeadingEl  = document.getElementById('compassHeading');
+    const compassCardinalEl = document.getElementById('compassCardinal');
+    const compassAccuracyEl = document.getElementById('compassAccuracy');
+    const compassCalibEl    = document.getElementById('compassCalib');
+
+    // ── State ──────────────────────────────────────────────
+    let sensorsEnabled = false;
+    let hasAccel = false;
+    let hasGyro = false;
+    let hasOrient = false;
+    let hasCompass = false;
+
+    // Rolling buffers
+    const ACC_BUFFER = 240;
+    const GYRO_BUFFER = 240;
+    const accHistory = { x: [], y: [], z: [] };
+    const gyroHistory = { a: [], b: [], g: [] };
+
+    // Latest values
+    let acc = { x: 0, y: 0, z: 0 };
+    let gyro = { a: 0, b: 0, g: 0 };
+    let orient = { alpha: 0, beta: 0, gamma: 0, heading: 0, absolute: false };
+
+    // Shake detection
+    let shakeEvents = 0;
+    let shakePeak = 0;
+    let shakeRmsSamples = [];
+    let shakeAboveThreshold = false;
+    const SHAKE_THRESHOLD = 15; // m/s² linear acceleration
+
+    // Compass tracking
+    let compassStabilitySamples = [];
+    let lastCompassHeading = 0;
+    let compassCalibrated = false;
+
+    // Animation loop ids
+    let accRafId = null;
+    let gyroRafId = null;
+    let shakeRafId = null;
+    let tiltRafId = null;
+    let compassRafId = null;
+
+    // ── Toast helper ───────────────────────────────────────
+    function showToast(msg) {
+      toastEl.textContent = msg;
+      toastEl.classList.add('show');
+      clearTimeout(toastEl._timer);
+      toastEl._timer = setTimeout(() => toastEl.classList.remove('show'), 2800);
+    }
+
+    // ── Status helper ──────────────────────────────────────
+    function setStatus(type, text) {
+      statusDot.className = 'ms-status-dot ' + type;
+      statusText.textContent = text;
+    }
+
+    // ── Canvas sizing helper ───────────────────────────────
+    function sizeCanvas(canvas, ctx) {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      if (canvas.width !== rect.width * dpr || canvas.height !== rect.height * dpr) {
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      return { w: rect.width, h: rect.height };
+    }
+
+    // ══════════════════════════════════════════════════════
+    //  SENSOR ENABLE / PERMISSION
+    // ══════════════════════════════════════════════════════
+    async function requestSensorPermission() {
+      // iOS 13+ requires explicit permission
+      if (typeof DeviceMotionEvent !== 'undefined' &&
+          typeof DeviceMotionEvent.requestPermission === 'function') {
+        try {
+          const state = await DeviceMotionEvent.requestPermission();
+          if (state !== 'granted') {
+            showToast('Motion permission denied');
+            return false;
+          }
+        } catch (e) {
+          showToast('Motion permission error: ' + e.message);
+          return false;
+        }
+      }
+      if (typeof DeviceOrientationEvent !== 'undefined' &&
+          typeof DeviceOrientationEvent.requestPermission === 'function') {
+        try {
+          const state = await DeviceOrientationEvent.requestPermission();
+          if (state !== 'granted') {
+            showToast('Orientation permission denied');
+            return false;
+          }
+        } catch (e) {
+          // Orientation may not require separate permission on Android
+        }
+      }
+      return true;
+    }
+
+    async function enableSensors() {
+      const granted = await requestSensorPermission();
+      if (!granted) {
+        overlay.classList.remove('active');
+        setStatus('error', 'Permission denied');
+        return;
+      }
+
+      sensorsEnabled = true;
+      overlay.classList.remove('active');
+      setStatus('live', 'Sensors live');
+      enableBtnMain.disabled = true;
+      enableBtnMain.innerHTML = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l4 4 10-10"/></svg> Sensors Enabled';
+      showToast('Sensors enabled — move your device!');
+
+      // Start sensor listeners
+      window.addEventListener('devicemotion', handleMotion, { passive: true });
+      window.addEventListener('deviceorientation', handleOrientation, { passive: true });
+      window.addEventListener('deviceorientationabsolute', handleOrientation, { passive: true });
+
+      // Fallback: some desktop browsers support the Generic Sensor API
+      if (typeof Accelerometer !== 'undefined') {
+        try {
+          const accSensor = new Accelerometer({ frequency: 60 });
+          accSensor.addEventListener('reading', () => {
+            hasAccel = true;
+            sensorAccel.textContent = 'Available';
+            sensorAccel.className = 'status ok';
+            acc = { x: accSensor.x || 0, y: accSensor.y || 0, z: accSensor.z || 0 };
+          });
+          accSensor.start();
+        } catch (e) { /* ignore */ }
+      }
+      if (typeof Gyroscope !== 'undefined') {
+        try {
+          const gyroSensor = new Gyroscope({ frequency: 60 });
+          gyroSensor.addEventListener('reading', () => {
+            hasGyro = true;
+            sensorGyro.textContent = 'Available';
+            sensorGyro.className = 'status ok';
+            gyro = {
+              a: (gyroSensor.x || 0) * 180 / Math.PI,
+              b: (gyroSensor.y || 0) * 180 / Math.PI,
+              g: (gyroSensor.z || 0) * 180 / Math.PI
+            };
+          });
+          gyroSensor.start();
+        } catch (e) { /* ignore */ }
+      }
+      if (typeof AbsoluteOrientationSensor !== 'undefined') {
+        try {
+          const orientSensor = new AbsoluteOrientationSensor({ frequency: 60 });
+          orientSensor.addEventListener('reading', () => {
+            hasOrient = true;
+            sensorOrient.textContent = 'Available';
+            sensorOrient.className = 'status ok';
+            const q = orientSensor.quaternion;
+            // Convert quaternion to Euler
+            const [x, y, z, w] = q;
+            const sinr = 2 * (w * x + y * z);
+            const cosr = 1 - 2 * (x * x + y * y);
+            const roll = Math.atan2(sinr, cosr);
+            const sinp = 2 * (w * y - z * x);
+            const pitch = Math.abs(sinp) >= 1 ? Math.sign(sinp) * Math.PI / 2 : Math.asin(sinp);
+            const siny = 2 * (w * z + x * y);
+            const cosy = 1 - 2 * (y * y + z * z);
+            const yaw = Math.atan2(siny, cosy);
+            orient.alpha = yaw * 180 / Math.PI;
+            orient.beta = pitch * 180 / Math.PI;
+            orient.gamma = roll * 180 / Math.PI;
+            orient.heading = (yaw * 180 / Math.PI + 360) % 360;
+          });
+          orientSensor.start();
+        } catch (e) { /* ignore */ }
+      }
+
+      // Start animation loops
+      startAccLoop();
+      startGyroLoop();
+      startOrientLoop();
+    }
+
+    // ══════════════════════════════════════════════════════
+    //  SENSOR HANDLERS
+    // ══════════════════════════════════════════════════════
+    function handleMotion(e) {
+      const a = e.accelerationIncludingGravity;
+      const r = e.rotationRate;
+      if (a) {
+        hasAccel = true;
+        acc = { x: a.x || 0, y: a.y || 0, z: a.z || 0 };
+        sensorAccel.textContent = 'Available';
+        sensorAccel.className = 'status ok';
+      }
+      if (r) {
+        hasGyro = true;
+        gyro = { a: r.alpha || 0, b: r.beta || 0, g: r.gamma || 0 };
+        sensorGyro.textContent = 'Available';
+        sensorGyro.className = 'status ok';
+      }
+    }
+
+    function handleOrientation(e) {
+      hasOrient = true;
+      sensorOrient.textContent = 'Available';
+      sensorOrient.className = 'status ok';
+      orient.alpha = e.alpha || 0;
+      orient.beta = e.beta || 0;
+      orient.gamma = e.gamma || 0;
+      orient.absolute = e.absolute || false;
+      // Compass heading from alpha (0 = north)
+      if (e.webkitCompassHeading !== undefined) {
+        orient.heading = e.webkitCompassHeading;
+        hasCompass = true;
+        sensorCompass.textContent = 'Available';
+        sensorCompass.className = 'status ok';
+      } else if (e.absolute && e.alpha !== null) {
+        orient.heading = (360 - e.alpha) % 360;
+        hasCompass = true;
+        sensorCompass.textContent = 'Available';
+        sensorCompass.className = 'status ok';
+      }
+    }
+
+    // ══════════════════════════════════════════════════════
+    //  ACCELEROMETER GRAPH
+    // ══════════════════════════════════════════════════════
+    function startAccLoop() {
+      if (accRafId) return;
+      function tick() {
+        if (!sensorsEnabled) return;
+        // Push to buffer
+        accHistory.x.push(acc.x);
+        accHistory.y.push(acc.y);
+        accHistory.z.push(acc.z);
+        if (accHistory.x.length > ACC_BUFFER) {
+          accHistory.x.shift(); accHistory.y.shift(); accHistory.z.shift();
+        }
+        // Update readouts
+        accXEl.textContent = acc.x.toFixed(2);
+        accYEl.textContent = acc.y.toFixed(2);
+        accZEl.textContent = acc.z.toFixed(2);
+        drawAccGraph();
+        accRafId = requestAnimationFrame(tick);
+      }
+      accRafId = requestAnimationFrame(tick);
+    }
+
+    function drawAccGraph() {
+      const { w, h } = sizeCanvas(accCanvas, accCtx);
+      accCtx.clearRect(0, 0, w, h);
+
+      // Grid
+      accCtx.strokeStyle = 'rgba(255,255,255,0.04)';
+      accCtx.lineWidth = 1;
+      for (let i = 0; i <= 4; i++) {
+        const y = (h / 4) * i;
+        accCtx.beginPath(); accCtx.moveTo(0, y); accCtx.lineTo(w, y); accCtx.stroke();
+      }
+
+      // Zero line
+      const zeroY = h / 2;
+      accCtx.strokeStyle = 'rgba(255,255,255,0.1)';
+      accCtx.setLineDash([4, 4]);
+      accCtx.beginPath(); accCtx.moveTo(0, zeroY); accCtx.lineTo(w, zeroY); accCtx.stroke();
+      accCtx.setLineDash([]);
+
+      const n = accHistory.x.length;
+      if (n < 2) return;
+      const scale = (h / 2) / 25; // ±25 m/s² range
+      const stepX = w / (ACC_BUFFER - 1);
+      const offset = ACC_BUFFER - n;
+
+      function drawLine(data, color) {
+        accCtx.beginPath();
+        for (let i = 0; i < n; i++) {
+          const x = (offset + i) * stepX;
+          const y = zeroY - data[i] * scale;
+          if (i === 0) accCtx.moveTo(x, y);
+          else accCtx.lineTo(x, y);
+        }
+        accCtx.strokeStyle = color;
+        accCtx.lineWidth = 1.8;
+        accCtx.lineJoin = 'round';
+        accCtx.stroke();
+      }
+
+      drawLine(accHistory.x, '#ff6b4a');
+      drawLine(accHistory.y, '#22c55e');
+      drawLine(accHistory.z, '#8b5cf6');
+
+      // Scale labels
+      accCtx.fillStyle = 'rgba(255,255,255,0.3)';
+      accCtx.font = '10px "Space Mono", monospace';
+      accCtx.textAlign = 'left';
+      accCtx.fillText('+25', 4, 12);
+      accCtx.fillText('0', 4, zeroY - 3);
+      accCtx.fillText('-25', 4, h - 4);
+    }
+
+    // ══════════════════════════════════════════════════════
+    //  GYROSCOPE GRAPH
+    // ══════════════════════════════════════════════════════
+    function startGyroLoop() {
+      if (gyroRafId) return;
+      function tick() {
+        if (!sensorsEnabled) return;
+        gyroHistory.a.push(gyro.a);
+        gyroHistory.b.push(gyro.b);
+        gyroHistory.g.push(gyro.g);
+        if (gyroHistory.a.length > GYRO_BUFFER) {
+          gyroHistory.a.shift(); gyroHistory.b.shift(); gyroHistory.g.shift();
+        }
+        gyroAlphaEl.textContent = gyro.a.toFixed(1);
+        gyroBetaEl.textContent = gyro.b.toFixed(1);
+        gyroGammaEl.textContent = gyro.g.toFixed(1);
+        drawGyroGraph();
+        gyroRafId = requestAnimationFrame(tick);
+      }
+      gyroRafId = requestAnimationFrame(tick);
+    }
+
+    function drawGyroGraph() {
+      const { w, h } = sizeCanvas(gyroCanvas, gyroCtx);
+      gyroCtx.clearRect(0, 0, w, h);
+
+      gyroCtx.strokeStyle = 'rgba(255,255,255,0.04)';
+      gyroCtx.lineWidth = 1;
+      for (let i = 0; i <= 4; i++) {
+        const y = (h / 4) * i;
+        gyroCtx.beginPath(); gyroCtx.moveTo(0, y); gyroCtx.lineTo(w, y); gyroCtx.stroke();
+      }
+
+      const zeroY = h / 2;
+      gyroCtx.strokeStyle = 'rgba(255,255,255,0.1)';
+      gyroCtx.setLineDash([4, 4]);
+      gyroCtx.beginPath(); gyroCtx.moveTo(0, zeroY); gyroCtx.lineTo(w, zeroY); gyroCtx.stroke();
+      gyroCtx.setLineDash([]);
+
+      const n = gyroHistory.a.length;
+      if (n < 2) return;
+      const scale = (h / 2) / 360; // ±360 °/s range
+      const stepX = w / (GYRO_BUFFER - 1);
+      const offset = GYRO_BUFFER - n;
+
+      function drawLine(data, color) {
+        gyroCtx.beginPath();
+        for (let i = 0; i < n; i++) {
+          const x = (offset + i) * stepX;
+          const y = zeroY - data[i] * scale;
+          if (i === 0) gyroCtx.moveTo(x, y);
+          else gyroCtx.lineTo(x, y);
+        }
+        gyroCtx.strokeStyle = color;
+        gyroCtx.lineWidth = 1.8;
+        gyroCtx.lineJoin = 'round';
+        gyroCtx.stroke();
+      }
+
+      drawLine(gyroHistory.a, '#ff6b4a');
+      drawLine(gyroHistory.b, '#22c55e');
+      drawLine(gyroHistory.g, '#8b5cf6');
+
+      gyroCtx.fillStyle = 'rgba(255,255,255,0.3)';
+      gyroCtx.font = '10px "Space Mono", monospace';
+      gyroCtx.textAlign = 'left';
+      gyroCtx.fillText('+360', 4, 12);
+      gyroCtx.fillText('0', 4, zeroY - 3);
+      gyroCtx.fillText('-360', 4, h - 4);
+    }
+
+    // ══════════════════════════════════════════════════════
+    //  3D ORIENTATION VISUAL
+    // ══════════════════════════════════════════════════════
+    function startOrientLoop() {
+      function tick() {
+        if (!sensorsEnabled) return;
+        // Update readouts
+        orientAlphaEl.textContent = Math.round(orient.alpha) + '°';
+        orientBetaEl.textContent  = Math.round(orient.beta) + '°';
+        orientGammaEl.textContent = Math.round(orient.gamma) + '°';
+        orientHeading.textContent = Math.round(orient.heading) + '°';
+
+        // Update 3D cube
+        if (hasOrient) {
+          orientCube.style.transform =
+            'rotateX(' + orient.beta + 'deg) rotateY(' + orient.gamma + 'deg) rotateZ(' + orient.alpha + 'deg)';
+          orientStatus.textContent = (orient.absolute ? 'Absolute' : 'Relative') + ' · live';
+        } else {
+          orientStatus.textContent = 'Orientation unavailable';
+        }
+
+        // Update compass availability
+        if (hasCompass) {
+          sensorCompass.textContent = 'Available';
+          sensorCompass.className = 'status ok';
+        } else if (hasOrient) {
+          sensorCompass.textContent = 'Limited';
+          sensorCompass.className = 'status';
+        }
+
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // ══════════════════════════════════════════════════════
+    //  SHAKE TEST
+    // ══════════════════════════════════════════════════════
+    const shakeHistory = [];
+    const SHAKE_HISTORY = 200;
+
+    function openShakeTest() {
+      closeAllTests();
+      shakePanel.classList.add('active');
+      shakeEvents = 0;
+      shakePeak = 0;
+      shakeRmsSamples = [];
+      shakeAboveThreshold = false;
+      shakeHistory.length = 0;
+      shakeCountEl.textContent = '0';
+      shakePeakEl.textContent = '0.0';
+      shakeRmsEl.textContent = '0.0';
+      shakeVerdictEl.textContent = '—';
+      shakeVerdictEl.style.color = '';
+      startShakeLoop();
+    }
+
+    function startShakeLoop() {
+      if (shakeRafId) cancelAnimationFrame(shakeRafId);
+      function tick() {
+        if (!shakePanel.classList.contains('active')) return;
+        // Compute linear acceleration magnitude
+        const linearMag = Math.sqrt(acc.x * acc.x + acc.y * acc.y + acc.z * acc.z);
+        // Subtract gravity baseline (~9.8) so stationary reads ~0
+        const motionMag = Math.abs(linearMag - 9.8);
+        shakeHistory.push(motionMag);
+        if (shakeHistory.length > SHAKE_HISTORY) shakeHistory.shift();
+
+        // Track peak
+        if (motionMag > shakePeak) shakePeak = motionMag;
+        shakePeakEl.textContent = shakePeak.toFixed(1);
+
+        // RMS
+        shakeRmsSamples.push(motionMag);
+        if (shakeRmsSamples.length > 120) shakeRmsSamples.shift();
+        const rms = Math.sqrt(shakeRmsSamples.reduce((a, b) => a + b * b, 0) / shakeRmsSamples.length);
+        shakeRmsEl.textContent = rms.toFixed(1);
+
+        // Detect shake event (rising edge above threshold)
+        if (motionMag > SHAKE_THRESHOLD && !shakeAboveThreshold) {
+          shakeAboveThreshold = true;
+          shakeEvents++;
+          shakeCountEl.textContent = shakeEvents;
+        } else if (motionMag < SHAKE_THRESHOLD * 0.5 && shakeAboveThreshold) {
+          shakeAboveThreshold = false;
+        }
+
+        // Verdict
+        if (shakeEvents >= 3) {
+          shakeVerdictEl.textContent = '✓ Working';
+          shakeVerdictEl.style.color = 'var(--ms-green)';
+        } else if (shakeEvents > 0) {
+          shakeVerdictEl.textContent = 'Shake more…';
+          shakeVerdictEl.style.color = 'var(--ms-amber)';
+        } else {
+          shakeVerdictEl.textContent = 'Waiting';
+          shakeVerdictEl.style.color = 'var(--ms-text2)';
+        }
+
+        drawShakeGauge(motionMag);
+        shakeRafId = requestAnimationFrame(tick);
+      }
+      shakeRafId = requestAnimationFrame(tick);
+    }
+
+    function drawShakeGauge(currentMag) {
+      const { w, h } = sizeCanvas(shakeGauge, shakeCtx);
+      shakeCtx.clearRect(0, 0, w, h);
+
+      // Grid
+      shakeCtx.strokeStyle = 'rgba(255,255,255,0.04)';
+      for (let i = 0; i <= 3; i++) {
+        const y = (h / 3) * i;
+        shakeCtx.beginPath(); shakeCtx.moveTo(0, y); shakeCtx.lineTo(w, y); shakeCtx.stroke();
+      }
+
+      // Threshold line
+      const maxMag = 40;
+      const thresholdY = h - (SHAKE_THRESHOLD / maxMag) * h;
+      shakeCtx.strokeStyle = 'rgba(245,158,11,0.4)';
+      shakeCtx.setLineDash([6, 4]);
+      shakeCtx.beginPath(); shakeCtx.moveTo(0, thresholdY); shakeCtx.lineTo(w, thresholdY); shakeCtx.stroke();
+      shakeCtx.setLineDash([]);
+      shakeCtx.fillStyle = 'rgba(245,158,11,0.6)';
+      shakeCtx.font = '9px "Space Mono", monospace';
+      shakeCtx.fillText('threshold', 4, thresholdY - 3);
+
+      // History curve
+      const n = shakeHistory.length;
+      if (n < 2) return;
+      shakeCtx.beginPath();
+      for (let i = 0; i < n; i++) {
+        const x = (i / (SHAKE_HISTORY - 1)) * w;
+        const y = h - Math.min(1, shakeHistory[i] / maxMag) * h;
+        if (i === 0) shakeCtx.moveTo(x, y);
+        else shakeCtx.lineTo(x, y);
+      }
+      shakeCtx.strokeStyle = '#ff6b4a';
+      shakeCtx.lineWidth = 1.8;
+      shakeCtx.lineJoin = 'round';
+      shakeCtx.stroke();
+
+      // Current indicator
+      const curX = w - 2;
+      const curY = h - Math.min(1, currentMag / maxMag) * h;
+      shakeCtx.beginPath();
+      shakeCtx.arc(curX, curY, 4, 0, Math.PI * 2);
+      shakeCtx.fillStyle = currentMag > SHAKE_THRESHOLD ? '#ef4444' : '#22c55e';
+      shakeCtx.fill();
+    }
+
+    // ══════════════════════════════════════════════════════
+    //  TILT TEST
+    // ══════════════════════════════════════════════════════
+    function openTiltTest() {
+      closeAllTests();
+      tiltPanel.classList.add('active');
+      startTiltLoop();
+    }
+
+    function startTiltLoop() {
+      if (tiltRafId) cancelAnimationFrame(tiltRafId);
+      function tick() {
+        if (!tiltPanel.classList.contains('active')) return;
+
+        // Compute pitch and roll from accelerometer
+        // pitch = atan2(-x, sqrt(y² + z²)) — tilt forward/back
+        // roll  = atan2(y, z) — tilt left/right
+        const pitch = Math.atan2(-acc.x, Math.sqrt(acc.y * acc.y + acc.z * acc.z)) * 180 / Math.PI;
+        const roll  = Math.atan2(acc.y, acc.z) * 180 / Math.PI;
+        const total = Math.sqrt(pitch * pitch + roll * roll);
+
+        tiltPitchEl.textContent = pitch.toFixed(1) + '°';
+        tiltRollEl.textContent  = roll.toFixed(1) + '°';
+        tiltTotalEl.textContent = total.toFixed(1) + '°';
+
+        // Verdict
+        if (total < 2) {
+          tiltVerdict.className = 'tilt-verdict level';
+          tiltVerdict.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7l3 3 7-7"/></svg> Level — calibrated';
+        } else if (total < 8) {
+          tiltVerdict.className = 'tilt-verdict off';
+          tiltVerdict.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="7" r="6"/><path d="M7 4v4M7 10v1"/></svg> Slightly off (' + total.toFixed(1) + '°)';
+        } else {
+          tiltVerdict.className = 'tilt-verdict off';
+          tiltVerdict.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="7" r="6"/><path d="M7 4v4M7 10v1"/></svg> Not level — adjust or calibrate';
+        }
+
+        drawTiltBubble(pitch, roll);
+        tiltRafId = requestAnimationFrame(tick);
+      }
+      tiltRafId = requestAnimationFrame(tick);
+    }
+
+    function drawTiltBubble(pitch, roll) {
+      const { w, h } = sizeCanvas(tiltBubble, tiltCtx);
+      const cx = w / 2;
+      const cy = h / 2;
+      const radius = Math.min(w, h) / 2 - 8;
+
+      tiltCtx.clearRect(0, 0, w, h);
+
+      // Outer ring
+      tiltCtx.beginPath();
+      tiltCtx.arc(cx, cy, radius, 0, Math.PI * 2);
+      tiltCtx.strokeStyle = 'rgba(255,255,255,0.15)';
+      tiltCtx.lineWidth = 1.5;
+      tiltCtx.stroke();
+
+      // Crosshairs
+      tiltCtx.strokeStyle = 'rgba(255,255,255,0.08)';
+      tiltCtx.lineWidth = 1;
+      tiltCtx.beginPath(); tiltCtx.moveTo(cx - radius, cy); tiltCtx.lineTo(cx + radius, cy); tiltCtx.stroke();
+      tiltCtx.beginPath(); tiltCtx.moveTo(cx, cy - radius); tiltCtx.lineTo(cx, cy + radius); tiltCtx.stroke();
+
+      // Concentric rings
+      [0.33, 0.66].forEach(f => {
+        tiltCtx.beginPath();
+        tiltCtx.arc(cx, cy, radius * f, 0, Math.PI * 2);
+        tiltCtx.strokeStyle = 'rgba(255,255,255,0.06)';
+        tiltCtx.stroke();
+      });
+
+      // Bubble position (clamped to radius)
+      const maxAngle = 15; // degrees to reach the edge
+      const dx = (roll / maxAngle) * radius;
+      const dy = (pitch / maxAngle) * radius;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const clampFactor = dist > radius ? radius / dist : 1;
+      const bx = cx + dx * clampFactor;
+      const by = cy + dy * clampFactor;
+
+      // Bubble
+      const total = Math.sqrt(pitch * pitch + roll * roll);
+      const bubbleColor = total < 2 ? '#22c55e' : total < 8 ? '#f59e0b' : '#ef4444';
+
+      const grad = tiltCtx.createRadialGradient(bx - 4, by - 4, 2, bx, by, 16);
+      grad.addColorStop(0, bubbleColor);
+      grad.addColorStop(1, bubbleColor + '99');
+
+      tiltCtx.beginPath();
+      tiltCtx.arc(bx, by, 14, 0, Math.PI * 2);
+      tiltCtx.fillStyle = grad;
+      tiltCtx.fill();
+      tiltCtx.strokeStyle = '#fff';
+      tiltCtx.lineWidth = 2;
+      tiltCtx.stroke();
+
+      // Center dot when level
+      if (total < 2) {
+        tiltCtx.beginPath();
+        tiltCtx.arc(cx, cy, 6, 0, Math.PI * 2);
+        tiltCtx.strokeStyle = '#22c55e';
+        tiltCtx.lineWidth = 1.5;
+        tiltCtx.stroke();
+      }
+    }
+
+    // ══════════════════════════════════════════════════════
+    //  COMPASS TEST
+    // ══════════════════════════════════════════════════════
+    function openCompassTest() {
+      closeAllTests();
+      compassPanel.classList.add('active');
+      compassStabilitySamples = [];
+      compassCalibrated = false;
+      startCompassLoop();
+    }
+
+    function startCompassLoop() {
+      if (compassRafId) cancelAnimationFrame(compassRafId);
+      function tick() {
+        if (!compassPanel.classList.contains('active')) return;
+
+        const heading = orient.heading;
+
+        // Track stability
+        compassStabilitySamples.push(heading);
+        if (compassStabilitySamples.length > 60) compassStabilitySamples.shift();
+
+        // Compute variance
+        let variance = 0;
+        if (compassStabilitySamples.length > 10) {
+          const avg = compassStabilitySamples.reduce((a, b) => a + b, 0) / compassStabilitySamples.length;
+          variance = compassStabilitySamples.reduce((acc, v) => {
+            const diff = Math.abs(v - avg);
+            return acc + Math.min(diff, 360 - diff) ** 2;
+          }, 0) / compassStabilitySamples.length;
+        }
+        const stdDev = Math.sqrt(variance);
+
+        // Accuracy from standard deviation
+        let accLabel, accColor;
+        if (stdDev < 3) { accLabel = 'High'; accColor = 'var(--ms-green)'; compassCalibrated = true; }
+        else if (stdDev < 10) { accLabel = 'Medium'; accColor = 'var(--ms-amber)'; compassCalibrated = false; }
+        else { accLabel = 'Low'; accColor = 'var(--ms-red)'; compassCalibrated = false; }
+
+        compassHeadingEl.textContent = Math.round(heading) + '°';
+        compassCardinalEl.textContent = cardinalFromHeading(heading);
+        compassAccuracyEl.textContent = accLabel;
+        compassAccuracyEl.style.color = accColor;
+
+        if (compassCalibrated) {
+          compassCalibEl.className = 'compass-calib good';
+          compassCalibEl.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7l3 3 7-7"/></svg> Calibrated — heading stable';
+        } else if (stdDev < 10) {
+          compassCalibEl.className = 'compass-calib medium';
+          compassCalibEl.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="7" r="6"/><path d="M7 4v4M7 10v1"/></svg> Keep rotating in a figure-8';
+        } else {
+          compassCalibEl.className = 'compass-calib poor';
+          compassCalibEl.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="7" r="6"/><path d="M7 4v4M7 10v1"/></svg> Not calibrated — rotate device';
+        }
+
+        drawCompassRose(heading);
+        compassRafId = requestAnimationFrame(tick);
+      }
+      compassRafId = requestAnimationFrame(tick);
+    }
+
+    function cardinalFromHeading(h) {
+      const dirs = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
+      const idx = Math.round(((h % 360) / 22.5)) % 16;
+      return dirs[idx];
+    }
+
+    function drawCompassRose(heading) {
+      const { w, h } = sizeCanvas(compassRose, compassCtx);
+      const cx = w / 2;
+      const cy = h / 2;
+      const radius = Math.min(w, h) / 2 - 14;
+
+      compassCtx.clearRect(0, 0, w, h);
+
+      // Outer ring
+      compassCtx.beginPath();
+      compassCtx.arc(cx, cy, radius, 0, Math.PI * 2);
+      compassCtx.strokeStyle = 'rgba(255,255,255,0.15)';
+      compassCtx.lineWidth = 2;
+      compassCtx.stroke();
+
+      // Cardinal ticks
+      for (let i = 0; i < 16; i++) {
+        const angle = (i * 22.5 - 90) * Math.PI / 180;
+        const isMajor = i % 4 === 0;
+        const r1 = radius - (isMajor ? 14 : 8);
+        const r2 = radius;
+        compassCtx.beginPath();
+        compassCtx.moveTo(cx + Math.cos(angle) * r1, cy + Math.sin(angle) * r1);
+        compassCtx.lineTo(cx + Math.cos(angle) * r2, cy + Math.sin(angle) * r2);
+        compassCtx.strokeStyle = isMajor ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.15)';
+        compassCtx.lineWidth = isMajor ? 2 : 1;
+        compassCtx.stroke();
+      }
+
+      // Cardinal labels
+      const labels = ['N', 'E', 'S', 'W'];
+      compassCtx.font = 'bold 12px "Syne", sans-serif';
+      compassCtx.textAlign = 'center';
+      compassCtx.textBaseline = 'middle';
+      labels.forEach((label, i) => {
+        const angle = (i * 90 - 90) * Math.PI / 180;
+        const r = radius - 26;
+        const x = cx + Math.cos(angle) * r;
+        const y = cy + Math.sin(angle) * r;
+        compassCtx.fillStyle = label === 'N' ? '#ff6b4a' : 'rgba(255,255,255,0.5)';
+        compassCtx.fillText(label, x, y);
+      });
+
+      // Center
+      compassCtx.beginPath();
+      compassCtx.arc(cx, cy, 4, 0, Math.PI * 2);
+      compassCtx.fillStyle = 'rgba(255,255,255,0.4)';
+      compassCtx.fill();
+
+      // Needle pointing to heading
+      const needleAngle = (heading - 90) * Math.PI / 180;
+      const needleLen = radius - 30;
+      const nx = cx + Math.cos(needleAngle) * needleLen;
+      const ny = cy + Math.sin(needleAngle) * needleLen;
+
+      // North half (red)
+      compassCtx.beginPath();
+      compassCtx.moveTo(cx, cy);
+      compassCtx.lineTo(nx, ny);
+      compassCtx.lineTo(
+        cx + Math.cos(needleAngle + Math.PI / 2) * 6,
+        cy + Math.sin(needleAngle + Math.PI / 2) * 6
+      );
+      compassCtx.closePath();
+      compassCtx.fillStyle = '#ff6b4a';
+      compassCtx.fill();
+
+      // South half (white)
+      compassCtx.beginPath();
+      compassCtx.moveTo(cx, cy);
+      compassCtx.lineTo(nx, ny);
+      compassCtx.lineTo(
+        cx + Math.cos(needleAngle - Math.PI / 2) * 6,
+        cy + Math.sin(needleAngle - Math.PI / 2) * 6
+      );
+      compassCtx.closePath();
+      compassCtx.fillStyle = 'rgba(255,255,255,0.5)';
+      compassCtx.fill();
+
+      // Heading text
+      compassCtx.font = 'bold 20px "Syne", sans-serif';
+      compassCtx.fillStyle = '#f0f4fa';
+      compassCtx.fillText(Math.round(heading) + '°', cx, cy + radius + 18);
+
+      compassCtx.font = 'bold 12px "Space Mono", monospace';
+      compassCtx.fillStyle = '#7a8aa0';
+      compassCtx.fillText(cardinalFromHeading(heading), cx, cy - radius - 12);
+    }
+
+    // ══════════════════════════════════════════════════════
+    //  PANEL MANAGEMENT
+    // ══════════════════════════════════════════════════════
+    function closeAllTests() {
+      [shakePanel, tiltPanel, compassPanel].forEach(p => p.classList.remove('active'));
+      if (shakeRafId) { cancelAnimationFrame(shakeRafId); shakeRafId = null; }
+      if (tiltRafId) { cancelAnimationFrame(tiltRafId); tiltRafId = null; }
+      if (compassRafId) { cancelAnimationFrame(compassRafId); compassRafId = null; }
+    }
+
+    window.closeTest = function(name) {
+      if (name === 'shake') {
+        shakePanel.classList.remove('active');
+        if (shakeRafId) { cancelAnimationFrame(shakeRafId); shakeRafId = null; }
+      } else if (name === 'tilt') {
+        tiltPanel.classList.remove('active');
+        if (tiltRafId) { cancelAnimationFrame(tiltRafId); tiltRafId = null; }
+      } else if (name === 'compass') {
+        compassPanel.classList.remove('active');
+        if (compassRafId) { cancelAnimationFrame(compassRafId); compassRafId = null; }
+      }
+    };
+
+    // ── Wire up buttons ────────────────────────────────────
+    shakeTestBtn.addEventListener('click', function() {
+      if (!sensorsEnabled) { showToast('Enable sensors first'); return; }
+      if (shakePanel.classList.contains('active')) {
+        closeTest('shake');
+      } else {
+        openShakeTest();
+      }
+    });
+    tiltTestBtn.addEventListener('click', function() {
+      if (!sensorsEnabled) { showToast('Enable sensors first'); return; }
+      if (tiltPanel.classList.contains('active')) {
+        closeTest('tilt');
+      } else {
+        openTiltTest();
+      }
+    });
+    compassTestBtn.addEventListener('click', function() {
+      if (!sensorsEnabled) { showToast('Enable sensors first'); return; }
+      if (compassPanel.classList.contains('active')) {
+        closeTest('compass');
+      } else {
+        openCompassTest();
+      }
+    });
+
+    // ── FAQ toggle ─────────────────────────────────────────
+    window.toggleMsFaq = function(btn) {
+      const item = btn.closest('.ms-faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.ms-faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.ms-faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    // ── Enable buttons ─────────────────────────────────────
+    enableBtnMain.addEventListener('click', function() {
+      if (sensorsEnabled) {
+        showToast('Sensors already enabled');
+        return;
+      }
+      overlay.classList.add('active');
+    });
+    enableBtnOverlay.addEventListener('click', enableSensors);
+    overlayCloseBtn.addEventListener('click', function() {
+      overlay.classList.remove('active');
+    });
+
+    // ── Initial sensor availability check ──────────────────
+    function updateInitialAvailability() {
+      // We can't know without permission, so show "Tap to enable"
+      const hasMotionAPI = typeof DeviceMotionEvent !== 'undefined';
+      const hasOrientAPI = typeof DeviceOrientationEvent !== 'undefined';
+      if (!hasMotionAPI && !hasOrientAPI) {
+        sensorAccel.innerHTML = '<span style="color:var(--ms-red)">Not supported</span>';
+        sensorGyro.innerHTML = '<span style="color:var(--ms-red)">Not supported</span>';
+        sensorOrient.innerHTML = '<span style="color:var(--ms-red)">Not supported</span>';
+        sensorCompass.innerHTML = '<span style="color:var(--ms-red)">Not supported</span>';
+        setStatus('error', 'Sensors not supported');
+        enableBtnMain.disabled = true;
+        enableBtnMain.textContent = 'Sensors not supported';
+      } else {
+        sensorAccel.textContent = 'Tap to enable';
+        sensorGyro.textContent = 'Tap to enable';
+        sensorOrient.textContent = 'Tap to enable';
+        sensorCompass.textContent = 'Tap to enable';
+      }
+    }
+
+    updateInitialAvailability();
+
+    // ── Handle resize ──────────────────────────────────────
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (accHistory.x.length) drawAccGraph();
+        if (gyroHistory.a.length) drawGyroGraph();
+      }, 200);
+    });
+
+    // ── Cleanup ────────────────────────────────────────────
+    window.addEventListener('beforeunload', function() {
+      if (accRafId) cancelAnimationFrame(accRafId);
+      if (gyroRafId) cancelAnimationFrame(gyroRafId);
+      if (shakeRafId) cancelAnimationFrame(shakeRafId);
+      if (tiltRafId) cancelAnimationFrame(tiltRafId);
+      if (compassRafId) cancelAnimationFrame(compassRafId);
+    });
+  });
+  </script>
+</body>
+</html>
