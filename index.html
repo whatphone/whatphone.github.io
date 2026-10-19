@@ -161,26 +161,6 @@
     </div>
   </div>
 
-  <!-- ── AD POPUP (shown during detection) ── -->
-  <div id="adPopup" role="dialog" aria-modal="true" aria-label="Advertisement and scanning progress">
-    <div class="ad-popup-inner">
-      <div class="ad-label">Advertisement</div>
-      <div class="ad-scan-indicator">
-        <span class="dot-pulse"></span> Scanning device…
-      </div>
-      <!-- 300x250 ad container – script will inject iframe here -->
-      <div class="ad-container" id="adContainer">
-        <!-- Adsterra script renders the 300x250 iframe inside this div -->
-      </div>
-      <div class="ad-timer">
-        <span class="timer-number" id="adTimerCount">5</span>
-        <span class="timer-label">seconds</span>
-      </div>
-      <button type="button" id="adCloseBtn" class="ad-close-btn" aria-label="Close advertisement" disabled>Close Ad</button>
-      <div class="ad-close-hint">Please wait, detecting your device…</div>
-    </div>
-  </div>
-
   <!-- ── Main Content ─────────────────────────────────── -->
   <main id="main-content">
 
@@ -290,7 +270,6 @@
           <p class="section-subtitle">Click the button above or press below to scan your device. Results appear instantly.</p>
         </div>
 
-        <!-- Replace the existing #resultSection in index.html with this -->
 <div id="resultSection" aria-live="polite" aria-label="Device detection results">
   <div id="deviceCard" role="region" aria-label="Device identification card">
     <!-- Initial State before test runs -->
@@ -307,6 +286,22 @@
         <span class="dot"></span> Status: Awaiting Scan
       </div>
     </div>
+  </div>
+
+  <!-- AdSense Ad Integration Below Results -->
+  <div class="device-card-ad" style="margin: 1.5rem auto; text-align: center;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
+         crossorigin="anonymous"></script>
+    <!-- What Phone Result -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9759808041159779"
+         data-ad-slot="7855403236"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
   </div>
 
   <div class="result-grid" style="margin-top:1.5rem">
@@ -1104,164 +1099,6 @@
   <!-- ── Footer (rendered by JS) ──────────────────────── -->
   <footer id="site-footer" role="contentinfo"></footer>
 
-  <!-- ── Ad Popup Styles (injected to ensure availability) ── -->
-  <style>
-    /* ── Ad popup overlay styles ─────────────────────────── */
-    #adPopup {
-      position: fixed;
-      inset: 0;
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.25s ease, visibility 0.25s ease;
-    }
-    #adPopup.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    .ad-popup-inner {
-      background: var(--surface, #ffffff);
-      border-radius: 24px;
-      padding: 2rem 1.5rem 1.75rem;
-      max-width: 400px;
-      width: 90%;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.25rem;
-      position: relative;
-      text-align: center;
-      font-family: 'DM Sans', sans-serif;
-    }
-    .ad-popup-inner .ad-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text3, #7c8aa0);
-      margin-bottom: 0.25rem;
-    }
-    /* 300x250 ad slot in the popup */
-    .ad-container {
-      width: 300px;
-      height: 250px;
-      background: #eef3f9;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border: 1px solid var(--border, #e1e7f0);
-    }
-    .ad-container iframe {
-      width: 300px;
-      height: 250px;
-      border: none;
-      display: block;
-    }
-    .ad-timer {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      width: 100%;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.9rem;
-      color: var(--text2, #55617a);
-    }
-    .ad-timer .timer-number {
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: var(--accent, #3b82f6);
-      min-width: 2rem;
-    }
-    .ad-timer .timer-label {
-      font-size: 0.8rem;
-    }
-    .ad-close-btn {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #ffffff;
-      background: var(--accent, #3b82f6);
-      border: none;
-      border-radius: 999px;
-      padding: 0.6rem 1.4rem;
-      cursor: pointer;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-    .ad-close-btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-    .ad-close-btn:not(:disabled):hover {
-      transform: translateY(-1px);
-    }
-    .ad-close-hint {
-      font-size: 0.7rem;
-      color: var(--text3, #7c8aa0);
-      font-family: 'Space Mono', monospace;
-      letter-spacing: 0.02em;
-    }
-    .ad-scan-indicator {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      color: var(--neon, #0e7490);
-      font-family: 'Space Mono', monospace;
-    }
-    .ad-scan-indicator .dot-pulse {
-      width: 8px;
-      height: 8px;
-      background: var(--neon, #0e7490);
-      border-radius: 50%;
-      animation: pulse-dot 1.2s infinite;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 0.4; transform: scale(0.9); }
-      50% { opacity: 1; transform: scale(1.2); }
-    }
-
-    /* ── In-card ad (300x250, same network as popup) ── */
-    .device-card-ad {
-      margin: 1.25rem auto 0;
-      width: 100%;
-      max-width: 340px;
-      padding: 12px 12px 8px;
-      background: var(--surface-alt, #eef3f9);
-      border: 1px solid var(--border, #e1e7f0);
-      border-radius: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      min-height: 280px;
-    }
-    .device-card-ad-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text3, #7c8aa0);
-      align-self: flex-start;
-    }
-    .device-card-ad iframe {
-      width: 300px;
-      height: 250px;
-      border: none;
-      display: block;
-      border-radius: 8px;
-    }
-  </style>
-
   <!-- ── Scripts ──────────────────────────────────────── -->
   <script src="js/header.js" defer></script>
   <script src="js/footer.js" defer></script>
@@ -1282,242 +1119,5 @@
       }
     }
 </script>
-
-   
-  <script>
-    (function() {
-      const AD_DURATION = 5; // seconds
-      const CLOSE_ENABLE_AFTER = 2; // seconds before close button becomes active
-
-      // Grab DOM elements
-      const popup = document.getElementById('adPopup');
-      const timerCount = document.getElementById('adTimerCount');
-      const adContainer = document.getElementById('adContainer');
-      const adCloseBtn = document.getElementById('adCloseBtn');
-
-      // Hide the original loader (we use the ad popup instead)
-      const originalLoader = document.getElementById('detectLoader');
-      if (originalLoader) originalLoader.style.display = 'none';
-
-      let adTimerInterval = null;
-      let popupAdInjected = false;
-      let popupResolveFn = null;
-
-      // ── Popup ad: 300x250 iframe via Adsterra (bauval.org) ──
-      // Uses an isolated iframe + document.write so this slot does not
-      // collide with the in-card ad slot's global atOptions.
-      function injectPopupAd() {
-        if (popupAdInjected || !adContainer) return;
-        popupAdInjected = true;
-
-        adContainer.innerHTML = '';
-
-        const iframe = document.createElement('iframe');
-        iframe.width = '300';
-        iframe.height = '250';
-        iframe.style.border = 'none';
-        iframe.style.display = 'block';
-        iframe.setAttribute('scrolling', 'no');
-        adContainer.appendChild(iframe);
-
-        const iframeDoc = iframe.contentWindow.document;
-        iframeDoc.open();
-        iframeDoc.write(`
-          <!DOCTYPE html>
-          <html>
-          <head><meta charset="utf-8"></head>
-          <body style="margin:0;padding:0;overflow:hidden;">
-            <script type="text/javascript">
-              atOptions = {
-                'key' : '81443cd2b70e4089345fae478ec5b90a',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-              };
-            <\/script>
-            <script type="text/javascript" src="https://bauval.org/22/81443cd2b70e4089345fae478ec5b90a"><\/script>
-          </body>
-          </html>
-        `);
-        iframeDoc.close();
-      }
-
-      // Finish the popup: hide it and resolve the pending detection promise
-      function finishPopup() {
-        if (adTimerInterval) {
-          clearInterval(adTimerInterval);
-          adTimerInterval = null;
-        }
-        popup.classList.remove('active');
-        if (popupResolveFn) {
-          const fn = popupResolveFn;
-          popupResolveFn = null;
-          fn();
-        }
-      }
-
-      // Show popup, count down, resolve after AD_DURATION seconds
-      // or when the user clicks Close (after CLOSE_ENABLE_AFTER).
-      function showAdPopup() {
-        return new Promise((resolve) => {
-          popupResolveFn = resolve;
-          let remaining = AD_DURATION;
-          let elapsed = 0;
-          timerCount.textContent = remaining;
-
-          adCloseBtn.disabled = true;
-          adCloseBtn.textContent = `Close in ${CLOSE_ENABLE_AFTER}s`;
-
-          popup.classList.add('active');
-          injectPopupAd();
-
-          if (adTimerInterval) clearInterval(adTimerInterval);
-
-          adTimerInterval = setInterval(() => {
-            remaining -= 1;
-            elapsed += 1;
-            timerCount.textContent = remaining > 0 ? remaining : 0;
-
-            if (elapsed >= CLOSE_ENABLE_AFTER && adCloseBtn.disabled) {
-              adCloseBtn.disabled = false;
-              adCloseBtn.textContent = 'Close Ad';
-            }
-
-            if (remaining <= 0) {
-              finishPopup();
-            }
-          }, 1000);
-        });
-      }
-
-      // Close button + Escape key both dismiss the popup early
-      if (adCloseBtn) {
-        adCloseBtn.addEventListener('click', () => {
-          if (!adCloseBtn.disabled) finishPopup();
-        });
-      }
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && popup.classList.contains('active') && !adCloseBtn.disabled) {
-          finishPopup();
-        }
-      });
-
-      // ── In-card ad: 300x250 iframe via Adsterra (bauval.org) ──
-      // Uses a SEPARATE iframe instance so it doesn't conflict with the popup ad.
-      let cardAdInjected = false;
-      let cardAdAttempts = 0;
-      function injectCardAd() {
-        if (cardAdInjected) return;
-
-        const card = document.getElementById('deviceCard');
-        if (!card) return;
-
-        const batteryEl = card.querySelector('.device-battery');
-        if (!batteryEl) {
-          // Card markup not ready yet — retry briefly, then bail out
-          if (++cardAdAttempts > 50) {
-            console.warn('Ad: .device-battery never appeared; skipping in-card ad.');
-            return;
-          }
-          setTimeout(injectCardAd, 100);
-          return;
-        }
-
-        cardAdInjected = true;
-
-        // Build the ad wrapper
-        const adWrap = document.createElement('div');
-        adWrap.className = 'device-card-ad';
-        adWrap.id = 'deviceCardAd';
-        adWrap.setAttribute('aria-label', 'Advertisement');
-        adWrap.innerHTML = '<span class="device-card-ad-label">Advertisement</span>';
-
-        // Insert AFTER the battery bar, inside #deviceCard
-        batteryEl.parentNode.insertBefore(adWrap, batteryEl.nextSibling);
-
-        // Create the iframe that will hold the 300x250 ad
-        const iframe = document.createElement('iframe');
-        iframe.width = '300';
-        iframe.height = '250';
-        iframe.style.border = 'none';
-        iframe.style.display = 'block';
-        iframe.style.margin = '0 auto';
-        iframe.setAttribute('scrolling', 'no');
-        adWrap.appendChild(iframe);
-
-        // Write the ad-loading HTML into the iframe.
-        // We use a unique key so the network treats it as a separate ad slot.
-        const iframeDoc = iframe.contentWindow.document;
-        iframeDoc.open();
-        iframeDoc.write(`
-          <!DOCTYPE html>
-          <html>
-          <head><meta charset="utf-8"></head>
-          <body style="margin:0;padding:0;overflow:hidden;">
-            <script type="text/javascript">
-              atOptions = {
-                'key' : '81443cd2b70e4089345fae478ec5b90a',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-              };
-            <\/script>
-            <script type="text/javascript" src="https://bauval.org/22/81443cd2b70e4089345fae478ec5b90a"><\/script>
-          </body>
-          </html>
-        `);
-        iframeDoc.close();
-      }
-
-      // Wait for app.js to be parsed and DeviceDetector to exist,
-      // then wrap its `detect` method so ads only show on user-triggered detection.
-      function wrapDetector() {
-        if (typeof DeviceDetector === 'undefined' || !DeviceDetector.detect) {
-          setTimeout(wrapDetector, 50);
-          return;
-        }
-
-        if (DeviceDetector._adWrapped) return;
-        DeviceDetector._adWrapped = true;
-
-        const originalDetect = DeviceDetector.detect.bind(DeviceDetector);
-
-        DeviceDetector.detect = async function() {
-          const isUserTriggered = window._userClickedDetect === true;
-
-          if (isUserTriggered) {
-            window._userClickedDetect = false;
-            await showAdPopup();
-          }
-
-          const result = await originalDetect();
-
-          // After the real detection completes and app.js has written
-          // the device card markup, inject the in-card ad.
-          if (isUserTriggered) {
-            setTimeout(injectCardAd, 100);
-          }
-
-          return result;
-        };
-
-        // Mark the flag when the real detect button is clicked,
-        // BEFORE app.js's own click handler runs (capture phase).
-        document.addEventListener('click', function(e) {
-          if (e.target && e.target.closest && e.target.closest('#detectBtn')) {
-            window._userClickedDetect = true;
-          }
-        }, true);
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', wrapDetector);
-      } else {
-        wrapDetector();
-      }
-    })();
-  </script>
 </body>
 </html>
