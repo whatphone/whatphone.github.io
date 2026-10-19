@@ -1,0 +1,2031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" 
+crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MD16J6JVZ2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MD16J6JVZ2');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ── Primary Meta ─────────────────────────────────── -->
+  <title>Ambient Light Sensor Test — Live Lux Readings & Auto-Brightness Check | WhatPhone</title>
+  <meta name="description" content="Free online ambient light sensor test. View live lux readings from your phone's light sensor and check auto-brightness by covering and uncovering the sensor. Works in any browser, no app needed." />
+  <meta name="keywords" content="ambient light sensor test, light sensor test, lux meter online, auto brightness test, phone light sensor, ambient light sensor checker, auto brightness not working, light sensor calibration, lux reading test" />
+  <meta name="author" content="WhatPhone" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://whatphone.github.io/ambient-light-sensor-test" />
+  <link rel="alternate" hreflang="en" href="https://whatphone.github.io/ambient-light-sensor-test" />
+  <link rel="alternate" hreflang="x-default" href="https://whatphone.github.io/ambient-light-sensor-test" />
+
+  <!-- ── Open Graph ────────────────────────────────────── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://whatphone.github.io/ambient-light-sensor-test" />
+  <meta property="og:title" content="Ambient Light Sensor Test — Live Lux Readings & Auto-Brightness Check" />
+  <meta property="og:description" content="View live lux readings and test auto-brightness by covering the sensor. Free, private, no app." />
+  <meta property="og:image" content="https://whatphone.github.io/assets/og-image.png" />
+  <meta property="og:site_name" content="WhatPhone" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ── Twitter Card ──────────────────────────────────── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@whatphone" />
+  <meta name="twitter:title" content="Ambient Light Sensor Test — Live Lux Readings & Auto-Brightness" />
+  <meta name="twitter:description" content="Live lux readings and auto-brightness test. Cover the sensor to see the response. Free & private." />
+  <meta name="twitter:image" content="https://whatphone.github.io/assets/og-image.png" />
+
+  <!-- ── Favicon ───────────────────────────────────────── -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+
+  <!-- ── Theme Color ───────────────────────────────────── -->
+  <meta name="theme-color" content="#080c14" />
+  <meta name="msapplication-TileColor" content="#080c14" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- ── Preconnect ───────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- ── Stylesheet ───────────────────────────────────── -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- ── Schema Markup ────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://whatphone.github.io/ambient-light-sensor-test#app",
+        "name": "Ambient Light Sensor Test",
+        "url": "https://whatphone.github.io/ambient-light-sensor-test",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires a modern mobile browser. AmbientLightSensor API needed for lux readings.",
+        "description": "Free online ambient light sensor test. Display live lux readings from your device's light sensor and test auto-brightness behavior by covering and uncovering the sensor.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Live lux readings from AmbientLightSensor API",
+          "Cover/uncover sensor interactive test",
+          "Real-time lux history graph",
+          "Auto-brightness response simulation",
+          "Environmental light classification",
+          "Sensor availability check",
+          "Works on phones and tablets",
+          "No app download required"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://whatphone.github.io/ambient-light-sensor-test#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I test my phone's ambient light sensor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open this page on your phone, tap 'Start Test', and allow sensor access. The live lux reading shows the current light level. Cover the top of your phone with your hand — the lux value should drop sharply. Remove your hand and it should rise again. This confirms whether your ambient light sensor is working."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a normal lux reading?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Typical lux values vary by environment: a dim room is around 10–50 lux, a normal indoor room is 100–300 lux, an office or bright indoor space is 300–500 lux, an overcast day outdoors is 1,000–10,000 lux, and direct sunlight can exceed 100,000 lux. Covering the sensor with your hand should bring the reading close to 0 lux."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why doesn't my phone show lux readings?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The AmbientLightSensor API is currently supported only on Chrome for Android and a few other Chromium-based mobile browsers. Safari on iOS and most desktop browsers do not expose ambient light sensor data to web apps. If your browser doesn't support it, the test will show as unsupported — but the auto-brightness behavior can still be observed with the visual meter."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is auto-brightness not working on my phone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Common causes include a dirty or obstructed ambient light sensor (often near the earpiece), a screen protector covering the sensor, a software glitch, or auto-brightness being disabled in settings. Try cleaning the top of the screen, removing any case or protector near the sensor, toggling auto-brightness off and on in settings, and restarting the device. If the lux reading here doesn't change when you cover the sensor, the hardware may need repair."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ── Ambient Light Sensor Test styles ────────────────────── */
+    :root {
+      --al-bg: #080c14;
+      --al-surface: #10151f;
+      --al-surface2: #161d2a;
+      --al-border: #1e2636;
+      --al-border2: #2a3446;
+      --al-text: #c8d2e0;
+      --al-text2: #7a8aa0;
+      --al-text3: #4a5568;
+      --al-heading: #f0f4fa;
+      --al-accent: #ff6b4a;
+      --al-accent2: #f5573a;
+      --al-neon: #8b5cf6;
+      --al-green: #22c55e;
+      --al-red: #ef4444;
+      --al-amber: #f59e0b;
+      --al-sky: #0ea5e9;
+      --al-cyan: #06b6d4;
+      --al-yellow: #fbbf24;
+      --al-font-display: 'Syne', sans-serif;
+      --al-font-body: 'DM Sans', sans-serif;
+      --al-font-mono: 'Space Mono', monospace;
+      --al-r: 14px;
+      --al-r-lg: 24px;
+      --al-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      --al-shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.6);
+      --al-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--al-bg);
+      color: var(--al-text);
+      font-family: var(--al-font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Permission overlay ───────────────────────────────────── */
+    #permOverlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99998;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      background: rgba(8, 12, 20, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      text-align: center;
+      padding: 2rem;
+    }
+    #permOverlay.active { display: flex; }
+    #permOverlay h2 {
+      font-family: var(--al-font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--al-heading);
+    }
+    #permOverlay p {
+      color: var(--al-text2);
+      font-size: 0.95rem;
+      max-width: 400px;
+      line-height: 1.65;
+    }
+    .perm-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: var(--al-r);
+      background: linear-gradient(135deg, var(--al-accent) 0%, var(--al-accent2) 100%);
+      color: #fff;
+      font-weight: 700;
+      font-family: var(--al-font-display);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(255, 107, 74, 0.35);
+      transition: all var(--al-transition);
+    }
+    .perm-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(255, 107, 74, 0.5);
+    }
+    .perm-close-btn {
+      font-size: 0.8rem;
+      color: var(--al-text3);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.4rem 0.8rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .perm-close-btn:hover { color: var(--al-text2); }
+
+    /* ── Page layout ──────────────────────────────────────────── */
+    .al-page {
+      padding-top: 72px;
+      min-height: 100vh;
+      background: var(--al-bg);
+    }
+
+    /* Hero */
+    .al-hero {
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: 1px solid var(--al-border);
+      background: linear-gradient(180deg, var(--al-bg) 0%, var(--al-surface) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .al-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 10% 0%, rgba(255, 107, 74, 0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 10%, rgba(251, 191, 36, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 50% 100%, rgba(6, 182, 212, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .al-hero .container { position: relative; z-index: 1; }
+
+    .al-breadcrumb ol {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      list-style: none;
+      font-size: 0.8rem;
+      color: var(--al-text3);
+      margin-bottom: 1.5rem;
+      padding: 0;
+    }
+    .al-breadcrumb li + li::before {
+      content: '/';
+      opacity: 0.4;
+      margin-right: 0.5rem;
+    }
+    .al-breadcrumb a { color: var(--al-text2); transition: color var(--al-transition); }
+    .al-breadcrumb a:hover { color: var(--al-accent); }
+    .al-breadcrumb [aria-current] { color: var(--al-accent); }
+
+    .al-hero-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .al-hero-left h1 {
+      font-family: var(--al-font-display);
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--al-heading);
+      line-height: 1.12;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .al-hero-left h1 span {
+      background: linear-gradient(135deg, var(--al-accent) 0%, var(--al-yellow) 50%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .al-hero-left p {
+      color: var(--al-text2);
+      font-size: 1.05rem;
+      max-width: 580px;
+      line-height: 1.65;
+    }
+
+    .al-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: var(--al-surface);
+      border: 1px solid var(--al-border);
+      color: var(--al-text2);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .al-status-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--al-text3); flex-shrink: 0;
+    }
+    .al-status-dot.ready {
+      background: var(--al-green);
+      box-shadow: 0 0 8px rgba(34,197,94,0.6);
+      animation: al-pulse 2s infinite;
+    }
+    .al-status-dot.live {
+      background: var(--al-accent);
+      box-shadow: 0 0 8px rgba(255,107,74,0.6);
+      animation: al-pulse 1s infinite;
+    }
+    .al-status-dot.error { background: var(--al-red); }
+    @keyframes al-pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    /* ── Main layout ──────────────────────────────────────────── */
+    .al-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 1.75rem;
+      align-items: start;
+    }
+
+    /* ── Primary reading card ─────────────────────────────────── */
+    .al-reading-card {
+      background: var(--al-surface);
+      border: 1px solid var(--al-border);
+      border-radius: var(--al-r-lg);
+      overflow: hidden;
+      box-shadow: var(--al-shadow);
+      margin-bottom: 1.25rem;
+      transition: border-color 0.4s ease;
+    }
+    .al-reading-card.dark {
+      border-color: rgba(139, 92, 246, 0.4);
+    }
+    .al-reading-card.bright {
+      border-color: rgba(251, 191, 36, 0.4);
+    }
+
+    .al-reading-hero {
+      padding: 2.5rem 2rem;
+      text-align: center;
+      background: linear-gradient(160deg, var(--al-surface) 0%, var(--al-surface2) 100%);
+      border-bottom: 1px solid var(--al-border);
+      position: relative;
+      overflow: hidden;
+    }
+    .al-reading-hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.3;
+      transition: opacity 0.4s ease;
+    }
+    .al-reading-card.bright .al-reading-hero::before {
+      opacity: 1;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.3) 0%, transparent 70%);
+    }
+    .al-reading-card.dark .al-reading-hero::before {
+      opacity: 0.5;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+    }
+
+    .al-lux-label {
+      font-family: var(--al-font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--al-text3);
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    .al-lux-value {
+      font-family: var(--al-font-display);
+      font-size: clamp(3rem, 9vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--al-heading);
+      position: relative;
+      letter-spacing: -0.03em;
+      transition: color 0.3s ease;
+    }
+    .al-reading-card.bright .al-lux-value {
+      background: linear-gradient(135deg, var(--al-yellow) 0%, #f59e0b 50%, var(--al-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .al-reading-card.dark .al-lux-value {
+      color: var(--al-neon);
+    }
+    .al-lux-unit {
+      font-family: var(--al-font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--al-text2);
+      margin-left: 0.35rem;
+    }
+    .al-env-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--al-border);
+      color: var(--al-text2);
+      position: relative;
+    }
+    .al-env-label .env-icon { font-size: 0.95rem; }
+
+    /* ── Sun/light illustration ───────────────────────────────── */
+    .al-sun-wrap {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .al-sun {
+      width: 140px;
+      height: 140px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .al-sun-core {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--al-yellow) 0%, #f59e0b 60%, transparent 100%);
+      box-shadow:
+        0 0 30px rgba(251, 191, 36, 0.6),
+        0 0 60px rgba(251, 191, 36, 0.3),
+        0 0 100px rgba(251, 191, 36, 0.15);
+      transition: all 0.4s ease;
+      z-index: 1;
+    }
+    .al-reading-card.dark .al-sun-core {
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.6) 0%, rgba(139, 92, 246, 0.2) 60%, transparent 100%);
+      box-shadow:
+        0 0 20px rgba(139, 92, 246, 0.3),
+        0 0 40px rgba(139, 92, 246, 0.15);
+    }
+    .al-sun-rays {
+      position: absolute;
+      inset: 0;
+      animation: al-sun-spin 20s linear infinite;
+    }
+    .al-sun-ray {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 4px;
+      height: 18px;
+      margin: -9px -2px;
+      border-radius: 2px;
+      background: var(--al-yellow);
+      transform-origin: center 70px;
+      opacity: 0.5;
+      transition: all 0.4s ease;
+    }
+    .al-reading-card.dark .al-sun-ray {
+      background: var(--al-neon);
+      opacity: 0.3;
+    }
+    .al-reading-card.bright .al-sun-ray {
+      opacity: 0.9;
+      height: 22px;
+      margin: -11px -2px;
+    }
+    @keyframes al-sun-spin { to { transform: rotate(360deg); } }
+
+    /* ── Test instructions / cover test ───────────────────────── */
+    .al-cover-test {
+      padding: 0 1.5rem 1.5rem;
+      text-align: center;
+    }
+    .al-cover-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.1rem;
+      background: rgba(255,107,74,0.08);
+      border: 1px dashed rgba(255,107,74,0.35);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      color: var(--al-accent);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .al-cover-hint .hint-icon { font-size: 1rem; }
+    .al-cover-hint.covered {
+      background: rgba(139, 92, 246, 0.1);
+      border-color: rgba(139, 92, 246, 0.4);
+      color: var(--al-neon);
+    }
+
+    /* ── Lux scale / environment labels ───────────────────────── */
+    .al-scale {
+      padding: 0 1.5rem 1.5rem;
+    }
+    .al-scale-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--al-text3);
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+    .al-scale-track {
+      height: 22px;
+      border-radius: 100px;
+      background: linear-gradient(90deg,
+        #1a1033 0%,
+        #2a1a4a 15%,
+        #3a2a3a 30%,
+        #6a4a20 50%,
+        #b07a20 70%,
+        #e0a020 85%,
+        #fbbf24 100%);
+      position: relative;
+      border: 1px solid var(--al-border);
+      overflow: hidden;
+    }
+    .al-scale-marker {
+      position: absolute;
+      top: -3px;
+      bottom: -3px;
+      width: 4px;
+      background: #fff;
+      border-radius: 2px;
+      box-shadow: 0 0 12px rgba(255,255,255,0.8);
+      transition: left 0.3s ease;
+      left: 0%;
+    }
+    .al-scale-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.4rem;
+      font-size: 0.65rem;
+      color: var(--al-text3);
+      font-family: var(--al-font-mono);
+    }
+
+    /* ── History graph ────────────────────────────────────────── */
+    .al-graph-card {
+      background: var(--al-surface);
+      border: 1px solid var(--al-border);
+      border-radius: var(--al-r-lg);
+      padding: 1.5rem;
+      box-shadow: var(--al-shadow);
+      margin-bottom: 1.25rem;
+    }
+    .al-card-title {
+      font-family: var(--al-font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--al-text3);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .al-card-title .title-right {
+      font-family: var(--al-font-mono);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--al-text3);
+    }
+    #luxHistoryCanvas {
+      width: 100%;
+      height: 140px;
+      display: block;
+      background: var(--al-bg);
+      border-radius: 10px;
+      border: 1px solid var(--al-border);
+    }
+
+    /* ── Auto-brightness check ────────────────────────────────── */
+    .al-auto-bright {
+      background: var(--al-surface);
+      border: 1px solid var(--al-border);
+      border-radius: var(--al-r-lg);
+      padding: 1.5rem;
+      box-shadow: var(--al-shadow);
+      margin-bottom: 1.25rem;
+    }
+    .al-brightness-preview {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--al-bg);
+      border: 1px solid var(--al-border);
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+    .al-brightness-screen {
+      flex: 1;
+      height: 60px;
+      border-radius: 8px;
+      background: #fbbf24;
+      position: relative;
+      overflow: hidden;
+      transition: filter 0.3s ease, opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--al-font-mono);
+      font-size: 0.7rem;
+      color: rgba(0,0,0,0.6);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .al-brightness-screen .screen-content {
+      z-index: 1;
+      position: relative;
+    }
+    .al-brightness-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      min-width: 120px;
+    }
+    .al-brightness-info .lbl {
+      font-size: 0.68rem;
+      color: var(--al-text3);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .al-brightness-info .val {
+      font-family: var(--al-font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--al-heading);
+    }
+
+    .al-verdict {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .al-verdict.pass {
+      background: rgba(34,197,94,0.12);
+      color: var(--al-green);
+      border: 1px solid rgba(34,197,94,0.3);
+    }
+    .al-verdict.waiting {
+      background: rgba(245,158,11,0.12);
+      color: var(--al-amber);
+      border: 1px solid rgba(245,158,11,0.3);
+    }
+    .al-verdict.fail {
+      background: rgba(239,68,68,0.12);
+      color: var(--al-red);
+      border: 1px solid rgba(239,68,68,0.3);
+    }
+
+    /* ── Actions ──────────────────────────────────────────────── */
+    .al-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .al-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--al-r);
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: var(--al-font-display);
+      border: none;
+      cursor: pointer;
+      transition: all var(--al-transition);
+      white-space: nowrap;
+    }
+    .al-btn-primary {
+      background: linear-gradient(135deg, var(--al-accent) 0%, var(--al-accent2) 100%);
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(255,107,74,0.3);
+    }
+    .al-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(255,107,74,0.45);
+    }
+    .al-btn-primary:active { transform: translateY(0); }
+    .al-btn-primary:disabled {
+      opacity: 0.6; cursor: not-allowed; transform: none;
+    }
+    .al-btn-secondary {
+      background: var(--al-surface2);
+      color: var(--al-text);
+      border: 1px solid var(--al-border);
+    }
+    .al-btn-secondary:hover {
+      border-color: var(--al-accent);
+      color: var(--al-accent);
+      background: var(--al-surface);
+    }
+    .al-btn-sm {
+      padding: 0.55rem 1rem;
+      font-size: 0.8rem;
+    }
+
+    /* ── Sidebar ──────────────────────────────────────────────── */
+    .al-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .al-card {
+      background: var(--al-surface);
+      border: 1px solid var(--al-border);
+      border-radius: var(--al-r-lg);
+      padding: 1.5rem;
+      box-shadow: var(--al-shadow);
+    }
+
+    .al-sensor-status {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .al-sensor-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0.85rem;
+      background: var(--al-bg);
+      border: 1px solid var(--al-border);
+      border-radius: 10px;
+      font-size: 0.82rem;
+    }
+    .al-sensor-item .name { color: var(--al-text2); }
+    .al-sensor-item .status {
+      font-family: var(--al-font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--al-text3);
+    }
+    .al-sensor-item .status.ok { color: var(--al-green); }
+    .al-sensor-item .status.missing { color: var(--al-red); }
+    .al-sensor-item .status.limited { color: var(--al-amber); }
+
+    .al-tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--al-border);
+      font-size: 0.85rem;
+      color: var(--al-text2);
+      line-height: 1.55;
+    }
+    .al-tip:last-child { border-bottom: none; padding-bottom: 0; }
+    .al-tip:first-child { padding-top: 0; }
+    .al-tip-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255,107,74,0.1);
+      border: 1px solid rgba(255,107,74,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--al-accent);
+      font-size: 0.8rem;
+    }
+    .al-tip strong { color: var(--al-heading); font-weight: 600; }
+
+    /* Reference lux table */
+    .al-ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+    .al-ref-table th {
+      text-align: left;
+      font-family: var(--al-font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--al-text3);
+      padding: 0 0 0.5rem;
+      border-bottom: 1px solid var(--al-border);
+      font-weight: 600;
+    }
+    .al-ref-table td {
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--al-border);
+      color: var(--al-text2);
+    }
+    .al-ref-table tr:last-child td { border-bottom: none; }
+    .al-ref-table td:last-child {
+      text-align: right;
+      font-family: var(--al-font-mono);
+      color: var(--al-heading);
+      font-weight: 700;
+    }
+
+    .al-tool-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .al-tool-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.65rem 0.85rem;
+      background: var(--al-bg);
+      border: 1px solid var(--al-border);
+      border-radius: var(--al-r);
+      font-size: 0.82rem;
+      color: var(--al-text2);
+      transition: all var(--al-transition);
+      text-decoration: none;
+    }
+    .al-tool-link:hover {
+      border-color: var(--al-accent);
+      color: var(--al-text);
+      background: var(--al-surface);
+    }
+    .al-tool-link .tool-icon { font-size: 1rem; flex-shrink: 0; }
+
+    /* ── Sections ─────────────────────────────────────────────── */
+    .al-section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--al-border);
+    }
+    .al-section-alt {
+      background: linear-gradient(180deg, var(--al-surface) 0%, var(--al-bg) 100%);
+    }
+    .al-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .al-section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .al-section-eyebrow {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      padding: 0.3rem 0.9rem;
+      background: rgba(255,107,74,0.1);
+      border: 1px solid rgba(255,107,74,0.2);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--al-accent);
+      font-family: var(--al-font-mono);
+    }
+    .al-section-title {
+      font-family: var(--al-font-display);
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: var(--al-heading);
+      margin-bottom: 0.75rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .al-section-subtitle {
+      font-size: 1.02rem;
+      color: var(--al-text2);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .al-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .al-feature-card {
+      background: var(--al-surface);
+      border: 1px solid var(--al-border);
+      border-radius: var(--al-r-lg);
+      padding: 1.75rem;
+      transition: all var(--al-transition);
+    }
+    .al-feature-card:hover {
+      border-color: rgba(255,107,74,0.3);
+      transform: translateY(-4px);
+      box-shadow: var(--al-shadow-lg);
+    }
+    .al-feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(255,107,74,0.08);
+      border: 1px solid rgba(255,107,74,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+      color: var(--al-accent);
+    }
+    .al-feature-icon svg { width: 24px; height: 24px; }
+    .al-feature-title {
+      font-family: var(--al-font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--al-heading);
+      margin-bottom: 0.5rem;
+    }
+    .al-feature-desc {
+      font-size: 0.88rem;
+      color: var(--al-text2);
+      line-height: 1.65;
+    }
+
+    .al-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      position: relative;
+    }
+    .al-steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 34px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--al-border), var(--al-accent), var(--al-border), transparent);
+      z-index: 0;
+    }
+    .al-step-item {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .al-step-item-num {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: var(--al-surface);
+      border: 2px solid var(--al-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--al-font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--al-accent);
+      margin: 0 auto 1rem;
+      box-shadow: 0 0 20px rgba(255,107,74,0.15);
+      transition: all var(--al-transition);
+    }
+    .al-step-item:hover .al-step-item-num {
+      background: var(--al-accent);
+      color: #fff;
+      box-shadow: 0 0 30px rgba(255,107,74,0.4);
+    }
+    .al-step-item-title {
+      font-family: var(--al-font-display);
+      font-weight: 700;
+      color: var(--al-heading);
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+    .al-step-item-desc {
+      font-size: 0.82rem;
+      color: var(--al-text2);
+      line-height: 1.6;
+    }
+
+    /* FAQ */
+    .al-faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .al-faq-item {
+      background: var(--al-surface);
+      border: 1px solid var(--al-border);
+      border-radius: var(--al-r);
+      overflow: hidden;
+      transition: border-color var(--al-transition);
+    }
+    .al-faq-item.open { border-color: rgba(255,107,74,0.4); }
+    .al-faq-q {
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+      font-weight: 600;
+      color: var(--al-heading);
+      font-size: 0.95rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--al-font-body);
+      transition: color var(--al-transition);
+    }
+    .al-faq-q:hover { color: var(--al-accent); }
+    .al-faq-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: var(--al-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+      font-weight: 300;
+      transition: all var(--al-transition);
+    }
+    .al-faq-item.open .al-faq-icon {
+      background: var(--al-accent);
+      color: #fff;
+      transform: rotate(45deg);
+    }
+    .al-faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      font-size: 0.9rem;
+      color: var(--al-text2);
+      line-height: 1.75;
+    }
+    .al-faq-item.open .al-faq-a {
+      max-height: 400px;
+      padding: 0 1.5rem 1.25rem;
+    }
+    .al-faq-a p { margin: 0; }
+
+    /* Toast */
+    .al-toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--al-surface);
+      border: 1px solid var(--al-border2);
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      color: var(--al-text);
+      z-index: 9999;
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      box-shadow: var(--al-shadow-lg);
+    }
+    .al-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .al-main { grid-template-columns: 1fr; }
+      .al-features-grid { grid-template-columns: repeat(2, 1fr); }
+      .al-steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .al-steps-grid::before { display: none; }
+    }
+    @media (max-width: 768px) {
+      .al-hero { padding: 2rem 0 1.5rem; }
+      .al-hero-inner { flex-direction: column; }
+      .al-status-badge { align-self: flex-start; }
+      .al-features-grid { grid-template-columns: 1fr; }
+      .al-steps-grid { grid-template-columns: 1fr; }
+      .al-main { padding: 1.5rem 1rem 3rem; }
+      .al-actions { flex-direction: column; }
+      .al-btn { width: 100%; }
+      .al-brightness-preview { flex-direction: column; align-items: stretch; }
+      .al-brightness-info { flex-direction: row; justify-content: space-between; }
+    }
+    @media (max-width: 480px) {
+      .al-lux-value { font-size: 3rem; }
+      .al-sun { width: 110px; height: 110px; }
+      .al-sun-core { width: 55px; height: 55px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--al-accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content" style="position:absolute;top:-100%;left:1rem;background:var(--al-accent);color:#fff;padding:0.5rem 1rem;border-radius:8px;font-weight:600;z-index:99999;transition:top 0.25s;">Skip to main content</a>
+
+  <!-- Header -->
+  <header id="site-header" role="banner"></header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PERMISSION OVERLAY
+  ══════════════════════════════════════════════════════════ -->
+  <div id="permOverlay" role="dialog" aria-modal="true" aria-labelledby="permOverlayTitle">
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style="color:var(--al-yellow)" aria-hidden="true">
+      <circle cx="28" cy="28" r="10" stroke="currentColor" stroke-width="2.2"/>
+      <g stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <line x1="28" y1="6" x2="28" y2="12"/>
+        <line x1="28" y1="44" x2="28" y2="50"/>
+        <line x1="6" y1="28" x2="12" y2="28"/>
+        <line x1="44" y1="28" x2="50" y2="28"/>
+        <line x1="13" y1="13" x2="17" y2="17"/>
+        <line x1="39" y1="39" x2="43" y2="43"/>
+        <line x1="13" y1="43" x2="17" y2="39"/>
+        <line x1="39" y1="17" x2="43" y2="13"/>
+      </g>
+    </svg>
+    <h2 id="permOverlayTitle">Enable Ambient Light Sensor</h2>
+    <p>This test reads your device's ambient light sensor to show live lux values. Tap below and allow the browser prompt, then cover the top of your phone to see the reading change.</p>
+    <button class="perm-btn" id="enableSensorBtn">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="9" r="7"/>
+        <polygon points="7 6 12 9 7 12 7 6" fill="currentColor" stroke="none"/>
+      </svg>
+      Start Test
+    </button>
+    <button class="perm-close-btn" id="permOverlayCloseBtn">Not now</button>
+  </div>
+
+  <!-- ── Main Content ─────────────────────────────────── -->
+  <main class="al-page" id="main-content">
+
+    <!-- ══════════════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════════════════ -->
+    <section class="al-hero">
+      <div class="container">
+        <nav class="al-breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li aria-current="page">Ambient Light Sensor Test</li>
+          </ol>
+        </nav>
+        <div class="al-hero-inner">
+          <div class="al-hero-left">
+            <h1>Ambient Light Sensor Test<br/><span>Live Lux Readings & Auto-Brightness</span></h1>
+            <p>View live lux readings from your phone's ambient light sensor and test auto-brightness by covering and uncovering the sensor. The same sensor that adjusts your screen brightness automatically.</p>
+          </div>
+          <div class="al-status-badge" id="alStatusBadge" aria-live="polite">
+            <span class="al-status-dot" id="alStatusDot"></span>
+            <span id="alStatusText">Sensor inactive</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         MAIN TEST AREA
+    ══════════════════════════════════════════════════════ -->
+    <div class="al-main">
+      <!-- Left column -->
+      <div>
+        <!-- Actions -->
+        <div class="al-actions">
+          <button class="al-btn al-btn-primary" id="startTestBtn" aria-label="Start ambient light sensor test">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="9" r="3"/>
+              <path d="M9 2v2M9 14v2M2 9h2M14 9h2M4 4l1.5 1.5M12.5 12.5L14 14M4 14l1.5-1.5M12.5 5.5L14 4"/>
+            </svg>
+            Start Light Test
+          </button>
+          <button class="al-btn al-btn-secondary al-btn-sm" id="resetBtn" aria-label="Reset test">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 8a6 6 0 1 0 6-6"/>
+              <polyline points="2 3 2 8 7 8"/>
+            </svg>
+            Reset
+          </button>
+        </div>
+
+        <!-- Primary reading card -->
+        <div class="al-reading-card" id="readingCard" role="region" aria-label="Current lux reading">
+          <div class="al-reading-hero">
+            <div class="al-lux-label">Current Light Level</div>
+            <div>
+              <span class="al-lux-value" id="luxValue">—</span>
+              <span class="al-lux-unit">lux</span>
+            </div>
+            <div class="al-env-label" id="envLabel">
+              <span class="env-icon">💡</span>
+              <span id="envName">Awaiting sensor</span>
+            </div>
+          </div>
+
+          <!-- Sun illustration -->
+          <div class="al-sun-wrap" aria-hidden="true">
+            <div class="al-sun">
+              <div class="al-sun-rays" id="sunRays"></div>
+              <div class="al-sun-core" id="sunCore"></div>
+            </div>
+          </div>
+
+          <!-- Cover test hint -->
+          <div class="al-cover-test">
+            <div class="al-cover-hint" id="coverHint">
+              <span class="hint-icon">👋</span>
+              Cover the top of your phone to see the reading change
+            </div>
+          </div>
+
+          <!-- Lux scale -->
+          <div class="al-scale">
+            <div class="al-scale-title">Environmental Light Scale</div>
+            <div class="al-scale-track">
+              <div class="al-scale-marker" id="scaleMarker"></div>
+            </div>
+            <div class="al-scale-labels">
+              <span>0</span>
+              <span>100</span>
+              <span>1k</span>
+              <span>10k</span>
+              <span>100k+</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Auto-brightness preview -->
+        <div class="al-auto-bright" role="region" aria-label="Auto-brightness behavior preview">
+          <div class="al-card-title">
+            <span>Auto-Brightness Behavior</span>
+            <span class="title-right" id="brightStatus">Idle</span>
+          </div>
+          <div class="al-brightness-preview">
+            <div class="al-brightness-screen" id="brightScreen">
+              <span class="screen-content">Screen Preview</span>
+            </div>
+            <div class="al-brightness-info">
+              <div>
+                <div class="lbl">Sim. Brightness</div>
+                <div class="val" id="simBrightness">—</div>
+              </div>
+            </div>
+          </div>
+          <div class="al-verdict waiting" id="autoVerdict">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="7" cy="7" r="6"/>
+              <path d="M7 4v4M7 10v1"/>
+            </svg>
+            Start the test and cover/uncover the sensor to see the response
+          </div>
+        </div>
+
+        <!-- Lux history graph -->
+        <div class="al-graph-card">
+          <div class="al-card-title">
+            <span>Lux History</span>
+            <span class="title-right" id="graphStatus">No data</span>
+          </div>
+          <canvas id="luxHistoryCanvas" aria-label="Lux reading history graph"></canvas>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="al-sidebar">
+        <!-- Sensor status -->
+        <div class="al-card">
+          <div class="al-card-title" style="margin-bottom:1rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 8v4M12 16v1"/>
+            </svg>
+            Sensor Status
+          </div>
+          <div class="al-sensor-status">
+            <div class="al-sensor-item">
+              <span class="name">Light Sensor</span>
+              <span class="status" id="sensorLight">Checking…</span>
+            </div>
+            <div class="al-sensor-item">
+              <span class="name">API Support</span>
+              <span class="status" id="sensorApi">Checking…</span>
+            </div>
+            <div class="al-sensor-item">
+              <span class="name">Reading State</span>
+              <span class="status" id="sensorState">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tips -->
+        <div class="al-card">
+          <div class="al-card-title" style="margin-bottom:1rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            Testing Tips
+          </div>
+          <div class="al-tip">
+            <div class="al-tip-icon">📱</div>
+            <div><strong>Locate the sensor</strong> — usually near the earpiece at the top of the phone, beside the front camera.</div>
+          </div>
+          <div class="al-tip">
+            <div class="al-tip-icon">🧹</div>
+            <div><strong>Clean the screen</strong> — dirt, smudges, or a screen protector can block the sensor.</div>
+          </div>
+          <div class="al-tip">
+            <div class="al-tip-icon">💡</div>
+            <div><strong>Test in different lighting</strong> — try covering, then moving to a bright light and a dark room.</div>
+          </div>
+          <div class="al-tip">
+            <div class="al-tip-icon">🌐</div>
+            <div><strong>Chrome on Android</strong> — the AmbientLightSensor API is only exposed on Chromium-based mobile browsers.</div>
+          </div>
+        </div>
+
+        <!-- Reference lux values -->
+        <div class="al-card">
+          <div class="al-card-title" style="margin-bottom:1rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+            Reference Lux Values
+          </div>
+          <table class="al-ref-table">
+            <thead><tr><th>Environment</th><th>Lux</th></tr></thead>
+            <tbody>
+              <tr><td>Moonlight</td><td>~0.1</td></tr>
+              <tr><td>Dim room</td><td>10–50</td></tr>
+              <tr><td>Normal indoor</td><td>100–300</td></tr>
+              <tr><td>Office</td><td>300–500</td></tr>
+              <tr><td>Overcast day</td><td>1k–10k</td></tr>
+              <tr><td>Direct sun</td><td>100k+</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Other tools -->
+        <div class="al-card">
+          <div class="al-card-title" style="margin-bottom:1rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="2"/>
+              <line x1="8" y1="8" x2="16" y2="16"/>
+              <line x1="16" y1="8" x2="8" y2="16"/>
+            </svg>
+            More Sensor Tests
+          </div>
+          <div class="al-tool-links">
+            <a href="/proximity-sensor-test" class="al-tool-link"><span class="tool-icon">👆</span> Proximity Sensor Test</a>
+            <a href="/motion-sensors" class="al-tool-link"><span class="tool-icon">🎮</span> Motion Sensors Suite</a>
+            <a href="/gps-compass-test" class="al-tool-link"><span class="tool-icon">🧭</span> GPS / Compass Test</a>
+            <a href="/dead-pixel" class="al-tool-link"><span class="tool-icon">🔴</span> Dead Pixel Test</a>
+            <a href="/#detect" class="al-tool-link"><span class="tool-icon">📱</span> Detect My Phone</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         FEATURES
+    ══════════════════════════════════════════════════════ -->
+    <section class="al-section al-section-alt" aria-labelledby="al-features-heading">
+      <div class="al-container">
+        <div class="al-section-header">
+          <span class="al-section-eyebrow">Features</span>
+          <h2 class="al-section-title" id="al-features-heading">What This Light Sensor Test Does</h2>
+          <p class="al-section-subtitle">A simple, interactive check for your phone's ambient light sensor and auto-brightness.</p>
+        </div>
+        <div class="al-features-grid">
+          <article class="al-feature-card">
+            <div class="al-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/>
+              </svg>
+            </div>
+            <h3 class="al-feature-title">Live Lux Readings</h3>
+            <p class="al-feature-desc">Reads the AmbientLightSensor API where available to display the current illuminance in lux, updated in real time as the light around you changes.</p>
+          </article>
+          <article class="al-feature-card">
+            <div class="al-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+              </svg>
+            </div>
+            <h3 class="al-feature-title">Cover / Uncover Test</h3>
+            <p class="al-feature-desc">Cover the top of your phone with your hand — the lux reading should drop sharply. Remove it and it should rise again, confirming the sensor responds.</p>
+          </article>
+          <article class="al-feature-card">
+            <div class="al-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h3 class="al-feature-title">Lux History Graph</h3>
+            <p class="al-feature-desc">A rolling 120-sample graph plots your lux readings over time, so you can see how the sensor responds to changes in lighting instantly.</p>
+          </article>
+          <article class="al-feature-card">
+            <div class="al-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2"/>
+                <line x1="12" y1="18" x2="12.01" y2="18"/>
+                <path d="M9 6h6"/>
+              </svg>
+            </div>
+            <h3 class="al-feature-title">Auto-Brightness Preview</h3>
+            <p class="al-feature-desc">A simulated screen dims and brightens in response to the lux reading, illustrating how auto-brightness would adjust your display in real use.</p>
+          </article>
+          <article class="al-feature-card">
+            <div class="al-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v4M12 16v1"/>
+              </svg>
+            </div>
+            <h3 class="al-feature-title">Environment Classification</h3>
+            <p class="al-feature-desc">Automatically classifies the current reading — dark room, indoor, overcast, bright day — so you can quickly interpret your lux value.</p>
+          </article>
+          <article class="al-feature-card">
+            <div class="al-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+            </div>
+            <h3 class="al-feature-title">100% Private</h3>
+            <p class="al-feature-desc">Everything runs locally in your browser. No data is transmitted, stored, or shared — just a simple, private light sensor check.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         HOW IT WORKS
+    ══════════════════════════════════════════════════════ -->
+    <section class="al-section" aria-labelledby="al-how-heading">
+      <div class="al-container">
+        <div class="al-section-header">
+          <span class="al-section-eyebrow">How It Works</span>
+          <h2 class="al-section-title" id="al-how-heading">Test Your Light Sensor in 4 Steps</h2>
+          <p class="al-section-subtitle">No app, no sign-up — just a simple, accurate check.</p>
+        </div>
+        <div class="al-steps-grid">
+          <div class="al-step-item">
+            <div class="al-step-item-num" aria-hidden="true">1</div>
+            <h3 class="al-step-item-title">Enable Sensor</h3>
+            <p class="al-step-item-desc">Tap "Start Light Test" and allow the browser prompt to access the ambient light sensor.</p>
+          </div>
+          <div class="al-step-item">
+            <div class="al-step-item-num" aria-hidden="true">2</div>
+            <h3 class="al-step-item-title">Read Live Lux</h3>
+            <p class="al-step-item-desc">The current light level appears in lux, with an environment label like "Indoor" or "Bright day".</p>
+          </div>
+          <div class="al-step-item">
+            <div class="al-step-item-num" aria-hidden="true">3</div>
+            <h3 class="al-step-item-title">Cover the Sensor</h3>
+            <p class="al-step-item-desc">Place your hand over the top of your phone. The lux value should drop sharply and the simulated screen should dim.</p>
+          </div>
+          <div class="al-step-item">
+            <div class="al-step-item-num" aria-hidden="true">4</div>
+            <h3 class="al-step-item-title">Uncover & Confirm</h3>
+            <p class="al-step-item-desc">Remove your hand — the reading should rise again, confirming the sensor and auto-brightness response work.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         FAQ
+    ══════════════════════════════════════════════════════ -->
+    <section class="al-section al-section-alt" id="al-faq" aria-labelledby="al-faq-heading">
+      <div class="al-container">
+        <div class="al-section-header">
+          <span class="al-section-eyebrow">FAQ</span>
+          <h2 class="al-section-title" id="al-faq-heading">Ambient Light Sensor Test — Common Questions</h2>
+          <p class="al-section-subtitle">Everything you need to know about testing your phone's light sensor.</p>
+        </div>
+        <div class="al-faq-list" role="list">
+          <div class="al-faq-item" role="listitem">
+            <button class="al-faq-q" aria-expanded="false" aria-controls="al-faq-a1" onclick="toggleAlFaq(this)">
+              <span>How do I test my phone's ambient light sensor?</span>
+              <span class="al-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="al-faq-a" id="al-faq-a1" role="region">
+              <p>Open this page on your phone, tap "Start Light Test", and allow sensor access. The live lux reading shows the current light level. Cover the top of your phone with your hand — the lux value should drop sharply. Remove your hand and it should rise again. This confirms whether your ambient light sensor is working.</p>
+            </div>
+          </div>
+          <div class="al-faq-item" role="listitem">
+            <button class="al-faq-q" aria-expanded="false" aria-controls="al-faq-a2" onclick="toggleAlFaq(this)">
+              <span>What is a normal lux reading?</span>
+              <span class="al-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="al-faq-a" id="al-faq-a2" role="region">
+              <p>Typical lux values vary by environment: a dim room is around 10–50 lux, a normal indoor room is 100–300 lux, an office or bright indoor space is 300–500 lux, an overcast day outdoors is 1,000–10,000 lux, and direct sunlight can exceed 100,000 lux. Covering the sensor with your hand should bring the reading close to 0 lux.</p>
+            </div>
+          </div>
+          <div class="al-faq-item" role="listitem">
+            <button class="al-faq-q" aria-expanded="false" aria-controls="al-faq-a3" onclick="toggleAlFaq(this)">
+              <span>Why doesn't my phone show lux readings?</span>
+              <span class="al-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="al-faq-a" id="al-faq-a3" role="region">
+              <p>The AmbientLightSensor API is currently supported only on Chrome for Android and a few other Chromium-based mobile browsers. Safari on iOS and most desktop browsers do not expose ambient light sensor data to web apps. If your browser doesn't support it, the test will show as unsupported — but the auto-brightness behavior can still be observed with the visual meter.</p>
+            </div>
+          </div>
+          <div class="al-faq-item" role="listitem">
+            <button class="al-faq-q" aria-expanded="false" aria-controls="al-faq-a4" onclick="toggleAlFaq(this)">
+              <span>Why is auto-brightness not working on my phone?</span>
+              <span class="al-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="al-faq-a" id="al-faq-a4" role="region">
+              <p>Common causes include a dirty or obstructed ambient light sensor (often near the earpiece), a screen protector covering the sensor, a software glitch, or auto-brightness being disabled in settings. Try cleaning the top of the screen, removing any case or protector near the sensor, toggling auto-brightness off and on in settings, and restarting the device. If the lux reading here doesn't change when you cover the sensor, the hardware may need repair.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="site-footer" role="contentinfo"></footer>
+
+  <!-- Toast -->
+  <div class="al-toast" id="alToast" role="status" aria-live="polite"></div>
+
+  <!-- ── Scripts ──────────────────────────────────────── -->
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/sidebar.js" defer></script>
+
+  <script>
+  // ══════════════════════════════════════════════════════════
+  //  AMBIENT LIGHT SENSOR TEST — Main Logic
+  // ══════════════════════════════════════════════════════════
+  document.addEventListener('DOMContentLoaded', function() {
+    // Header/footer
+    if (typeof Header !== 'undefined') Header.render();
+    if (typeof Footer !== 'undefined') Footer.render();
+
+    // ── DOM refs ───────────────────────────────────────────
+    const statusDot      = document.getElementById('alStatusDot');
+    const statusText     = document.getElementById('alStatusText');
+    const startBtn       = document.getElementById('startTestBtn');
+    const resetBtn       = document.getElementById('resetBtn');
+    const permOverlay    = document.getElementById('permOverlay');
+    const enableBtn      = document.getElementById('enableSensorBtn');
+    const overlayCloseBtn= document.getElementById('permOverlayCloseBtn');
+    const toastEl        = document.getElementById('alToast');
+
+    const readingCard    = document.getElementById('readingCard');
+    const luxValueEl     = document.getElementById('luxValue');
+    const envNameEl      = document.getElementById('envName');
+    const envLabelEl     = document.getElementById('envLabel');
+    const coverHint      = document.getElementById('coverHint');
+    const scaleMarker    = document.getElementById('scaleMarker');
+    const sunRays        = document.getElementById('sunRays');
+    const sunCore        = document.getElementById('sunCore');
+
+    const brightScreen   = document.getElementById('brightScreen');
+    const simBrightness  = document.getElementById('simBrightness');
+    const brightStatus   = document.getElementById('brightStatus');
+    const autoVerdict    = document.getElementById('autoVerdict');
+
+    const sensorLight    = document.getElementById('sensorLight');
+    const sensorApi      = document.getElementById('sensorApi');
+    const sensorState    = document.getElementById('sensorState');
+
+    const graphCanvas    = document.getElementById('luxHistoryCanvas');
+    const graphCtx       = graphCanvas.getContext('2d');
+    const graphStatus    = document.getElementById('graphStatus');
+
+    // ── State ──────────────────────────────────────────────
+    let lightSensor = null;
+    let sensorEnabled = false;
+    let supported = false;
+    let currentLux = null;
+    let luxHistory = [];
+    const MAX_HISTORY = 120;
+    let hasSeenHigh = false;
+    let hasSeenLow = false;
+
+    // Build sun rays
+    for (let i = 0; i < 12; i++) {
+      const ray = document.createElement('div');
+      ray.className = 'al-sun-ray';
+      ray.style.transform = 'rotate(' + (i * 30) + 'deg)';
+      sunRays.appendChild(ray);
+    }
+
+    // ── Toast helper ───────────────────────────────────────
+    function showToast(msg) {
+      toastEl.textContent = msg;
+      toastEl.classList.add('show');
+      clearTimeout(toastEl._timer);
+      toastEl._timer = setTimeout(() => toastEl.classList.remove('show'), 2800);
+    }
+
+    // ── Status helper ──────────────────────────────────────
+    function setStatus(type, text) {
+      statusDot.className = 'al-status-dot ' + type;
+      statusText.textContent = text;
+    }
+
+    // ── Classify lux value ─────────────────────────────────
+    function classifyLux(lux) {
+      if (lux === null || lux === undefined) return { name: 'Awaiting sensor', icon: '💡' };
+      if (lux < 1)     return { name: 'Moonlight / Pitch dark', icon: '🌑' };
+      if (lux < 10)    return { name: 'Very dark', icon: '🌒' };
+      if (lux < 50)    return { name: 'Dim room', icon: '🌙' };
+      if (lux < 200)   return { name: 'Indoor', icon: '🏠' };
+      if (lux < 500)   return { name: 'Bright indoor', icon: '💡' };
+      if (lux < 1000)  return { name: 'Overcast / Twilight', icon: '🌥️' };
+      if (lux < 10000) return { name: 'Daylight', icon: '☀️' };
+      if (lux < 50000) return { name: 'Bright day', icon: '🌞' };
+      return { name: 'Direct sunlight', icon: '🔆' };
+    }
+
+    // ── Update UI with new lux value ───────────────────────
+    function updateUI(lux) {
+      currentLux = lux;
+
+      // Update value
+      if (lux === null || lux === undefined) {
+        luxValueEl.textContent = '—';
+        sensorState.textContent = '—';
+        sensorState.className = 'status';
+      } else {
+        luxValueEl.textContent = lux >= 1000 ? Math.round(lux).toLocaleString() : lux.toFixed(1);
+        sensorState.textContent = lux.toFixed(1) + ' lux';
+        sensorState.className = 'status ok';
+      }
+
+      // Environment classification
+      const env = classifyLux(lux);
+      envNameEl.textContent = env.name;
+      envLabelEl.querySelector('.env-icon').textContent = env.icon;
+
+      // Update reading card brightness class
+      readingCard.classList.remove('dark', 'bright');
+      if (lux !== null) {
+        if (lux < 50) readingCard.classList.add('dark');
+        else if (lux > 1000) readingCard.classList.add('bright');
+      }
+
+      // Update scale marker (log scale)
+      if (lux !== null && lux >= 0) {
+        const pct = Math.min(100, Math.max(0, (Math.log10(Math.max(1, lux)) / 5) * 100));
+        scaleMarker.style.left = pct + '%';
+      } else {
+        scaleMarker.style.left = '0%';
+      }
+
+      // Update simulated screen brightness
+      if (lux !== null) {
+        // Simulate auto-brightness curve: clamp 0-1
+        const sim = Math.min(1, Math.max(0.05, Math.log10(Math.max(1, lux)) / 4.5));
+        brightScreen.style.filter = 'brightness(' + (0.3 + sim * 0.7) + ')';
+        simBrightness.textContent = Math.round(sim * 100) + '%';
+        brightStatus.textContent = 'Live';
+      } else {
+        brightScreen.style.filter = 'brightness(0.5)';
+        simBrightness.textContent = '—';
+        brightStatus.textContent = 'Idle';
+      }
+
+      // Cover hint
+      const currentlyCovered = lux !== null && lux < 20;
+      if (currentlyCovered) {
+        coverHint.classList.add('covered');
+        coverHint.innerHTML = '<span class="hint-icon">🌑</span> Sensor covered — reading is low';
+      } else {
+        coverHint.classList.remove('covered');
+        coverHint.innerHTML = '<span class="hint-icon">👋</span> Cover the top of your phone to see the reading change';
+      }
+
+      // Track coverage for auto-brightness verdict
+      if (lux !== null) {
+        if (lux > 200) hasSeenHigh = true;
+        if (lux < 20) hasSeenLow = true;
+
+        if (hasSeenHigh && hasSeenLow) {
+          autoVerdict.className = 'al-verdict pass';
+          autoVerdict.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7l3 3 7-7"/></svg> Sensor responds to cover / uncover — auto-brightness should work';
+        } else if (hasSeenHigh || hasSeenLow) {
+          autoVerdict.className = 'al-verdict waiting';
+          autoVerdict.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="7" r="6"/><path d="M7 4v4M7 10v1"/></svg> ' + (hasSeenHigh ? 'Now cover the sensor to test the low-light response' : 'Now move to bright light to test the high-light response');
+        }
+      }
+
+      // Push to history
+      if (lux !== null) {
+        luxHistory.push(lux);
+        if (luxHistory.length > MAX_HISTORY) luxHistory.shift();
+        drawGraph();
+      }
+    }
+
+    // ── Draw lux history graph ─────────────────────────────
+    function drawGraph() {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = graphCanvas.getBoundingClientRect();
+      if (graphCanvas.width !== rect.width * dpr || graphCanvas.height !== rect.height * dpr) {
+        graphCanvas.width = rect.width * dpr;
+        graphCanvas.height = rect.height * dpr;
+        graphCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      const w = rect.width;
+      const h = rect.height;
+      graphCtx.clearRect(0, 0, w, h);
+
+      // Grid
+      graphCtx.strokeStyle = 'rgba(255,255,255,0.04)';
+      graphCtx.lineWidth = 1;
+      for (let i = 0; i <= 4; i++) {
+        const y = (h / 4) * i;
+        graphCtx.beginPath(); graphCtx.moveTo(0, y); graphCtx.lineTo(w, y); graphCtx.stroke();
+      }
+
+      if (luxHistory.length < 2) {
+        graphCtx.fillStyle = 'rgba(255,255,255,0.25)';
+        graphCtx.font = '11px "Space Mono", monospace';
+        graphCtx.textAlign = 'center';
+        graphCtx.fillText('No data yet — start the test', w / 2, h / 2 + 4);
+        graphStatus.textContent = 'No data';
+        return;
+      }
+
+      // Use log scale for Y-axis so both dark and bright values are visible
+      const maxLux = Math.max(...luxHistory, 100);
+      const minLux = 0;
+      const stepX = w / (MAX_HISTORY - 1);
+      const offset = MAX_HISTORY - luxHistory.length;
+
+      function luxToY(lux) {
+        const logMax = Math.log10(maxLux + 1);
+        const norm = Math.log10(Math.max(0, lux) + 1) / (logMax || 1);
+        return h - norm * (h - 8) - 4;
+      }
+
+      // Gradient fill
+      const gradient = graphCtx.createLinearGradient(0, 0, 0, h);
+      gradient.addColorStop(0, 'rgba(251,191,36,0.4)');
+      gradient.addColorStop(1, 'rgba(251,191,36,0)');
+
+      // Fill area
+      graphCtx.beginPath();
+      graphCtx.moveTo(offset * stepX, h);
+      luxHistory.forEach((lux, i) => {
+        graphCtx.lineTo((offset + i) * stepX, luxToY(lux));
+      });
+      graphCtx.lineTo((offset + luxHistory.length - 1) * stepX, h);
+      graphCtx.closePath();
+      graphCtx.fillStyle = gradient;
+      graphCtx.fill();
+
+      // Line
+      graphCtx.beginPath();
+      luxHistory.forEach((lux, i) => {
+        const x = (offset + i) * stepX;
+        const y = luxToY(lux);
+        if (i === 0) graphCtx.moveTo(x, y);
+        else graphCtx.lineTo(x, y);
+      });
+      graphCtx.strokeStyle = '#fbbf24';
+      graphCtx.lineWidth = 2;
+      graphCtx.lineJoin = 'round';
+      graphCtx.stroke();
+
+      // Current point
+      const lastX = (offset + luxHistory.length - 1) * stepX;
+      const lastY = luxToY(luxHistory[luxHistory.length - 1]);
+      graphCtx.beginPath();
+      graphCtx.arc(lastX, lastY, 4, 0, Math.PI * 2);
+      graphCtx.fillStyle = '#fbbf24';
+      graphCtx.fill();
+      graphCtx.strokeStyle = '#fff';
+      graphCtx.lineWidth = 1.5;
+      graphCtx.stroke();
+
+      // Labels
+      graphCtx.fillStyle = 'rgba(255,255,255,0.3)';
+      graphCtx.font = '10px "Space Mono", monospace';
+      graphCtx.textAlign = 'left';
+      graphCtx.fillText(Math.round(maxLux) + ' lux', 4, 12);
+      graphCtx.fillText('0', 4, h - 4);
+
+      graphStatus.textContent = currentLux !== null ? currentLux.toFixed(0) + ' lux · ' + luxHistory.length + ' samples' : 'Live';
+    }
+
+    // ── Sensor reading handler ─────────────────────────────
+    function handleReading() {
+      if (!lightSensor) return;
+      const lux = lightSensor.illuminance;
+      updateUI(lux);
+    }
+
+    // ── Start the sensor ───────────────────────────────────
+    async function startTest() {
+      if (typeof AmbientLightSensor === 'undefined') {
+        supported = false;
+        sensorLight.textContent = 'Not supported';
+        sensorLight.className = 'status missing';
+        sensorApi.textContent = 'Unavailable';
+        sensorApi.className = 'status missing';
+        setStatus('error', 'Sensor not supported');
+        showToast('AmbientLightSensor API not supported in this browser');
+        updateUI(null);
+        sensorState.textContent = 'Unavailable';
+        sensorState.className = 'status missing';
+        return;
+      }
+
+      sensorApi.textContent = 'Supported';
+      sensorApi.className = 'status ok';
+
+      try {
+        // Request permission if required (some Chromium builds gate this)
+        if (typeof AmbientLightSensor.requestPermission === 'function') {
+          const perm = await AmbientLightSensor.requestPermission();
+          if (perm !== 'granted') {
+            throw new Error('Permission denied');
+          }
+        }
+        lightSensor = new AmbientLightSensor({ frequency: 5 });
+      } catch (e) {
+        supported = false;
+        sensorLight.textContent = 'Permission denied';
+        sensorLight.className = 'status missing';
+        setStatus('error', 'Permission denied');
+        showToast('Could not access light sensor');
+        return;
+      }
+
+      lightSensor.addEventListener('reading', handleReading);
+      lightSensor.addEventListener('error', function(event) {
+        supported = false;
+        sensorLight.textContent = 'Error';
+        sensorLight.className = 'status missing';
+        setStatus('error', 'Sensor error');
+        showToast('Sensor error: ' + (event.error ? event.error.name : 'unknown'));
+      });
+
+      try {
+        lightSensor.start();
+        sensorEnabled = true;
+        supported = true;
+        hasSeenHigh = false;
+        hasSeenLow = false;
+
+        sensorLight.textContent = 'Available';
+        sensorLight.className = 'status ok';
+        setStatus('live', 'Sensor active');
+        startBtn.disabled = true;
+        startBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l4 4 10-10"/></svg> Sensor Active';
+
+        showToast('Light sensor active — cover the top of your phone');
+      } catch (e) {
+        supported = false;
+        sensorLight.textContent = 'Failed to start';
+        sensorLight.className = 'status missing';
+        setStatus('error', 'Failed to start');
+        showToast('Could not start light sensor');
+      }
+    }
+
+    // ── Reset ──────────────────────────────────────────────
+    function resetTest() {
+      if (lightSensor) {
+        try { lightSensor.stop(); } catch (e) { /* ignore */ }
+        lightSensor = null;
+      }
+      sensorEnabled = false;
+      currentLux = null;
+      luxHistory = [];
+      hasSeenHigh = false;
+      hasSeenLow = false;
+
+      updateUI(null);
+      readingCard.classList.remove('dark', 'bright');
+      coverHint.classList.remove('covered');
+      coverHint.innerHTML = '<span class="hint-icon">👋</span> Cover the top of your phone to see the reading change';
+      autoVerdict.className = 'al-verdict waiting';
+      autoVerdict.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="7" r="6"/><path d="M7 4v4M7 10v1"/></svg> Start the test and cover/uncover the sensor to see the response';
+      brightScreen.style.filter = 'brightness(0.5)';
+      graphCtx.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
+      drawGraph();
+
+      startBtn.disabled = false;
+      startBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3"/><path d="M9 2v2M9 14v2M2 9h2M14 9h2M4 4l1.5 1.5M12.5 12.5L14 14M4 14l1.5-1.5M12.5 5.5L14 4"/></svg> Start Light Test';
+
+      setStatus('ready', 'Ready to test');
+      sensorState.textContent = '—';
+      sensorState.className = 'status';
+      showToast('Test reset');
+    }
+
+    // ── Wire up buttons ────────────────────────────────────
+    startBtn.addEventListener('click', function() {
+      if (sensorEnabled) return;
+      permOverlay.classList.add('active');
+    });
+
+    enableBtn.addEventListener('click', function() {
+      permOverlay.classList.remove('active');
+      startTest();
+    });
+
+    overlayCloseBtn.addEventListener('click', function() {
+      permOverlay.classList.remove('active');
+    });
+
+    resetBtn.addEventListener('click', resetTest);
+
+    // ── FAQ toggle ─────────────────────────────────────────
+    window.toggleAlFaq = function(btn) {
+      const item = btn.closest('.al-faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.al-faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.al-faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    // ── Initial availability check ─────────────────────────
+    (function initAvailability() {
+      if (typeof AmbientLightSensor === 'undefined') {
+        sensorLight.textContent = 'Not supported';
+        sensorLight.className = 'status missing';
+        sensorApi.textContent = 'Unavailable';
+        sensorApi.className = 'status missing';
+        sensorState.textContent = '—';
+        setStatus('ready', 'Unsupported browser');
+        startBtn.disabled = true;
+        startBtn.textContent = 'Sensor Not Supported';
+        luxValueEl.textContent = '—';
+        envNameEl.textContent = 'Unsupported browser';
+        envLabelEl.querySelector('.env-icon').textContent = '❌';
+      } else {
+        sensorLight.textContent = 'Tap to enable';
+        sensorLight.className = 'status limited';
+        sensorApi.textContent = 'Supported';
+        sensorApi.className = 'status ok';
+        sensorState.textContent = '—';
+        setStatus('ready', 'Ready to test');
+      }
+      drawGraph();
+    })();
+
+    // ── Handle resize ──────────────────────────────────────
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(drawGraph, 200);
+    });
+
+    // ── Cleanup ────────────────────────────────────────────
+    window.addEventListener('beforeunload', function() {
+      if (lightSensor) {
+        try { lightSensor.stop(); } catch (e) { /* ignore */ }
+      }
+    });
+  });
+  </script>
+</body>
+</html>
