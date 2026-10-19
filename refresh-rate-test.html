@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" 
+    crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MD16J6JVZ2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MD16J6JVZ2');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ── Primary Meta ─────────────────────────────────── -->
+  <title>Refresh Rate Tester — Measure Your Screen's Actual Hz Online | WhatPhone</title>
+  <meta name="description" content="Free online refresh rate tester. Measure your display's actual Hz with requestAnimationFrame, compare estimated vs claimed refresh rates, and run motion blur & flicker tests. Works on phones, tablets, and monitors." />
+  <meta name="keywords" content="refresh rate tester, hz test, screen refresh rate test, monitor hz test, phone refresh rate, 60hz 90hz 120hz 144hz test, display refresh rate check, motion blur test, flicker test, frame rate tester" />
+  <meta name="author" content="WhatPhone" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://whatphone.github.io/refresh-rate-test" />
+  <link rel="alternate" hreflang="en" href="https://whatphone.github.io/refresh-rate-test" />
+  <link rel="alternate" hreflang="x-default" href="https://whatphone.github.io/refresh-rate-test" />
+
+  <!-- ── Open Graph ────────────────────────────────────── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://whatphone.github.io/refresh-rate-test" />
+  <meta property="og:title" content="Refresh Rate Tester — Measure Your Screen's Actual Hz Online" />
+  <meta property="og:description" content="Measure your display's real refresh rate, compare against the claimed Hz, and run motion blur & flicker tests. Free, private, no app." />
+  <meta property="og:image" content="https://whatphone.github.io/assets/og-image.png" />
+  <meta property="og:site_name" content="WhatPhone" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ── Twitter Card ──────────────────────────────────── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@whatphone" />
+  <meta name="twitter:title" content="Refresh Rate Tester — Measure Your Screen's Actual Hz Online" />
+  <meta name="twitter:description" content="Measure real Hz vs claimed Hz, plus motion blur and flicker tests. Free & private." />
+  <meta name="twitter:image" content="https://whatphone.github.io/assets/og-image.png" />
+
+  <!-- ── Favicon ───────────────────────────────────────── -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+
+  <!-- ── Theme Color ───────────────────────────────────── -->
+  <meta name="theme-color" content="#080c14" />
+  <meta name="msapplication-TileColor" content="#080c14" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- ── Preconnect ───────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- ── Stylesheet ───────────────────────────────────── -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- ── Schema Markup ────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://whatphone.github.io/refresh-rate-test#app",
+        "name": "Refresh Rate Tester",
+        "url": "https://whatphone.github.io/refresh-rate-test",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires a modern web browser",
+        "description": "Free online refresh rate tester. Measure your display's actual Hz using requestAnimationFrame, compare estimated vs claimed refresh rates, and run motion blur and flicker tests on any phone, tablet, or monitor.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Measure real refresh rate via requestAnimationFrame",
+          "Estimated vs claimed Hz comparison",
+          "Frame time graph and stability analysis",
+          "Motion blur / UFO test",
+          "Flicker / PWM test",
+          "Works on phones, tablets, and monitors",
+          "No app download required"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://whatphone.github.io/refresh-rate-test#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does this refresh rate tester measure my screen's Hz?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The tester uses the browser's requestAnimationFrame API to record the timestamp of every rendered frame. By calculating the average interval between frames over a few seconds, it derives your display's actual refresh rate in Hertz. The measurement is accurate to within about ±1 Hz on a stable browser."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does my measured refresh rate differ from the claimed 120Hz or 144Hz?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Several factors can lower the measured rate: browser throttling, power-saving modes, the device not actually running at its advertised rate, background apps consuming GPU resources, or the browser being limited to 60Hz even on a higher-refresh display. On phones, the OS often dynamically scales refresh rate based on content, which can also affect results."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I test my phone's 120Hz display?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open this page in your phone's browser, ensure the display is set to its highest refresh rate in system settings, disable battery saver, and tap 'Start Test'. Keep the screen active and avoid touching it during measurement. If the result shows 60Hz on a 120Hz phone, the browser may be capped — try a different browser or check that the system setting is enabled."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the UFO motion blur test?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The UFO test animates a moving object across the screen at a speed matched to your measured refresh rate. On higher-refresh displays the object appears sharper and smoother. On lower-refresh or blurry panels you'll see ghosting or smearing trailing behind the object, which indicates pixel response time and motion clarity issues."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ── Refresh Rate Tester specific styles ─────────────────── */
+    :root {
+      --rr-bg: #080c14;
+      --rr-surface: #10151f;
+      --rr-surface2: #161d2a;
+      --rr-border: #1e2636;
+      --rr-border2: #2a3446;
+      --rr-text: #c8d2e0;
+      --rr-text2: #7a8aa0;
+      --rr-text3: #4a5568;
+      --rr-heading: #f0f4fa;
+      --rr-accent: #ff6b4a;
+      --rr-accent2: #f5573a;
+      --rr-neon: #8b5cf6;
+      --rr-green: #22c55e;
+      --rr-red: #ef4444;
+      --rr-amber: #f59e0b;
+      --rr-sky: #0ea5e9;
+      --rr-font-display: 'Syne', sans-serif;
+      --rr-font-body: 'DM Sans', sans-serif;
+      --rr-font-mono: 'Space Mono', monospace;
+      --rr-r: 14px;
+      --rr-r-lg: 24px;
+      --rr-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      --rr-shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.6);
+      --rr-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--rr-bg);
+      color: var(--rr-text);
+      font-family: var(--rr-font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Full-screen test stages ──────────────────────────────── */
+    #testOverlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      cursor: pointer;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #testOverlay.active { display: flex; }
+
+    /* Exit button */
+    #exitTestBtn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    #exitTestBtn:hover {
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Overlay HUD */
+    #overlayHud {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 1.25rem;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 100px;
+      padding: 0.45rem 1.2rem;
+      font-family: var(--rr-font-mono);
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.8);
+      z-index: 5;
+      white-space: nowrap;
+    }
+    #overlayHud .hud-item { display: flex; align-items: center; gap: 0.4rem; }
+    #overlayHud .hud-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--rr-green);
+      box-shadow: 0 0 8px rgba(34,197,94,0.6);
+    }
+
+    /* Motion test canvas */
+    #motionCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Flicker test */
+    #flickerLayer {
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      display: none;
+    }
+    #flickerLayer.active { display: block; }
+
+    /* Frame time graph canvas */
+    #frameGraphCanvas {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      z-index: 4;
+    }
+
+    /* ── Page layout ──────────────────────────────────────────── */
+    .rr-page {
+      padding-top: 72px;
+      min-height: 100vh;
+      background: var(--rr-bg);
+    }
+
+    /* Hero */
+    .rr-hero {
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: 1px solid var(--rr-border);
+      background: linear-gradient(180deg, var(--rr-bg) 0%, var(--rr-surface) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .rr-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 10% 0%, rgba(255, 107, 74, 0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 10%, rgba(139, 92, 246, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .rr-hero .container { position: relative; z-index: 1; }
+
+    .rr-breadcrumb ol {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      list-style: none;
+      font-size: 0.8rem;
+      color: var(--rr-text3);
+      margin-bottom: 1.5rem;
+      padding: 0;
+    }
+    .rr-breadcrumb li + li::before {
+      content: '/';
+      opacity: 0.4;
+      margin-right: 0.5rem;
+    }
+    .rr-breadcrumb a { color: var(--rr-text2); transition: color var(--rr-transition); }
+    .rr-breadcrumb a:hover { color: var(--rr-accent); }
+    .rr-breadcrumb [aria-current] { color: var(--rr-accent); }
+
+    .rr-hero-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .rr-hero-left h1 {
+      font-family: var(--rr-font-display);
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--rr-heading);
+      line-height: 1.12;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .rr-hero-left h1 span {
+      background: linear-gradient(135deg, var(--rr-accent) 0%, #ff9478 50%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .rr-hero-left p {
+      color: var(--rr-text2);
+      font-size: 1.05rem;
+      max-width: 580px;
+      line-height: 1.65;
+    }
+
+    .rr-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: var(--rr-surface);
+      border: 1px solid var(--rr-border);
+      color: var(--rr-text2);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .rr-status-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--rr-text3); flex-shrink: 0;
+    }
+    .rr-status-dot.ready {
+      background: var(--rr-green);
+      box-shadow: 0 0 8px rgba(34,197,94,0.6);
+      animation: rr-pulse 2s infinite;
+    }
+    .rr-status-dot.testing {
+      background: var(--rr-accent);
+      box-shadow: 0 0 8px rgba(255,107,74,0.6);
+      animation: rr-pulse 1s infinite;
+    }
+    @keyframes rr-pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    /* ── Main layout ──────────────────────────────────────────── */
+    .rr-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 1.75rem;
+      align-items: start;
+    }
+
+    /* ── Hero result card ─────────────────────────────────────── */
+    .rr-result-card {
+      background: var(--rr-surface);
+      border: 1px solid var(--rr-border);
+      border-radius: var(--rr-r-lg);
+      overflow: hidden;
+      box-shadow: var(--rr-shadow);
+    }
+
+    .rr-result-hero {
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(160deg, var(--rr-surface) 0%, var(--rr-surface2) 100%);
+      border-bottom: 1px solid var(--rr-border);
+    }
+    .rr-result-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,107,74,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .rr-measured-label {
+      font-family: var(--rr-font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rr-text3);
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    .rr-measured-value {
+      font-family: var(--rr-font-display);
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--rr-heading);
+      position: relative;
+      background: linear-gradient(135deg, var(--rr-accent) 0%, #ff9478 40%, var(--rr-neon) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
+    }
+    .rr-measured-unit {
+      font-family: var(--rr-font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--rr-text2);
+      margin-left: 0.25rem;
+    }
+
+    .rr-claimed-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--rr-text2);
+      position: relative;
+    }
+    .rr-claimed-row strong {
+      color: var(--rr-heading);
+      font-family: var(--rr-font-mono);
+    }
+    .rr-verdict-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: var(--rr-font-mono);
+      letter-spacing: 0.03em;
+    }
+    .rr-verdict-badge.good {
+      background: rgba(34,197,94,0.12);
+      color: var(--rr-green);
+      border: 1px solid rgba(34,197,94,0.3);
+    }
+    .rr-verdict-badge.warn {
+      background: rgba(245,158,11,0.12);
+      color: var(--rr-amber);
+      border: 1px solid rgba(245,158,11,0.3);
+    }
+    .rr-verdict-badge.bad {
+      background: rgba(239,68,68,0.12);
+      color: var(--rr-red);
+      border: 1px solid rgba(239,68,68,0.3);
+    }
+
+    /* Stats grid inside result card */
+    .rr-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--rr-border);
+    }
+    .rr-stat {
+      padding: 1.1rem 1rem;
+      text-align: center;
+      border-right: 1px solid var(--rr-border);
+    }
+    .rr-stat:last-child { border-right: none; }
+    .rr-stat-label {
+      font-size: 0.68rem;
+      color: var(--rr-text3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+    .rr-stat-value {
+      font-family: var(--rr-font-mono);
+      font-size: 0.95rem;
+      color: var(--rr-heading);
+      font-weight: 700;
+    }
+
+    /* ── Frame time graph card ────────────────────────────────── */
+    .rr-graph-card {
+      background: var(--rr-surface);
+      border: 1px solid var(--rr-border);
+      border-radius: var(--rr-r-lg);
+      padding: 1.5rem;
+      margin-top: 1.25rem;
+      box-shadow: var(--rr-shadow);
+    }
+    .rr-card-title {
+      font-family: var(--rr-font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--rr-text3);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .rr-card-title .title-right {
+      font-family: var(--rr-font-mono);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--rr-text3);
+    }
+
+    #frameGraph {
+      width: 100%;
+      height: 120px;
+      display: block;
+      background: var(--rr-bg);
+      border-radius: 10px;
+      border: 1px solid var(--rr-border);
+    }
+
+    /* ── Test buttons row ─────────────────────────────────────── */
+    .rr-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+
+    .rr-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--rr-r);
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: var(--rr-font-display);
+      border: none;
+      cursor: pointer;
+      transition: all var(--rr-transition);
+      white-space: nowrap;
+    }
+    .rr-btn-primary {
+      background: linear-gradient(135deg, var(--rr-accent) 0%, var(--rr-accent2) 100%);
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(255,107,74,0.3);
+    }
+    .rr-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(255,107,74,0.45);
+    }
+    .rr-btn-primary:active { transform: translateY(0); }
+    .rr-btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .rr-btn-secondary {
+      background: var(--rr-surface2);
+      color: var(--rr-text);
+      border: 1px solid var(--rr-border);
+    }
+    .rr-btn-secondary:hover {
+      border-color: var(--rr-accent);
+      color: var(--rr-accent);
+      background: var(--rr-surface);
+    }
+    .rr-btn-sm {
+      padding: 0.55rem 1rem;
+      font-size: 0.8rem;
+    }
+
+    /* ── Sidebar ──────────────────────────────────────────────── */
+    .rr-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .rr-card {
+      background: var(--rr-surface);
+      border: 1px solid var(--rr-border);
+      border-radius: var(--rr-r-lg);
+      padding: 1.5rem;
+      box-shadow: var(--rr-shadow);
+    }
+
+    .rr-tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--rr-border);
+      font-size: 0.85rem;
+      color: var(--rr-text2);
+      line-height: 1.55;
+    }
+    .rr-tip:last-child { border-bottom: none; padding-bottom: 0; }
+    .rr-tip:first-child { padding-top: 0; }
+    .rr-tip-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255,107,74,0.1);
+      border: 1px solid rgba(255,107,74,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--rr-accent);
+      font-size: 0.8rem;
+    }
+    .rr-tip strong { color: var(--rr-heading); font-weight: 600; }
+
+    /* Refresh rate reference */
+    .rr-ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .rr-ref-table th {
+      text-align: left;
+      font-family: var(--rr-font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--rr-text3);
+      padding: 0 0 0.5rem;
+      border-bottom: 1px solid var(--rr-border);
+      font-weight: 600;
+    }
+    .rr-ref-table td {
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--rr-border);
+      color: var(--rr-text2);
+    }
+    .rr-ref-table tr:last-child td { border-bottom: none; }
+    .rr-ref-table td:last-child {
+      text-align: right;
+      font-family: var(--rr-font-mono);
+      color: var(--rr-heading);
+      font-weight: 700;
+    }
+
+    /* Tool links */
+    .rr-tool-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .rr-tool-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.65rem 0.85rem;
+      background: var(--rr-bg);
+      border: 1px solid var(--rr-border);
+      border-radius: var(--rr-r);
+      font-size: 0.82rem;
+      color: var(--rr-text2);
+      transition: all var(--rr-transition);
+      text-decoration: none;
+    }
+    .rr-tool-link:hover {
+      border-color: var(--rr-accent);
+      color: var(--rr-text);
+      background: var(--rr-surface);
+    }
+    .rr-tool-link .tool-icon { font-size: 1rem; flex-shrink: 0; }
+
+    /* ── Sections ─────────────────────────────────────────────── */
+    .rr-section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--rr-border);
+    }
+    .rr-section-alt {
+      background: linear-gradient(180deg, var(--rr-surface) 0%, var(--rr-bg) 100%);
+    }
+    .rr-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .rr-section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .rr-section-eyebrow {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      padding: 0.3rem 0.9rem;
+      background: rgba(255,107,74,0.1);
+      border: 1px solid rgba(255,107,74,0.2);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rr-accent);
+      font-family: var(--rr-font-mono);
+    }
+    .rr-section-title {
+      font-family: var(--rr-font-display);
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: var(--rr-heading);
+      margin-bottom: 0.75rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .rr-section-subtitle {
+      font-size: 1.02rem;
+      color: var(--rr-text2);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* Features grid */
+    .rr-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .rr-feature-card {
+      background: var(--rr-surface);
+      border: 1px solid var(--rr-border);
+      border-radius: var(--rr-r-lg);
+      padding: 1.75rem;
+      transition: all var(--rr-transition);
+    }
+    .rr-feature-card:hover {
+      border-color: rgba(255,107,74,0.3);
+      transform: translateY(-4px);
+      box-shadow: var(--rr-shadow-lg);
+    }
+    .rr-feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(255,107,74,0.08);
+      border: 1px solid rgba(255,107,74,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+      color: var(--rr-accent);
+    }
+    .rr-feature-icon svg { width: 24px; height: 24px; }
+    .rr-feature-title {
+      font-family: var(--rr-font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--rr-heading);
+      margin-bottom: 0.5rem;
+    }
+    .rr-feature-desc {
+      font-size: 0.88rem;
+      color: var(--rr-text2);
+      line-height: 1.65;
+    }
+
+    /* Steps */
+    .rr-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      position: relative;
+    }
+    .rr-steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 34px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--rr-border), var(--rr-accent), var(--rr-border), transparent);
+      z-index: 0;
+    }
+    .rr-step-item {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .rr-step-num {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: var(--rr-surface);
+      border: 2px solid var(--rr-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--rr-font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--rr-accent);
+      margin: 0 auto 1rem;
+      box-shadow: 0 0 20px rgba(255,107,74,0.15);
+      transition: all var(--rr-transition);
+    }
+    .rr-step-item:hover .rr-step-num {
+      background: var(--rr-accent);
+      color: #fff;
+      box-shadow: 0 0 30px rgba(255,107,74,0.4);
+    }
+    .rr-step-title {
+      font-family: var(--rr-font-display);
+      font-weight: 700;
+      color: var(--rr-heading);
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+    .rr-step-desc {
+      font-size: 0.82rem;
+      color: var(--rr-text2);
+      line-height: 1.6;
+    }
+
+    /* FAQ */
+    .rr-faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .rr-faq-item {
+      background: var(--rr-surface);
+      border: 1px solid var(--rr-border);
+      border-radius: var(--rr-r);
+      overflow: hidden;
+      transition: border-color var(--rr-transition);
+    }
+    .rr-faq-item.open { border-color: rgba(255,107,74,0.4); }
+    .rr-faq-q {
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+      font-weight: 600;
+      color: var(--rr-heading);
+      font-size: 0.95rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--rr-font-body);
+      transition: color var(--rr-transition);
+    }
+    .rr-faq-q:hover { color: var(--rr-accent); }
+    .rr-faq-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: var(--rr-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+      font-weight: 300;
+      transition: all var(--rr-transition);
+    }
+    .rr-faq-item.open .rr-faq-icon {
+      background: var(--rr-accent);
+      color: #fff;
+      transform: rotate(45deg);
+    }
+    .rr-faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      font-size: 0.9rem;
+      color: var(--rr-text2);
+      line-height: 1.75;
+    }
+    .rr-faq-item.open .rr-faq-a {
+      max-height: 400px;
+      padding: 0 1.5rem 1.25rem;
+    }
+    .rr-faq-a p { margin: 0; }
+
+    /* Toast */
+    .rr-toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--rr-surface);
+      border: 1px solid var(--rr-border2);
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      color: var(--rr-text);
+      z-index: 9999;
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      box-shadow: var(--rr-shadow-lg);
+    }
+    .rr-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .rr-main { grid-template-columns: 1fr; }
+      .rr-features-grid { grid-template-columns: repeat(2, 1fr); }
+      .rr-steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .rr-steps-grid::before { display: none; }
+    }
+    @media (max-width: 768px) {
+      .rr-hero { padding: 2rem 0 1.5rem; }
+      .rr-hero-inner { flex-direction: column; }
+      .rr-status-badge { align-self: flex-start; }
+      .rr-features-grid { grid-template-columns: 1fr; }
+      .rr-steps-grid { grid-template-columns: 1fr; }
+      .rr-main { padding: 1.5rem 1rem 3rem; }
+      .rr-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .rr-stat:nth-child(2) { border-right: none; }
+      .rr-stat { border-bottom: 1px solid var(--rr-border); }
+      .rr-stat:nth-last-child(-n+2) { border-bottom: none; }
+      #overlayHud { font-size: 0.65rem; gap: 0.75rem; padding: 0.35rem 0.9rem; }
+    }
+    @media (max-width: 480px) {
+      .rr-stats-grid { grid-template-columns: 1fr 1fr; }
+      .rr-actions { flex-direction: column; }
+      .rr-btn { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--rr-accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content" style="position:absolute;top:-100%;left:1rem;background:var(--rr-accent);color:#fff;padding:0.5rem 1rem;border-radius:8px;font-weight:600;z-index:99999;transition:top 0.25s;">Skip to main content</a>
+
+  <!-- Header -->
+  <header id="site-header" role="banner"></header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FULL-SCREEN TEST OVERLAY
+  ══════════════════════════════════════════════════════════ -->
+  <div id="testOverlay" role="application" aria-label="Full-screen refresh rate test. Move the object with your finger or mouse.">
+    <div id="overlayHud" aria-live="polite">
+      <span class="hud-item"><span class="hud-dot" aria-hidden="true"></span> <span id="hudHz">— Hz</span></span>
+      <span class="hud-item" id="hudMode">Motion Test</span>
+    </div>
+    <button id="exitTestBtn" aria-label="Exit full-screen test" title="Exit test (Esc)">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="3" x2="15" y2="15"/>
+        <line x1="15" y1="3" x2="3" y2="15"/>
+      </svg>
+    </button>
+    <canvas id="motionCanvas" aria-hidden="true"></canvas>
+    <div id="flickerLayer" aria-hidden="true"></div>
+    <canvas id="frameGraphCanvas" aria-hidden="true"></canvas>
+  </div>
+
+  <!-- ── Main Content ─────────────────────────────────── -->
+  <main class="rr-page" id="main-content">
+
+    <!-- ══════════════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════════════════ -->
+    <section class="rr-hero">
+      <div class="container">
+        <nav class="rr-breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li aria-current="page">Refresh Rate Tester</li>
+          </ol>
+        </nav>
+        <div class="rr-hero-inner">
+          <div class="rr-hero-left">
+            <h1>Refresh Rate Tester<br/><span>Measure Your Real Screen Hz</span></h1>
+            <p>Find out how many frames per second your display actually delivers. Measure live Hz with requestAnimationFrame, compare against the claimed rate, and run motion blur and flicker tests — right in your browser.</p>
+          </div>
+          <div class="rr-status-badge" id="rrStatusBadge" aria-live="polite">
+            <span class="rr-status-dot ready" id="rrStatusDot"></span>
+            <span id="rrStatusText">Ready to measure</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         MAIN MEASUREMENT AREA
+    ══════════════════════════════════════════════════════ -->
+    <div class="rr-main">
+      <!-- Left: Result + Graph + Actions -->
+      <div>
+        <!-- Result card -->
+        <div class="rr-result-card">
+          <div class="rr-result-hero">
+            <div class="rr-measured-label">Measured Refresh Rate</div>
+            <div>
+              <span class="rr-measured-value" id="measuredHz">—</span>
+              <span class="rr-measured-unit">Hz</span>
+            </div>
+            <div class="rr-claimed-row">
+              <span>Estimated display: <strong id="claimedHz">—</strong></span>
+              <span class="rr-verdict-badge" id="verdictBadge" style="display:none;">—</span>
+            </div>
+          </div>
+          <div class="rr-stats-grid">
+            <div class="rr-stat">
+              <div class="rr-stat-label">Frame Time</div>
+              <div class="rr-stat-value" id="statFrameTime">—</div>
+            </div>
+            <div class="rr-stat">
+              <div class="rr-stat-label">Frames</div>
+              <div class="rr-stat-value" id="statFrames">—</div>
+            </div>
+            <div class="rr-stat">
+              <div class="rr-stat-label">Stability</div>
+              <div class="rr-stat-value" id="statStability">—</div>
+            </div>
+            <div class="rr-stat">
+              <div class="rr-stat-label">Jitter</div>
+              <div class="rr-stat-value" id="statJitter">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frame time graph -->
+        <div class="rr-graph-card">
+          <div class="rr-card-title">
+            <span>Frame Time Graph</span>
+            <span class="title-right" id="graphStatus">Idle</span>
+          </div>
+          <canvas id="frameGraph" aria-label="Frame time history graph"></canvas>
+        </div>
+
+        <!-- Actions -->
+        <div class="rr-actions">
+          <button class="rr-btn rr-btn-primary" id="startMeasureBtn" aria-label="Start measuring refresh rate">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="9" r="7"/>
+              <polygon points="7 6 12 9 7 12 7 6" fill="currentColor" stroke="none"/>
+            </svg>
+            Start Measurement
+          </button>
+          <button class="rr-btn rr-btn-secondary" id="motionTestBtn" aria-label="Run full-screen motion blur test">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="9" r="3"/>
+              <path d="M9 2v2M9 14v2M2 9h2M14 9h2"/>
+            </svg>
+            Motion Test
+          </button>
+          <button class="rr-btn rr-btn-secondary" id="flickerTestBtn" aria-label="Run full-screen flicker test">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 2L5 11h6l-2 7 8-9h-6l2-7z"/>
+            </svg>
+            Flicker Test
+          </button>
+          <button class="rr-btn rr-btn-secondary rr-btn-sm" id="resetBtn" aria-label="Reset measurement">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 8a6 6 0 1 0 6-6"/>
+              <polyline points="2 3 2 8 7 8"/>
+            </svg>
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="rr-sidebar">
+        <!-- Tips -->
+        <div class="rr-card">
+          <div class="rr-card-title" style="margin-bottom:1rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 8v4M12 16v1"/>
+            </svg>
+            Measurement Tips
+          </div>
+          <div class="rr-tip">
+            <div class="rr-tip-icon">⚡</div>
+            <div><strong>Close other tabs</strong> — background tabs and apps can throttle the frame rate.</div>
+          </div>
+          <div class="rr-tip">
+            <div class="rr-tip-icon">🔋</div>
+            <div><strong>Disable power saving</strong> — battery saver often caps refresh rate to 60Hz.</div>
+          </div>
+          <div class="rr-tip">
+            <div class="rr-tip-icon">📱</div>
+            <div><strong>Enable high refresh mode</strong> — on phones, set the display to its max Hz in system settings.</div>
+          </div>
+          <div class="rr-tip">
+            <div class="rr-tip-icon">🖱️</div>
+            <div><strong>Keep the page focused</strong> — don't touch the screen or switch apps during measurement.</div>
+          </div>
+        </div>
+
+        <!-- Refresh rate reference -->
+        <div class="rr-card">
+          <div class="rr-card-title" style="margin-bottom:1rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+            Common Refresh Rates
+          </div>
+          <table class="rr-ref-table">
+            <thead><tr><th>Rate</th><th>Frame Time</th></tr></thead>
+            <tbody>
+              <tr><td>60 Hz</td><td>16.67 ms</td></tr>
+              <tr><td>90 Hz</td><td>11.11 ms</td></tr>
+              <tr><td>120 Hz</td><td>8.33 ms</td></tr>
+              <tr><td>144 Hz</td><td>6.94 ms</td></tr>
+              <tr><td>165 Hz</td><td>6.06 ms</td></tr>
+              <tr><td>240 Hz</td><td>4.17 ms</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Other tools -->
+        <div class="rr-card">
+          <div class="rr-card-title" style="margin-bottom:1rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="2"/>
+              <line x1="8" y1="8" x2="16" y2="16"/>
+              <line x1="16" y1="8" x2="8" y2="16"/>
+            </svg>
+            More Screen Tests
+          </div>
+          <div class="rr-tool-links">
+            <a href="/dead-pixel" class="rr-tool-link"><span class="tool-icon">🔴</span> Dead Pixel Test</a>
+            <a href="/camera-test" class="rr-tool-link"><span class="tool-icon">📷</span> Camera Test</a>
+            <a href="/touchscreen-test" class="rr-tool-link"><span class="tool-icon">👆</span> Touchscreen Test</a>
+            <a href="/speaker-test" class="rr-tool-link"><span class="tool-icon">🔊</span> Speaker Test</a>
+            <a href="/#detect" class="rr-tool-link"><span class="tool-icon">📱</span> Detect My Phone</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         FEATURES
+    ══════════════════════════════════════════════════════ -->
+    <section class="rr-section rr-section-alt" aria-labelledby="rr-features-heading">
+      <div class="rr-container">
+        <div class="rr-section-header">
+          <span class="rr-section-eyebrow">Features</span>
+          <h2 class="rr-section-title" id="rr-features-heading">What This Refresh Rate Tester Does</h2>
+          <p class="rr-section-subtitle">Everything you need to verify your display's real-world performance.</p>
+        </div>
+        <div class="rr-features-grid">
+          <article class="rr-feature-card">
+            <div class="rr-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h3 class="rr-feature-title">Real Hz Measurement</h3>
+            <p class="rr-feature-desc">Uses requestAnimationFrame timestamps to calculate your display's actual refresh rate over several seconds — accurate to within about ±1 Hz on a stable browser.</p>
+          </article>
+          <article class="rr-feature-card">
+            <div class="rr-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+                <line x1="9" y1="21" x2="9" y2="9"/>
+              </svg>
+            </div>
+            <h3 class="rr-feature-title">Estimated vs Claimed</h3>
+            <p class="rr-feature-desc">Compares your measured rate against a screen-derived estimate from your device and resolution, highlighting any gap between advertised and real Hz.</p>
+          </article>
+          <article class="rr-feature-card">
+            <div class="rr-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 17 9 11 13 15 21 7"/>
+                <polyline points="17 7 21 7 21 11"/>
+              </svg>
+            </div>
+            <h3 class="rr-feature-title">Frame Time Graph</h3>
+            <p class="rr-feature-desc">Live histogram of each frame's interval with stability and jitter statistics, so you can spot stutters, drops, and inconsistent frame pacing at a glance.</p>
+          </article>
+          <article class="rr-feature-card">
+            <div class="rr-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+              </svg>
+            </div>
+            <h3 class="rr-feature-title">Motion Blur Test</h3>
+            <p class="rr-feature-desc">A full-screen moving object reveals ghosting and smearing. On high-refresh panels it stays sharp; on slow panels you'll see trailing behind the motion.</p>
+          </article>
+          <article class="rr-feature-card">
+            <div class="rr-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 2L5 11h6l-2 7 8-9h-6l2-7z"/>
+              </svg>
+            </div>
+            <h3 class="rr-feature-title">Flicker / PWM Test</h3>
+            <p class="rr-feature-desc">Full-screen flicker pattern to test for PWM dimming artifacts and motion persistence. Great for checking eye comfort on OLED and LCD panels.</p>
+          </article>
+          <article class="rr-feature-card">
+            <div class="rr-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2"/>
+                <line x1="12" y1="18" x2="12.01" y2="18"/>
+              </svg>
+            </div>
+            <h3 class="rr-feature-title">Works Everywhere</h3>
+            <p class="rr-feature-desc">Runs in any modern browser on phones, tablets, laptops, and desktops. No app download, no permissions, no data ever leaves your device.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         HOW IT WORKS
+    ══════════════════════════════════════════════════════ -->
+    <section class="rr-section" aria-labelledby="rr-how-heading">
+      <div class="rr-container">
+        <div class="rr-section-header">
+          <span class="rr-section-eyebrow">How It Works</span>
+          <h2 class="rr-section-title" id="rr-how-heading">Test Your Refresh Rate in 4 Steps</h2>
+          <p class="rr-section-subtitle">No app, no sign-up — just an accurate reading in seconds.</p>
+        </div>
+        <div class="rr-steps-grid">
+          <div class="rr-step-item">
+            <div class="rr-step-num" aria-hidden="true">1</div>
+            <h3 class="rr-step-title">Prepare</h3>
+            <p class="rr-step-desc">Close other tabs, disable battery saver, and set your display to its highest refresh rate in system settings.</p>
+          </div>
+          <div class="rr-step-item">
+            <div class="rr-step-num" aria-hidden="true">2</div>
+            <h3 class="rr-step-title">Start Measurement</h3>
+            <p class="rr-step-desc">Tap "Start Measurement". The tester samples requestAnimationFrame for 4 seconds and averages the frame intervals.</p>
+          </div>
+          <div class="rr-step-item">
+            <div class="rr-step-num" aria-hidden="true">3</div>
+            <h3 class="rr-step-title">Read Results</h3>
+            <p class="rr-step-desc">Your measured Hz appears instantly, with frame time, stability, and jitter stats plus a verdict against the claimed rate.</p>
+          </div>
+          <div class="rr-step-item">
+            <div class="rr-step-num" aria-hidden="true">4</div>
+            <h3 class="rr-step-title">Run Visual Tests</h3>
+            <p class="rr-step-desc">Launch the motion blur and flicker tests to evaluate response time, ghosting, and PWM behavior full-screen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         FAQ
+    ══════════════════════════════════════════════════════ -->
+    <section class="rr-section rr-section-alt" id="rr-faq" aria-labelledby="rr-faq-heading">
+      <div class="rr-container">
+        <div class="rr-section-header">
+          <span class="rr-section-eyebrow">FAQ</span>
+          <h2 class="rr-section-title" id="rr-faq-heading">Refresh Rate Tester — Common Questions</h2>
+          <p class="rr-section-subtitle">Everything you need to know about measuring your screen's Hz.</p>
+        </div>
+        <div class="rr-faq-list" role="list">
+          <div class="rr-faq-item" role="listitem">
+            <button class="rr-faq-q" aria-expanded="false" aria-controls="rr-faq-a1" onclick="toggleRrFaq(this)">
+              <span>How does this refresh rate tester measure my screen's Hz?</span>
+              <span class="rr-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="rr-faq-a" id="rr-faq-a1" role="region">
+              <p>The tester uses the browser's requestAnimationFrame API to record the timestamp of every rendered frame. By calculating the average interval between frames over a few seconds, it derives your display's actual refresh rate in Hertz. The measurement is accurate to within about ±1 Hz on a stable browser.</p>
+            </div>
+          </div>
+          <div class="rr-faq-item" role="listitem">
+            <button class="rr-faq-q" aria-expanded="false" aria-controls="rr-faq-a2" onclick="toggleRrFaq(this)">
+              <span>Why does my measured refresh rate differ from the claimed 120Hz or 144Hz?</span>
+              <span class="rr-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="rr-faq-a" id="rr-faq-a2" role="region">
+              <p>Several factors can lower the measured rate: browser throttling, power-saving modes, the device not actually running at its advertised rate, background apps consuming GPU resources, or the browser being limited to 60Hz even on a higher-refresh display. On phones, the OS often dynamically scales refresh rate based on content, which can also affect results.</p>
+            </div>
+          </div>
+          <div class="rr-faq-item" role="listitem">
+            <button class="rr-faq-q" aria-expanded="false" aria-controls="rr-faq-a3" onclick="toggleRrFaq(this)">
+              <span>How do I test my phone's 120Hz display?</span>
+              <span class="rr-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="rr-faq-a" id="rr-faq-a3" role="region">
+              <p>Open this page in your phone's browser, ensure the display is set to its highest refresh rate in system settings, disable battery saver, and tap "Start Measurement". Keep the screen active and avoid touching it during measurement. If the result shows 60Hz on a 120Hz phone, the browser may be capped — try a different browser or check that the system setting is enabled.</p>
+            </div>
+          </div>
+          <div class="rr-faq-item" role="listitem">
+            <button class="rr-faq-q" aria-expanded="false" aria-controls="rr-faq-a4" onclick="toggleRrFaq(this)">
+              <span>What is the UFO motion blur test?</span>
+              <span class="rr-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="rr-faq-a" id="rr-faq-a4" role="region">
+              <p>The UFO test animates a moving object across the screen at a speed matched to your measured refresh rate. On higher-refresh displays the object appears sharper and smoother. On lower-refresh or blurry panels you'll see ghosting or smearing trailing behind the object, which indicates pixel response time and motion clarity issues.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="site-footer" role="contentinfo"></footer>
+
+  <!-- Toast -->
+  <div class="rr-toast" id="rrToast" role="status" aria-live="polite"></div>
+
+  <!-- ── Scripts ──────────────────────────────────────── -->
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/sidebar.js" defer></script>
+
+  <script>
+  // ══════════════════════════════════════════════════════════
+  //  REFRESH RATE TESTER — Main Logic
+  // ══════════════════════════════════════════════════════════
+  document.addEventListener('DOMContentLoaded', function() {
+    // Header/footer
+    if (typeof Header !== 'undefined') Header.render();
+    if (typeof Footer !== 'undefined') Footer.render();
+
+    // ── DOM refs ───────────────────────────────────────────
+    const measuredHzEl     = document.getElementById('measuredHz');
+    const claimedHzEl      = document.getElementById('claimedHz');
+    const verdictBadge     = document.getElementById('verdictBadge');
+    const statFrameTime    = document.getElementById('statFrameTime');
+    const statFrames       = document.getElementById('statFrames');
+    const statStability    = document.getElementById('statStability');
+    const statJitter       = document.getElementById('statJitter');
+    const startBtn         = document.getElementById('startMeasureBtn');
+    const motionBtn        = document.getElementById('motionTestBtn');
+    const flickerBtn       = document.getElementById('flickerTestBtn');
+    const resetBtn         = document.getElementById('resetBtn');
+    const graphCanvas      = document.getElementById('frameGraph');
+    const graphStatus      = document.getElementById('graphStatus');
+    const statusDot        = document.getElementById('rrStatusDot');
+    const statusText       = document.getElementById('rrStatusText');
+    const overlay          = document.getElementById('testOverlay');
+    const exitTestBtn      = document.getElementById('exitTestBtn');
+    const motionCanvas     = document.getElementById('motionCanvas');
+    const flickerLayer     = document.getElementById('flickerLayer');
+    const overlayGraph     = document.getElementById('frameGraphCanvas');
+    const hudHz            = document.getElementById('hudHz');
+    const hudMode          = document.getElementById('hudMode');
+    const toastEl          = document.getElementById('rrToast');
+
+    // ── State ──────────────────────────────────────────────
+    let isMeasuring = false;
+    let measureStart = 0;
+    let frameTimestamps = [];
+    let measuredHz = 0;
+    let estimatedHz = 60;
+    let rafId = null;
+    let overlayActive = false;
+    let motionRaf = null;
+    let motionX = 0;
+    let flickerRaf = null;
+    let flickerPhase = 0;
+    let graphCtx = graphCanvas.getContext('2d');
+    let overlayGraphCtx = overlayGraph.getContext('2d');
+    let motionCtx = motionCanvas.getContext('2d');
+
+    // ── Toast helper ───────────────────────────────────────
+    function showToast(msg) {
+      toastEl.textContent = msg;
+      toastEl.classList.add('show');
+      clearTimeout(toastEl._timer);
+      toastEl._timer = setTimeout(() => toastEl.classList.remove('show'), 2600);
+    }
+
+    // ── Estimate claimed Hz from device ────────────────────
+    function estimateClaimedHz() {
+      // Heuristic: use screen size / DPR / UA to guess.
+      // We can't truly know the panel's Hz, but we can give
+      // a sensible default based on common device classes.
+      const ua = navigator.userAgent;
+      const w = window.screen.width;
+      const h = window.screen.height;
+      const dpr = window.devicePixelRatio || 1;
+      const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(ua);
+      let guess = 60;
+
+      if (isMobile) {
+        // High-end phones commonly have 120Hz; flagships 90/120/144
+        if (dpr >= 3 || Math.max(w, h) >= 1170) guess = 120;
+        else if (Math.max(w, h) >= 1080) guess = 90;
+        else guess = 60;
+      } else {
+        // Desktop: most are 60Hz, gaming monitors 144Hz+
+        if (window.screen.width >= 2560 && window.screen.height >= 1440) guess = 144;
+        else if (window.screen.width >= 1920 && window.screen.height >= 1080) guess = 60;
+        else guess = 60;
+      }
+      return guess;
+    }
+
+    // ── Format helpers ─────────────────────────────────────
+    function fmtMs(ms) { return ms.toFixed(2) + ' ms'; }
+    function fmtHz(hz) { return hz.toFixed(1); }
+
+    // ── Update status badge ────────────────────────────────
+    function setStatus(type, text) {
+      statusDot.className = 'rr-status-dot ' + type;
+      statusText.textContent = text;
+    }
+
+    // ── Draw frame time graph ──────────────────────────────
+    function drawGraph(canvas, ctx, data, highlightIndex) {
+      const w = canvas.clientWidth || canvas.width;
+      const h = canvas.clientHeight || canvas.height;
+      if (canvas.width !== w * window.devicePixelRatio) {
+        canvas.width = w * window.devicePixelRatio;
+        canvas.height = h * window.devicePixelRatio;
+        ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+      }
+      ctx.clearRect(0, 0, w, h);
+
+      // Background grid
+      ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 4; i++) {
+        const y = (h / 4) * i;
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.stroke();
+      }
+
+      if (!data.length) {
+        ctx.fillStyle = 'rgba(255,255,255,0.25)';
+        ctx.font = '11px "Space Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('No data yet — start a measurement', w / 2, h / 2 + 4);
+        return;
+      }
+
+      // Cap display to last 240 samples
+      const samples = data.slice(-240);
+      const maxInterval = Math.max(...samples, 1) * 1.15;
+      const barW = w / samples.length;
+
+      samples.forEach((interval, i) => {
+        const norm = interval / maxInterval;
+        const barH = Math.max(2, norm * (h - 8));
+        const x = i * barW;
+        const y = h - barH;
+
+        // Color by deviation from median
+        const deviation = Math.abs(interval - samples.reduce((a, b) => a + b, 0) / samples.length);
+        let color;
+        if (deviation < 1.5) color = 'rgba(34,197,94,0.8)';       // stable
+        else if (deviation < 4) color = 'rgba(245,158,11,0.8)';   // warning
+        else color = 'rgba(239,68,68,0.85)';                       // unstable
+
+        if (i === highlightIndex) color = 'rgba(255,107,74,0.95)';
+
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, Math.max(1, barW - 1), barH);
+      });
+
+      // Baseline label
+      ctx.fillStyle = 'rgba(255,255,255,0.3)';
+      ctx.font = '10px "Space Mono", monospace';
+      ctx.textAlign = 'left';
+      ctx.fillText(maxInterval.toFixed(1) + ' ms', 4, 12);
+      ctx.fillText('0 ms', 4, h - 4);
+    }
+
+    // ── Compute statistics from frame intervals ────────────
+    function computeStats(intervals) {
+      if (!intervals.length) return null;
+      const avg = intervals.reduce((a, b) => a + b, 0) / intervals.length;
+      const hz = 1000 / avg;
+      const sorted = [...intervals].sort((a, b) => a - b);
+      const median = sorted[Math.floor(sorted.length / 2)];
+      const jitter = intervals.reduce((acc, v) => acc + Math.abs(v - avg), 0) / intervals.length;
+      const variance = intervals.reduce((acc, v) => acc + (v - avg) ** 2, 0) / intervals.length;
+      const std = Math.sqrt(variance);
+      // Stability score: 100 = perfectly stable, 0 = chaotic
+      const stability = Math.max(0, Math.min(100, 100 - (std / avg) * 100));
+      return {
+        avgInterval: avg,
+        hz,
+        median,
+        jitter,
+        std,
+        stability,
+        min: sorted[0],
+        max: sorted[sorted.length - 1]
+      };
+    }
+
+    // ── Render results ─────────────────────────────────────
+    function renderResults(stats) {
+      if (!stats) return;
+      measuredHz = stats.hz;
+
+      measuredHzEl.textContent = fmtHz(stats.hz);
+      statFrameTime.textContent = fmtMs(stats.avgInterval);
+      statFrames.textContent = frameTimestamps.length;
+      statStability.textContent = stats.stability.toFixed(0) + '%';
+      statJitter.textContent = stats.jitter.toFixed(2) + ' ms';
+
+      // Verdict
+      const claimed = estimatedHz;
+      const ratio = stats.hz / claimed;
+      let verdict, cls;
+      if (ratio >= 0.9) {
+        verdict = '✓ Matches claim';
+        cls = 'good';
+      } else if (ratio >= 0.7) {
+        verdict = '⚠ Slightly below';
+        cls = 'warn';
+      } else {
+        verdict = '✗ Below claim';
+        cls = 'bad';
+      }
+      verdictBadge.textContent = verdict;
+      verdictBadge.className = 'rr-verdict-badge ' + cls;
+      verdictBadge.style.display = 'inline-flex';
+
+      graphStatus.textContent = fmtHz(stats.hz) + ' Hz · ' + stats.stability.toFixed(0) + '% stable';
+    }
+
+    // ── Measurement loop ───────────────────────────────────
+    function startMeasurement() {
+      if (isMeasuring) return;
+      isMeasuring = true;
+      frameTimestamps = [];
+      measureStart = performance.now();
+      setStatus('testing', 'Measuring…');
+      startBtn.disabled = true;
+      startBtn.querySelector('.btn-text') || null;
+      startBtn.innerHTML = '<span class="btn-text">Measuring…</span>';
+      graphStatus.textContent = 'Sampling…';
+      graphCtx.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
+      drawGraph(graphCanvas, graphCtx, []);
+
+      let last = performance.now();
+      let lastDraw = 0;
+
+      function tick(now) {
+        if (!isMeasuring) return;
+        const interval = now - last;
+        last = now;
+        // Discard first few noisy frames
+        if (now - measureStart < 200) {
+          rafId = requestAnimationFrame(tick);
+          return;
+        }
+        if (interval > 0 && interval < 200) {
+          frameTimestamps.push(interval);
+        }
+
+        // Draw graph ~20fps to save CPU
+        if (now - lastDraw > 50) {
+          lastDraw = now;
+          drawGraph(graphCanvas, graphCtx, frameTimestamps, frameTimestamps.length - 1);
+        }
+
+        if (now - measureStart >= 4000) {
+          // Done
+          isMeasuring = false;
+          const stats = computeStats(frameTimestamps);
+          if (stats) {
+            renderResults(stats);
+            drawGraph(graphCanvas, graphCtx, frameTimestamps);
+            setStatus('ready', 'Measurement complete');
+            showToast('Measured ' + fmtHz(stats.hz) + ' Hz');
+          } else {
+            setStatus('ready', 'Not enough data');
+            showToast('Could not measure — try again');
+          }
+          startBtn.disabled = false;
+          startBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="7"/><polygon points="7 6 12 9 7 12 7 6" fill="currentColor" stroke="none"/></svg> Start Measurement';
+          return;
+        }
+        rafId = requestAnimationFrame(tick);
+      }
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function stopMeasurement() {
+      isMeasuring = false;
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    }
+
+    function resetAll() {
+      stopMeasurement();
+      measuredHz = 0;
+      frameTimestamps = [];
+      measuredHzEl.textContent = '—';
+      statFrameTime.textContent = '—';
+      statFrames.textContent = '—';
+      statStability.textContent = '—';
+      statJitter.textContent = '—';
+      verdictBadge.style.display = 'none';
+      graphStatus.textContent = 'Idle';
+      graphCtx.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
+      drawGraph(graphCanvas, graphCtx, []);
+      setStatus('ready', 'Ready to measure');
+      startBtn.disabled = false;
+      startBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="7"/><polygon points="7 6 12 9 7 12 7 6" fill="currentColor" stroke="none"/></svg> Start Measurement';
+    }
+
+    // ── Overlay helpers ────────────────────────────────────
+    function showOverlay(mode) {
+      overlayActive = true;
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      hudMode.textContent = mode;
+      hudHz.textContent = measuredHz > 0 ? fmtHz(measuredHz) + ' Hz' : '— Hz';
+
+      // Size canvases to viewport
+      const dpr = window.devicePixelRatio || 1;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+
+      motionCanvas.width = w * dpr;
+      motionCanvas.height = h * dpr;
+      motionCanvas.style.width = w + 'px';
+      motionCanvas.style.height = h + 'px';
+      motionCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      overlayGraph.width = w * dpr;
+      overlayGraph.height = 120 * dpr;
+      overlayGraph.style.width = w + 'px';
+      overlayGraph.style.height = '120px';
+
+      hudHz.textContent = measuredHz > 0 ? fmtHz(measuredHz) + ' Hz' : '— Hz';
+    }
+
+    function hideOverlay() {
+      overlayActive = false;
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      if (motionRaf) { cancelAnimationFrame(motionRaf); motionRaf = null; }
+      if (flickerRaf) { cancelAnimationFrame(flickerRaf); flickerRaf = null; }
+      motionCtx.clearRect(0, 0, motionCanvas.width, motionCanvas.height);
+      flickerLayer.classList.remove('active');
+    }
+
+    // ── Motion blur test ───────────────────────────────────
+    function startMotionTest() {
+      if (!measuredHz) {
+        showToast('Run a measurement first');
+        return;
+      }
+      showOverlay('Motion Test');
+      flickerLayer.classList.remove('active');
+      motionCanvas.style.display = 'block';
+      motionX = 0;
+      const speed = 600; // px per second, scaled by measured Hz
+      let last = performance.now();
+      let trail = [];
+
+      function draw(now) {
+        if (!overlayActive) return;
+        const dt = Math.min(50, now - last) / 1000;
+        last = now;
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        motionX += speed * dt;
+        if (motionX > w + 80) motionX = -80;
+
+        // Clear
+        motionCtx.fillStyle = '#000';
+        motionCtx.fillRect(0, 0, w, h);
+
+        // Draw "UFO" with motion trail
+        const y = h / 2;
+        const radius = 28;
+        // Trail (ghosting simulation based on frame time)
+        const frameInterval = measuredHz > 0 ? 1000 / measuredHz : 16.67;
+        const trailLength = Math.min(6, Math.max(1, Math.round(120 / frameInterval)));
+        for (let i = trailLength; i > 0; i--) {
+          const tx = motionX - i * (speed * (frameInterval / 1000)) * 0.9;
+          if (tx < -60 || tx > w + 60) continue;
+          const alpha = 0.08 * (1 - i / trailLength);
+          motionCtx.beginPath();
+          motionCtx.arc(tx, y, radius, 0, Math.PI * 2);
+          motionCtx.fillStyle = 'rgba(255,107,74,' + alpha + ')';
+          motionCtx.fill();
+        }
+
+        // Main object
+        motionCtx.beginPath();
+        motionCtx.arc(motionX, y, radius, 0, Math.PI * 2);
+        const grad = motionCtx.createRadialGradient(motionX - 8, y - 8, 4, motionX, y, radius);
+        grad.addColorStop(0, '#ffd6a5');
+        grad.addColorStop(0.5, '#ff9478');
+        grad.addColorStop(1, '#f5573a');
+        motionCtx.fillStyle = grad;
+        motionCtx.fill();
+
+        // Center dot
+        motionCtx.beginPath();
+        motionCtx.arc(motionX, y, 6, 0, Math.PI * 2);
+        motionCtx.fillStyle = '#fff';
+        motionCtx.fill();
+
+        // Instructions
+        motionCtx.fillStyle = 'rgba(255,255,255,0.4)';
+        motionCtx.font = '13px "Space Mono", monospace';
+        motionCtx.textAlign = 'center';
+        motionCtx.fillText('Watch the trail — less trail = better motion clarity', w / 2, h - 160);
+
+        // Update HUD
+        hudHz.textContent = fmtHz(measuredHz) + ' Hz';
+
+        motionRaf = requestAnimationFrame(draw);
+      }
+      motionRaf = requestAnimationFrame(draw);
+    }
+
+    // ── Flicker test ───────────────────────────────────────
+    function startFlickerTest() {
+      if (!measuredHz) {
+        showToast('Run a measurement first');
+        return;
+      }
+      showOverlay('Flicker Test');
+      motionCanvas.style.display = 'none';
+      flickerLayer.classList.add('active');
+      flickerLayer.style.background = '#fff';
+      let last = performance.now();
+      let phase = 0;
+
+      function draw(now) {
+        if (!overlayActive) return;
+        const dt = now - last;
+        last = now;
+        // Toggle at measured Hz / 2 for visible flicker
+        const period = Math.max(33, 1000 / (measuredHz / 2));
+        phase += dt;
+        if (phase >= period) {
+          phase -= period;
+          flickerLayer.style.background = flickerLayer.style.background === 'rgb(255, 255, 255)' ? '#000' : '#fff';
+        }
+        hudHz.textContent = fmtHz(measuredHz) + ' Hz';
+        flickerRaf = requestAnimationFrame(draw);
+      }
+      flickerRaf = requestAnimationFrame(draw);
+    }
+
+    // ── Exit overlay handlers ──────────────────────────────
+    exitTestBtn.addEventListener('click', hideOverlay);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && overlayActive) hideOverlay();
+    });
+
+    // ── Button wiring ──────────────────────────────────────
+    startBtn.addEventListener('click', startMeasurement);
+    motionBtn.addEventListener('click', startMotionTest);
+    flickerBtn.addEventListener('click', startFlickerTest);
+    resetBtn.addEventListener('click', resetAll);
+
+    // ── FAQ toggle ─────────────────────────────────────────
+    window.toggleRrFaq = function(btn) {
+      const item = btn.closest('.rr-faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.rr-faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.rr-faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    // ── Initial estimate + draw empty graph ────────────────
+    estimatedHz = estimateClaimedHz();
+    claimedHzEl.textContent = estimatedHz + ' Hz';
+    drawGraph(graphCanvas, graphCtx, []);
+    setStatus('ready', 'Ready to measure');
+
+    // Handle canvas resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (!overlayActive) drawGraph(graphCanvas, graphCtx, frameTimestamps);
+      }, 200);
+    });
+
+    // Clean up
+    window.addEventListener('beforeunload', function() {
+      stopMeasurement();
+      if (overlayActive) document.body.style.overflow = '';
+    });
+  });
+  </script>
+</body>
+</html>
