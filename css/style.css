@@ -2406,3 +2406,213 @@ code {
     scroll-behavior: auto !important;
   }
 }
+/* ══════════════════════════════════════════════════════════
+   CONVERSATIONAL QUERY SECTION (§1.5)
+══════════════════════════════════════════════════════════ */
+.query-section {
+  padding: 4rem 0 5rem;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.query-inner { text-align: center; max-width: 880px; margin: 0 auto; }
+
+.highlight-text {
+  background: linear-gradient(120deg, var(--accent) 0%, var(--neon2) 60%, var(--neon) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s ease infinite;
+}
+
+.query-lead {
+  font-size: 1.1rem;
+  color: var(--text2);
+  line-height: 1.8;
+  max-width: 640px;
+  margin: 0 auto 2rem;
+}
+.query-lead em {
+  color: var(--accent2);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.query-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.query-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.5rem;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--heading);
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-body);
+}
+.query-chip:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 28px rgba(255, 107, 74, 0.18);
+  color: var(--accent2);
+}
+.query-chip-icon { font-size: 1.1rem; }
+.query-chip-text { white-space: nowrap; }
+
+.query-footnote {
+  font-size: 0.9rem;
+  color: var(--text3);
+  font-family: var(--font-mono);
+}
+.query-footnote strong { color: var(--accent2); }
+
+/* ══════════════════════════════════════════════════════════
+   FIND MY PHONE MODEL GUIDE (§6.5)
+══════════════════════════════════════════════════════════ */
+.guide-section {
+  padding: 6rem 0;
+  background: var(--bg);
+  position: relative;
+}
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.guide-card {
+  position: relative;
+  padding: 2rem 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+  overflow: hidden;
+}
+.guide-card:hover {
+  border-color: rgba(255, 107, 74, 0.32);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+.guide-num {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--neon) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.22;
+  margin-bottom: 0.75rem;
+}
+.guide-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: 0.75rem;
+}
+.guide-desc {
+  font-size: 0.925rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+.guide-desc code {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  background: var(--bg2);
+  padding: 0.12em 0.4em;
+  border-radius: 5px;
+  color: var(--accent2);
+}
+.guide-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent2);
+  transition: gap var(--transition);
+}
+.guide-link:hover { gap: 0.7rem; }
+
+/* ══════════════════════════════════════════════════════════
+   CONVERSATIONAL Q&A SECTION (§9.5)
+══════════════════════════════════════════════════════════ */
+.qa-section {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%);
+}
+.qa-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.qa-card {
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+  position: relative;
+}
+.qa-card::before {
+  content: '?';
+  position: absolute;
+  top: 1.1rem;
+  right: 1.4rem;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.12;
+  line-height: 1;
+}
+.qa-card:hover {
+  border-color: rgba(255, 107, 74, 0.3);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+.qa-q {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: 0.65rem;
+  line-height: 1.35;
+}
+.qa-a {
+  font-size: 0.925rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+.qa-a a {
+  color: var(--accent2);
+  font-weight: 600;
+  border-bottom: 1px dotted var(--accent);
+}
+
+@media (max-width: 768px) {
+  .guide-grid,
+  .qa-grid { grid-template-columns: 1fr; }
+  .query-chip { font-size: 0.85rem; padding: 0.7rem 1.15rem; }
+  .query-chip-text { white-space: normal; }
+}
