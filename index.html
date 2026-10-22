@@ -234,6 +234,48 @@
     </section>
 
     <!-- ══════════════════════════════════════════════════
+     § 1.5 — CONVERSATIONAL QUERY CAPTURE
+══════════════════════════════════════════════════════ -->
+<section class="query-section" id="which-phone" aria-labelledby="query-heading">
+  <div class="container">
+    <div class="query-inner" data-animate>
+      <span class="section-eyebrow">Quick Answer</span>
+      <h2 class="section-title" id="query-heading">
+        Wondering <span class="highlight-text">which phone am I using?</span>
+      </h2>
+      <p class="query-lead">
+        Whether you're asking <em>"what kind of phone is this?"</em>,
+        <em>"what type of phone is this?"</em>, or simply
+        <em>"what model is my phone?"</em> — the answer is one tap away.
+      </p>
+
+      <div class="query-chips" data-stagger>
+        <button class="query-chip" onclick="document.getElementById('detectBtn').click()">
+          <span class="query-chip-icon" aria-hidden="true">📱</span>
+          <span class="query-chip-text">Which phone am I using?</span>
+        </button>
+        <button class="query-chip" onclick="document.getElementById('detectBtn').click()">
+          <span class="query-chip-icon" aria-hidden="true">🔍</span>
+          <span class="query-chip-text">What is my phone model?</span>
+        </button>
+        <button class="query-chip" onclick="document.getElementById('detectBtn').click()">
+          <span class="query-chip-icon" aria-hidden="true">❓</span>
+          <span class="query-chip-text">What kind of phone is this?</span>
+        </button>
+        <button class="query-chip" onclick="document.getElementById('detectBtn').click()">
+          <span class="query-chip-icon" aria-hidden="true">🤔</span>
+          <span class="query-chip-text">What type of phone is this?</span>
+        </button>
+      </div>
+
+      <p class="query-footnote">
+        Your answer appears instantly — <strong>no signup, no download, 100% private.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+    <!-- ══════════════════════════════════════════════════
          § 2 — STATS
     ══════════════════════════════════════════════════════ -->
     <section class="stats-section" aria-label="Platform statistics">
@@ -785,6 +827,64 @@
       </div>
     </section>
 
+        <!-- ══════════════════════════════════════════════════
+     § 6.5 — FIND MY PHONE MODEL GUIDE
+══════════════════════════════════════════════════════ -->
+<section class="guide-section" id="find-phone-model" aria-labelledby="guide-heading">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="section-eyebrow">Quick Guide</span>
+      <h2 class="section-title" id="guide-heading">
+        How Do I Find <span class="highlight-text">My Phone Model?</span>
+      </h2>
+      <p class="section-subtitle">
+        Three ways to answer "what model is my phone?" — pick the fastest.
+      </p>
+    </div>
+
+    <div class="guide-grid" data-stagger>
+      <!-- Method 1 -->
+      <article class="guide-card">
+        <div class="guide-num" aria-hidden="true">01</div>
+        <h3 class="guide-title">Instant Browser Detection</h3>
+        <p class="guide-desc">
+          The fastest way to see <strong>your exact phone model</strong> is right here.
+          Tap "Detect My Phone" and we read your device's browser fingerprint —
+          brand, model, OS, and 30+ specs — in under a second.
+        </p>
+        <a href="#detect" class="guide-link">
+          Detect my phone model
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Method 2 -->
+      <article class="guide-card">
+        <div class="guide-num" aria-hidden="true">02</div>
+        <h3 class="guide-title">Check Device Settings</h3>
+        <p class="guide-desc">
+          On iPhone: <code>Settings → General → About → Model Name</code>.
+          On Android: <code>Settings → About Phone → Model</code>.
+          This tells you your <strong>phone model number</strong> exactly as the manufacturer named it.
+        </p>
+      </article>
+
+      <!-- Method 3 -->
+      <article class="guide-card">
+        <div class="guide-num" aria-hidden="true">03</div>
+        <h3 class="guide-title">Look at the Box or Back</h3>
+        <p class="guide-desc">
+          Every phone's retail box lists the <strong>exact model</strong>.
+          On the device itself, look for the model number printed on the back
+          (iPhone) or under the battery (older Android). This confirms which phone you have.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
     <!-- ══════════════════════════════════════════════════
          § 6 — SPECS PREVIEW
     ══════════════════════════════════════════════════════ -->
@@ -971,6 +1071,61 @@
         <span class="compat-status">Full Support</span>
       </article>
 
+    </div>
+  </div>
+</section>
+
+        <!-- ══════════════════════════════════════════════════
+     § 9.5 — CONVERSATIONAL Q&A
+══════════════════════════════════════════════════════ -->
+<section class="qa-section" id="phone-questions" aria-labelledby="qa-heading">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <span class="section-eyebrow">Answering the Common Questions</span>
+      <h2 class="section-title" id="qa-heading">
+        "What Kind of Phone Is This?" — Answered
+      </h2>
+      <p class="section-subtitle">
+        The questions people actually type and say into their phones, answered directly.
+      </p>
+    </div>
+
+    <div class="qa-grid" data-stagger>
+      <article class="qa-card">
+        <h3 class="qa-q">Which phone am I using right now?</h3>
+        <p class="qa-a">
+          You're using whatever device is displaying this page. Tap
+          <a href="#detect">Detect My Phone</a> above and we'll show you the brand,
+          model, OS version, and full spec sheet — instantly.
+        </p>
+      </article>
+
+      <article class="qa-card">
+        <h3 class="qa-q">What kind of phone is this?</h3>
+        <p class="qa-a">
+          That depends on what's in your hand! It could be an iPhone, a Samsung Galaxy,
+          a Google Pixel, or one of 50+ supported manufacturers. Our detector identifies
+          which phone model you have in one tap.
+        </p>
+      </article>
+
+      <article class="qa-card">
+        <h3 class="qa-q">What type of phone is this?</h3>
+        <p class="qa-a">
+          We categorize by <strong>device type</strong> (smartphone, tablet, desktop),
+          <strong>OS</strong> (iOS, Android, etc.), and <strong>model</strong>.
+          Detection reveals all three simultaneously — no guessing required.
+        </p>
+      </article>
+
+      <article class="qa-card">
+        <h3 class="qa-q">How do I know what model my phone is?</h3>
+        <p class="qa-a">
+          Your <strong>phone model</strong> is the manufacturer's exact name for your device
+          (like "iPhone 15 Pro" or "Galaxy S24 Ultra"). You can find it in Settings,
+          on the box, or by tapping Detect above — we read it straight from your browser.
+        </p>
+      </article>
     </div>
   </div>
 </section>
