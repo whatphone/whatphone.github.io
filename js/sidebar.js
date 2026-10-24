@@ -26,6 +26,8 @@
     { name: "Decibel Meter", icon: "🎚️", url: "/decibel-meter", desc: "Use your microphone as a sound level meter with live dB, graph, min, a." },
     { name: "Phone Storage Calculator", icon: "💾", url: "/storage-calculator", desc: "See how many photos, hours of 4K video and songs fit on 64GB to 2TB, w." },
 
+    { name: "Fix My Speaker", icon: "🔈", url: "/fix-my-speaker", desc: "Water eject and dust-clearing speaker cleaner." },
+
     // WhatPhone-specific pages
     { name: "Detect My Phone",   icon: "📱", url: "/#detect",           desc: "Run a full device detection scan." },
     { name: "Guides",            icon: "📚", url: "/guides",            desc: "Articles about devices and testing." },

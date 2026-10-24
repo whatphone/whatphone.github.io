@@ -27,6 +27,7 @@ const Header = (() => {
       chargingTime: 'Charging Time Calculator',
       decibelMeter: 'Decibel Meter',
       storageCalc: 'Phone Storage Calculator',
+      fixMySpeaker: 'Fix My Speaker',
       guides: 'Guides',
       detectCta: 'Detect My Phone',
       toggleLabel: 'Toggle navigation menu',
@@ -260,6 +261,7 @@ const Header = (() => {
                 <li><a href="/charging-time-calculator" class="dropdown-link" role="menuitem">${t('chargingTime')}</a></li>
                 <li><a href="/decibel-meter" class="dropdown-link" role="menuitem">${t('decibelMeter')}</a></li>
                 <li><a href="/storage-calculator" class="dropdown-link" role="menuitem">${t('storageCalc')}</a></li>
+                <li><a href="/fix-my-speaker" class="dropdown-link" role="menuitem">${t('fixMySpeaker')}</a></li>
               </ul>
             </li>
             
