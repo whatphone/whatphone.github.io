@@ -20,6 +20,13 @@ const Header = (() => {
       proximitySensor: 'Proximity Sensor',
       ambientLight: 'Ambient Light',
       oledBurnIn: 'OLED Burn-in Test',
+      touchSamplingRate: 'Touch Sampling Rate Test',
+      backlightBleed: 'Backlight Bleed Test',
+      onlineRuler: 'Online Ruler',
+      ppiCalculator: 'PPI Calculator',
+      chargingTime: 'Charging Time Calculator',
+      decibelMeter: 'Decibel Meter',
+      storageCalc: 'Phone Storage Calculator',
       guides: 'Guides',
       detectCta: 'Detect My Phone',
       toggleLabel: 'Toggle navigation menu',
@@ -246,6 +253,13 @@ const Header = (() => {
                 <li><a href="${langPrefix}/proximity-sensor-test" class="dropdown-link" role="menuitem">${t('proximitySensor')}</a></li>
                 <li><a href="${langPrefix}/ambient-light-sensor-test" class="dropdown-link" role="menuitem">${t('ambientLight')}</a></li>
                 <li><a href="${langPrefix}/oled-burn-in-test" class="dropdown-link" role="menuitem">${t('oledBurnIn')}</a></li>
+                <li><a href="/touch-sampling-rate-test" class="dropdown-link" role="menuitem">${t('touchSamplingRate')}</a></li>
+                <li><a href="/backlight-bleed-test" class="dropdown-link" role="menuitem">${t('backlightBleed')}</a></li>
+                <li><a href="/online-ruler" class="dropdown-link" role="menuitem">${t('onlineRuler')}</a></li>
+                <li><a href="/ppi-calculator" class="dropdown-link" role="menuitem">${t('ppiCalculator')}</a></li>
+                <li><a href="/charging-time-calculator" class="dropdown-link" role="menuitem">${t('chargingTime')}</a></li>
+                <li><a href="/decibel-meter" class="dropdown-link" role="menuitem">${t('decibelMeter')}</a></li>
+                <li><a href="/storage-calculator" class="dropdown-link" role="menuitem">${t('storageCalc')}</a></li>
               </ul>
             </li>
             

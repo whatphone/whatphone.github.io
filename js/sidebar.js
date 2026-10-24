@@ -18,6 +18,14 @@
     { name: "WiFi Speed Test",   icon: "📶", url: "/wifi-speed-test",   desc: "Measure bandwidth, latency and connection quality." },
     { name: "GPS / Compass",     icon: "🧭", url: "/gps-compass-test",  desc: "Test geolocation and device orientation sensors." },
 
+    { name: "Touch Sampling Rate Test", icon: "⚡", url: "/touch-sampling-rate-test", desc: "Swipe on the pad to measure how many times per second your screen read." },
+    { name: "Backlight Bleed Test", icon: "🌑", url: "/backlight-bleed-test", desc: "Full-screen black, gray and gradient patterns reveal backlight bleed, ." },
+    { name: "Online Ruler", icon: "📏", url: "/online-ruler", desc: "A calibrated on-screen ruler in cm, mm and inches." },
+    { name: "PPI Calculator", icon: "📐", url: "/ppi-calculator", desc: "Calculate pixels per inch, dot pitch, true screen size, aspect ratio a." },
+    { name: "Charging Time Calculator", icon: "🔌", url: "/charging-time-calculator", desc: "Estimate how long your phone takes to charge from mAh, watts and charg." },
+    { name: "Decibel Meter", icon: "🎚️", url: "/decibel-meter", desc: "Use your microphone as a sound level meter with live dB, graph, min, a." },
+    { name: "Phone Storage Calculator", icon: "💾", url: "/storage-calculator", desc: "See how many photos, hours of 4K video and songs fit on 64GB to 2TB, w." },
+
     // WhatPhone-specific pages
     { name: "Detect My Phone",   icon: "📱", url: "/#detect",           desc: "Run a full device detection scan." },
     { name: "Guides",            icon: "📚", url: "/guides",            desc: "Articles about devices and testing." },
