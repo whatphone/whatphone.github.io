@@ -6,6 +6,109 @@ const DeviceDetector = (() => {
   const getUA = () => navigator.userAgent || '';
   const getUAData = () => navigator.userAgentData || null;
 
+  // ── Brand Resolver ──────────────────────────────────────────────
+  // Model-code prefix → brand (Android OEMs ship numeric/alnum codes)
+  const BRAND_CODE_MAP = [
+    { brand: 'Samsung',  test: /^(SM|GT|SCH|SGH|SPH|SHV|SC)-/i },
+    { brand: 'Google',   test: /^(Pixel|Nexus)\b/i },
+    { brand: 'OnePlus',  test: /^(IN|NE|LE|CPH|HD|KB|GM|AC)\d{4}/i },
+    { brand: 'OPPO',     test: /^CPH\d{4}/i },
+    { brand: 'vivo',     test: /^V\d{4}/i },
+    { brand: 'Realme',   test: /^RMX\d{4}/i },
+    { brand: 'Xiaomi',   test: /^(M2\d{3}|2\d{3}|Redmi|POCO|Mi\b)/i },
+    { brand: 'Huawei',   test: /^(ELE|VOG|ANA|LIO|LYA|JNY|NOH|ELS|CLT|MAR|INE)-/i },
+    { brand: 'Honor',    test: /^(BKL|COL|ANY|ELI|PGT|RKY|CRT)-/i },
+    { brand: 'Nokia',    test: /^TA-\d{4}/i },
+    { brand: 'Motorola', test: /^(XT\d{4}|moto\b)/i },
+    { brand: 'Sony',     test: /^(XQ-|SO-\d|D\d{4}|F\d{4}|G\d{4}|H\d{4}|J\d{4})/i },
+    { brand: 'LG',       test: /^(LG-|LM-|LGM-|VS\d{3}|H\d{3})/i },
+    { brand: 'HTC',      test: /^HTC/i },
+    { brand: 'ASUS',     test: /^(ASUS|ZS\d{3}|AI\d{3})/i },
+    { brand: 'Lenovo',   test: /^(Lenovo|TB-|YT-)/i },
+    { brand: 'ZTE',      test: /^ZTE/i },
+    { brand: 'TCL',      test: /^TCL/i },
+    { brand: 'Alcatel',  test: /^(Alcatel|50\d{3})/i },
+    { brand: 'Meizu',    test: /^(M\d{3}H|Meizu)/i },
+    { brand: 'Nothing',  test: /^A06[35]/i },
+    { brand: 'Fairphone',test: /^FP\d/i },
+    { brand: 'BlackBerry', test: /^(BBE\d|STV|BlackBerry)/i },
+  ];
+
+  const BRAND_COLORS = {
+    Apple: '#111111', Samsung: '#1428A0', Google: '#4285F4',
+    OnePlus: '#EB0029', Xiaomi: '#FF6900', Huawei: '#CF0A2C',
+    Honor: '#0A59F7', OPPO: '#1D9F50', vivo: '#415FFF',
+    Realme: '#FFC915', Nokia: '#124191', Motorola: '#5C92FA',
+    Sony: '#000000', LG: '#A50034', HTC: '#00A650', ASUS: '#00539B',
+    Lenovo: '#E2231A', ZTE: '#0072BC', TCL: '#E60012', Alcatel: '#FF6900',
+    Meizu: '#00A0E9', Nothing: '#000000', Fairphone: '#7BC043',
+    BlackBerry: '#000000', Unknown: '#948674',
+  };
+
+  // Try Client Hints brands first, then model-code prefix, then model text.
+  const resolveBrand = (ua, model, clientHintsBrands, clientHintsModel) => {
+    // 1) Client Hints brands array — most reliable
+    if (Array.isArray(clientHintsBrands) && clientHintsBrands.length) {
+      for (const b of clientHintsBrands) {
+        const bn = String(b.brand || '');
+        // Ignore GREASE brands like "Not)A;Brand"
+        if (/not|brand/i.test(bn) && bn.length < 30) continue;
+        if (/Samsung/i.test(bn)) return 'Samsung';
+        if (/Huawei/i.test(bn))  return 'Huawei';
+        if (/Xiaomi/i.test(bn))  return 'Xiaomi';
+        if (/Google/i.test(bn))  return 'Google';
+        if (/Chromium/i.test(bn) || /Opera/i.test(bn) || /Microsoft/i.test(bn)) continue;
+      }
+    }
+
+    // 2) Client Hints model (very reliable on Chromium Android)
+    if (clientHintsModel) {
+      for (const { brand, test } of BRAND_CODE_MAP) {
+        if (test.test(clientHintsModel)) return brand;
+      }
+      if (/Pixel/i.test(clientHintsModel)) return 'Google';
+      if (/SM-/i.test(clientHintsModel))  return 'Samsung';
+      if (/iPhone|iPad/i.test(clientHintsModel)) return 'Apple';
+    }
+
+    // 3) Model code prefix from UA-extracted model
+    if (model && model !== 'Unknown') {
+      for (const { brand, test } of BRAND_CODE_MAP) {
+        if (test.test(model)) return brand;
+      }
+    }
+
+    // 4) Plain-text UA patterns (Apple/Samsung/Google/Nokia/Sony etc.)
+    const patterns = [
+      [/iPhone|iPad|iPod|Macintosh/i, 'Apple'],
+      [/\bSamsung\b|\bGalaxy\b/i,    'Samsung'],
+      [/\bPixel\b|\bNexus\b|\bGoogle\b/i, 'Google'],
+      [/\bOnePlus\b|\bONEPLUS\b/i,   'OnePlus'],
+      [/\bXiaomi\b|\bRedmi\b|\bPOCO\b|\bMi\s?\d/i, 'Xiaomi'],
+      [/\bHuawei\b|\bHONOR\b/i,      'Huawei'],
+      [/\bNokia\b|\bLumia\b/i,       'Nokia'],
+      [/\bMotorola\b|\bmoto\b/i,     'Motorola'],
+      [/\bSony\b|\bXperia\b/i,       'Sony'],
+      [/\bOPPO\b/i,                  'OPPO'],
+      [/\bvivo\b/i,                  'vivo'],
+      [/\bRealme\b/i,                'Realme'],
+      [/\bLG\b/i,                    'LG'],
+      [/\bHTC\b/i,                   'HTC'],
+      [/\bASUS\b|\bZenFone\b/i,      'ASUS'],
+      [/\bLenovo\b/i,                'Lenovo'],
+      [/\bZTE\b/i,                   'ZTE'],
+      [/\bTCL\b/i,                   'TCL'],
+      [/\bAlcatel\b/i,               'Alcatel'],
+      [/\bMeizu\b/i,                 'Meizu'],
+      [/\bNothing\b/i,               'Nothing'],
+      [/\bFairphone\b/i,             'Fairphone'],
+      [/\bBlackBerry\b/i,            'BlackBerry'],
+    ];
+    for (const [re, brand] of patterns) if (re.test(ua)) return brand;
+
+    return 'Unknown';
+  };
+
   const parseUserAgent = () => {
     const ua = getUA();
     const uaData = getUAData();
@@ -91,14 +194,14 @@ const DeviceDetector = (() => {
       [/iPhone/i, () => ({ brand: 'Apple', model: resolveIPhoneFromUA(ua) })],
       [/iPad/i, () => ({ brand: 'Apple', model: 'iPad' })],
       // Samsung
-      [/SM-S9\d\d[A-Z]*/i, (m) => ({ brand: 'Samsung', model: `Galaxy S Series (${ua.match(/SM-S9\d+[A-Z]*/i)?.[0]})` })],
-      [/SM-S8\d\d[A-Z]*/i, (m) => ({ brand: 'Samsung', model: `Galaxy S Series (${ua.match(/SM-S8\d+[A-Z]*/i)?.[0]})` })],
+      [/SM-S9\d\d[A-Z]*/i, () => ({ brand: 'Samsung', model: `Galaxy S Series (${ua.match(/SM-S9\d+[A-Z]*/i)?.[0]})` })],
+      [/SM-S8\d\d[A-Z]*/i, () => ({ brand: 'Samsung', model: `Galaxy S Series (${ua.match(/SM-S8\d+[A-Z]*/i)?.[0]})` })],
       [/SM-G99\d[A-Z]*/i, () => ({ brand: 'Samsung', model: 'Galaxy S21 Series' })],
       [/SM-G97\d[A-Z]*/i, () => ({ brand: 'Samsung', model: 'Galaxy S10 Series' })],
       [/SM-G96\d[A-Z]*/i, () => ({ brand: 'Samsung', model: 'Galaxy S21 FE' })],
-      [/SM-N\d{3}/i, (m) => ({ brand: 'Samsung', model: `Galaxy Note (${ua.match(/SM-N\d+/i)?.[0]})` })],
-      [/SM-F\d{3}/i, (m) => ({ brand: 'Samsung', model: `Galaxy Fold/Flip (${ua.match(/SM-F\d+/i)?.[0]})` })],
-      [/SM-A\d{3}/i, (m) => ({ brand: 'Samsung', model: `Galaxy A Series (${ua.match(/SM-A\d+/i)?.[0]})` })],
+      [/SM-N\d{3}/i, () => ({ brand: 'Samsung', model: `Galaxy Note (${ua.match(/SM-N\d+/i)?.[0]})` })],
+      [/SM-F\d{3}/i, () => ({ brand: 'Samsung', model: `Galaxy Fold/Flip (${ua.match(/SM-F\d+/i)?.[0]})` })],
+      [/SM-A\d{3}/i, () => ({ brand: 'Samsung', model: `Galaxy A Series (${ua.match(/SM-A\d+/i)?.[0]})` })],
       [/Samsung|SAMSUNG/i, () => ({ brand: 'Samsung', model: 'Galaxy Device' })],
       // Google Pixel
       [/Pixel\s?(\d+[a-zA-Z\s]*)/i, (m) => ({ brand: 'Google', model: `Pixel ${m[1].trim()}` })],
@@ -114,10 +217,10 @@ const DeviceDetector = (() => {
       [/HUAWEI\s?([\w-]+)/i, (m) => ({ brand: 'Huawei', model: m[1] })],
       [/Huawei/i, () => ({ brand: 'Huawei', model: 'Huawei Device' })],
       // Oppo
-      [/CPH\d{4}/i, (m) => ({ brand: 'OPPO', model: `OPPO (${ua.match(/CPH\d+/i)?.[0]})` })],
+      [/CPH\d{4}/i, () => ({ brand: 'OPPO', model: `OPPO (${ua.match(/CPH\d+/i)?.[0]})` })],
       [/OPPO/i, () => ({ brand: 'OPPO', model: 'OPPO Device' })],
       // Vivo
-      [/vivo\s?([\w\s]+)/i, (m) => ({ brand: 'Vivo', model: `Vivo ${m[1].trim()}` })],
+      [/vivo\s?([\w\s]+)/i, (m) => ({ brand: 'vivo', model: `vivo ${m[1].trim()}` })],
       // Motorola
       [/moto\s?([\w\s]+)/i, (m) => ({ brand: 'Motorola', model: `Moto ${m[1].trim()}` })],
       [/Motorola/i, () => ({ brand: 'Motorola', model: 'Motorola Device' })],
@@ -130,14 +233,48 @@ const DeviceDetector = (() => {
       [/Xperia/i, () => ({ brand: 'Sony', model: 'Sony Xperia' })],
     ];
 
+    // ── 1) Extract raw model text from UA for the resolver ─────
+    let rawModel = '';
+    const modelMatches = [
+      /\b(SM-[A-Z]\d+\w*)/i,
+      /\b(Pixel\s?[\w\s]+?)(?=;|\))/i,
+      /\b(moto\s?[\w\s]+?)(?=;|\))/i,
+      /\b(Redmi\s?[\w\s]+?)(?=;|\))/i,
+      /\b(POCO\s?[\w\s]+?)(?=;|\))/i,
+      /\b(Mi\s?\d+\w*)/i,
+      /\b(XQ-[A-Z]\w*)/i,
+      /\b(TA-\d{4})/i,
+      /\b(XT\d{4}\w*)/i,
+      /\b(CPH\d{4})/i,
+      /\b(RMX\d{4}\w*)/i,
+      /\b(V\d{4}\w*)/i,
+      /\b(IN\d{4}|NE\d{4}|LE\d{4})/i,
+      /\b(ELE-|VOG-|ANA-|LIO-|LYA-)\w+/i,
+      /\b(LM-|LG-)\w+/i,
+    ];
+    for (const re of modelMatches) {
+      const m = ua.match(re);
+      if (m) { rawModel = m[1].trim(); break; }
+    }
+
+    const uaBrandList = uaData?.brands || null;
+    const hintedBrand = resolveBrand(ua, rawModel, uaBrandList, null);
+    if (hintedBrand !== 'Unknown') result.brand = hintedBrand;
+
+    // ── 2) Existing deviceMap (UA-text specific model naming) ───
     for (const [regex, resolver] of deviceMap) {
       const m = ua.match(regex);
       if (m) {
         const resolved = resolver(m);
-        result.brand = resolved.brand;
-        result.model = resolved.model;
+        if (resolved.brand && resolved.brand !== 'Unknown') result.brand = resolved.brand;
+        if (resolved.model && resolved.model !== 'Unknown') result.model = resolved.model;
         break;
       }
+    }
+
+    // ── 3) If model still unknown, fall back to rawModel ─────────
+    if (result.model === 'Unknown' && rawModel) {
+      result.model = rawModel;
     }
 
     // Use high-entropy UA data if available
@@ -167,7 +304,10 @@ const DeviceDetector = (() => {
   };
 
   const resolveIPhoneFromUA = (ua) => {
-    // Screen resolution fallback for iOS
+    // Try the UA's iOS version to guess era (Safari still exposes it)
+    const osMatch = ua.match(/OS (\d+)[._](\d+)/);
+    const iosVersion = osMatch ? `${osMatch[1]}.${osMatch[2]}` : null;
+
     const w = screen.width * window.devicePixelRatio;
     const h = screen.height * window.devicePixelRatio;
     const key = `${Math.min(w,h)}x${Math.max(w,h)}`;
@@ -177,12 +317,14 @@ const DeviceDetector = (() => {
       '1179x2556': 'iPhone 14/15 Pro',
       '1290x2796': 'iPhone 14/15 Pro Max',
       '1080x2340': 'iPhone 14/15',
-      '750x1334': 'iPhone SE / 8',
-      '828x1792': 'iPhone 11 / XR',
+      '750x1334':  'iPhone SE / 8',
+      '828x1792':  'iPhone 11 / XR',
       '1125x2436': 'iPhone X / XS / 11 Pro',
       '1242x2688': 'iPhone XS Max / 11 Pro Max',
+      '1320x2868': 'iPhone 16 Pro Max',
+      '1206x2622': 'iPhone 16 Pro',
     };
-    return map[key] || 'iPhone';
+    return map[key] || (iosVersion ? `iPhone (iOS ${iosVersion})` : 'iPhone');
   };
 
   // ── Hardware Info ───────────────────────────────────────────────
@@ -309,7 +451,12 @@ const DeviceDetector = (() => {
 
     // Enrich from high-entropy
     if (highEntropy) {
-      if (highEntropy.model && highEntropy.model !== '') ua.model = highEntropy.model;
+      if (highEntropy.model && highEntropy.model !== '') {
+        ua.model = highEntropy.model;
+        // Re-resolve brand now that we have the authoritative model
+        const refined = resolveBrand(ua.raw, ua.model, navigator.userAgentData?.brands, highEntropy.model);
+        if (refined !== 'Unknown') ua.brand = refined;
+      }
       if (highEntropy.platform) ua.os = highEntropy.platform;
       if (highEntropy.platformVersion) ua.osVersion = highEntropy.platformVersion;
       if (highEntropy.architecture) hardware.architecture = `${highEntropy.architecture} (${highEntropy.bitness}-bit)`;
@@ -318,7 +465,7 @@ const DeviceDetector = (() => {
     return { ua, hardware, screen, network, capabilities, timestamp: new Date().toISOString() };
   };
 
-  return { detect };
+  return { detect, BRAND_COLORS, resolveBrand };
 })();
 
 // ── UI Renderer ─────────────────────────────────────────────────────────────
@@ -363,7 +510,7 @@ const UI = (() => {
     el.innerHTML = `
       <span class="quick-chip">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="2" y="1" width="8" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/><line x1="4" y1="8.5" x2="8" y2="8.5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
-        ${data.ua.deviceType}
+        ${data.ua.brand} ${data.ua.model}
       </span>
       <span class="quick-chip">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 3v3l2 1" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
@@ -388,15 +535,7 @@ const UI = (() => {
     const el = document.getElementById('deviceCard');
     if (!el) return;
 
-    const brandColors = {
-      'Apple': '#555', 'Samsung': '#1428A0', 'Google': '#4285F4',
-      'OnePlus': '#F5010C', 'Xiaomi': '#FF6900', 'Huawei': '#CF0A2C',
-      'OPPO': '#1D3461', 'Motorola': '#5C2D91', 'Sony': '#000',
-      'Nokia': '#124191', 'LG': '#A50034', 'Vivo': '#415FFF',
-      'Unknown': '#666',
-    };
-
-    const brandColor = brandColors[data.ua.brand] || '#666';
+    const brandColor = DeviceDetector.BRAND_COLORS[data.ua.brand] || '#948674';
     const batteryLevel = data.hardware.batteryLevel?.replace('%', '') || null;
     const batteryNum = batteryLevel ? parseInt(batteryLevel) : null;
 
