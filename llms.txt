@@ -8,6 +8,13 @@
 - [Mic Test](https://whatphone.github.io/mic-test): Test microphone input.
 - [Touchscreen Test](https://whatphone.github.io/touchscreen-test): Multi‑touch accuracy test.
 - [Speaker Test](https://whatphone.github.io/speaker-test): Audio output and stereo test.
+- [Touch Sampling Rate Test](https://whatphone.github.io/touch-sampling-rate-test): Swipe on the pad to measure how many times per second your screen reads your finger. Shows Hz, jitter and peak rate.
+- [Backlight Bleed Test](https://whatphone.github.io/backlight-bleed-test): Full-screen black, gray and gradient patterns reveal backlight bleed, IPS glow, clouding and color banding.
+- [Online Ruler](https://whatphone.github.io/online-ruler): A calibrated on-screen ruler in cm, mm and inches. Match a credit card once, then measure with two movable markers.
+- [PPI Calculator](https://whatphone.github.io/ppi-calculator): Calculate pixels per inch, dot pitch, true screen size, aspect ratio and the distance where pixels vanish.
+- [Charging Time Calculator](https://whatphone.github.io/charging-time-calculator): Estimate how long your phone takes to charge from mAh, watts and charge levels, plus mAh to Wh and battery runtime.
+- [Decibel Meter](https://whatphone.github.io/decibel-meter): Use your microphone as a sound level meter with live dB, graph, min, average and max, plus calibration.
+- [Phone Storage Calculator](https://whatphone.github.io/storage-calculator): See how many photos, hours of 4K video and songs fit on 64GB to 2TB, with an adjustable usage mix.
 
 ## What It Detects
 - **Device Identity** — Exact device brand, model name, and generation. Supports Apple, Samsung, Google Pixel, OnePlus, Xiaomi, Motorola, and 50+ manufacturers.[reference:0]
