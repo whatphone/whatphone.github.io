@@ -2616,3 +2616,28 @@ code {
   .query-chip { font-size: 0.85rem; padding: 0.7rem 1.15rem; }
   .query-chip-text { white-space: normal; }
 }
+/* ══════════════════════════════════════════════════════════
+   Product Hunt
+══════════════════════════════════════════════════════════ */
+.footer-producthunt {
+  display: block;          /* was inline-block — block makes margin-top reliable */
+  margin-top: 1.5rem;      /* increase from 1rem for more breathing room */
+  line-height: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  clear: both;
+}
+
+.footer-badges {
+  margin-bottom: 0;        /* ensure no competing margin */
+}
+
+.footer-producthunt:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.footer-producthunt img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
