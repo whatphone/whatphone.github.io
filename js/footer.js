@@ -121,6 +121,25 @@ const Footer = (() => {
     return translations[lang]?.[key] || translations.en[key] || key;
   };
 
+  // ── Product Hunt Badge ──────────────────────────────────
+  const productHuntBadge = `
+    <a
+      href="https://www.producthunt.com/products/what-phone-do-i-have/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-what&#0045;phone&#0045;do&#0045;i&#0045;have"
+      class="footer-producthunt"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Review What Phone Do I Have on Product Hunt"
+    >
+      <img
+        src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1348755&theme=dark"
+        alt="What Phone Do I Have? - Instant mobile device identification. Know your phone. | Product Hunt"
+        width="250"
+        height="54"
+        loading="lazy"
+      />
+    </a>
+  `;
+
   // ── Render ──────────────────────────────────────────────
   const render = () => {
     const footer = document.getElementById('site-footer');
@@ -150,6 +169,7 @@ const Footer = (() => {
               <span class="badge">${t('badgePrivacy')}</span>
               <span class="badge">${t('badgeSpeed')}</span>
             </div>
+            ${productHuntBadge}
           </div>
 
           <nav class="footer-nav" aria-label="Footer navigation">
