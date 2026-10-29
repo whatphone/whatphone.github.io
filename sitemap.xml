@@ -6,7 +6,7 @@
   </url>
   <url>
     <loc>https://whatphone.github.io/guides</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
   </url>
   <url>
     <loc>https://whatphone.github.io/smartphone-security-guide</loc>
@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://whatphone.github.io/tools</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-10-29</lastmod>
   </url>
   <url>
     <loc>https://whatphone.github.io/camera-test</loc>
@@ -161,15 +161,27 @@
     <lastmod>2026-10-25</lastmod>
   </url>
   <url>
-    <loc>https://whatphone.github.io/identify-phone-model-guide</loc>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://whatphone.github.io/power-bank-calculator</loc>
+    <lastmod>2026-10-29</lastmod>
   </url>
   <url>
-    <loc>https://whatphone.github.io/phone-vibration-test-guide</loc>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://whatphone.github.io/screen-time-calculator</loc>
+    <lastmod>2026-10-29</lastmod>
   </url>
   <url>
-    <loc>https://whatphone.github.io/dead-pixel-fix-guide</loc>
-    <lastmod>2026-10-28</lastmod>
+    <loc>https://whatphone.github.io/photo-print-size-calculator</loc>
+    <lastmod>2026-10-29</lastmod>
+  </url>
+  <url>
+    <loc>https://whatphone.github.io/power-bank-capacity-guide</loc>
+    <lastmod>2026-10-29</lastmod>
+  </url>
+  <url>
+    <loc>https://whatphone.github.io/phone-screen-time-guide</loc>
+    <lastmod>2026-10-29</lastmod>
+  </url>
+  <url>
+    <loc>https://whatphone.github.io/phone-photo-print-size-guide</loc>
+    <lastmod>2026-10-29</lastmod>
   </url>
 </urlset>

@@ -16,6 +16,9 @@
 - [Charging Time Calculator](https://whatphone.github.io/charging-time-calculator): Estimate how long your phone takes to charge from mAh, watts and charge levels, plus mAh to Wh and battery runtime.
 - [Decibel Meter](https://whatphone.github.io/decibel-meter): Use your microphone as a sound level meter with live dB, graph, min, average and max, plus calibration.
 - [Phone Storage Calculator](https://whatphone.github.io/storage-calculator): See how many photos, hours of 4K video and songs fit on 64GB to 2TB, with an adjustable usage mix.
+- [Power Bank Calculator](https://whatphone.github.io/power-bank-calculator): Work out how many times a power bank charges your phone, convert mAh to Wh and check the 100 Wh airline limit.
+- [Screen Time Calculator](https://whatphone.github.io/screen-time-calculator): Turn daily phone hours into days per year, years of waking life and time you could reclaim.
+- [Photo Print Size Calculator](https://whatphone.github.io/photo-print-size-calculator): Convert megapixels to the largest sharp print size and check PPI for common paper sizes.
 
 ## What It Detects
 - **Device Identity** — Exact device brand, model name, and generation. Supports Apple, Samsung, Google Pixel, OnePlus, Xiaomi, Motorola, and 50+ manufacturers.[reference:0]
