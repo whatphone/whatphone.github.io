@@ -28,6 +28,9 @@ const Header = (() => {
       decibelMeter: 'Decibel Meter',
       storageCalc: 'Phone Storage Calculator',
       fixMySpeaker: 'Fix My Speaker',
+      powerBankCalc: 'Power Bank Calculator',
+      screenTimeCalc: 'Screen Time Calculator',
+      photoPrintCalc: 'Photo Print Size Calculator',
       guides: 'Guides',
       detectCta: 'Detect My Phone',
       toggleLabel: 'Toggle navigation menu',
@@ -262,6 +265,9 @@ const Header = (() => {
                 <li><a href="/decibel-meter" class="dropdown-link" role="menuitem">${t('decibelMeter')}</a></li>
                 <li><a href="/storage-calculator" class="dropdown-link" role="menuitem">${t('storageCalc')}</a></li>
                 <li><a href="/fix-my-speaker" class="dropdown-link" role="menuitem">${t('fixMySpeaker')}</a></li>
+                <li><a href="/power-bank-calculator" class="dropdown-link" role="menuitem">${t('powerBankCalc')}</a></li>
+                <li><a href="/screen-time-calculator" class="dropdown-link" role="menuitem">${t('screenTimeCalc')}</a></li>
+                <li><a href="/photo-print-size-calculator" class="dropdown-link" role="menuitem">${t('photoPrintCalc')}</a></li>
               </ul>
             </li>
             

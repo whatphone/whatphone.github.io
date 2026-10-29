@@ -25,6 +25,9 @@
     { name: "Charging Time Calculator", icon: "🔌", url: "/charging-time-calculator", desc: "Estimate how long your phone takes to charge from mAh, watts and charg." },
     { name: "Decibel Meter", icon: "🎚️", url: "/decibel-meter", desc: "Use your microphone as a sound level meter with live dB, graph, min, a." },
     { name: "Phone Storage Calculator", icon: "💾", url: "/storage-calculator", desc: "See how many photos, hours of 4K video and songs fit on 64GB to 2TB, w." },
+    { name: "Power Bank Calculator", icon: "🔋", url: "/power-bank-calculator", desc: "How many times a power bank charges your phone, mAh to Wh and the 100 Wh flight limit." },
+    { name: "Screen Time Calculator", icon: "⏳", url: "/screen-time-calculator", desc: "Turn daily phone hours into days per year, lifetime totals and time you could reclaim." },
+    { name: "Photo Print Size Calculator", icon: "🖼️", url: "/photo-print-size-calculator", desc: "Megapixels to the largest sharp print size, with PPI for every common paper size." },
 
     { name: "Fix My Speaker", icon: "🔈", url: "/fix-my-speaker", desc: "Water eject and dust-clearing speaker cleaner." },
 
