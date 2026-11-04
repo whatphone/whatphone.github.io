@@ -28,6 +28,9 @@
     { name: "Power Bank Calculator", icon: "🔋", url: "/power-bank-calculator", desc: "How many times a power bank charges your phone, mAh to Wh and the 100 Wh flight limit." },
     { name: "Screen Time Calculator", icon: "⏳", url: "/screen-time-calculator", desc: "Turn daily phone hours into days per year, lifetime totals and time you could reclaim." },
     { name: "Photo Print Size Calculator", icon: "🖼️", url: "/photo-print-size-calculator", desc: "Megapixels to the largest sharp print size, with PPI for every common paper size." },
+    { name: "Cell Signal Strength Checker", icon: "📡", url: "/signal-strength-checker", desc: "Check if your dBm, RSRP or SINR is good, convert dBm to ASU and estimate a booster result." },
+    { name: "Battery Health Calculator", icon: "🔋", url: "/battery-health-calculator", desc: "Battery health percentage from design and current capacity, with a cycle-based wear estimate." },
+    { name: "Phone Charging Cost Calculator", icon: "💰", url: "/phone-charging-cost-calculator", desc: "What it costs to charge your phone per charge, month and year in any currency." },
 
     { name: "Fix My Speaker", icon: "🔈", url: "/fix-my-speaker", desc: "Water eject and dust-clearing speaker cleaner." },
 
