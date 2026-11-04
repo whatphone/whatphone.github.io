@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MD16J6JVZ2"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MD16J6JVZ2');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Signal Strength Checker: Is My dBm, RSRP or SINR Good?</title>
+  <meta name="description" content="Free cell signal strength checker. Enter dBm, RSRP, RSRQ or SINR to see if your signal is good, convert dBm to ASU and estimate a signal booster result." />
+  <meta name="keywords" content="cell signal strength checker, what is a good signal strength dbm, rsrp good values, sinr good value, dbm to asu, cell signal strength chart, 4g 5g signal strength" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://whatphone.github.io/signal-strength-checker" />
+  <meta property="og:title" content="Signal Strength Checker: Is My dBm, RSRP or SINR Good?" />
+  <meta property="og:description" content="Free cell signal strength checker. Enter dBm, RSRP, RSRQ or SINR to see if your signal is good, convert dBm to ASU and estimate a signal booster result." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://whatphone.github.io/signal-strength-checker" />
+  <meta property="og:site_name" content="WhatPhone" />
+  <meta property="og:image" content="https://whatphone.github.io/images/cell-signal-strength-guide-featured.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Signal Strength Checker: Is My dBm, RSRP or SINR Good?" />
+  <meta name="twitter:description" content="Free cell signal strength checker. Enter dBm, RSRP, RSRQ or SINR to see if your signal is good, convert dBm to ASU and estimate a signal booster result." />
+  <meta name="twitter:image" content="https://whatphone.github.io/images/cell-signal-strength-guide-featured.webp" />
+  <meta name="theme-color" content="#080c14" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/apps.css" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Cell Signal Strength Checker", "url": "https://whatphone.github.io/signal-strength-checker", "description": "Free cell signal strength checker. Enter dBm, RSRP, RSRQ or SINR to see if your signal is good, convert dBm to ASU and estimate a signal booster result.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "browserRequirements": "Requires JavaScript", "isAccessibleForFree": true, "inLanguage": "en", "datePublished": "2026-10-29", "dateModified": "2026-10-29", "image": "https://whatphone.github.io/images/cell-signal-strength-guide-featured.webp", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "WhatPhone", "url": "https://whatphone.github.io/"}}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a good signal strength in dBm?", "acceptedAnswer": {"@type": "Answer", "text": "For 4G and 5G RSRP, −80 dBm or higher is excellent, −80 to −90 good, −90 to −100 fair and below −100 weak. The closer to zero, the stronger the signal. Thresholds vary slightly between sources."}}, {"@type": "Question", "name": "What is the difference between RSRP, RSRQ, SINR and RSSI?", "acceptedAnswer": {"@type": "Answer", "text": "RSRP is the power of the cell's reference signal, RSRQ is signal quality relative to total power, SINR is the signal-to-noise ratio and RSSI is total received power including noise. RSRP and SINR are the most useful for judging real-world performance."}}, {"@type": "Question", "name": "How do I check signal strength on my phone?", "acceptedAnswer": {"@type": "Answer", "text": "On many iPhones you can dial *3001#12345#* to open Field Test mode, though the layout depends on the model and iOS version. On Android open Settings → About phone → SIM status, or dial *#0011# on some Samsung phones."}}, {"@type": "Question", "name": "Why do I have full bars but slow internet?", "acceptedAnswer": {"@type": "Answer", "text": "Bars mostly reflect signal strength. Slow data can come from poor SINR, a congested cell or a weak connection to the wider network, so check SINR and RSRQ too."}}, {"@type": "Question", "name": "What is ASU on Android?", "acceptedAnswer": {"@type": "Answer", "text": "ASU is the Android Signal Unit, a simple integer scale. On LTE the signal in dBm equals ASU minus 140. On 3G it is ASU minus 116, and on 2G GSM it is two times ASU minus 113."}}, {"@type": "Question", "name": "Will a signal booster fix a weak signal?", "acceptedAnswer": {"@type": "Answer", "text": "A booster amplifies the signal you already receive, so it needs some usable outside signal. Gain is reduced by cable loss, and it cannot help if there is no signal outside."}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "How to use the Cell Signal Strength Checker", "step": [{"@type": "HowToStep", "position": 1, "name": "Find your readings.", "text": "Open your phone's field test or SIM status screen and note RSRP and SINR. Add RSRQ or RSSI if you have them."}, {"@type": "HowToStep", "position": 2, "name": "Enter the values.", "text": "Type them in with their minus signs. RSRP is usually between −44 and −140 dBm."}, {"@type": "HowToStep", "position": 3, "name": "Read the rating.", "text": "The overall rating uses your weakest metric, and the table explains each number."}, {"@type": "HowToStep", "position": 4, "name": "Convert or plan a booster.", "text": "Use the ASU converter for Android values, or enter the outside signal and booster gain to estimate the indoor result."}], "image": "https://whatphone.github.io/images/cell-signal-strength-guide-featured.webp"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://whatphone.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://whatphone.github.io/tools"}, {"@type": "ListItem", "position": 3, "name": "Cell Signal Strength Checker", "item": "https://whatphone.github.io/signal-strength-checker"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header id="site-header" role="banner"></header>
+  <div class="app-page" id="main-content">
+    <div class="app-hero"><div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/tools">Tools</a></li><li aria-current="page">Cell Signal Strength Checker</li></ol></nav>
+      <h1>Cell Signal Strength Checker — Is Your dBm Good?</h1>
+      <p>Enter your RSRP, SINR, RSRQ or dBm reading to see whether your cell signal is excellent, good, fair or poor, convert dBm to ASU and estimate what a signal booster would give you.</p>
+    </div></div>
+    <main class="app-main">
+      <div>
+<section class="panel" aria-labelledby="inT">
+  <h2 class="panel-title" id="inT">Your signal readings</h2>
+  <div class="row">
+    <div class="field"><label for="rsrp">RSRP (dBm)</label><input type="number" id="rsrp" inputmode="numeric" step="1" value="-92" /></div>
+    <div class="field"><label for="sinr">SINR (dB)</label><input type="number" id="sinr" inputmode="numeric" step="1" value="14" /></div>
+  </div>
+  <div class="row">
+    <div class="field"><label for="rsrq">RSRQ (dB) — optional</label><input type="number" id="rsrq" inputmode="numeric" step="1" value="-11" /></div>
+    <div class="field"><label for="rssi">RSSI / dBm — optional</label><input type="number" id="rssi" inputmode="numeric" step="1" placeholder="e.g. -75" /></div>
+  </div>
+  <div class="btn-row"><button class="btn-ghost" id="copyBtn" type="button">Copy result</button></div>
+  <p class="note">Leave a box empty if your phone does not show it. Many phones show only one dBm number, which is usually RSRP on 4G and 5G.</p>
+</section>
+<section class="panel" aria-live="polite" aria-labelledby="outT">
+  <h2 class="panel-title" id="outT">Result</h2>
+  <div class="readout"><b id="ov">—</b><span>overall signal</span></div>
+  <span class="verdict" id="vd">Enter a reading</span>
+  <p class="note" id="exp"></p>
+  <div class="table-wrap"><table><thead><tr><th>Metric</th><th>Reading</th><th>Rating</th><th>What it tells you</th></tr></thead><tbody id="mt"></tbody></table></div>
+</section>
+<section class="panel" aria-labelledby="cvT">
+  <h2 class="panel-title" id="cvT">dBm to ASU converter</h2>
+  <div class="row">
+    <div class="field"><label for="net">Network type</label><select id="net"><option value="lte" selected>4G LTE</option><option value="umts">3G (WCDMA)</option><option value="gsm">2G (GSM)</option></select></div>
+    <div class="field"><label for="dbm">Signal (dBm)</label><input type="number" id="dbm" inputmode="numeric" value="-95" /></div>
+    <div class="field"><label for="asu">ASU</label><input type="number" id="asu" inputmode="numeric" value="45" /></div>
+  </div>
+</section>
+<section class="panel" aria-live="polite" aria-labelledby="bsT">
+  <h2 class="panel-title" id="bsT">Signal booster estimate</h2>
+  <div class="row">
+    <div class="field"><label for="bo">Outside signal (dBm)</label><input type="number" id="bo" inputmode="numeric" value="-110" /></div>
+    <div class="field"><label for="bg">Booster gain (dB)</label><input type="number" id="bg" inputmode="numeric" value="50" /></div>
+    <div class="field"><label for="bl">Cable and splitter loss (dB)</label><input type="number" id="bl" inputmode="numeric" value="3" /></div>
+  </div>
+  <div class="stats"><div class="stat"><small>Estimated signal indoors</small><strong id="br">—</strong></div><div class="stat"><small>Rating</small><strong id="bq">—</strong></div></div>
+  <p class="note">A booster can only amplify a signal that already exists, and real gain is limited by the booster's maximum output. Use a booster approved in your country.</p>
+</section>
+      </div>
+      <aside class="app-side" aria-label="Related information">
+<div class="panel"><h2 class="panel-title">4G / 5G RSRP guide</h2><div class="table-wrap"><table><tr><th>RSRP</th><th>Rating</th></tr><tr><td>−80 dBm or higher</td><td>Excellent</td></tr><tr><td>−80 to −90</td><td>Good</td></tr><tr><td>−90 to −100</td><td>Fair</td></tr><tr><td>−100 to −110</td><td>Poor</td></tr><tr><td>Below −110</td><td>Very poor</td></tr></table></div></div>
+<div class="panel"><h2 class="panel-title">Where to find your numbers</h2>
+<div class="info-row"><span>iPhone</span><span>Dial *3001#12345#*</span></div>
+<div class="info-row"><span>Android</span><span>About phone → SIM status</span></div>
+<div class="info-row"><span>Some Samsung</span><span>Dial *#0011#</span></div>
+<p class="note">Menus differ by model, carrier and software version.</p></div>
+<div class="panel"><h2 class="panel-title">More phone tools</h2><a href="/wifi-speed-test" class="tool-link"><span aria-hidden="true">📶</span> Wi-Fi Speed Test</a><a href="/5g-optimization-guide" class="tool-link"><span aria-hidden="true">📖</span> 5G Optimization Guide</a><a href="/cell-signal-strength-guide" class="tool-link"><span aria-hidden="true">📖</span> Signal Strength Guide</a></div>
+      </aside>
+    </main>
+    <article class="content-wrap">
+      <h2>How to use the cell signal strength checker</h2>
+      <ol>
+<li><strong>Find your readings.</strong> Open your phone's field test or SIM status screen and note RSRP and SINR. Add RSRQ or RSSI if you have them.</li><li><strong>Enter the values.</strong> Type them in with their minus signs. RSRP is usually between −44 and −140 dBm.</li><li><strong>Read the rating.</strong> The overall rating uses your weakest metric, and the table explains each number.</li><li><strong>Convert or plan a booster.</strong> Use the ASU converter for Android values, or enter the outside signal and booster gain to estimate the indoor result.</li>
+      </ol>
+<h2>What is a good cell signal strength?</h2>
+<p>Signal bars are a rough guide and differ between brands. The numbers behind them are far more useful. On 4G and 5G, RSRP is the main strength reading. A value of −80 dBm or higher is excellent, −80 to −90 is good, −90 to −100 is fair and below −100 is weak. These are common industry guidelines, and carriers and equipment makers draw the lines in slightly different places.</p>
+<h3>Strength is only half the story</h3>
+<p>SINR measures how clean the signal is. Strong RSRP with low SINR means interference or a busy cell, which is why you can have full bars and still get slow data. For the best speeds look for good RSRP together with SINR above 13 dB. Read our <a href="/cell-signal-strength-guide">cell signal strength guide</a> for ways to improve a weak signal.</p>
+      <h2>Frequently asked questions</h2>
+      <div class="faq-list" role="list">
+<div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false" aria-controls="fa0" onclick="toggleFaq(this)"><span>What is a good signal strength in dBm?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="fa0" role="region"><p>For 4G and 5G RSRP, −80 dBm or higher is excellent, −80 to −90 good, −90 to −100 fair and below −100 weak. The closer to zero, the stronger the signal. Thresholds vary slightly between sources.</p></div></div><div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false" aria-controls="fa1" onclick="toggleFaq(this)"><span>What is the difference between RSRP, RSRQ, SINR and RSSI?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="fa1" role="region"><p>RSRP is the power of the cell's reference signal, RSRQ is signal quality relative to total power, SINR is the signal-to-noise ratio and RSSI is total received power including noise. RSRP and SINR are the most useful for judging real-world performance.</p></div></div><div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false" aria-controls="fa2" onclick="toggleFaq(this)"><span>How do I check signal strength on my phone?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="fa2" role="region"><p>On many iPhones you can dial *3001#12345#* to open Field Test mode, though the layout depends on the model and iOS version. On Android open Settings → About phone → SIM status, or dial *#0011# on some Samsung phones.</p></div></div><div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false" aria-controls="fa3" onclick="toggleFaq(this)"><span>Why do I have full bars but slow internet?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="fa3" role="region"><p>Bars mostly reflect signal strength. Slow data can come from poor SINR, a congested cell or a weak connection to the wider network, so check SINR and RSRQ too.</p></div></div><div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false" aria-controls="fa4" onclick="toggleFaq(this)"><span>What is ASU on Android?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="fa4" role="region"><p>ASU is the Android Signal Unit, a simple integer scale. On LTE the signal in dBm equals ASU minus 140. On 3G it is ASU minus 116, and on 2G GSM it is two times ASU minus 113.</p></div></div><div class="faq-item" role="listitem"><button class="faq-q" aria-expanded="false" aria-controls="fa5" onclick="toggleFaq(this)"><span>Will a signal booster fix a weak signal?</span><span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-a" id="fa5" role="region"><p>A booster amplifies the signal you already receive, so it needs some usable outside signal. Gain is reduced by cable loss, and it cannot help if there is no signal outside.</p></div></div>
+      </div>
+      <h2>Related phone tools</h2>
+      <div class="related">
+<a href="/wifi-speed-test">Wi-Fi Speed Test<span>Check connection speed.</span></a><a href="/5g-optimization-guide">5G Optimization Guide<span>Get the most from 5G.</span></a><a href="/satellite-connectivity-guide">Satellite Connectivity Guide<span>When there is no signal.</span></a><a href="/gps-compass-test">GPS &amp; Compass Test<span>Check location sensors.</span></a>
+      </div>
+    </article>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <footer id="site-footer" role="contentinfo"></footer>
+  <script src="/js/header.js" defer></script>
+  <script src="/js/footer.js" defer></script>
+  <script src="/js/apps-common.js"></script>
+  <script>
+(function(){
+var last='';
+function n(id){var v=$(id).value;return v===''?NaN:+v;}
+function fm(x,d){return x.toLocaleString('en-US',{maximumFractionDigits:d===undefined?0:d});}
+// level: 4 excellent .. 0 very poor
+var NAMES=['Very poor','Poor','Fair','Good','Excellent'];
+function rate(t,v){var th={rsrp:[-80,-90,-100,-110],rsrq:[-10,-15,-20,-25],sinr:[20,13,0,-5],rssi:[-65,-75,-85,-95]}[t];
+  for(var i=0;i<4;i++){if(v>=th[i])return 4-i;}return 0;}
+function cls(l){return l>=3?'good':l===2?'warn':'bad';}
+var TELLS={rsrp:'How strong the tower signal is',rsrq:'Quality and congestion',sinr:'How clean the signal is',rssi:'Total power including noise'};
+var EXP=['Very weak: expect failed calls and little or no data. Move outdoors or to a window, or use Wi-Fi calling.','Weak: slow data and dropped calls are likely. Try a window, a higher floor or Wi-Fi calling.','Fair: usable, but speeds may drop and calls can be less stable indoors.','Good: reliable calls and fast data in most places.','Excellent: strong, clean signal for the fastest speeds your network offers.'];
+function calc(){
+  var d={rsrp:n('rsrp'),sinr:n('sinr'),rsrq:n('rsrq'),rssi:n('rssi')},rows='',mn=9,txt=[],core=0;
+  [['rsrp','RSRP','dBm'],['sinr','SINR','dB'],['rsrq','RSRQ','dB'],['rssi','RSSI','dBm']].forEach(function(m){
+    var v=d[m[0]];if(isNaN(v))return;var l=rate(m[0],v);
+    if(m[0]!=='rssi'){mn=Math.min(mn,l);core++;}
+    else if(isNaN(d.rsrp)){mn=Math.min(mn,l);core++;}
+    rows+='<tr><td>'+m[1]+'</td><td>'+fm(v)+' '+m[2]+'</td><td>'+NAMES[l]+'</td><td>'+TELLS[m[0]]+'</td></tr>';
+    txt.push(m[1]+' '+fm(v)+' '+m[2]+' ('+NAMES[l]+')');
+  });
+  $('mt').innerHTML=rows;
+  if(!core){$('ov').textContent='—';$('vd').textContent='Enter a reading';$('vd').className='verdict';$('exp').textContent='';return;}
+  $('ov').textContent=NAMES[mn];$('vd').textContent='Overall: '+NAMES[mn]+' (weakest metric)';$('vd').className='verdict '+cls(mn);$('exp').textContent=EXP[mn];
+  last='My signal: '+txt.join(', ')+'. Overall: '+NAMES[mn]+'.';
+}
+function conv(src){
+  var t=$('net').value,off={lte:140,umts:116}[t];
+  if(src==='asu'){var a=n('asu');if(isNaN(a))return;$('dbm').value=t==='gsm'?2*a-113:a-off;}
+  else{var d=n('dbm');if(isNaN(d))return;$('asu').value=t==='gsm'?Math.round((d+113)/2):d+off;}
+}
+function boost(){var o=n('bo'),g=n('bg'),l=n('bl');if([o,g,l].some(isNaN)){$('br').textContent='—';$('bq').textContent='—';return;}
+  var r=o+g-l;$('br').textContent=fm(r)+' dBm';$('bq').textContent=NAMES[rate('rsrp',r)];}
+['rsrp','sinr','rsrq','rssi'].forEach(function(id){$(id).addEventListener('input',calc);});
+$('dbm').addEventListener('input',function(){conv('dbm');});$('asu').addEventListener('input',function(){conv('asu');});$('net').addEventListener('change',function(){conv('dbm');});
+['bo','bg','bl'].forEach(function(id){$(id).addEventListener('input',boost);});
+$('copyBtn').addEventListener('click',function(){if(last)copyText(last);});
+conv('dbm');calc();boost();
+})();
+  </script>
+</body>
+</html>

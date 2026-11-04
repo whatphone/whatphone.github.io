@@ -19,6 +19,9 @@
 - [Power Bank Calculator](https://whatphone.github.io/power-bank-calculator): Work out how many times a power bank charges your phone, convert mAh to Wh and check the 100 Wh airline limit.
 - [Screen Time Calculator](https://whatphone.github.io/screen-time-calculator): Turn daily phone hours into days per year, years of waking life and time you could reclaim.
 - [Photo Print Size Calculator](https://whatphone.github.io/photo-print-size-calculator): Convert megapixels to the largest sharp print size and check PPI for common paper sizes.
+- [Cell Signal Strength Checker](https://whatphone.github.io/signal-strength-checker): Check whether your dBm, RSRP or SINR is good, convert dBm to ASU and estimate a signal booster result.
+- [Battery Health Calculator](https://whatphone.github.io/battery-health-calculator): Calculate battery health percentage from design and current capacity and estimate wear from charge cycles.
+- [Phone Charging Cost Calculator](https://whatphone.github.io/phone-charging-cost-calculator): See what it costs to charge a phone per charge, month and year in any currency.
 
 ## What It Detects
 - **Device Identity** — Exact device brand, model name, and generation. Supports Apple, Samsung, Google Pixel, OnePlus, Xiaomi, Motorola, and 50+ manufacturers.[reference:0]
