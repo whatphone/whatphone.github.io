@@ -31,6 +31,9 @@ const Header = (() => {
       powerBankCalc: 'Power Bank Calculator',
       screenTimeCalc: 'Screen Time Calculator',
       photoPrintCalc: 'Photo Print Size Calculator',
+      signalCheck: 'Signal Strength Checker',
+      batteryHealthCalc: 'Battery Health Calculator',
+      chargingCostCalc: 'Charging Cost Calculator',
       guides: 'Guides',
       detectCta: 'Detect My Phone',
       toggleLabel: 'Toggle navigation menu',
@@ -268,6 +271,9 @@ const Header = (() => {
                 <li><a href="/power-bank-calculator" class="dropdown-link" role="menuitem">${t('powerBankCalc')}</a></li>
                 <li><a href="/screen-time-calculator" class="dropdown-link" role="menuitem">${t('screenTimeCalc')}</a></li>
                 <li><a href="/photo-print-size-calculator" class="dropdown-link" role="menuitem">${t('photoPrintCalc')}</a></li>
+                <li><a href="/signal-strength-checker" class="dropdown-link" role="menuitem">${t('signalCheck')}</a></li>
+                <li><a href="/battery-health-calculator" class="dropdown-link" role="menuitem">${t('batteryHealthCalc')}</a></li>
+                <li><a href="/phone-charging-cost-calculator" class="dropdown-link" role="menuitem">${t('chargingCostCalc')}</a></li>
               </ul>
             </li>
             
