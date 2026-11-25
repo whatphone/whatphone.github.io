@@ -18,8 +18,8 @@
 
   <!-- ── Primary Meta ─────────────────────────────────── -->
   <title>What Phone Do I Have? — Instant Mobile Device Detector</title>
-  <meta name="description" content="Find out exactly what phone you have in seconds. WhatPhone detects your device model, OS version, screen specs, hardware, browser, network, and 30+ capabilities instantly — no app needed." />
-  <meta name="keywords" content="what phone do I have, phone detector, device identifier, mobile phone detection, identify my phone, check phone model, phone specs checker, device info, browser device detection, iOS detector, Android detector, phone model checker" />
+  <meta name="description" content="Find out exactly what phone you have in seconds. WhatPhone detects your device model, OS version, screen specs, hardware, browser, network, and 30+ capabilities instantly — no app needed. Also free camera test, touch sampling rate test, proximity sensor test, vibration test & more." />
+  <meta name="keywords" content="what phone do I have, phone detector, device identifier, mobile phone detection, identify my phone, check phone model, how to check what phone i have, detect my phone model online, phone specs checker, touch sampling rate test, proximity sensor test, phone camera test, phone lag test, vibration test, device info, iOS detector, Android detector, phone model checker" />
   <meta name="author" content="WhatPhone" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://whatphone.github.io/" />  
@@ -34,7 +34,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://whatphone.github.io/" />
   <meta property="og:title" content="What Phone Do I Have? — Instant Device Detector" />
-  <meta property="og:description" content="Detect your phone model, OS, specs, and 30+ hardware capabilities instantly. Free, private, no app required." />
+  <meta property="og:description" content="Detect your phone model, OS, specs, and 30+ hardware capabilities instantly. Free camera, touch sampling rate, proximity sensor & vibration tests included. Private, no app required." />
   <meta property="og:image" content="https://whatphone.github.io/assets/og-image.png" />
   <meta property="og:site_name" content="WhatPhone" />
   <meta property="og:locale" content="en_US" />
@@ -43,7 +43,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@whatphone" />
   <meta name="twitter:title" content="What Phone Do I Have? — Instant Device Detector" />
-  <meta name="twitter:description" content="Detect your phone model, OS, screen specs & 30+ capabilities instantly. Free & private." />
+  <meta name="twitter:description" content="Detect your phone model, OS, screen specs & 30+ capabilities instantly. Free camera, touch & sensor tests. Private." />
   <meta name="twitter:image" content="https://whatphone.github.io/assets/og-image.png" />
 
   <!-- ── Favicon ───────────────────────────────────────── -->
@@ -138,6 +138,22 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "iOS devices limit the model identifier exposed to browsers for privacy. Some Android manufacturers also obscure model numbers. WhatPhone uses screen resolution fingerprinting and UA Client Hints to improve accuracy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I check what phone I have?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The fastest way is to use WhatPhone: tap Detect My Phone and the tool reads your device model, OS, and specs from the browser in under a second. You can also check Settings → About Phone on Android or Settings → General → About on iPhone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I detect my phone model online?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Visit WhatPhone and tap Detect My Phone. Everything runs in your browser using User Agent data, Client Hints, and screen fingerprinting — no app, no account, and no data is sent to any server."
             }
           }
         ]
@@ -459,8 +475,9 @@
       </h2>
       <p class="query-lead">
         Whether you're asking <em>"what kind of phone is this?"</em>,
-        <em>"what type of phone is this?"</em>, or simply
-        <em>"what model is my phone?"</em> — the answer is one tap away.
+        <em>"what type of phone is this?"</em>, <em>"how to check what phone I have"</em>,
+        or simply <em>"what model is my phone?"</em> — the answer is one tap away.
+        You can also <em>detect my phone model online</em> instantly with no app.
       </p>
 
       <div class="query-chips" data-stagger>
@@ -479,6 +496,22 @@
         <button class="query-chip" onclick="document.getElementById('detectBtn').click()">
           <span class="query-chip-icon" aria-hidden="true">🤔</span>
           <span class="query-chip-text">What type of phone is this?</span>
+        </button>
+        <button class="query-chip" onclick="document.getElementById('detectBtn').click()">
+          <span class="query-chip-icon" aria-hidden="true">📋</span>
+          <span class="query-chip-text">How to check what phone I have</span>
+        </button>
+        <button class="query-chip" onclick="document.getElementById('detectBtn').click()">
+          <span class="query-chip-icon" aria-hidden="true">🌐</span>
+          <span class="query-chip-text">Detect my phone model online</span>
+        </button>
+        <button class="query-chip" onclick="document.getElementById('detectBtn').click()">
+          <span class="query-chip-icon" aria-hidden="true">⏱️</span>
+          <span class="query-chip-text">What phone am I using right now?</span>
+        </button>
+        <button class="query-chip" onclick="document.getElementById('detectBtn').click()">
+          <span class="query-chip-icon" aria-hidden="true">🏷️</span>
+          <span class="query-chip-text">How to know my phone model</span>
         </button>
       </div>
 
@@ -574,7 +607,7 @@
     <div class="section-header" data-animate>
       <span class="section-eyebrow">Web Applications</span>
       <h2 class="section-title" id="compat-heading">Test Your Hardware</h2>
-      <p class="section-subtitle">Click any tool below to launch the test — camera, mic, touchscreen, speaker, sensors, and display.</p>
+      <p class="section-subtitle">Free online tools: phone camera test, touch sampling rate test, proximity sensor test, vibration test, refresh rate / 120Hz test, dead pixel test, lag checks and more — all in your browser.</p>
     </div>
     <div class="compat-grid" data-stagger>
 
@@ -587,7 +620,7 @@
           </svg>
         </div>
         <h3 class="compat-name">Camera Test</h3>
-        <p class="compat-desc">Check front/rear camera</p>
+        <p class="compat-desc">Phone camera test — front & rear</p>
         <a href="/camera-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
       </article>
 
@@ -622,6 +655,20 @@
         <a href="/touchscreen-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
       </article>
 
+      <!-- Touch Sampling Rate Test -->
+      <article class="compat-card">
+        <div class="compat-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2" fill="#d1fae5" stroke="#10b981"/>
+            <path d="M8 8h8M8 12h5M8 16h6" stroke="#10b981" stroke-width="1.5"/>
+            <circle cx="17" cy="16" r="1.5" fill="#10b981" stroke="none"/>
+          </svg>
+        </div>
+        <h3 class="compat-name">Touch Sampling Rate</h3>
+        <p class="compat-desc">Touch sampling rate test</p>
+        <a href="/touch-sampling-rate-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
+      </article>
+
       <!-- Speaker Test -->
       <article class="compat-card">
         <div class="compat-logo" aria-hidden="true">
@@ -648,7 +695,7 @@
           </svg>
         </div>
         <h3 class="compat-name">Vibration Test</h3>
-        <p class="compat-desc">Haptic feedback & motor</p>
+        <p class="compat-desc">Phone vibration & haptic test</p>
         <a href="/vibration-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
       </article>
 
@@ -699,7 +746,7 @@
           </svg>
         </div>
         <h3 class="compat-name">Dead Pixel Test</h3>
-        <p class="compat-desc">Solid colors & pixel check</p>
+        <p class="compat-desc">Dead pixel test — solid colors</p>
         <a href="/dead-pixel" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
       </article>
 
@@ -715,7 +762,7 @@
           </svg>
         </div>
         <h3 class="compat-name">Refresh Rate Test</h3>
-        <p class="compat-desc">Measure real Hz & motion</p>
+        <p class="compat-desc">120Hz / refresh rate test</p>
         <a href="/refresh-rate-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
       </article>
 
@@ -746,7 +793,7 @@
           </svg>
         </div>
         <h3 class="compat-name">Proximity Sensor</h3>
-        <p class="compat-desc">Cover-the-top detection</p>
+        <p class="compat-desc">Proximity sensor test online</p>
         <a href="/proximity-sensor-test" target="_blank" rel="noopener noreferrer" class="compat-status">Launch Test →</a>
       </article>
 
@@ -1126,6 +1173,15 @@
           on the box, or by tapping Detect above — we read it straight from your browser.
         </p>
       </article>
+
+      <article class="qa-card">
+        <h3 class="qa-q">How to check what phone I have?</h3>
+        <p class="qa-a">
+          Use the free detector on this page — it is the fastest way to answer
+          “how to check what phone I have” or “detect my phone model online”.
+          One tap gives you brand, model, OS version, and full specs with no app required.
+        </p>
+      </article>
     </div>
   </div>
 </section>
@@ -1199,6 +1255,26 @@
             </button>
             <div class="faq-a" id="faq-a6" role="region">
               Yes — simply share the WhatPhone URL (whatphone.github.io) with another person and ask them to visit it on their device. The tool will detect their specific device automatically, and they can share or copy the results to you.
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a7" onclick="toggleFaq(this)">
+              How do I check what phone I have?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="faq-a7" role="region">
+              The fastest way is right here: tap “Detect My Phone” and WhatPhone reads your device model, OS, and specs from the browser in under a second. You can also check Settings → About Phone (Android) or Settings → General → About (iPhone), or look on the original box. Our free online detector is the quickest method when you want to know “what phone do I have” without digging through menus.
+            </div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="faq-a8" onclick="toggleFaq(this)">
+              How can I detect my phone model online?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="faq-a8" role="region">
+              Visit WhatPhone and tap Detect My Phone. The tool runs entirely in your browser using User Agent data, Client Hints, and screen fingerprinting — no app install, no account, and no data sent to any server. It works on iPhone, Android, and most modern browsers so you can detect your phone model online instantly.
             </div>
           </div>
 
