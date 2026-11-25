@@ -22,6 +22,9 @@
 - [Cell Signal Strength Checker](https://whatphone.github.io/signal-strength-checker): Check whether your dBm, RSRP or SINR is good, convert dBm to ASU and estimate a signal booster result.
 - [Battery Health Calculator](https://whatphone.github.io/battery-health-calculator): Calculate battery health percentage from design and current capacity and estimate wear from charge cycles.
 - [Phone Charging Cost Calculator](https://whatphone.github.io/phone-charging-cost-calculator): See what it costs to charge a phone per charge, month and year in any currency.
+- [WhatsApp Chat Button & Widget Generator](https://whatphone.github.io/whatsapp-chat-button-generator): Create a click-to-chat link, floating WhatsApp button or popup widget with HTML code and a QR code.
+- [WhatsApp Text Formatter & Font Styler](https://whatphone.github.io/whatsapp-text-formatter): Format WhatsApp messages with bold, italic, strikethrough, monospace, lists and quotes, plus 20+ fancy fonts.
+- [WhatsApp Chat Export Viewer & Stats Reader](https://whatphone.github.io/whatsapp-chat-viewer): Open a WhatsApp .txt export to read, search and analyze it privately in the browser.
 
 ## What It Detects
 - **Device Identity** — Exact device brand, model name, and generation. Supports Apple, Samsung, Google Pixel, OnePlus, Xiaomi, Motorola, and 50+ manufacturers.[reference:0]
