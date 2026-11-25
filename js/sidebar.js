@@ -31,6 +31,9 @@
     { name: "Cell Signal Strength Checker", icon: "📡", url: "/signal-strength-checker", desc: "Check if your dBm, RSRP or SINR is good, convert dBm to ASU and estimate a booster result." },
     { name: "Battery Health Calculator", icon: "🔋", url: "/battery-health-calculator", desc: "Battery health percentage from design and current capacity, with a cycle-based wear estimate." },
     { name: "Phone Charging Cost Calculator", icon: "💰", url: "/phone-charging-cost-calculator", desc: "What it costs to charge your phone per charge, month and year in any currency." },
+    { name: "WhatsApp Chat Button Generator", icon: "💬", url: "/whatsapp-chat-button-generator", desc: "Create a click-to-chat link, floating button or popup widget plus a QR code." },
+    { name: "WhatsApp Text Formatter", icon: "✍️", url: "/whatsapp-text-formatter", desc: "Bold, italic, strikethrough, lists, quotes and 20+ fancy fonts for WhatsApp." },
+    { name: "WhatsApp Chat Viewer", icon: "📊", url: "/whatsapp-chat-viewer", desc: "Read and analyze a WhatsApp .txt export with stats, charts and search." },
 
     { name: "Fix My Speaker", icon: "🔈", url: "/fix-my-speaker", desc: "Water eject and dust-clearing speaker cleaner." },
 

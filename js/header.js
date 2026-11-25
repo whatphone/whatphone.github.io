@@ -34,6 +34,9 @@ const Header = (() => {
       signalCheck: 'Signal Strength Checker',
       batteryHealthCalc: 'Battery Health Calculator',
       chargingCostCalc: 'Charging Cost Calculator',
+      waButtonGen: 'WhatsApp Chat Button Generator',
+      waTextFormat: 'WhatsApp Text Formatter',
+      waChatViewer: 'WhatsApp Chat Viewer',
       guides: 'Guides',
       detectCta: 'Detect My Phone',
       toggleLabel: 'Toggle navigation menu',
@@ -274,6 +277,9 @@ const Header = (() => {
                 <li><a href="/signal-strength-checker" class="dropdown-link" role="menuitem">${t('signalCheck')}</a></li>
                 <li><a href="/battery-health-calculator" class="dropdown-link" role="menuitem">${t('batteryHealthCalc')}</a></li>
                 <li><a href="/phone-charging-cost-calculator" class="dropdown-link" role="menuitem">${t('chargingCostCalc')}</a></li>
+                <li><a href="/whatsapp-chat-button-generator" class="dropdown-link" role="menuitem">${t('waButtonGen')}</a></li>
+                <li><a href="/whatsapp-text-formatter" class="dropdown-link" role="menuitem">${t('waTextFormat')}</a></li>
+                <li><a href="/whatsapp-chat-viewer" class="dropdown-link" role="menuitem">${t('waChatViewer')}</a></li>
               </ul>
             </li>
             
