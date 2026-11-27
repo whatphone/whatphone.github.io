@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" 
+    crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MD16J6JVZ2"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MD16J6JVZ2');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Discord Timestamp &amp; Markdown Generator — Dynamic Unix Codes (&lt;t:R&gt;)</title>
+  <meta name="description" content="Free Discord Timestamp & Markdown Generator. Convert any local date, time, or timezone into dynamic Discord Unix timestamp codes (<t:1735689600:R>) with live countdown previews, relative time, and one-click copy." />
+  <meta name="keywords" content="discord timestamp generator, discord unix timestamp, discord relative time, discord countdown generator, discord markdown generator, discord time format, discord hammer time, unix epoch converter discord" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href="https://whatphone.github.io/timestamp-generator" />
+  <meta property="og:title" content="Discord Timestamp &amp; Markdown Generator — Dynamic Unix Codes" />
+  <meta property="og:description" content="Convert any local date and time into dynamic Discord Unix timestamp codes (<t:R>, <t:F>) with live countdown previews, message builder, and one-click copy." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://whatphone.github.io/timestamp-generator" />
+  <meta property="og:site_name" content="WhatPhone" />
+  <meta property="og:image" content="https://whatphone.github.io/images/timestamp-generator.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Discord Timestamp &amp; Markdown Generator — Dynamic Unix Codes" />
+  <meta name="twitter:description" content="Convert any local date and time into dynamic Discord Unix timestamp codes with live countdown previews and one-click copy." />
+  <meta name="twitter:image" content="https://whatphone.github.io/images/timestamp-generator.webp" />
+  <meta name="theme-color" content="#fdfbf7" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/apps.css" />
+  <link rel="stylesheet" href="/css/sections.css" />
+  <style>
+    /* Scoped styles for Discord Timestamp & Markdown Preview */
+    .dc-chat{background:#313338;color:#dbdee1;border-radius:16px;padding:1rem 1.15rem;font-family:"gg sans","Noto Sans","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.95rem;line-height:1.45;box-shadow:var(--shadow-sm)}
+    .dc-msg{display:flex;gap:.85rem;align-items:flex-start}
+    .dc-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#5865f2,#eb459e);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none;font-size:1rem}
+    .dc-body{min-width:0;flex:1}
+    .dc-hdr{display:flex;align-items:baseline;gap:.45rem;margin-bottom:.2rem}
+    .dc-user{color:#f2f3f5;font-weight:600;font-size:.95rem}
+    .dc-bot{background:#5865f2;color:#fff;font-size:.65rem;font-weight:700;padding:.1rem .35rem;border-radius:4px;text-transform:uppercase;letter-spacing:.03em}
+    .dc-time{color:#949ba4;font-size:.72rem}
+    .dc-txt{color:#dbdee1;word-wrap:break-word;overflow-wrap:anywhere}
+    .dc-txt strong{color:#fff;font-weight:700}
+    .dc-txt em{font-style:italic}
+    .dc-txt u{text-decoration:underline}
+    .dc-txt s{text-decoration:line-through}
+    .dc-txt code{background:#2b2d31;border:1px solid #1e1f22;padding:.1em .35em;border-radius:4px;font-family:var(--font-mono);font-size:.84em;color:#e0e1e5}
+    .dc-txt pre{background:#2b2d31;border:1px solid #1e1f22;padding:.6rem .75rem;border-radius:6px;font-family:var(--font-mono);font-size:.82em;overflow-x:auto;margin:.3rem 0;color:#e0e1e5}
+    .dc-txt blockquote{border-left:4px solid #4e5058;padding-left:.75rem;margin:.25rem 0;color:#b5bac1}
+    .dc-spoiler{background:#1e1f22;color:transparent;border-radius:4px;padding:0 .25rem;cursor:pointer;transition:all .15s}
+    .dc-spoiler.rev,.dc-spoiler:hover{background:rgba(255,255,255,.1);color:#dbdee1}
+    .dc-pill{display:inline-block;background:rgba(88,101,242,.24);color:#dee0fc;border-radius:4px;padding:0 .35rem;font-weight:500}
+    .ts-row{display:grid;grid-template-columns:minmax(135px,1fr) minmax(175px,1.3fr) minmax(150px,1.2fr) auto;gap:.65rem;align-items:center;padding:.75rem .85rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);margin-bottom:.55rem;transition:border-color var(--transition)}
+    .ts-row:hover{border-color:var(--accent)}
+    .ts-type strong{display:block;font-size:.86rem;color:var(--heading);font-family:var(--font-display)}
+    .ts-type small{display:block;font-size:.74rem;color:var(--text3)}
+    .ts-code{font-family:var(--font-mono);font-size:.82rem;background:var(--surface);border:1px solid var(--border2);padding:.35rem .55rem;border-radius:8px;color:var(--accent2);user-select:all;overflow-x:auto;white-space:nowrap}
+    .ts-prev{font-size:.86rem;color:var(--text);font-weight:500}
+    .ts-copy{min-height:38px;padding:.4rem .85rem;font-size:.8rem}
+    .preset-bar{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+    .preset-btn{min-height:36px;padding:.3rem .75rem;font:600 .78rem var(--font-body);color:var(--text2);background:var(--bg2);border:1px solid var(--border2);border-radius:100px;cursor:pointer;transition:all var(--transition)}
+    .preset-btn:hover{border-color:var(--accent);color:var(--accent2);background:var(--surface)}
+    @media(max-width:720px){
+      .ts-row{grid-template-columns:1fr auto;gap:.45rem}
+      .ts-code{grid-column:1 / -1}
+      .ts-prev{grid-column:1 / 2}
+      .ts-copy{grid-column:2 / 3;grid-row:1 / 2}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Discord Timestamp & Markdown Generator",
+        "url": "https://whatphone.github.io/timestamp-generator",
+        "description": "Free Discord Timestamp & Markdown Generator. Convert any local date, time, or timezone into dynamic Discord Unix timestamp codes (<t:1735689600:R>) with live countdown previews and one-click copy.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any (web browser)",
+        "browserRequirements": "Requires JavaScript",
+        "isAccessibleForFree": true,
+        "inLanguage": "en",
+        "datePublished": "2026-11-27",
+        "dateModified": "2026-11-27",
+        "image": "https://whatphone.github.io/images/timestamp-generator.webp",
+        "featureList": [
+          "Convert local date and time to Discord Unix timestamp tags",
+          "All 7 Discord timestamp formats (:t, :T, :d, :D, :f, :F, :R)",
+          "Real-time live relative countdown preview",
+          "Interactive Discord Markdown message composer and live preview",
+          "Quick time offset presets (+15m, +1h, Tomorrow, Next Week)",
+          "Reverse Unix epoch timestamp decoder",
+          "One-click copy to clipboard, 100% private client-side"
+        ],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "WhatPhone",
+          "url": "https://whatphone.github.io/"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do Discord dynamic timestamps work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Discord timestamps use Unix epoch seconds wrapped in <t:TIMESTAMP:FLAG> syntax. When pasted into a Discord message, embed, or bio, Discord automatically converts the UTC Unix timestamp into each reader's local device time and timezone."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I create a live countdown in Discord?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Select your target future date and time in the generator, then copy the Relative Time code ending in :R (for example, <t:1795824000:R>). Discord renders this as a live updating countdown like 'in 2 hours' or 'in 3 days'."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do Discord timestamps adjust for different timezones automatically?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Because Unix timestamps represent a single universal moment in UTC seconds, Discord displays the exact local date and clock time for every member in your server regardless of where they live."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use Discord timestamps in my profile bio, status, or webhooks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Dynamic <t:...> timestamp codes work in regular channel messages, DMs, forum posts, webhook embeds, bot messages, and your Discord About Me profile bio."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are all 7 Discord timestamp format flags?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Discord supports 7 format flags: :t (Short Time), :T (Long Time), :d (Short Date), :D (Long Date), :f (Short Date/Time, default), :F (Long Date/Time with weekday), and :R (Relative countdown/elapsed time)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my date or message data sent to any server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All Unix timestamp calculations, timezone conversions, and Discord Markdown previews run 100% locally in your web browser with zero server uploads."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "HowTo",
+        "name": "How to Generate and Use a Discord Timestamp",
+        "image": "https://whatphone.github.io/images/timestamp-generator.webp",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Pick your date and time",
+            "text": "Choose your event date and local time using the date/time pickers or click a quick preset like +1 Hour or Tomorrow."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Confirm your timezone",
+            "text": "Your browser timezone is detected automatically, or you can switch to UTC or any global timezone."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Preview all 7 Discord formats",
+            "text": "Check the live preview column to see exact clock times, full dates, and the ticking relative countdown (:R)."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Copy or compose a Markdown announcement",
+            "text": "Click Copy next to your preferred <t:...> code, or insert it into the Discord Markdown builder to format bold headers, spoilers, and lists."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "Paste into Discord",
+            "text": "Paste the raw code directly into any Discord chat, embed, or About Me bio—Discord automatically renders it for every user's local timezone."
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://whatphone.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Tools",
+            "item": "https://whatphone.github.io/tools"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Discord Timestamp & Markdown Generator",
+            "item": "https://whatphone.github.io/timestamp-generator"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header id="site-header" role="banner"></header>
+
+  <div class="app-page" id="main-content">
+    <!-- Hero -->
+    <div class="app-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li aria-current="page">Discord Timestamp &amp; Markdown Generator</li>
+          </ol>
+        </nav>
+        <h1>Discord Timestamp &amp; Markdown Generator</h1>
+        <p>Convert any local date and time into dynamic Discord Unix timestamp codes (such as <span class="refcode">&lt;t:1735689600:R&gt;</span> for live countdowns or <span class="refcode">:F</span> for full dates) with real-time previews, Markdown message styling, and one-click copy.</p>
+        <ul class="jump" aria-label="On this page">
+          <li><a href="#tool">Generator</a></li>
+          <li><a href="#markdown-builder">Markdown Builder</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#reference">Format Reference</a></li>
+          <li><a href="#use-cases">Use Cases</a></li>
+          <li><a href="#tips">Tips</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main Interactive Workspace + Sidebar -->
+    <main class="app-main" id="tool">
+      <div>
+        <!-- Panel 1: Date, Time & Timezone Picker -->
+        <section class="panel" aria-labelledby="p1">
+          <h2 class="panel-title" id="p1">1. Select Date, Time &amp; Timezone</h2>
+
+          <div class="preset-bar" role="group" aria-label="Quick time presets">
+            <button type="button" class="preset-btn" data-offset="0">Now</button>
+            <button type="button" class="preset-btn" data-offset="900">+15 Mins</button>
+            <button type="button" class="preset-btn" data-offset="3600">+1 Hour</button>
+            <button type="button" class="preset-btn" data-offset="10800">+3 Hours</button>
+            <button type="button" class="preset-btn" data-offset="86400">Tomorrow</button>
+            <button type="button" class="preset-btn" data-offset="604800">+7 Days</button>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="dt-date">Date</label>
+              <input type="date" id="dt-date" />
+            </div>
+            <div class="field">
+              <label for="dt-time">Time (24h / Local)</label>
+              <input type="time" id="dt-time" step="1" />
+            </div>
+            <div class="field">
+              <label for="dt-tz">Timezone</label>
+              <select id="dt-tz"></select>
+            </div>
+          </div>
+
+          <div class="stats" style="margin-top:.25rem">
+            <div class="stat">
+              <small>Unix Epoch (Seconds)</small>
+              <strong id="out-epoch">—</strong>
+            </div>
+            <div class="stat">
+              <small>Live Relative Preview (:R)</small>
+              <strong id="out-rel" style="color:var(--accent2)">—</strong>
+            </div>
+            <div class="stat">
+              <small>UTC / ISO 8601</small>
+              <strong id="out-utc" style="font-size:.82rem">—</strong>
+            </div>
+          </div>
+
+          <div class="btn-row" style="margin-top:1rem">
+            <button type="button" class="btn-app" id="copy-rel-btn">Copy Countdown (&lt;t:…:R&gt;)</button>
+            <button type="button" class="btn-ghost" id="copy-full-btn">Copy Full Date (&lt;t:…:F&gt;)</button>
+            <button type="button" class="btn-ghost" id="copy-epoch-btn">Copy Raw Epoch</button>
+          </div>
+        </section>
+
+        <!-- Panel 2: All 7 Discord Timestamp Codes -->
+        <section class="panel" aria-labelledby="p2">
+          <h2 class="panel-title" id="p2">2. Dynamic Discord Timestamp Codes (All 7 Formats)</h2>
+          <p style="font-size:.86rem;color:var(--text2);margin:-.4rem 0 1rem">Click <strong>Copy</strong> on any row, or click <strong>+ Insert</strong> to drop the tag straight into the Discord Markdown message builder below.</p>
+          <div id="ts-list" role="list" aria-label="Discord timestamp format list"></div>
+        </section>
+
+        <!-- Panel 3: Discord Markdown & Timestamp Message Builder -->
+        <section class="panel" id="markdown-builder" aria-labelledby="p3">
+          <h2 class="panel-title" id="p3">3. Discord Markdown &amp; Announcement Builder</h2>
+          <div class="tb" role="toolbar" aria-label="Discord Markdown formatting toolbar">
+            <button type="button" data-md="**" title="Bold (**text**)"><strong>B</strong></button>
+            <button type="button" data-md="*" title="Italic (*text*)"><em>I</em></button>
+            <button type="button" data-md="__" title="Underline (__text__)"><u>U</u></button>
+            <button type="button" data-md="~~" title="Strikethrough (~~text~~)"><s>S</s></button>
+            <button type="button" data-md="||" title="Spoiler (||text||)">Spoiler</button>
+            <button type="button" data-md="`" title="Inline Code (`code`)">&lt;/&gt;</button>
+            <button type="button" data-line="> " title="Blockquote (> text)">Quote</button>
+            <button type="button" data-line="### " title="Subheading (### Heading)">H3</button>
+            <button type="button" id="insert-ts-btn" style="border-color:var(--accent);color:var(--accent2)">+ Insert &lt;t:R&gt;</button>
+          </div>
+
+          <div class="field">
+            <label for="md-input" class="sr">Discord message text</label>
+            <textarea class="ta" id="md-input" rows="4" placeholder="Type your Discord announcement with Markdown and <t:...> timestamps...">### 🎮 Raid &amp; Community Event!
+Starts **<t:1735689600:R>** on **<t:1735689600:F>** (<t:1735689600:t> your local time).
+> React with ✅ to claim your spot! Secret password: ||WhatPhone||</textarea>
+          </div>
+
+          <div style="margin:.75rem 0 .4rem;font-size:.76rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em">Live Discord Client Preview</div>
+          <div class="dc-chat" aria-live="polite">
+            <div class="dc-msg">
+              <div class="dc-av" aria-hidden="true">WP</div>
+              <div class="dc-body">
+                <div class="dc-hdr">
+                  <span class="dc-user">WhatPhone Bot</span>
+                  <span class="dc-bot">APP</span>
+                  <span class="dc-time" id="dc-msg-time">Today at 12:00 PM</span>
+                </div>
+                <div class="dc-txt" id="dc-preview"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-row" style="margin-top:1rem">
+            <button type="button" class="btn-app" id="copy-md-btn">Copy Full Discord Message</button>
+            <button type="button" class="btn-ghost" id="sync-md-ts-btn">Update Timestamps in Message</button>
+            <button type="button" class="btn-ghost" id="clear-md-btn">Clear</button>
+          </div>
+        </section>
+
+        <!-- Panel 4: Reverse Unix Epoch Decoder -->
+        <section class="panel" aria-labelledby="p4">
+          <h2 class="panel-title" id="p4">4. Reverse Unix Timestamp Decoder</h2>
+          <div class="row" style="align-items:end">
+            <div class="field" style="margin-bottom:0">
+              <label for="rev-epoch">Paste Unix Timestamp or &lt;t:...&gt; Tag</label>
+              <input type="text" id="rev-epoch" placeholder="e.g. 1735689600 or <t:1735689600:R>" />
+            </div>
+            <div style="display:flex;gap:.5rem">
+              <button type="button" class="btn-app" id="decode-btn">Load into Generator</button>
+            </div>
+          </div>
+          <p class="note" id="rev-out">Paste any existing Discord timestamp tag or 10-digit Unix epoch number to inspect its exact date and load it above.</p>
+        </section>
+      </div>
+
+      <!-- Sidebar Component (rendered by js/sidebar.js + static fallback widgets) -->
+      <aside class="app-side" id="site-sidebar" aria-label="Timestamp quick reference and related tools">
+        <div class="panel">
+          <h2 class="panel-title">Quick Syntax Cheatsheet</h2>
+          <div class="info-row"><span>Relative Countdown</span><span>&lt;t:UNIX:R&gt;</span></div>
+          <div class="info-row"><span>Full Date &amp; Time</span><span>&lt;t:UNIX:F&gt;</span></div>
+          <div class="info-row"><span>Short Date &amp; Time</span><span>&lt;t:UNIX:f&gt;</span></div>
+          <div class="info-row"><span>Short Time</span><span>&lt;t:UNIX:t&gt;</span></div>
+          <div class="info-row"><span>Long Time</span><span>&lt;t:UNIX:T&gt;</span></div>
+          <div class="info-row"><span>Short Date</span><span>&lt;t:UNIX:d&gt;</span></div>
+          <div class="info-row"><span>Long Date</span><span>&lt;t:UNIX:D&gt;</span></div>
+          <p class="note">Flags are <strong>case-sensitive</strong>: lowercase <span class="refcode">:t</span> shows hours &amp; minutes, while uppercase <span class="refcode">:T</span> adds seconds.</p>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">100% Client-Side</h2>
+          <p style="margin:0;color:var(--text2);font-size:.88rem;line-height:1.6">All epoch math, timezone conversions, and live countdown tickers run directly in your browser. Zero server tracking or data storage.</p>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">More Free Web Tools</h2>
+          <a href="/whatsapp-text-formatter" class="tool-link"><span aria-hidden="true">✍️</span> Text Formatter &amp; Font Styler</a>
+          <a href="/whatsapp-chat-viewer" class="tool-link"><span aria-hidden="true">💬</span> WhatsApp Chat Export Viewer</a>
+          <a href="/whatsapp-chat-button-generator" class="tool-link"><span aria-hidden="true">🔗</span> Chat Button Generator</a>
+          <a href="/" class="tool-link"><span aria-hidden="true">📱</span> What Phone Do I Have?</a>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Section 1: How It Works -->
+    <section class="sx" id="how" aria-labelledby="how-h">
+      <div class="sx-inner">
+        <p class="sx-eyebrow">Step by Step</p>
+        <h2 id="how-h">How to Create a Dynamic Discord Timestamp</h2>
+        <p class="sx-lead">Generate timezone-proof countdowns and event schedules for your Discord server in four simple steps.</p>
+        <ol class="steps">
+          <li><strong>Choose your date and time.</strong>Pick the exact calendar date and local clock time of your stream, tournament, maintenance window, or giveaway—or tap a quick offset preset.</li>
+          <li><strong>Verify the timezone.</strong>The generator automatically detects your local system timezone, or you can switch to UTC or any global city timezone.</li>
+          <li><strong>Copy your preferred format tag.</strong>Select <span class="refcode">:R</span> for a live ticking countdown (<em>"in 2 hours"</em>) or <span class="refcode">:F</span> for the full day, date, and clock time.</li>
+          <li><strong>Paste directly into Discord.</strong>Paste the <span class="refcode">&lt;t:…&gt;</span> tag into any message, embed, webhook, or bio. Discord automatically translates it for every viewer's timezone.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Section 2: Features -->
+    <section class="sx sx-alt" id="features" aria-labelledby="features-h">
+      <div class="sx-inner">
+        <p class="sx-eyebrow">Features</p>
+        <h2 id="features-h">Built for Discord Mods, Bots &amp; Community Leads</h2>
+        <p class="sx-lead">Everything you need to format announcements without timezone confusion.</p>
+        <div class="fgrid">
+          <div class="fcard">
+            <div class="ic" aria-hidden="true">⏳</div>
+            <h3>Live Ticking Countdowns</h3>
+            <p>Preview <span class="refcode">:R</span> relative timestamps in real time down to the second before pasting them into your announcements.</p>
+          </div>
+          <div class="fcard">
+            <div class="ic" aria-hidden="true">🌍</div>
+            <h3>Automatic Timezone Sync</h3>
+            <p>Converts any local or international timezone into universal UTC Unix epoch seconds so every server member sees their own local time.</p>
+          </div>
+          <div class="fcard">
+            <div class="ic" aria-hidden="true">🎨</div>
+            <h3>Discord Markdown Studio</h3>
+            <p>Combine bold headers, blockquotes, spoilers, and dynamic <span class="refcode">&lt;t:…&gt;</span> pills inside an authentic dark-mode Discord message preview.</p>
+          </div>
+          <div class="fcard">
+            <div class="ic" aria-hidden="true">⚡</div>
+            <h3>One-Click Quick Presets</h3>
+            <p>Jump immediately to Now, +15 Mins, +1 Hour, +3 Hours, Tomorrow, or +7 Days without manually typing dates.</p>
+          </div>
+          <div class="fcard">
+            <div class="ic" aria-hidden="true">🔄</div>
+            <h3>Reverse Epoch Decoder</h3>
+            <p>Paste any existing <span class="refcode">&lt;t:1735689600:F&gt;</span> tag or raw Unix timestamp to inspect its exact UTC and local date.</p>
+          </div>
+          <div class="fcard">
+            <div class="ic" aria-hidden="true">🔒</div>
+            <h3>100% Private &amp; Instant</h3>
+            <p>Zero logins, zero API calls, and zero data stored. Runs completely offline-ready inside your mobile or desktop browser.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: About / Why Unix Timestamps Matter -->
+    <section class="sx" id="about" aria-labelledby="about-h">
+      <div class="sx-inner">
+        <p class="sx-eyebrow">Why Use Dynamic Timestamps</p>
+        <h2 id="about-h">End "What Time Is That in My Timezone?" Forever</h2>
+        <div class="split">
+          <div class="split-text">
+            <p class="sx-lead" style="margin-bottom:1rem">Writing "Event starts at 8 PM EST" forces half your Discord server to do mental timezone math—and miss the start.</p>
+            <p>Discord's native timestamp syntax uses standard Unix Epoch time (the number of seconds elapsed since January 1, 1970 UTC). Because Discord renders <span class="refcode">&lt;t:UNIX:FLAG&gt;</span> natively on iOS, Android, Windows, macOS, and web clients, every member sees the date and time formatted in their own device's language, 12/24-hour clock preference, and local timezone.</p>
+            <ul class="ticks">
+              <li>Works in regular messages, DMs, threads, and forum posts</li>
+              <li>Supported inside Discord About Me profile bios and webhook embeds</li>
+              <li>Updates relative countdowns (<span class="refcode">:R</span>) dynamically without editing your message</li>
+              <li>Mobile-friendly layout with large tap targets for one-handed copying</li>
+            </ul>
+          </div>
+          <div class="specs-visual" aria-label="Example Discord rendering across timezones">
+            <div class="spec-line"><span class="spec-line-key">Raw Code Pasted</span><span class="spec-line-val" style="color:var(--accent2)">&lt;t:1735689600:F&gt;</span></div>
+            <div class="spec-line"><span class="spec-line-key">New York (EST)</span><span class="spec-line-val">Tue, Dec 31, 2024 7:00 PM</span></div>
+            <div class="spec-line"><span class="spec-line-key">London (GMT)</span><span class="spec-line-val">Wed, Jan 1, 2025 12:00 AM</span></div>
+            <div class="spec-line"><span class="spec-line-key">Berlin (CET)</span><span class="spec-line-val">Wed, Jan 1, 2025 1:00 AM</span></div>
+            <div class="spec-line"><span class="spec-line-key">Karachi (PKT)</span><span class="spec-line-val">Wed, Jan 1, 2025 5:00 AM</span></div>
+            <div class="spec-line"><span class="spec-line-key">Tokyo (JST)</span><span class="spec-line-val">Wed, Jan 1, 2025 9:00 AM</span></div>
+            <div class="spec-line"><span class="spec-line-key">Relative (:R)</span><span class="spec-line-val" style="color:var(--green)">in 2 hours / 3 days ago</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Format Reference Table -->
+    <section class="sx sx-alt" id="reference" aria-labelledby="reference-h">
+      <div class="sx-inner">
+        <p class="sx-eyebrow">Reference Guide</p>
+        <h2 id="reference-h">All 7 Discord Timestamp Format Styles &amp; Markdown Syntax</h2>
+        <p class="sx-lead">Complete reference of Discord Unix timestamp flags and text formatting tags.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Style Name</th>
+                <th>Flag</th>
+                <th>Syntax Example</th>
+                <th>Rendered Output (en-US)</th>
+                <th>Best Used For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Default (Short Date/Time)</strong></td>
+                <td><em>none</em> or <span class="refcode">:f</span></td>
+                <td><span class="refcode">&lt;t:1735689600:f&gt;</span></td>
+                <td>January 1, 2025 12:00 AM</td>
+                <td>Standard event announcements</td>
+              </tr>
+              <tr>
+                <td><strong>Full Date/Time</strong></td>
+                <td><span class="refcode">:F</span></td>
+                <td><span class="refcode">&lt;t:1735689600:F&gt;</span></td>
+                <td>Wednesday, January 1, 2025 12:00 AM</td>
+                <td>Official schedules &amp; launch dates</td>
+              </tr>
+              <tr>
+                <td><strong>Relative Time</strong></td>
+                <td><span class="refcode">:R</span></td>
+                <td><span class="refcode">&lt;t:1735689600:R&gt;</span></td>
+                <td>in 2 hours / 4 months ago</td>
+                <td>Live countdowns &amp; deadlines</td>
+              </tr>
+              <tr>
+                <td><strong>Short Time</strong></td>
+                <td><span class="refcode">:t</span></td>
+                <td><span class="refcode">&lt;t:1735689600:t&gt;</span></td>
+                <td>12:00 AM</td>
+                <td>Same-day voice call or raid times</td>
+              </tr>
+              <tr>
+                <td><strong>Long Time</strong></td>
+                <td><span class="refcode">:T</span></td>
+                <td><span class="refcode">&lt;t:1735689600:T&gt;</span></td>
+                <td>12:00:00 AM</td>
+                <td>Exact second logs &amp; speedruns</td>
+              </tr>
+              <tr>
+                <td><strong>Short Date</strong></td>
+                <td><span class="refcode">:d</span></td>
+                <td><span class="refcode">&lt;t:1735689600:d&gt;</span></td>
+                <td>01/01/2025</td>
+                <td>Compact tables &amp; profile bios</td>
+              </tr>
+              <tr>
+                <td><strong>Long Date</strong></td>
+                <td><span class="refcode">:D</span></td>
+                <td><span class="refcode">&lt;t:1735689600:D&gt;</span></td>
+                <td>January 1, 2025</td>
+                <td>Birthdays, milestones &amp; releases</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Use Cases -->
+    <section class="sx" id="use-cases" aria-labelledby="use-cases-h">
+      <div class="sx-inner">
+        <p class="sx-eyebrow">Use Cases</p>
+        <h2 id="use-cases-h">Popular Ways to Use Discord Timestamps</h2>
+        <p class="sx-lead">From gaming guilds to open-source communities and creator servers.</p>
+        <div class="ugrid">
+          <div class="ucard">
+            <h3>Gaming Raids &amp; Scrims</h3>
+            <p>Post <span class="refcode">&lt;t:UNIX:F&gt; (&lt;t:UNIX:R&gt;)</span> so international teammates know the exact local kickoff time and live countdown.</p>
+          </div>
+          <div class="ucard">
+            <h3>Giveaways &amp; Drops</h3>
+            <p>Show exactly when a Nitro giveaway closes or when a limited-edition merch drop goes live without timezone disputes.</p>
+          </div>
+          <div class="ucard">
+            <h3>Livestreams &amp; Watch Parties</h3>
+            <p>Drop a live countdown in your #announcements channel so viewers get an accurate "in 30 minutes" timer.</p>
+          </div>
+          <div class="ucard">
+            <h3>Server Maintenance Alerts</h3>
+            <p>Communicate scheduled bot downtime or server migrations clearly across every region.</p>
+          </div>
+          <div class="ucard">
+            <h3>Discord About Me Bios</h3>
+            <p>Add your birthday, next stream date, or graduation countdown right inside your Discord user profile bio.</p>
+          </div>
+          <div class="ucard">
+            <h3>Bot &amp; Webhook Embeds</h3>
+            <p>Copy raw <span class="refcode">&lt;t:…&gt;</span> tags directly into Zapier, Carl-bot, MEE6, or custom Discord.js / Discord.py embeds.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Pro Tips -->
+    <section class="sx sx-alt" id="tips" aria-labelledby="tips-h">
+      <div class="sx-inner narrow">
+        <p class="sx-eyebrow">Tips</p>
+        <h2 id="tips-h">Tips for Clean Discord Timestamp Formatting</h2>
+        <ul class="ticks">
+          <li>Combine <span class="refcode">:F</span> and <span class="refcode">:R</span> together (e.g., <span class="refcode">&lt;t:1735689600:F&gt; (&lt;t:1735689600:R&gt;)</span>) so members see both the calendar date and a live countdown.</li>
+          <li>Always check uppercase vs. lowercase flags: <span class="refcode">:d</span> gives numeric dates while <span class="refcode">:D</span> spells out the month name.</li>
+          <li>Discord timestamps work inside regular text, bold (<span class="refcode">**&lt;t:…&gt;**</span>), and blockquotes, but will not render inside inline <span class="refcode">`code blocks`</span>.</li>
+          <li>On mobile Discord, tapping a rendered timestamp displays a native tooltip showing the full date and exact relative time.</li>
+          <li>If you omit the flag (<span class="refcode">&lt;t:1735689600&gt;</span>), Discord defaults to the <span class="refcode">:f</span> Short Date/Time style.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Section 7: FAQ -->
+    <section class="sx" id="faq" aria-labelledby="faq-h">
+      <div class="sx-inner narrow">
+        <p class="sx-eyebrow">FAQ</p>
+        <h2 id="faq-h">Frequently Asked Questions</h2>
+        <div class="faq-list" role="list">
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="fa0" onclick="toggleFaq(this)">
+              <span>How do Discord dynamic timestamps work?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="fa0" role="region">
+              <p>Discord timestamps use Unix epoch seconds wrapped in <span class="refcode">&lt;t:TIMESTAMP:FLAG&gt;</span> syntax. When pasted into a Discord message, embed, or bio, Discord automatically converts the UTC Unix timestamp into each reader's local device time and timezone.</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="fa1" onclick="toggleFaq(this)">
+              <span>How do I create a live countdown in Discord?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="fa1" role="region">
+              <p>Select your target future date and time in the generator above, then copy the Relative Time code ending in <span class="refcode">:R</span> (for example, <span class="refcode">&lt;t:1795824000:R&gt;</span>). Discord renders this as a live updating countdown like "in 2 hours" or "in 3 days".</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="fa2" onclick="toggleFaq(this)">
+              <span>Do Discord timestamps adjust for different timezones automatically?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="fa2" role="region">
+              <p>Yes. Because Unix timestamps represent a single universal moment in UTC seconds, Discord displays the exact local date and clock time for every member in your server regardless of where they live.</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="fa3" onclick="toggleFaq(this)">
+              <span>Can I use Discord timestamps in my profile bio, status, or webhooks?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="fa3" role="region">
+              <p>Yes. Dynamic <span class="refcode">&lt;t:...&gt;</span> timestamp codes work in regular channel messages, DMs, forum posts, webhook embeds, bot messages, and your Discord About Me profile bio.</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="fa4" onclick="toggleFaq(this)">
+              <span>What are all 7 Discord timestamp format flags?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="fa4" role="region">
+              <p>Discord supports 7 format flags: <span class="refcode">:t</span> (Short Time), <span class="refcode">:T</span> (Long Time), <span class="refcode">:d</span> (Short Date), <span class="refcode">:D</span> (Long Date), <span class="refcode">:f</span> (Short Date/Time, default), <span class="refcode">:F</span> (Long Date/Time with weekday), and <span class="refcode">:R</span> (Relative countdown/elapsed time).</p>
+            </div>
+          </div>
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false" aria-controls="fa5" onclick="toggleFaq(this)">
+              <span>Is my date or message data sent to any server?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="fa5" role="region">
+              <p>No. All Unix timestamp calculations, timezone conversions, and Discord Markdown previews run 100% locally in your web browser with zero server uploads.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: Related Tools -->
+    <section class="sx sx-alt" id="related" aria-labelledby="related-h">
+      <div class="sx-inner">
+        <p class="sx-eyebrow">More Tools</p>
+        <h2 id="related-h">Related Messaging &amp; Device Tools</h2>
+        <div class="related">
+          <a href="/whatsapp-text-formatter">Text Formatter &amp; Fonts<span>Bold, italic, monospace &amp; Unicode styles.</span></a>
+          <a href="/whatsapp-chat-viewer">WhatsApp Chat Viewer<span>Read &amp; analyze exported .txt chats privately.</span></a>
+          <a href="/whatsapp-chat-button-generator">Chat Button Generator<span>Create click-to-chat links &amp; QR codes.</span></a>
+          <a href="/">What Phone Do I Have?<span>Detect phone model, OS &amp; 30+ hardware specs.</span></a>
+        </div>
+        <p style="margin-top:1.5rem;font-size:.82rem;color:var(--text3)">WhatPhone is an independent web utility site and is not affiliated with, endorsed by, or sponsored by Discord Inc. Discord is a trademark of Discord Inc.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Footer (rendered by js/footer.js) -->
+  <footer id="site-footer" role="contentinfo"></footer>
+
+  <!-- Separate JS Components -->
+  <script src="/js/header.js" defer></script>
+  <script src="/js/footer.js" defer></script>
+  <script src="/js/sidebar.js" defer></script>
+
+  <!-- App Logic -->
+  <script>
+    (function () {
+      'use strict';
+
+      var $ = function (id) { return document.getElementById(id); };
+      var toastTimer = null;
+
+      function showToast(msg) {
+        var el = $('toast');
+        if (!el) return;
+        el.textContent = msg;
+        el.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { el.classList.remove('show'); }, 2400);
+      }
+
+      function copyStr(text, label) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            showToast((label || 'Copied') + ': ' + text);
+          }).catch(function () { fallbackCopy(text, label); });
+        } else {
+          fallbackCopy(text, label);
+        }
+      }
+
+      function fallbackCopy(text, label) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          showToast((label || 'Copied') + ': ' + text);
+        } catch (e) {
+          showToast('Copy failed — please copy manually');
+        }
+        document.body.removeChild(ta);
+      }
+
+      // Timezone list setup
+      var localTz = 'UTC';
+      try {
+        localTz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+      } catch (e) {}
+
+      var commonTzs = [
+        localTz,
+        'UTC',
+        'America/New_York',
+        'America/Chicago',
+        'America/Denver',
+        'America/Los_Angeles',
+        'America/Sao_Paulo',
+        'Europe/London',
+        'Europe/Paris',
+        'Europe/Berlin',
+        'Asia/Dubai',
+        'Asia/Karachi',
+        'Asia/Kolkata',
+        'Asia/Singapore',
+        'Asia/Tokyo',
+        'Australia/Sydney'
+      ];
+
+      function initTimezones() {
+        var sel = $('dt-tz');
+        var seen = {};
+        commonTzs.forEach(function (tz) {
+          if (!tz || seen[tz]) return;
+          seen[tz] = true;
+          var opt = document.createElement('option');
+          opt.value = tz;
+          opt.textContent = tz === localTz ? tz + ' (Local)' : tz.replace(/_/g, ' ');
+          sel.appendChild(opt);
+        });
+        sel.value = localTz;
+      }
+
+      // Convert date string + time string in chosen IANA timezone -> Unix seconds
+      function getEpochFromInputs() {
+        var dVal = $('dt-date').value;
+        var tVal = $('dt-time').value || '00:00:00';
+        var tz = $('dt-tz').value || localTz;
+        if (!dVal) return Math.floor(Date.now() / 1000);
+
+        var dp = dVal.split('-').map(Number);
+        var tp = tVal.split(':').map(Number);
+        var y = dp[0], m = dp[1], d = dp[2];
+        var hh = tp[0] || 0, mm = tp[1] || 0, ss = tp[2] || 0;
+
+        // Treat wall-clock components as UTC first, then adjust by timezone offset
+        var utcGuess = Date.UTC(y, m - 1, d, hh, mm, ss);
+        if (tz === 'UTC') return Math.floor(utcGuess / 1000);
+
+        try {
+          var dtf = new Intl.DateTimeFormat('en-US', {
+            timeZone: tz,
+            year: 'numeric', month: '2-digit', day: '2-digit',
+            hour: '2-digit', minute: '2-digit', second: '2-digit',
+            hour12: false
+          });
+          var parts = dtf.formatToParts(new Date(utcGuess));
+          var map = {};
+          parts.forEach(function (p) { map[p.type] = p.value; });
+          var h24 = Number(map.hour) === 24 ? 0 : Number(map.hour);
+          var tzAsUtc = Date.UTC(Number(map.year), Number(map.month) - 1, Number(map.day), h24, Number(map.minute), Number(map.second));
+          var offset = tzAsUtc - utcGuess;
+          return Math.floor((utcGuess - offset) / 1000);
+        } catch (e) {
+          return Math.floor(new Date(y, m - 1, d, hh, mm, ss).getTime() / 1000);
+        }
+      }
+
+      function setInputsFromEpoch(epochSec) {
+        var tz = $('dt-tz').value || localTz;
+        var dt = new Date(epochSec * 1000);
+        try {
+          var dtf = new Intl.DateTimeFormat('en-CA', {
+            timeZone: tz,
+            year: 'numeric', month: '2-digit', day: '2-digit',
+            hour: '2-digit', minute: '2-digit', second: '2-digit',
+            hour12: false
+          });
+          var parts = dtf.formatToParts(dt);
+          var map = {};
+          parts.forEach(function (p) { map[p.type] = p.value; });
+          var h24 = map.hour === '24' ? '00' : map.hour;
+          $('dt-date').value = map.year + '-' + map.month + '-' + map.day;
+          $('dt-time').value = h24 + ':' + map.minute + ':' + map.second;
+        } catch (e) {
+          var pad = function (n) { return ('0' + n).slice(-2); };
+          $('dt-date').value = dt.getFullYear() + '-' + pad(dt.getMonth() + 1) + '-' + pad(dt.getDate());
+          $('dt-time').value = pad(dt.getHours()) + ':' + pad(dt.getMinutes()) + ':' + pad(dt.getSeconds());
+        }
+      }
+
+      // Relative time formatter matching Discord's :R behavior
+      function formatRelative(targetSec, nowSec) {
+        var diff = targetSec - nowSec;
+        var abs = Math.abs(diff);
+        var rtf;
+        try {
+          rtf = new Intl.RelativeTimeFormat('en', { numeric: 'always' });
+        } catch (e) {
+          rtf = null;
+        }
+
+        var unit = 'second';
+        var val = diff;
+        if (abs < 60) {
+          unit = 'second';
+          val = Math.round(diff);
+        } else if (abs < 3600) {
+          unit = 'minute';
+          val = Math.round(diff / 60);
+        } else if (abs < 86400) {
+          unit = 'hour';
+          val = Math.round(diff / 3600);
+        } else if (abs < 2592000) {
+          unit = 'day';
+          val = Math.round(diff / 86400);
+        } else if (abs < 31536000) {
+          unit = 'month';
+          val = Math.round(diff / 2592000);
+        } else {
+          unit = 'year';
+          val = Math.round(diff / 31536000);
+        }
+
+        if (rtf) return rtf.format(val, unit);
+        return val >= 0 ? 'in ' + Math.abs(val) + ' ' + unit + 's' : Math.abs(val) + ' ' + unit + 's ago';
+      }
+
+      function formatDiscordStyle(epochSec, flag, nowSec) {
+        var d = new Date(epochSec * 1000);
+        switch (flag) {
+          case 't':
+            return d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+          case 'T':
+            return d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', second: '2-digit' });
+          case 'd':
+            return d.toLocaleDateString([], { year: 'numeric', month: '2-digit', day: '2-digit' });
+          case 'D':
+            return d.toLocaleDateString([], { year: 'numeric', month: 'long', day: 'numeric' });
+          case 'f':
+            return d.toLocaleDateString([], { year: 'numeric', month: 'long', day: 'numeric' }) + ' ' +
+                   d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+          case 'F':
+            return d.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + ' ' +
+                   d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+          case 'R':
+          default:
+            return formatRelative(epochSec, nowSec);
+        }
+      }
+
+      var FORMATS = [
+        { flag: 'R', name: 'Relative Time', desc: 'Live ticking countdown / elapsed' },
+        { flag: 'F', name: 'Full Date & Time', desc: 'Weekday, date & clock time' },
+        { flag: 'f', name: 'Short Date & Time', desc: 'Default Discord format' },
+        { flag: 't', name: 'Short Time', desc: 'Hours and minutes only' },
+        { flag: 'T', name: 'Long Time', desc: 'Hours, minutes, and seconds' },
+        { flag: 'd', name: 'Short Date', desc: 'Numeric calendar date' },
+        { flag: 'D', name: 'Long Date', desc: 'Full month name and year' }
+      ];
+
+      var currentEpoch = Math.floor(Date.now() / 1000) + 3600;
+
+      function escHtml(s) {
+        return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function renderAll(syncSampleMsg) {
+        currentEpoch = getEpochFromInputs();
+        var nowSec = Math.floor(Date.now() / 1000);
+        var relStr = formatRelative(currentEpoch, nowSec);
+
+        $('out-epoch').textContent = currentEpoch;
+        $('out-rel').textContent = relStr;
+        $('out-utc').textContent = new Date(currentEpoch * 1000).toISOString().replace('.000Z', ' UTC');
+
+        var html = FORMATS.map(function (item) {
+          var tag = '<t:' + currentEpoch + ':' + item.flag + '>';
+          var preview = formatDiscordStyle(currentEpoch, item.flag, nowSec);
+          return (
+            '<div class="ts-row" role="listitem">' +
+              '<div class="ts-type"><strong>' + escHtml(item.name) + ' (:' + item.flag + ')</strong><small>' + escHtml(item.desc) + '</small></div>' +
+              '<code class="ts-code">' + escHtml(tag) + '</code>' +
+              '<div class="ts-prev">' + escHtml(preview) + '</div>' +
+              '<div style="display:flex;gap:.35rem">' +
+                '<button type="button" class="btn-app ts-copy" data-copy="' + escHtml(tag) + '">Copy</button>' +
+                '<button type="button" class="btn-ghost ts-copy" data-ins="' + escHtml(tag) + '" title="Insert into Markdown builder">+ Insert</button>' +
+              '</div>' +
+            '</div>'
+          );
+        }).join('');
+
+        $('ts-list').innerHTML = html;
+
+        if (syncSampleMsg) {
+          var ta = $('md-input');
+          ta.value = ta.value.replace(/<t:\d+(?::[tTdDfFR])?>/g, function (match) {
+            var flagMatch = match.match(/:([tTdDfFR])>/);
+            var flg = flagMatch ? flagMatch[1] : 'f';
+            return '<t:' + currentEpoch + ':' + flg + '>';
+          });
+        }
+        renderMarkdownPreview();
+      }
+
+      // Discord Markdown + Timestamp live renderer
+      function renderMarkdownPreview() {
+        var raw = $('md-input').value;
+        var nowSec = Math.floor(Date.now() / 1000);
+        var nowTime = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+        $('dc-msg-time').textContent = 'Today at ' + nowTime;
+
+        // Extract timestamp tags before escaping HTML
+        var tokens = [];
+        var tokenized = raw.replace(/<t:(\d{1,13})(?::([tTdDfFR]))?>/g, function (_, ep, flg) {
+          var sec = Number(ep);
+          if (sec > 9999999999) sec = Math.floor(sec / 1000);
+          var rendered = formatDiscordStyle(sec, flg || 'f', nowSec);
+          var id = '@@TS_' + tokens.length + '@@';
+          tokens.push('<span class="dc-pill" title="&lt;t:' + sec + ':' + (flg || 'f') + '&gt;">' + escHtml(rendered) + '</span>');
+          return id;
+        });
+
+        var safe = escHtml(tokenized);
+
+        // Code blocks & inline code
+        safe = safe.replace(/```([\s\S]*?)```/g, '<pre>$1</pre>');
+        safe = safe.replace(/`([^`\n]+)`/g, '<code>$1</code>');
+
+        // Subheadings & blockquotes line by line
+        safe = safe.split('\n').map(function (line) {
+          if (/^###\s+/.test(line)) return '<strong style="font-size:1.05em;display:block;margin:.2rem 0">' + line.replace(/^###\s+/, '') + '</strong>';
+          if (/^##\s+/.test(line)) return '<strong style="font-size:1.15em;display:block;margin:.25rem 0">' + line.replace(/^##\s+/, '') + '</strong>';
+          if (/^#\s+/.test(line)) return '<strong style="font-size:1.25em;display:block;margin:.3rem 0">' + line.replace(/^#\s+/, '') + '</strong>';
+          if (/^&gt;\s+/.test(line)) return '<blockquote>' + line.replace(/^&gt;\s+/, '') + '</blockquote>';
+          return line;
+        }).join('<br>');
+
+        // Bold, italic, underline, strikethrough, spoilers
+        safe = safe.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        safe = safe.replace(/__(.+?)__/g, '<u>$1</u>');
+        safe = safe.replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
+        safe = safe.replace(/~~(.+?)~~/g, '<s>$1</s>');
+        safe = safe.replace(/\|\|(.+?)\|\|/g, '<span class="dc-spoiler" onclick="this.classList.toggle(\'rev\')" title="Click to reveal spoiler">$1</span>');
+
+        // Restore timestamp pills
+        tokens.forEach(function (pill, idx) {
+          safe = safe.replace('@@TS_' + idx + '@@', pill);
+        });
+
+        $('dc-preview').innerHTML = safe || '<span style="color:#949ba4">Start typing above to preview your Discord message...</span>';
+      }
+
+      // Wrap selection helper for Markdown toolbar
+      function wrapSelection(wrapper, isLinePrefix) {
+        var ta = $('md-input');
+        var start = ta.selectionStart;
+        var end = ta.selectionEnd;
+        var val = ta.value;
+        var selected = val.slice(start, end) || 'text';
+        var replacement = isLinePrefix ? wrapper + selected : wrapper + selected + wrapper;
+        ta.value = val.slice(0, start) + replacement + val.slice(end);
+        ta.focus();
+        ta.setSelectionRange(start + wrapper.length, start + wrapper.length + selected.length);
+        renderMarkdownPreview();
+      }
+
+      // Event Bindings
+      initTimezones();
+      setInputsFromEpoch(currentEpoch);
+      renderAll(true);
+
+      // Tick relative countdown every second
+      setInterval(function () {
+        var nowSec = Math.floor(Date.now() / 1000);
+        $('out-rel').textContent = formatRelative(currentEpoch, nowSec);
+        var rows = $('ts-list').querySelectorAll('.ts-row');
+        if (rows[0]) {
+          var prevEl = rows[0].querySelector('.ts-prev');
+          if (prevEl) prevEl.textContent = formatDiscordStyle(currentEpoch, 'R', nowSec);
+        }
+        renderMarkdownPreview();
+      }, 1000);
+
+      ['dt-date', 'dt-time', 'dt-tz'].forEach(function (id) {
+        $(id).addEventListener('change', function () { renderAll(false); });
+        $(id).addEventListener('input', function () { renderAll(false); });
+      });
+
+      document.querySelectorAll('.preset-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var offset = Number(btn.getAttribute('data-offset')) || 0;
+          var target = Math.floor(Date.now() / 1000) + offset;
+          setInputsFromEpoch(target);
+          renderAll(false);
+          showToast('Set to ' + btn.textContent);
+        });
+      });
+
+      $('ts-list').addEventListener('click', function (e) {
+        var copyBtn = e.target.closest('[data-copy]');
+        if (copyBtn) {
+          copyStr(copyBtn.getAttribute('data-copy'), 'Copied Discord tag');
+          return;
+        }
+        var insBtn = e.target.closest('[data-ins]');
+        if (insBtn) {
+          var tag = insBtn.getAttribute('data-ins');
+          var ta = $('md-input');
+          var pos = ta.selectionStart || ta.value.length;
+          ta.value = ta.value.slice(0, pos) + tag + ta.value.slice(pos);
+          renderMarkdownPreview();
+          showToast('Inserted ' + tag + ' into message');
+        }
+      });
+
+      $('copy-rel-btn').addEventListener('click', function () {
+        copyStr('<t:' + currentEpoch + ':R>', 'Copied countdown');
+      });
+      $('copy-full-btn').addEventListener('click', function () {
+        copyStr('<t:' + currentEpoch + ':F>', 'Copied full date');
+      });
+      $('copy-epoch-btn').addEventListener('click', function () {
+        copyStr(String(currentEpoch), 'Copied Unix epoch');
+      });
+
+      document.querySelectorAll('.tb [data-md]').forEach(function (btn) {
+        btn.addEventListener('click', function () { wrapSelection(btn.getAttribute('data-md'), false); });
+      });
+      document.querySelectorAll('.tb [data-line]').forEach(function (btn) {
+        btn.addEventListener('click', function () { wrapSelection(btn.getAttribute('data-line'), true); });
+      });
+
+      $('insert-ts-btn').addEventListener('click', function () {
+        var tag = '<t:' + currentEpoch + ':R>';
+        var ta = $('md-input');
+        var pos = ta.selectionStart || ta.value.length;
+        ta.value = ta.value.slice(0, pos) + tag + ta.value.slice(pos);
+        renderMarkdownPreview();
+        showToast('Inserted ' + tag);
+      });
+
+      $('md-input').addEventListener('input', renderMarkdownPreview);
+
+      $('copy-md-btn').addEventListener('click', function () {
+        copyStr($('md-input').value, 'Copied Discord message');
+      });
+
+      $('sync-md-ts-btn').addEventListener('click', function () {
+        renderAll(true);
+        showToast('Updated message timestamps to ' + currentEpoch);
+      });
+
+      $('clear-md-btn').addEventListener('click', function () {
+        $('md-input').value = '';
+        renderMarkdownPreview();
+      });
+
+      $('decode-btn').addEventListener('click', function () {
+        var raw = $('rev-epoch').value.trim();
+        var match = raw.match(/(\d{9,13})/);
+        if (!match) {
+          $('rev-out').textContent = 'Invalid input. Enter a 10-digit Unix timestamp (e.g. 1735689600) or <t:1735689600:R>.';
+          return;
+        }
+        var sec = Number(match[1]);
+        if (sec > 9999999999) sec = Math.floor(sec / 1000);
+        setInputsFromEpoch(sec);
+        renderAll(false);
+        $('rev-out').textContent = 'Decoded ' + sec + ' → ' + new Date(sec * 1000).toUTCString() + ' (' + formatRelative(sec, Math.floor(Date.now() / 1000)) + ')';
+        showToast('Loaded timestamp ' + sec);
+      });
+    })();
+
+    // FAQ Accordion
+    function toggleFaq(btn) {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function (i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+  </script>
+</body>
+</html>
