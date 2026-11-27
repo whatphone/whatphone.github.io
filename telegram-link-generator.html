@@ -3,112 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
-  <!-- Primary Meta Tags -->
-  <title>Telegram Link Generator — Direct Link, Phone Link & Share URL Builder | WhatPhone</title>
-  <meta name="description" content="Free Telegram link generator: create t.me/username direct links, phone-based t.me/+1234567890 links, and pre-filled share buttons (t.me/share/url?url=...&text=...). Download QR codes instantly. No signup, 100% private.">
-  <meta name="keywords" content="telegram link generator, t.me link creator, telegram direct link, telegram phone link, telegram share button, telegram qr code, t.me/username, telegram chat link, share url builder">
-  <meta name="author" content="WhatPhone">
+  <title>Telegram Link Generator — Direct & Share URL Builder | TeleLink</title>
+  <meta name="description" content="Generate Telegram direct links (t.me/username), phone-based invite links (t.me/+123...), and pre-filled share buttons. Download QR codes instantly. Free, fast, no signup.">
+  <meta name="keywords" content="telegram link generator, t.me link, telegram share url, telegram direct link, phone invite link, telegram qr code, create telegram link, telegram url builder">
+  <meta name="author" content="TeleLink">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-  <link rel="canonical" href="https://whatphone.github.io/telegram-link-generator">
-  <link rel="alternate" hreflang="en" href="https://whatphone.github.io/telegram-link-generator">
-  <link rel="alternate" hreflang="x-default" href="https://whatphone.github.io/telegram-link-generator">
-  
-  <!-- Open Graph -->
+  <link rel="canonical" href="https://telelink.github.io/">
+  <!-- OG -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://whatphone.github.io/telegram-link-generator">
-  <meta property="og:title" content="Telegram Link Generator — Direct, Phone & Share URL Builder">
-  <meta property="og:description" content="Generate t.me links, phone-based Telegram links, and pre-filled share buttons with downloadable QR codes. Free, instant, private.">
-  <meta property="og:image" content="https://whatphone.github.io/images/og-telegram.png">
-  <meta property="og:site_name" content="WhatPhone">
+  <meta property="og:url" content="https://telelink.github.io/">
+  <meta property="og:title" content="Telegram Link Generator — Direct & Share URL Builder">
+  <meta property="og:description" content="Create t.me/username links, phone invite links, and pre-filled share URLs. Download QR codes for any Telegram link.">
+  <meta property="og:image" content="https://telelink.github.io/assets/og-telegram.png">
+  <meta property="og:site_name" content="TeleLink">
   <meta property="og:locale" content="en_US">
-  
-  <!-- Twitter Card -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@whatphone">
-  <meta name="twitter:title" content="Telegram Link Generator — Direct, Phone & Share URL Builder">
-  <meta name="twitter:description" content="Create t.me links, phone-based Telegram links & pre-filled share buttons with QR codes. Free & private.">
-  <meta name="twitter:image" content="https://whatphone.github.io/images/og-telegram.png">
-  
-  <!-- Favicon & Theme -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-  <meta name="theme-color" content="#fdfbf7">
-  <meta name="msapplication-TileColor" content="#fdfbf7">
-  <meta name="color-scheme" content="light">
-  
-  <!-- Preconnect -->
+  <meta name="twitter:title" content="Telegram Link Generator — Direct & Share URL Builder">
+  <meta name="twitter:description" content="Generate Telegram direct links, phone-based invite links & share URLs. QR codes included.">
+  <meta name="twitter:image" content="https://telelink.github.io/assets/og-telegram.png">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2326A5E0'%3E%3Cpath d='M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18.717-.962 4.153-1.363 5.884-.169.738-.438 1.005-.719 1.032-.603.056-1.06-.398-1.644-.782-.913-.598-1.429-.97-2.316-1.554-.985-.633-.347-1.019.223-1.596.149-.153 2.746-2.517 2.796-2.723.006-.026.012-.122-.046-.172s-.143-.033-.204-.019c-.086.019-1.464.929-4.132 2.73-.391.269-.745.4-1.062.393-.35-.007-1.023-.198-1.523-.361-.613-.2-1.1-.306-1.058-.646.022-.177.266-.358.733-.544 2.865-1.249 4.775-2.073 5.73-2.471 2.732-1.136 3.3-1.333 3.669-1.34.081-.002.262.019.38.114.1.08.128.188.142.267.014.079.032.242.018.373z'/%3E%3C/svg%3E">
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://api.qrserver.com">
-  
-  <!-- Stylesheet (reuse WhatPhone theme) -->
-  <link rel="stylesheet" href="css/style.css">
-  
-  <!-- QR Code Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
-  
-  <!-- Schema Markup -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://whatphone.github.io/#website",
-        "url": "https://whatphone.github.io/",
-        "name": "WhatPhone",
-        "description": "Free online device detection and utility tools"
+        "@id": "https://telelink.github.io/#website",
+        "url": "https://telelink.github.io/",
+        "name": "TeleLink",
+        "description": "Telegram direct link & share URL builder with QR code generation",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://telelink.github.io/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
       },
       {
         "@type": "WebApplication",
-        "@id": "https://whatphone.github.io/telegram-link-generator#app",
+        "@id": "https://telelink.github.io/#app",
         "name": "Telegram Link Generator",
-        "url": "https://whatphone.github.io/telegram-link-generator",
+        "url": "https://telelink.github.io/",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "Any",
         "browserRequirements": "Requires a modern web browser",
-        "description": "Generate Telegram direct links (t.me/username), phone-based links (t.me/+1234567890), and pre-filled share URLs (t.me/share/url?url=...&text=...) with downloadable QR codes.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
+        "description": "Generate t.me/username direct links, phone-based invite links, and pre-filled share URLs for Telegram. Download QR codes instantly.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "featureList": [
-          "Direct t.me/username link generation",
-          "Phone-based t.me/+number link generation",
-          "Pre-filled Telegram share URL builder",
-          "QR code download for any link",
-          "Copy to clipboard support",
-          "100% client-side, no data stored"
+          "Direct link generator (t.me/username)",
+          "Phone invite link generator (t.me/+number)",
+          "Pre-filled share URL builder",
+          "QR code download as PNG",
+          "Copy to clipboard",
+          "Mobile responsive"
         ]
       },
       {
         "@type": "FAQPage",
-        "@id": "https://whatphone.github.io/telegram-link-generator#faq",
+        "@id": "https://telelink.github.io/#faq",
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "How do I create a Telegram direct link?",
+            "name": "What is a Telegram direct link?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Enter a Telegram username in the Direct Link tab and the tool instantly generates a t.me/username link. You can copy it or download a QR code."
+              "text": "A Telegram direct link (t.me/username) opens a specific user, group, or channel profile directly in the Telegram app or web client."
             }
           },
           {
             "@type": "Question",
-            "name": "How do I make a Telegram link using a phone number?",
+            "name": "How do I create a phone-based Telegram invite link?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Switch to the Phone Link tab, enter the phone number with country code (e.g. +1234567890), and the tool creates a t.me/+number link that opens a chat with that number on Telegram."
+              "text": "Phone-based invite links (t.me/+1234567890) let you invite people to a group or channel using a phone number. Enter the number with country code and the generator will build the link."
             }
           },
           {
             "@type": "Question",
-            "name": "What is a Telegram share URL?",
+            "name": "Can I generate a QR code for a Telegram link?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A Telegram share URL is t.me/share/url?url=...&text=... — it opens Telegram with a pre-filled message that you can send to any chat. Use the Share URL tab to build one."
+              "text": "Yes. The generator creates a QR code for any Telegram link you build. You can download it as a PNG image for printing or sharing."
             }
           },
           {
@@ -116,7 +97,7 @@
             "name": "Is this Telegram link generator free?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, it is completely free. All generation happens locally in your browser and no data is sent to any server."
+              "text": "Yes, it is completely free and runs entirely in your browser. No account or signup is required."
             }
           }
         ]
@@ -124,928 +105,1237 @@
     ]
   }
   </script>
-  
   <style>
-    /* ── Telegram Link Generator — page-specific styles ── */
-    .tg-hero {
-      padding: 7rem 0 4rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    /* ── Reset & Base ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      min-height: 100vh;
     }
-    .tg-hero .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    img, svg { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    /* ── Layout ─────────────────────────────────────── */
+    .app-layout {
+      display: flex;
+      min-height: 100vh;
     }
-    .tg-hero .hero-bg::before,
-    .tg-hero .hero-bg::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      animation: aurora-drift 14s ease-in-out infinite;
+
+    /* ── Sidebar placeholder ────────────────────────── */
+    .sidebar {
+      width: 260px;
+      flex-shrink: 0;
+      background: #ffffff;
+      border-right: 1px solid #e2e8f0;
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      transition: transform 0.3s ease;
     }
-    .tg-hero .hero-bg::before {
-      width: 460px;
-      height: 460px;
-      top: -100px;
-      left: -80px;
-      background: var(--aurora-blob-1);
-    }
-    .tg-hero .hero-bg::after {
-      width: 500px;
-      height: 500px;
-      bottom: -160px;
-      right: -120px;
-      background: var(--aurora-blob-2);
-      animation-delay: -7s;
-    }
-    .tg-hero .container { position: relative; z-index: 1; }
-    .tg-hero-icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 1.25rem;
-      background: linear-gradient(135deg, #2d7ee7, #1a5fbf);
-      border-radius: 18px;
+    .sidebar-brand {
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: #fff;
-      box-shadow: 0 12px 32px rgba(45, 126, 231, 0.35);
+      gap: 0.6rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #0f172a;
+      padding: 0 0.5rem;
     }
-    .tg-hero-icon svg { width: 34px; height: 34px; }
-    .tg-hero .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4.8vw, 3.6rem);
+    .sidebar-brand svg { width: 32px; height: 32px; color: #26A5E0; }
+    .sidebar-nav { display: flex; flex-direction: column; gap: 0.25rem; }
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem 0.75rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #475569;
+      transition: background 0.2s, color 0.2s;
+    }
+    .sidebar-nav a:hover, .sidebar-nav a.active {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+    .sidebar-nav a.active { background: #e0f2fe; color: #0369a1; }
+    .sidebar-nav svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .sidebar-footer {
+      margin-top: auto;
+      padding: 1rem 0.5rem;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    /* ── Main content ───────────────────────────────── */
+    .main-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ─────────────────────────────────────── */
+    .site-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.92);
+    }
+    .header-left { display: flex; align-items: center; gap: 1rem; }
+    .mobile-menu-btn {
+      display: none;
+      padding: 0.4rem;
+      border-radius: 8px;
+      color: #475569;
+    }
+    .mobile-menu-btn:hover { background: #f1f5f9; }
+    .header-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #0f172a;
+    }
+    .header-right { display: flex; align-items: center; gap: 0.75rem; }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    /* ── Container ──────────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; width: 100%; }
+
+    /* ── Sections ───────────────────────────────────── */
+    section { padding: 3.5rem 0; }
+    .section-header { text-align: center; margin-bottom: 2.5rem; }
+    .section-eyebrow {
+      display: inline-block;
+      padding: 0.25rem 0.8rem;
+      background: #e0f2fe;
+      border: 1px solid #bae6fd;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0369a1;
+      margin-bottom: 0.75rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .section-subtitle {
+      font-size: 1rem;
+      color: #64748b;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ── Hero ───────────────────────────────────────── */
+    .hero { padding: 3rem 0 2rem; text-align: center; }
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
       font-weight: 800;
-      line-height: 1.08;
+      line-height: 1.1;
       letter-spacing: -0.03em;
-      color: var(--heading);
+      color: #0f172a;
       margin-bottom: 1rem;
     }
-    .tg-hero .hero-title .highlight {
-      background: linear-gradient(120deg, #2d7ee7 0%, #6d9ef5 40%, #8b5cf6 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradient-shift 5s ease infinite;
-    }
-    .tg-hero .hero-subtitle {
-      font-size: 1.12rem;
-      color: var(--text2);
-      max-width: 620px;
+    .hero-title .accent { color: #26A5E0; }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: #64748b;
+      max-width: 600px;
       margin: 0 auto 2rem;
-      line-height: 1.7;
     }
-    
+    .hero-actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── Buttons ────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 12px;
+      background: #26A5E0;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(38,165,224,0.25);
+    }
+    .btn-primary:hover { background: #1e8bc3; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(38,165,224,0.35); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #0f172a;
+      border: 1px solid #e2e8f0;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: background 0.2s, border-color 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .btn-secondary:hover { background: #f8fafc; border-color: #cbd5e1; }
+
     /* ── Generator Card ─────────────────────────────── */
-    .tg-generator-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
+    .generator-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
       padding: 2rem;
-      box-shadow: var(--shadow);
-      max-width: 820px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      max-width: 760px;
       margin: 0 auto;
-      position: relative;
-      overflow: hidden;
     }
-    .tg-generator-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #2d7ee7, #8b5cf6);
-    }
-    
-    /* ── Tabs ───────────────────────────────────────── */
-    .tg-tabs {
+    .gen-tabs {
       display: flex;
       gap: 0.25rem;
-      padding: 0.4rem;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      margin-bottom: 2rem;
+      padding: 0.3rem;
+      background: #f1f5f9;
+      border-radius: 12px;
+      margin-bottom: 1.75rem;
       flex-wrap: wrap;
     }
-    .tg-tab-btn {
+    .gen-tab {
       flex: 1;
-      min-width: 110px;
-      padding: 0.75rem 1rem;
+      min-width: 120px;
+      padding: 0.6rem 0.75rem;
       border-radius: 10px;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      color: var(--text2);
-      transition: all var(--transition);
+      color: #64748b;
+      text-align: center;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.4rem;
-      font-family: var(--font-body);
-      cursor: pointer;
-      background: transparent;
-      border: none;
     }
-    .tg-tab-btn.active {
-      background: var(--surface);
-      color: #2d7ee7;
-      box-shadow: 0 4px 14px rgba(45, 126, 231, 0.15), 0 1px 3px rgba(61, 51, 40, 0.05);
+    .gen-tab.active {
+      background: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
-    .tg-tab-btn:hover:not(.active) { color: var(--heading); }
-    .tg-tab-panel { display: none; }
-    .tg-tab-panel.active { display: block; }
-    
-    /* ── Form ────────────────────────────────────────── */
-    .tg-field { margin-bottom: 1.5rem; }
-    .tg-field label {
+    .gen-tab:hover:not(.active) { color: #334155; }
+    .gen-panel { display: none; }
+    .gen-panel.active { display: block; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label {
       display: block;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      color: var(--heading);
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.01em;
+      color: #334155;
+      margin-bottom: 0.4rem;
     }
-    .tg-field label .optional {
-      font-weight: 400;
-      color: var(--text3);
-      font-size: 0.78rem;
-    }
-    .tg-input {
+    .form-input {
       width: 100%;
-      padding: 0.9rem 1.1rem;
-      border-radius: 12px;
-      border: 1.5px solid var(--border);
-      background: var(--bg2);
-      font-size: 1rem;
-      font-family: var(--font-mono);
-      color: var(--heading);
-      transition: all var(--transition);
-    }
-    .tg-input:focus {
-      outline: none;
-      border-color: #2d7ee7;
-      background: var(--surface);
-      box-shadow: 0 0 0 4px rgba(45, 126, 231, 0.12);
-    }
-    .tg-input::placeholder {
-      color: var(--text3);
-      font-family: var(--font-body);
+      padding: 0.75rem 1rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
       font-size: 0.95rem;
+      font-family: inherit;
+      color: #0f172a;
+      background: #f8fafc;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .tg-hint {
-      font-size: 0.78rem;
-      color: var(--text3);
-      margin-top: 0.4rem;
-      font-family: var(--font-mono);
+    .form-input:focus {
+      outline: none;
+      border-color: #26A5E0;
+      box-shadow: 0 0 0 3px rgba(38,165,224,0.12);
+      background: #fff;
     }
-    .tg-hint code {
-      background: var(--bg3);
-      padding: 0.1em 0.35em;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      color: var(--accent2);
-    }
-    
-    .tg-actions {
+    .form-hint { font-size: 0.75rem; color: #94a3b8; margin-top: 0.3rem; }
+    .result-box {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
       display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 0.75rem;
+      margin-top: 1.25rem;
       flex-wrap: wrap;
-      margin-top: 0.5rem;
     }
-    .tg-btn {
+    .result-url {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 0.9rem;
+      color: #0369a1;
+      word-break: break-all;
+      flex: 1;
+      min-width: 0;
+    }
+    .result-actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
+    .icon-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.85rem 1.75rem;
-      border-radius: 12px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      font-family: var(--font-display);
-      cursor: pointer;
-      transition: all var(--transition);
-      border: 1px solid transparent;
-    }
-    .tg-btn-primary {
-      background: linear-gradient(135deg, #2d7ee7 0%, #1a5fbf 100%);
-      color: #fff;
-      box-shadow: 0 8px 24px rgba(45, 126, 231, 0.3);
-    }
-    .tg-btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(45, 126, 231, 0.4);
-    }
-    .tg-btn-secondary {
-      background: var(--surface);
-      color: var(--text);
-      border-color: var(--border);
-      box-shadow: var(--shadow-sm);
-    }
-    .tg-btn-secondary:hover {
-      background: var(--surface2);
-      border-color: #2d7ee7;
-      color: #2d7ee7;
-      transform: translateY(-1px);
-    }
-    .tg-btn-sm {
-      padding: 0.5rem 1rem;
-      font-size: 0.82rem;
+      width: 36px;
+      height: 36px;
       border-radius: 9px;
+      background: #ffffff;
+      border: 1px solid #bae6fd;
+      color: #0369a1;
+      transition: background 0.2s, border-color 0.2s;
     }
-    .tg-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none !important;
-    }
-    
-    /* ── Result ──────────────────────────────────────── */
-    .tg-result {
-      margin-top: 1.75rem;
-      padding: 1.25rem 1.5rem;
-      background: linear-gradient(160deg, var(--surface2), var(--bg2));
-      border: 1.5px solid var(--border);
-      border-radius: 14px;
-      display: none;
-    }
-    .tg-result.visible { display: block; }
-    .tg-result-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text3);
-      margin-bottom: 0.5rem;
-    }
-    .tg-result-url-row {
+    .icon-btn:hover { background: #e0f2fe; border-color: #7dd3fc; }
+    .icon-btn.copied { background: #dcfce7; border-color: #86efac; color: #16a34a; }
+    .qr-area {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-    }
-    .tg-result-url {
-      flex: 1;
-      min-width: 200px;
-      padding: 0.8rem 1rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      color: var(--heading);
-      word-break: break-all;
-      line-height: 1.5;
-    }
-    .tg-result-actions {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-top: 0.9rem;
-    }
-    
-    /* ── QR Box ──────────────────────────────────────── */
-    .tg-qr-box {
-      margin-top: 1.5rem;
-      padding: 1.5rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      display: none;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-    }
-    .tg-qr-box.visible { display: block; }
-    .tg-qr-container {
-      display: inline-block;
-      padding: 1rem;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      min-width: 200px;
-      min-height: 200px;
-    }
-    .tg-qr-container img,
-    .tg-qr-container canvas {
-      display: block;
-      margin: 0 auto;
-    }
-    .tg-qr-actions {
-      display: flex;
-      gap: 0.6rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-    
-    /* ── Info Cards ──────────────────────────────────── */
-    .tg-info-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
-      margin-top: 3rem;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      flex-wrap: wrap;
     }
-    .tg-info-card {
+    .qr-canvas-wrap {
+      width: 140px;
+      height: 140px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .qr-canvas-wrap canvas, .qr-canvas-wrap img { width: 100%; height: 100%; display: block; }
+    .qr-actions { display: flex; flex-direction: column; gap: 0.5rem; }
+    .qr-actions .btn-small {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      color: #334155;
+      transition: background 0.2s;
+    }
+    .qr-actions .btn-small:hover { background: #f1f5f9; }
+
+    /* ── Features Grid ──────────────────────────────── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
       padding: 1.5rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      transition: all var(--transition);
-      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
     }
-    .tg-info-card:hover {
-      border-color: rgba(45, 126, 231, 0.3);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
+    .feature-card:hover {
+      border-color: #bae6fd;
+      box-shadow: 0 8px 24px rgba(38,165,224,0.08);
+      transform: translateY(-3px);
     }
-    .tg-info-icon {
+    .feature-icon {
       width: 44px;
       height: 44px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(45, 126, 231, 0.12), rgba(139, 92, 246, 0.1));
-      border: 1px solid rgba(45, 126, 231, 0.2);
+      background: #e0f2fe;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #0369a1;
       margin-bottom: 1rem;
-      color: #2d7ee7;
     }
-    .tg-info-icon svg { width: 22px; height: 22px; }
-    .tg-info-card h3 {
-      font-family: var(--font-display);
-      font-size: 1.02rem;
+    .feature-icon svg { width: 22px; height: 22px; }
+    .feature-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #0f172a;
+      margin-bottom: 0.35rem;
+    }
+    .feature-desc { font-size: 0.85rem; color: #64748b; line-height: 1.6; }
+
+    /* ── How It Works ───────────────────────────────── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      counter-reset: step;
+    }
+    .step-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      position: relative;
+    }
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #e0f2fe;
+      color: #0369a1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      color: var(--heading);
-      margin-bottom: 0.4rem;
+      font-size: 1.1rem;
+      margin: 0 auto 0.75rem;
     }
-    .tg-info-card p {
-      font-size: 0.875rem;
-      color: var(--text2);
-      line-height: 1.65;
+    .step-title { font-weight: 600; font-size: 0.95rem; color: #0f172a; margin-bottom: 0.3rem; }
+    .step-desc { font-size: 0.82rem; color: #64748b; }
+
+    /* ── FAQ ────────────────────────────────────────── */
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.65rem; }
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.2s;
     }
-    .tg-info-card code {
-      font-family: var(--font-mono);
+    .faq-item:hover { border-color: #cbd5e1; }
+    .faq-item.open { border-color: #7dd3fc; }
+    .faq-q {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: #0f172a;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .faq-icon {
+      width: 24px; height: 24px;
+      border-radius: 7px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #64748b;
+      flex-shrink: 0;
+      transition: transform 0.25s, background 0.2s, color 0.2s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: #26A5E0; color: #fff; }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      font-size: 0.88rem;
+      color: #64748b;
+      line-height: 1.7;
+      padding: 0 1.25rem;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 1.25rem 1.15rem; }
+
+    /* ── CTA ────────────────────────────────────────── */
+    .cta-section {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      text-align: center;
+      color: #fff;
+      margin: 2rem 0;
+    }
+    .cta-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.02em;
+    }
+    .cta-sub { font-size: 0.95rem; color: #94a3b8; max-width: 480px; margin: 0 auto 1.5rem; }
+    .cta-section .btn-primary { background: #26A5E0; }
+    .cta-section .btn-primary:hover { background: #1e8bc3; }
+
+    /* ── Footer ─────────────────────────────────────── */
+    .site-footer {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 2.5rem 1.5rem 1.5rem;
+      margin-top: auto;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 0.5rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: #0f172a; margin-bottom: 0.6rem; }
+    .footer-brand svg { width: 28px; height: 28px; color: #26A5E0; }
+    .footer-tagline { font-size: 0.85rem; color: #64748b; line-height: 1.6; max-width: 280px; }
+    .footer-col h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0f172a;
+      margin-bottom: 0.85rem;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col a { font-size: 0.85rem; color: #64748b; transition: color 0.2s; }
+    .footer-col a:hover { color: #26A5E0; }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2e8f0;
       font-size: 0.78rem;
-      background: var(--bg2);
-      padding: 0.1em 0.35em;
-      border-radius: 4px;
-      color: var(--accent2);
+      color: #94a3b8;
     }
-    
-    /* ── FAQ ─────────────────────────────────────────── */
-    .tg-faq { max-width: 820px; margin: 0 auto; }
-    
-    /* ── Toast ───────────────────────────────────────── */
-    .tg-toast {
+
+    /* ── Toast ──────────────────────────────────────── */
+    .toast {
       position: fixed;
       bottom: 2rem;
       left: 50%;
       transform: translateX(-50%) translateY(20px);
-      background: var(--surface);
-      border: 1px solid rgba(45, 126, 231, 0.35);
-      padding: 0.9rem 1.7rem;
+      background: #0f172a;
+      color: #fff;
+      padding: 0.7rem 1.5rem;
       border-radius: 100px;
-      font-size: 0.9rem;
-      color: var(--heading);
+      font-size: 0.85rem;
+      font-weight: 500;
       z-index: 9999;
       opacity: 0;
-      transition: all 0.3s ease;
-      box-shadow: var(--shadow-lg), 0 0 0 4px rgba(45, 126, 231, 0.08);
-      font-weight: 500;
+      transition: opacity 0.25s, transform 0.25s;
       pointer-events: none;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
     }
-    .tg-toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── Mobile ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .sidebar { position: fixed; left: 0; top: 0; z-index: 200; transform: translateX(-100%); box-shadow: 0 0 40px rgba(0,0,0,0.1); }
+      .sidebar.open { transform: translateX(0); }
+      .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.4); z-index: 150; }
+      .sidebar-overlay.active { display: block; }
+      .mobile-menu-btn { display: flex; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
-    
-    /* ── Responsive ──────────────────────────────────── */
-    @media (max-width: 768px) {
-      .tg-hero { padding: 6rem 0 3rem; }
-      .tg-generator-card { padding: 1.5rem; }
-      .tg-tab-btn { font-size: 0.8rem; padding: 0.65rem 0.75rem; min-width: 90px; }
-      .tg-tab-btn svg { display: none; }
-      .tg-info-grid { grid-template-columns: 1fr; }
-      .tg-actions .tg-btn { width: 100%; }
-      .tg-result-url-row { flex-direction: column; }
-      .tg-result-url { width: 100%; }
-      .tg-result-actions { justify-content: stretch; }
-      .tg-result-actions .tg-btn { flex: 1; }
+    @media (max-width: 640px) {
+      .container { padding: 0 1rem; }
+      .generator-card { padding: 1.25rem; }
+      .gen-tab { min-width: 0; font-size: 0.78rem; padding: 0.5rem 0.4rem; }
+      .gen-tab svg { display: none; }
+      .result-box { flex-direction: column; align-items: stretch; }
+      .result-actions { justify-content: flex-end; }
+      .qr-area { flex-direction: column; align-items: center; text-align: center; }
+      .qr-actions { flex-direction: row; }
+      .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .site-header { padding: 0.6rem 1rem; }
+      section { padding: 2.5rem 0; }
+      .cta-section { padding: 2rem 1.25rem; }
     }
-    @media (max-width: 480px) {
-      .tg-hero .hero-title { font-size: 2rem; }
-      .tg-tab-btn { font-size: 0.75rem; padding: 0.55rem 0.5rem; min-width: 70px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
     }
   </style>
 </head>
 <body>
-  <!-- Skip Navigation -->
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <header id="site-header" role="banner"></header>        
-  
-  <main id="main-content">
-    
-    <!-- ══════════════════════════════════════════════════
-         HERO
-    ══════════════════════════════════════════════════════ -->
-    <section class="tg-hero" aria-labelledby="tg-hero-heading">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="container">
-        <div class="tg-hero-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-          </svg>
-        </div>
-        <h1 class="hero-title" id="tg-hero-heading">
-          Telegram Link <span class="highlight">Generator</span>
-        </h1>
-        <p class="hero-subtitle">
-          Create direct <strong>t.me/username</strong> links, phone-based <strong>t.me/+1234567890</strong> links, and pre-filled share buttons — with instant QR code download. Free, private, and no signup required.
-        </p>
-      </div>
-    </section>
-    
-    <!-- ══════════════════════════════════════════════════
-         GENERATOR
-    ══════════════════════════════════════════════════════ -->
-    <section class="detect-section" id="generator" aria-labelledby="generator-heading" style="padding-top: 0;">
-      <div class="container">
-        <div class="tg-generator-card" data-animate>
-          
-          <div class="tg-tabs" role="tablist" aria-label="Link type">
-            <button class="tg-tab-btn active" role="tab" aria-selected="true" aria-controls="panel-direct" id="tab-direct" data-tab="direct">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-              Direct Link
-            </button>
-            <button class="tg-tab-btn" role="tab" aria-selected="false" aria-controls="panel-phone" id="tab-phone" data-tab="phone">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              Phone Link
-            </button>
-            <button class="tg-tab-btn" role="tab" aria-selected="false" aria-controls="panel-share" id="tab-share" data-tab="share">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-              Share URL
-            </button>
-          </div>
-          
-          <!-- Panel: Direct Link -->
-          <div class="tg-tab-panel active" role="tabpanel" id="panel-direct" aria-labelledby="tab-direct">
-            <div class="tg-field">
-              <label for="usernameInput">Telegram Username</label>
-              <input type="text" id="usernameInput" class="tg-input" placeholder="e.g. telegram, durov, yourchannel" autocomplete="off" spellcheck="false" maxlength="32">
-              <p class="tg-hint">Without the <code>@</code> symbol. Generates <code>https://t.me/username</code></p>
-            </div>
-            <div class="tg-actions">
-              <button class="tg-btn tg-btn-primary" id="generateDirectBtn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                Generate Link
-              </button>
-            </div>
-          </div>
-          
-          <!-- Panel: Phone Link -->
-          <div class="tg-tab-panel" role="tabpanel" id="panel-phone" aria-labelledby="tab-phone">
-            <div class="tg-field">
-              <label for="phoneInput">Phone Number <span class="optional">(with country code)</span></label>
-              <input type="tel" id="phoneInput" class="tg-input" placeholder="+1234567890" autocomplete="off" spellcheck="false">
-              <p class="tg-hint">Include the <code>+</code> and country code. Generates <code>https://t.me/+1234567890</code></p>
-            </div>
-            <div class="tg-actions">
-              <button class="tg-btn tg-btn-primary" id="generatePhoneBtn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                Generate Link
-              </button>
-            </div>
-          </div>
-          
-          <!-- Panel: Share URL -->
-          <div class="tg-tab-panel" role="tabpanel" id="panel-share" aria-labelledby="tab-share">
-            <div class="tg-field">
-              <label for="shareUrlInput">URL to Share</label>
-              <input type="url" id="shareUrlInput" class="tg-input" placeholder="https://example.com" autocomplete="off" spellcheck="false">
-              <p class="tg-hint">The link you want to share via Telegram</p>
-            </div>
-            <div class="tg-field">
-              <label for="shareTextInput">Message <span class="optional">(optional)</span></label>
-              <input type="text" id="shareTextInput" class="tg-input" placeholder="Check this out!" autocomplete="off" spellcheck="false" maxlength="200">
-              <p class="tg-hint">Pre-filled text that appears in the Telegram message box</p>
-            </div>
-            <div class="tg-actions">
-              <button class="tg-btn tg-btn-primary" id="generateShareBtn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                Generate Share URL
-              </button>
-            </div>
-          </div>
-          
-          <!-- Result -->
-          <div class="tg-result" id="resultBox" aria-live="polite">
-            <div class="tg-result-label">Your Generated Link</div>
-            <div class="tg-result-url-row">
-              <div class="tg-result-url" id="resultUrl"></div>
-            </div>
-            <div class="tg-result-actions">
-              <button class="tg-btn tg-btn-secondary tg-btn-sm" id="copyBtn">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                Copy
-              </button>
-              <button class="tg-btn tg-btn-secondary tg-btn-sm" id="qrBtn">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                QR Code
-              </button>
-              <a class="tg-btn tg-btn-secondary tg-btn-sm" id="openBtn" href="#" target="_blank" rel="noopener noreferrer">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Open
-              </a>
-            </div>
-          </div>
-          
-          <!-- QR Box -->
-          <div class="tg-qr-box" id="qrBox">
-            <div class="tg-qr-container" id="qrContainer"></div>
-            <div class="tg-qr-actions">
-              <button class="tg-btn tg-btn-secondary tg-btn-sm" id="downloadQrBtn">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download PNG
-              </button>
-            </div>
-          </div>
-          
-        </div>
-        
-        <!-- Info Cards -->
-        <div class="tg-info-grid" data-stagger>
-          <div class="tg-info-card">
-            <div class="tg-info-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-            </div>
-            <h3>Direct Links</h3>
-            <p>Create <code>t.me/username</code> links for any public Telegram username, channel, group, or bot.</p>
-          </div>
-          <div class="tg-info-card">
-            <div class="tg-info-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </div>
-            <h3>Phone Links</h3>
-            <p>Generate <code>t.me/+number</code> links that open a chat directly with any Telegram phone number.</p>
-          </div>
-          <div class="tg-info-card">
-            <div class="tg-info-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-            </div>
-            <h3>Share URLs</h3>
-            <p>Build <code>t.me/share/url?url=...&text=...</code> links with pre-filled messages for quick sharing.</p>
-          </div>
-        </div>
-        
-      </div>
-    </section>
-    
-    <!-- ══════════════════════════════════════════════════
-         FAQ
-    ══════════════════════════════════════════════════════ -->
-    <section class="faq-section" id="faq" aria-labelledby="faq-heading" style="background: var(--bg2);">
-      <div class="container">
-        <div class="section-header" data-animate>
-          <span class="section-eyebrow">FAQ</span>
-          <h2 class="section-title" id="faq-heading">Telegram Link Generator — FAQ</h2>
-          <p class="section-subtitle">Everything you need to know about creating Telegram links.</p>
-        </div>
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false">
-              <span>How do I create a Telegram direct link?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a"><p>Enter a Telegram username in the Direct Link tab (without the @ symbol) and click Generate Link. The tool instantly creates a <code>https://t.me/username</code> link that you can copy, open, or download as a QR code.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false">
-              <span>How do I make a Telegram link using a phone number?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a"><p>Switch to the Phone Link tab, enter the phone number with country code (e.g. <code>+1234567890</code>), and click Generate Link. The resulting <code>https://t.me/+1234567890</code> link opens a chat with that number on Telegram.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false">
-              <span>What is a Telegram share URL?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a"><p>A Telegram share URL is a special link format — <code>https://t.me/share/url?url=...&text=...</code> — that opens Telegram with a pre-filled message. You can share any website link with a custom message to any Telegram chat or group.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false">
-              <span>Is this Telegram link generator free?</span>
-              <span class="faq-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a"><p>Yes, it's completely free. All link generation happens locally in your browser using JavaScript. No data is sent to any server, stored, or shared. There's no signup required.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-  </main>
+  <div class="app-layout">
 
+    <!-- ══════════════════════════════════════════════════
+         SIDEBAR PLACEHOLDER
+    ══════════════════════════════════════════════════════ -->
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar navigation">
+      <div class="sidebar-brand">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18.717-.962 4.153-1.363 5.884-.169.738-.438 1.005-.719 1.032-.603.056-1.06-.398-1.644-.782-.913-.598-1.429-.97-2.316-1.554-.985-.633-.347-1.019.223-1.596.149-.153 2.746-2.517 2.796-2.723.006-.026.012-.122-.046-.172s-.143-.033-.204-.019c-.086.019-1.464.929-4.132 2.73-.391.269-.745.4-1.062.393-.35-.007-1.023-.198-1.523-.361-.613-.2-1.1-.306-1.058-.646.022-.177.266-.358.733-.544 2.865-1.249 4.775-2.073 5.73-2.471 2.732-1.136 3.3-1.333 3.669-1.34.081-.002.262.019.38.114.1.08.128.188.142.267.014.079.032.242.018.373z"/></svg>
+        <span>TeleLink</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#generator" class="active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Link Builder
+        </a>
+        <a href="#features">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Features
+        </a>
+        <a href="#how-it-works">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          How It Works
+        </a>
+        <a href="#faq">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          FAQ
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <p>© 2025 TeleLink</p>
+        <p>Not affiliated with Telegram.</p>
+      </div>
+    </aside>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ══════════════════════════════════════════════════
+         MAIN CONTENT
+    ══════════════════════════════════════════════════════ -->
+    <div class="main-content">
+
+      <!-- ── HEADER ────────────────────────────────────── -->
+      <header class="site-header" role="banner">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <span class="header-title">Telegram Link Generator</span>
+        </div>
+        <div class="header-right">
+          <span class="header-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            Free · No signup
+          </span>
+        </div>
+      </header>
+
+      <!-- ══════════════════════════════════════════════════
+           § 1 — HERO
+      ══════════════════════════════════════════════════════ -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="container">
+          <h1 class="hero-title" id="hero-heading">
+            Telegram <span class="accent">Link Generator</span><br/>
+            Direct &amp; Share URL Builder
+          </h1>
+          <p class="hero-subtitle">
+            Create <strong>t.me/username</strong> direct links, phone-based invite links, and pre-filled share URLs. Download QR codes instantly — all in your browser.
+          </p>
+          <div class="hero-actions">
+            <a href="#generator" class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Start Building
+            </a>
+            <a href="#features" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              Learn More
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════
+           § 2 — GENERATOR
+      ══════════════════════════════════════════════════════ -->
+      <section id="generator" aria-labelledby="generator-heading">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-eyebrow">Link Builder</span>
+            <h2 class="section-title" id="generator-heading">Build Your Telegram Link</h2>
+            <p class="section-subtitle">Choose a link type below, fill in the details, and copy or download your link and QR code.</p>
+          </div>
+          <div class="generator-card">
+            <!-- Tabs -->
+            <div class="gen-tabs" role="tablist" aria-label="Link type">
+              <button class="gen-tab active" role="tab" aria-selected="true" aria-controls="panel-direct" id="tab-direct" data-tab="direct">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Direct Link
+              </button>
+              <button class="gen-tab" role="tab" aria-selected="false" aria-controls="panel-phone" id="tab-phone" data-tab="phone">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Phone Invite
+              </button>
+              <button class="gen-tab" role="tab" aria-selected="false" aria-controls="panel-share" id="tab-share" data-tab="share">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                Share URL
+              </button>
+            </div>
+
+            <!-- Panel: Direct Link -->
+            <div class="gen-panel active" id="panel-direct" role="tabpanel" aria-labelledby="tab-direct">
+              <div class="form-group">
+                <label class="form-label" for="directUsername">Telegram Username</label>
+                <input class="form-input" type="text" id="directUsername" placeholder="e.g. telegram or yourusername" autocomplete="off" spellcheck="false">
+                <p class="form-hint">Enter the username without @. Works for users, groups, and channels.</p>
+              </div>
+              <div class="result-box">
+                <span class="result-url" id="directResult">https://t.me/username</span>
+                <div class="result-actions">
+                  <button class="icon-btn" id="copyDirect" aria-label="Copy direct link" title="Copy link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="qr-area">
+                <div class="qr-canvas-wrap" id="qrDirect"></div>
+                <div class="qr-actions">
+                  <button class="btn-small" id="downloadDirectQR">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download QR
+                  </button>
+                  <button class="btn-small" id="copyDirectBtn2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy Link
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel: Phone Invite -->
+            <div class="gen-panel" id="panel-phone" role="tabpanel" aria-labelledby="tab-phone">
+              <div class="form-group">
+                <label class="form-label" for="phoneNumber">Phone Number (with country code)</label>
+                <input class="form-input" type="tel" id="phoneNumber" placeholder="e.g. 1234567890" autocomplete="off">
+                <p class="form-hint">Phone-based invite links start with <code>t.me/+</code>. Include country code, no spaces or dashes.</p>
+              </div>
+              <div class="result-box">
+                <span class="result-url" id="phoneResult">https://t.me/+1234567890</span>
+                <div class="result-actions">
+                  <button class="icon-btn" id="copyPhone" aria-label="Copy phone invite link" title="Copy link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="qr-area">
+                <div class="qr-canvas-wrap" id="qrPhone"></div>
+                <div class="qr-actions">
+                  <button class="btn-small" id="downloadPhoneQR">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download QR
+                  </button>
+                  <button class="btn-small" id="copyPhoneBtn2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy Link
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel: Share URL -->
+            <div class="gen-panel" id="panel-share" role="tabpanel" aria-labelledby="tab-share">
+              <div class="form-group">
+                <label class="form-label" for="shareUrl">URL to Share</label>
+                <input class="form-input" type="url" id="shareUrl" placeholder="https://example.com/article" autocomplete="off">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="shareText">Pre-filled Text (optional)</label>
+                <input class="form-input" type="text" id="shareText" placeholder="Check this out!" autocomplete="off">
+                <p class="form-hint">This text will appear pre-filled when someone opens the share link.</p>
+              </div>
+              <div class="result-box">
+                <span class="result-url" id="shareResult">https://t.me/share/url?url=...&amp;text=...</span>
+                <div class="result-actions">
+                  <button class="icon-btn" id="copyShare" aria-label="Copy share URL" title="Copy link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="qr-area">
+                <div class="qr-canvas-wrap" id="qrShare"></div>
+                <div class="qr-actions">
+                  <button class="btn-small" id="downloadShareQR">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download QR
+                  </button>
+                  <button class="btn-small" id="copyShareBtn2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copy Link
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════
+           § 3 — FEATURES
+      ══════════════════════════════════════════════════════ -->
+      <section id="features" aria-labelledby="features-heading">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-eyebrow">Features</span>
+            <h2 class="section-title" id="features-heading">Everything You Need</h2>
+            <p class="section-subtitle">Build, preview, copy, and download Telegram links in seconds.</p>
+          </div>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </div>
+              <h3 class="feature-title">Direct Links</h3>
+              <p class="feature-desc">Create t.me/username links for any Telegram user, group, or channel in one click.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <h3 class="feature-title">Phone Invite Links</h3>
+              <p class="feature-desc">Generate t.me/+1234567890 links for phone-based group or channel invitations.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              </div>
+              <h3 class="feature-title">Share URL Builder</h3>
+              <p class="feature-desc">Pre-filled share links with custom text for any URL — perfect for sharing articles or posts.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              </div>
+              <h3 class="feature-title">QR Code Download</h3>
+              <p class="feature-desc">Instantly generate a QR code for any link. Download as PNG for print or digital use.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              </div>
+              <h3 class="feature-title">Copy to Clipboard</h3>
+              <p class="feature-desc">One-tap copy for every link type. Paste directly into messages, emails, or social posts.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <h3 class="feature-title">Mobile Responsive</h3>
+              <p class="feature-desc">Works perfectly on phones, tablets, and desktops. Build links on the go.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════
+           § 4 — HOW IT WORKS
+      ══════════════════════════════════════════════════════ -->
+      <section id="how-it-works" aria-labelledby="how-heading">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-eyebrow">How It Works</span>
+            <h2 class="section-title" id="how-heading">Three Simple Steps</h2>
+            <p class="section-subtitle">From zero to shareable Telegram link in under 30 seconds.</p>
+          </div>
+          <div class="steps-grid">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <h3 class="step-title">Choose Link Type</h3>
+              <p class="step-desc">Select direct link, phone invite, or share URL from the tabs.</p>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <h3 class="step-title">Enter Details</h3>
+              <p class="step-desc">Type a username, phone number, or paste a URL. The link updates live.</p>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <h3 class="step-title">Copy or Download</h3>
+              <p class="step-desc">Copy the link or download the QR code as a PNG image. Done!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════
+           § 5 — FAQ
+      ══════════════════════════════════════════════════════ -->
+      <section id="faq" aria-labelledby="faq-heading">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-eyebrow">FAQ</span>
+            <h2 class="section-title" id="faq-heading">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Quick answers about Telegram links and QR codes.</p>
+          </div>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What is a Telegram direct link?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a"><p>A Telegram direct link (t.me/username) opens a specific user, group, or channel profile directly in the Telegram app or web client. Just replace <code>username</code> with the actual Telegram username.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How do I create a phone-based invite link?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a"><p>Phone-based invite links use the format <code>t.me/+1234567890</code>. Enter the phone number with country code (no spaces or dashes) in the Phone Invite tab. These links are often used for private group invitations.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I download the QR code?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a"><p>Yes! Every link type includes a QR code preview with a "Download QR" button. The QR code is saved as a PNG image that you can print or share digitally.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Is this tool free?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a"><p>Yes, it's completely free and runs entirely in your browser. No account, signup, or payment is required. Your data never leaves your device.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What is a pre-filled share URL?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a"><p>A pre-filled share URL (<code>t.me/share/url?url=...&amp;text=...</code>) opens the Telegram share dialog with a specific URL and optional message already filled in. The user just selects a chat and hits send.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════
+           § 6 — CTA
+      ══════════════════════════════════════════════════════ -->
+      <section>
+        <div class="container">
+          <div class="cta-section">
+            <h2 class="cta-title">Ready to Build Your Telegram Link?</h2>
+            <p class="cta-sub">Create direct links, phone invites, and share URLs — with QR codes included. Free forever.</p>
+            <a href="#generator" class="btn-primary" style="display:inline-flex;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              Open Link Builder
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer id="site-footer" role="contentinfo"></footer>
+  <script src="../js/header.js" defer></script>
+  <script src="../js/footer.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof Header !== 'undefined') Header.render();
+      if (typeof Footer !== 'undefined') Footer.render();
+      const headings = document.querySelectorAll('.prose h2[id]');
+      const tocLinks = document.querySelectorAll('.toc-link');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { tocLinks.forEach(l => l.classList.remove('active')); const a = document.querySelector(`.toc-link[href="#${e.target.id}"]`); if (a) a.classList.add('active'); } });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      headings.forEach(h => obs.observe(h));
+    });
+    function toggleFaq(btn) { const item = btn.closest('.faq-item'); const isOpen = item.classList.contains('open'); document.querySelectorAll('.faq-item.open').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-q').setAttribute('aria-expanded','false'); }); if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); } }
+  </script>
+
+    </div><!-- /main-content -->
+  </div><!-- /app-layout -->
+
+  <!-- ── Toast ────────────────────────────────────────── -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <footer id="site-footer" role="contentinfo"></footer>
 
-  <script src="js/header.js?v=1.0.0" defer></script>
-  <script src="js/footer.js?v=1.0.0" defer></script>
-  <script src="js/sidebar.js" defer></script>    
-  
-  <!-- Toast -->
-  <div class="tg-toast" id="toast" role="status" aria-live="polite"></div>
-  
+  <!-- ── QR Code Library (CDN) ────────────────────────── -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
   <script>
+    /* ═══════════════════════════════════════════════════════
+       TELEGRAM LINK GENERATOR — Main Script
+    ═══════════════════════════════════════════════════════ */
     (function() {
       'use strict';
-      
-      // ── DOM refs ──────────────────────────────────────────
-      const tabBtns = document.querySelectorAll('.tg-tab-btn');
-      const panels = document.querySelectorAll('.tg-tab-panel');
-      const resultBox = document.getElementById('resultBox');
-      const resultUrl = document.getElementById('resultUrl');
-      const qrBox = document.getElementById('qrBox');
-      const qrContainer = document.getElementById('qrContainer');
-      const toast = document.getElementById('toast');
-      
-      let currentTab = 'direct';
-      let currentUrl = '';
-      let qrCodeInstance = null;
-      
-      // ── Tab switching ─────────────────────────────────────
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          tabBtns.forEach(b => {
-            b.classList.remove('active');
-            b.setAttribute('aria-selected', 'false');
-          });
-          panels.forEach(p => p.classList.remove('active'));
-          
-          btn.classList.add('active');
-          btn.setAttribute('aria-selected', 'true');
-          document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
-          currentTab = btn.dataset.tab;
-          
-          // Clear result when switching tabs
-          resultBox.classList.remove('visible');
-          qrBox.classList.remove('visible');
-          currentUrl = '';
-        });
-      });
-      
-      // ── Toast helper ──────────────────────────────────────
-      let toastTimer;
+
+      // ── Helpers ──────────────────────────────────────────
+      const $ = (sel, ctx = document) => ctx.querySelector(sel);
+      const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+
       function showToast(msg) {
+        const toast = $('#toast');
         toast.textContent = msg;
         toast.classList.add('show');
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => toast.classList.remove('show'), 2200);
       }
-      
-      // ── Result helper ─────────────────────────────────────
-      function showResult(url) {
-        currentUrl = url;
-        resultUrl.textContent = url;
-        resultBox.classList.add('visible');
-        
-        // Update open button
-        const openBtn = document.getElementById('openBtn');
-        openBtn.href = url;
-        
-        // Reset QR
-        qrBox.classList.remove('visible');
-        qrContainer.innerHTML = '';
-        if (qrCodeInstance) { qrCodeInstance = null; }
-        
-        // Scroll result into view
-        resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-      
-      // ── Generate Direct Link ──────────────────────────────
-      document.getElementById('generateDirectBtn').addEventListener('click', () => {
-        const input = document.getElementById('usernameInput');
-        let val = input.value.trim().replace(/^@/, '');
-        
-        if (!val) {
-          showToast('Please enter a Telegram username.');
-          input.focus();
-          return;
-        }
-        if (!/^[a-zA-Z0-9_]{4,32}$/.test(val)) {
-          showToast('Username must be 4–32 characters (letters, numbers, underscores).');
-          input.focus();
-          return;
-        }
-        
-        showResult('https://t.me/' + val);
-      });
-      
-      // Enter key support
-      document.getElementById('usernameInput').addEventListener('keydown', e => {
-        if (e.key === 'Enter') document.getElementById('generateDirectBtn').click();
-      });
-      
-      // ── Generate Phone Link ───────────────────────────────
-      document.getElementById('generatePhoneBtn').addEventListener('click', () => {
-        const input = document.getElementById('phoneInput');
-        let val = input.value.trim().replace(/\s/g, '');
-        
-        if (!val) {
-          showToast('Please enter a phone number with country code.');
-          input.focus();
-          return;
-        }
-        if (!/^\+\d{7,15}$/.test(val)) {
-          showToast('Enter a valid number: + followed by 7–15 digits.');
-          input.focus();
-          return;
-        }
-        
-        showResult('https://t.me/' + val);
-      });
-      
-      document.getElementById('phoneInput').addEventListener('keydown', e => {
-        if (e.key === 'Enter') document.getElementById('generatePhoneBtn').click();
-      });
-      
-      // ── Generate Share URL ────────────────────────────────
-      document.getElementById('generateShareBtn').addEventListener('click', () => {
-        const urlInput = document.getElementById('shareUrlInput');
-        const textInput = document.getElementById('shareTextInput');
-        const urlVal = urlInput.value.trim();
-        const textVal = textInput.value.trim();
-        
-        if (!urlVal) {
-          showToast('Please enter a URL to share.');
-          urlInput.focus();
-          return;
-        }
-        
-        try {
-          new URL(urlVal);
-        } catch (e) {
-          showToast('Please enter a valid URL (e.g. https://example.com).');
-          urlInput.focus();
-          return;
-        }
-        
-        let shareUrl = 'https://t.me/share/url?url=' + encodeURIComponent(urlVal);
-        if (textVal) {
-          shareUrl += '&text=' + encodeURIComponent(textVal);
-        }
-        
-        showResult(shareUrl);
-      });
-      
-      document.getElementById('shareUrlInput').addEventListener('keydown', e => {
-        if (e.key === 'Enter') document.getElementById('shareTextInput').focus();
-      });
-      document.getElementById('shareTextInput').addEventListener('keydown', e => {
-        if (e.key === 'Enter') document.getElementById('generateShareBtn').click();
-      });
-      
-      // ── Copy ──────────────────────────────────────────────
-      document.getElementById('copyBtn').addEventListener('click', async () => {
-        if (!currentUrl) return;
-        try {
-          await navigator.clipboard.writeText(currentUrl);
-          showToast('Link copied to clipboard!');
-        } catch (e) {
+
+      function copyText(text, btn) {
+        if (!text) return;
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('Copied to clipboard!');
+          if (btn) {
+            btn.classList.add('copied');
+            setTimeout(() => btn.classList.remove('copied'), 1500);
+          }
+        }).catch(() => {
           // Fallback
           const ta = document.createElement('textarea');
-          ta.value = currentUrl;
+          ta.value = text;
           ta.style.position = 'fixed';
           ta.style.opacity = '0';
           document.body.appendChild(ta);
           ta.select();
-          try { document.execCommand('copy'); showToast('Link copied!'); }
-          catch (err) { showToast('Could not copy — please select manually.'); }
+          document.execCommand('copy');
           document.body.removeChild(ta);
-        }
-      });
-      
-      // ── QR Code ───────────────────────────────────────────
-      document.getElementById('qrBtn').addEventListener('click', () => {
-        if (!currentUrl) return;
-        
-        // Toggle
-        if (qrBox.classList.contains('visible')) {
-          qrBox.classList.remove('visible');
-          return;
-        }
-        
-        qrContainer.innerHTML = '';
-        
-        // Use QRCode.js if available
-        if (typeof QRCode !== 'undefined') {
-          qrCodeInstance = new QRCode(qrContainer, {
-            text: currentUrl,
-            width: 200,
-            height: 200,
-            colorDark: '#1f1810',
-            colorLight: '#ffffff',
-            correctLevel: QRCode.CorrectLevel.M
-          });
-        } else {
-          // Fallback: use QR server API
-          const img = document.createElement('img');
-          img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(currentUrl);
-          img.alt = 'QR code for ' + currentUrl;
-          img.width = 200;
-          img.height = 200;
-          img.crossOrigin = 'anonymous';
-          qrContainer.appendChild(img);
-        }
-        
-        qrBox.classList.add('visible');
-        qrBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      });
-      
-      // ── Download QR ───────────────────────────────────────
-      document.getElementById('downloadQrBtn').addEventListener('click', () => {
-        const canvas = qrContainer.querySelector('canvas');
-        const img = qrContainer.querySelector('img');
-        const link = document.createElement('a');
-        link.download = 'telegram-qr.png';
-        
-        if (canvas) {
-          link.href = canvas.toDataURL('image/png');
-          link.click();
-          showToast('QR code downloaded!');
-        } else if (img) {
-          // Fetch the image and download as blob
-          fetch(img.src)
-            .then(res => res.blob())
-            .then(blob => {
-              link.href = URL.createObjectURL(blob);
-              link.click();
-              URL.revokeObjectURL(link.href);
-              showToast('QR code downloaded!');
-            })
-            .catch(() => {
-              // Fallback: open in new tab
-              window.open(img.src, '_blank');
-              showToast('QR code opened — save it from the new tab.');
-            });
-        } else {
-          showToast('Generate a QR code first.');
-        }
-      });
-      
-      // ── Nav toggle (mobile) ───────────────────────────────
-      const navToggle = document.getElementById('navToggle');
-      const navLinks = document.getElementById('navLinks');
-      if (navToggle && navLinks) {
-        navToggle.addEventListener('click', () => {
-          const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-          navToggle.setAttribute('aria-expanded', String(!expanded));
-          navToggle.classList.toggle('active');
-          navLinks.classList.toggle('open');
-        });
-        // Close on link click
-        navLinks.querySelectorAll('a').forEach(a => {
-          a.addEventListener('click', () => {
-            navToggle.classList.remove('active');
-            navLinks.classList.remove('open');
-            navToggle.setAttribute('aria-expanded', 'false');
-          });
+          showToast('Copied to clipboard!');
         });
       }
-      
-      // ── Header scroll effect ──────────────────────────────
-      const header = document.getElementById('site-header');
-      let lastScroll = 0;
-      window.addEventListener('scroll', () => {
-        const y = window.scrollY;
-        if (header) {
-          header.classList.toggle('scrolled', y > 20);
-        }
-        lastScroll = y;
-      }, { passive: true });
-      
-      // ── FAQ accordion ─────────────────────────────────────
-      document.querySelectorAll('.faq-q').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const item = btn.closest('.faq-item');
-          const isOpen = item.classList.contains('open');
-          
-          // Close all
-          document.querySelectorAll('.faq-item').forEach(i => {
-            i.classList.remove('open');
-            i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+
+      // ── State ────────────────────────────────────────────
+      let activeTab = 'direct';
+      let directLink = 'https://t.me/username';
+      let phoneLink = 'https://t.me/+1234567890';
+      let shareLink = 'https://t.me/share/url?url=...&text=...';
+
+      // ── Tab switching ────────────────────────────────────
+      $$('.gen-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.dataset.tab;
+          activeTab = target;
+
+          // Update tabs
+          $$('.gen-tab').forEach(t => {
+            t.classList.toggle('active', t === tab);
+            t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
           });
-          
+
+          // Update panels
+          $$('.gen-panel').forEach(p => p.classList.remove('active'));
+          const panel = $('#panel-' + target);
+          if (panel) panel.classList.add('active');
+
+          // Refresh QR for active tab
+          refreshQR(target);
+        });
+      });
+
+      // ── QR Code generation ───────────────────────────────
+      function renderQR(container, text) {
+        if (!container) return;
+        container.innerHTML = '';
+        if (!text || text.includes('...')) {
+          container.innerHTML = '<span style="font-size:0.7rem;color:#94a3b8;text-align:center;padding:0.5rem;">Enter details to generate QR</span>';
+          return;
+        }
+        try {
+          const canvas = document.createElement('canvas');
+          QRCode.toCanvas(canvas, text, {
+            width: 140,
+            margin: 1,
+            color: { dark: '#0f172a', light: '#ffffff' }
+          }, function(err) {
+            if (err) {
+              container.innerHTML = '<span style="font-size:0.7rem;color:#94a3b8;">QR error</span>';
+              return;
+            }
+            container.innerHTML = '';
+            container.appendChild(canvas);
+          });
+        } catch (e) {
+          container.innerHTML = '<span style="font-size:0.7rem;color:#94a3b8;">QR not available</span>';
+        }
+      }
+
+      function refreshQR(tab) {
+        if (tab === 'direct' || !tab) {
+          renderQR($('#qrDirect'), directLink.includes('...') ? '' : directLink);
+        }
+        if (tab === 'phone' || !tab) {
+          renderQR($('#qrPhone'), phoneLink.includes('...') ? '' : phoneLink);
+        }
+        if (tab === 'share' || !tab) {
+          renderQR($('#qrShare'), shareLink.includes('...') ? '' : shareLink);
+        }
+      }
+
+      // ── Download QR ──────────────────────────────────────
+      function downloadQR(containerId, filename) {
+        const wrap = $('#' + containerId);
+        if (!wrap) return;
+        const canvas = wrap.querySelector('canvas');
+        if (!canvas) {
+          showToast('No QR code to download. Enter details first.');
+          return;
+        }
+        const link = document.createElement('a');
+        link.download = filename || 'telegram-qr.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        showToast('QR code downloaded!');
+      }
+
+      // ── Direct link input ────────────────────────────────
+      const directInput = $('#directUsername');
+      const directResult = $('#directResult');
+
+      function updateDirect() {
+        const val = directInput.value.trim().replace(/^@/, '');
+        if (val) {
+          directLink = 'https://t.me/' + val;
+        } else {
+          directLink = 'https://t.me/username';
+        }
+        directResult.textContent = directLink;
+        renderQR($('#qrDirect'), val ? directLink : '');
+      }
+
+      directInput.addEventListener('input', updateDirect);
+
+      // Copy direct
+      $('#copyDirect').addEventListener('click', () => copyText(directLink, $('#copyDirect')));
+      $('#copyDirectBtn2').addEventListener('click', () => copyText(directLink, $('#copyDirectBtn2')));
+      $('#downloadDirectQR').addEventListener('click', () => downloadQR('qrDirect', 'telegram-direct-qr.png'));
+
+      // ── Phone invite input ───────────────────────────────
+      const phoneInput = $('#phoneNumber');
+      const phoneResult = $('#phoneResult');
+
+      function updatePhone() {
+        let val = phoneInput.value.trim().replace(/[\s\-()]/g, '');
+        val = val.replace(/^\+/, '');
+        if (val) {
+          phoneLink = 'https://t.me/+' + val;
+        } else {
+          phoneLink = 'https://t.me/+1234567890';
+        }
+        phoneResult.textContent = phoneLink;
+        renderQR($('#qrPhone'), val ? phoneLink : '');
+      }
+
+      phoneInput.addEventListener('input', updatePhone);
+
+      $('#copyPhone').addEventListener('click', () => copyText(phoneLink, $('#copyPhone')));
+      $('#copyPhoneBtn2').addEventListener('click', () => copyText(phoneLink, $('#copyPhoneBtn2')));
+      $('#downloadPhoneQR').addEventListener('click', () => downloadQR('qrPhone', 'telegram-phone-qr.png'));
+
+      // ── Share URL input ──────────────────────────────────
+      const shareUrlInput = $('#shareUrl');
+      const shareTextInput = $('#shareText');
+      const shareResult = $('#shareResult');
+
+      function updateShare() {
+        const url = shareUrlInput.value.trim();
+        const text = shareTextInput.value.trim();
+        if (url) {
+          let share = 'https://t.me/share/url?url=' + encodeURIComponent(url);
+          if (text) share += '&text=' + encodeURIComponent(text);
+          shareLink = share;
+        } else {
+          shareLink = 'https://t.me/share/url?url=...&text=...';
+        }
+        shareResult.textContent = shareLink;
+        renderQR($('#qrShare'), url ? shareLink : '');
+      }
+
+      shareUrlInput.addEventListener('input', updateShare);
+      shareTextInput.addEventListener('input', updateShare);
+
+      $('#copyShare').addEventListener('click', () => copyText(shareLink, $('#copyShare')));
+      $('#copyShareBtn2').addEventListener('click', () => copyText(shareLink, $('#copyShareBtn2')));
+      $('#downloadShareQR').addEventListener('click', () => downloadQR('qrShare', 'telegram-share-qr.png'));
+
+      // ── Initial QR renders ───────────────────────────────
+      renderQR($('#qrDirect'), '');
+      renderQR($('#qrPhone'), '');
+      renderQR($('#qrShare'), '');
+
+      // ── FAQ accordion ────────────────────────────────────
+      $$('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.parentElement;
+          const isOpen = item.classList.contains('open');
+          // Close all
+          $$('.faq-item').forEach(i => {
+            i.classList.remove('open');
+            const q = i.querySelector('.faq-q');
+            if (q) q.setAttribute('aria-expanded', 'false');
+          });
+          // Open if was closed
           if (!isOpen) {
             item.classList.add('open');
             btn.setAttribute('aria-expanded', 'true');
           }
         });
       });
-      
+
+      // ── Mobile sidebar ───────────────────────────────────
+      const sidebar = $('#sidebar');
+      const overlay = $('#sidebarOverlay');
+      const menuBtn = $('#mobileMenuBtn');
+
+      function openSidebar() {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      menuBtn.addEventListener('click', () => {
+        if (sidebar.classList.contains('open')) closeSidebar();
+        else openSidebar();
+      });
+      overlay.addEventListener('click', closeSidebar);
+      $$('.sidebar-nav a').forEach(a => a.addEventListener('click', closeSidebar));
+
+      // ── Sidebar active link highlight on scroll ──────────
+      const sections = $$('section[id]');
+      const navLinks = $$('.sidebar-nav a');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, { rootMargin: '-30% 0px -60% 0px' });
+
+      sections.forEach(s => observer.observe(s));
+
     })();
   </script>
 </body>
